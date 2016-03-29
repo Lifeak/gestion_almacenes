@@ -1,0 +1,10 @@
+{
+  "generator-ng-fullstack": {
+    "username": "lifeakraquel",
+    "appName": "almacen",
+    "stack": "fullstack",
+    "server": "node",
+    "client": "ng2",
+    "transpilerServer": "node"
+  }
+}
