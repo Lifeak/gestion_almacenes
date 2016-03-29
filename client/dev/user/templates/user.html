@@ -1,0 +1,43 @@
+<div class="cliente-container">
+  <form class="user-form"
+        [ngFormModel]="userForm"
+        (submit)="add(userForm.value.user, userForm.value.pass, userForm.value.nombre, userForm.value.apellido, userForm.value.tipo)">
+
+    <h1 class="cliente-title">{{title}}</h1>
+
+    <input type="text"
+           ngControl="user"
+           [class.cliente-error]="!userForm.valid"
+           placeholder="user"
+           autofocus />
+   <input type="text"
+           ngControl="pass"
+           [class.cliente-error]="!userForm.valid"
+           placeholder="pass"
+           autofocus />
+   <input type="text"
+           ngControl="nombre"
+           [class.cliente-error]="!userForm.valid"
+           placeholder="nombre"
+           autofocus />
+   <input type="text"
+           ngControl="apellido"
+           [class.cliente-error]="!userForm.valid"
+           placeholder="apellido"
+           autofocus />
+   <input type="text"
+           ngControl="tipo"
+           [class.cliente-error]="!userForm.valid"
+           placeholder="tipo"
+           autofocus />
+
+    <button type="submit"
+            [disabled]="!userForm.valid">Añadir</button>
+  </form>
+
+  <div class="cliente-list">
+    <div *ngFor="#user of users;" class="cliente-item" (click)="remove(user._id);">
+      <p>{{user.user}}</p>
+    </div>
+  </div>
+</div>

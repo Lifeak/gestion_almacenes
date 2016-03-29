@@ -14,32 +14,38 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
-var ClienteService = (function () {
-    function ClienteService(_http) {
+var UserService = (function () {
+    function UserService(_http) {
         this._http = _http;
     }
-    ClienteService.prototype.getAll = function () {
+    UserService.prototype.getAll = function () {
         return this._http
-            .get(ClienteService.ENDPOINT.replace(':id', ''))
+            .get(UserService.ENDPOINT.replace(':id', ''))
             .map(function (r) { return r.json(); });
     };
-    ClienteService.prototype.add = function (message) {
-        var _messageStringified = JSON.stringify({ clienteMessage: message });
+    UserService.prototype.add = function (user, pass, nombre, apellido, tipo) {
+        var _userStringified = JSON.stringify({ user: user });
+        var _passStringified = JSON.stringify({ pass: pass });
+        var _nombreStringified = JSON.stringify({ nombre: nombre });
+        var _apellidotringified = JSON.stringify({ apellido: apellido });
+        var _tipoStringified = JSON.stringify({ apellido: apellido });
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
+        // tiene que faltar : _passStringified, _nombreStringified, _apellidotringified, _tipoStringified,
+        // para que reemplace todos los campos
         return this._http
-            .post(ClienteService.ENDPOINT.replace(':id', ''), _messageStringified, { headers: headers })
+            .post(UserService.ENDPOINT.replace(':id', ''), _userStringified, { headers: headers })
             .map(function (r) { return r.json(); });
     };
-    ClienteService.prototype.remove = function (id) {
+    UserService.prototype.remove = function (id) {
         return this._http
-            .delete(ClienteService.ENDPOINT.replace(':id', id));
+            .delete(UserService.ENDPOINT.replace(':id', id));
     };
-    ClienteService.ENDPOINT = '/api/cliente/:id';
-    ClienteService = __decorate([
+    UserService.ENDPOINT = '/api/user/:id';
+    UserService = __decorate([
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ClienteService);
-    return ClienteService;
+    ], UserService);
+    return UserService;
 }());
-exports.ClienteService = ClienteService;
+exports.UserService = UserService;

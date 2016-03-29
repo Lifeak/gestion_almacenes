@@ -21,7 +21,7 @@ userSchema.statics.getAll = () => {
 userSchema.statics.createUser = (user) => {
     return new Promise((resolve, reject) => {
       if (!_.isObject(user))
-          return reject(new TypeError('Todo is not a valid object.'));
+          return reject(new TypeError('User is not a valid object.'));
 
       let _user = new User(user);
 
