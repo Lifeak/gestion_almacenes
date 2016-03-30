@@ -20,7 +20,8 @@ var TodoCmp = (function () {
         this.title = "ng2do";
         this.todos = [];
         this.todoForm = fb.group({
-            "todoMessage": ["", common_1.Validators.required]
+            "todoMessage": ["", common_1.Validators.required],
+            "todoM": ["", common_1.Validators.required]
         });
     }
     TodoCmp.prototype.ngOnInit = function () {
@@ -34,13 +35,27 @@ var TodoCmp = (function () {
             _this.todos = todos;
         });
     };
-    TodoCmp.prototype.add = function (message) {
+    /*add(message:string,mes:string):void {
+      this._todoService
+          .add(message,mes)
+          .subscribe(([m,a]) => {
+            this.todos.push(m,a);
+            (<Control>this.todoForm.controls['todoMessage']).updateValue("");
+            (<Control>this.todoForm.controls['todoM']).updateValue("");
+          });
+    }*/
+    TodoCmp.prototype.add = function (todo) {
         var _this = this;
+        alert(this.todoForm.controls['todoMessage'].value);
+        var a = this.todoForm.controls['todoMessage'].value;
+        var b = this.todoForm.controls['todoM'].value;
+        alert(this.todoForm.controls['todoM'].value);
         this._todoService
-            .add(message)
+            .add(a, b)
             .subscribe(function (m) {
-            _this.todos.push(m);
+            _this.todos.push(todo[0], todo[1]);
             _this.todoForm.controls['todoMessage'].updateValue("");
+            _this.todoForm.controls['todoM'].updateValue("");
         });
     };
     TodoCmp.prototype.remove = function (id) {

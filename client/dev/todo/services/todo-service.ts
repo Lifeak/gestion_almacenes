@@ -11,11 +11,12 @@ import {
   Headers
 } from 'angular2/http';
 
+
 import 'rxjs/add/operator/map';
+import {TodoCmp} from '../components/todo-cmp';
 
 export class TodoService {
   static ENDPOINT: string = '/api/todos/:id';
-
   constructor(@Inject(Http) private _http: Http) {
 
   }
@@ -26,15 +27,21 @@ export class TodoService {
                .map((r) => r.json());
   }
 
-  add(message:string):Observable<any> {
-    let _messageStringified = JSON.stringify({todoMessage: message});
-
+  add(todoMessage: String, todoM: String ): Observable<any> {
+//    let _messageStringified = JSON.stringify({ todoMessage: todoMessaje });
+    // let _m = JSON.stringify({ todoM: m });
+    //let _hola = JSON.stringify(); 
+    let body = JSON.stringify({todoMessage,todoM}); 
     let headers = new Headers();
-
-    headers.append('Content-Type', 'application/json');
+    // var datos = [_messageStringified,_m];
+    headers.append('Content-Type','application/json');
+    //m[0] = _messageStringified;
+    //m[1] = _m;
 
     return this._http
-               .post(TodoService.ENDPOINT.replace(':id', ''), _messageStringified, {headers})
+      .post(TodoService.ENDPOINT.replace(':id', ''), body, { headers })
+              
+
                .map((r) => r.json());
   }
 

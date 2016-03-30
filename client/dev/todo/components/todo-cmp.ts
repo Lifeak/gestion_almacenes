@@ -15,6 +15,7 @@ import {TodoService} from '../services/todo-service';
 
 type Todo = {
   todoMessage: string;
+  todoM: string;
   _id: string;
 }
 
@@ -27,13 +28,16 @@ type Todo = {
 export class TodoCmp implements OnInit {
   title: string = "ng2do";
   todos: Todo[] = [];
+  //fb: FormBuilder;
   todoForm: ControlGroup;
 
   constructor(@Inject(FormBuilder) fb:FormBuilder, @Inject(TodoService) private _todoService: TodoService) {
     this.todoForm = fb.group({
-      "todoMessage": ["", Validators.required]
+      "todoMessage": ["", Validators.required],
+      "todoM":["",Validators.required]
     });
   }
+
 
   ngOnInit() {
     this._getAll();
@@ -47,13 +51,27 @@ export class TodoCmp implements OnInit {
         });
   }
 
-  add(message:string):void {
+  /*add(message:string,mes:string):void {
     this._todoService
-        .add(message)
-        .subscribe((m) => {
-          this.todos.push(m);
+        .add(message,mes)
+        .subscribe(([m,a]) => {
+          this.todos.push(m,a);
           (<Control>this.todoForm.controls['todoMessage']).updateValue("");
+          (<Control>this.todoForm.controls['todoM']).updateValue("");
         });
+  }*/
+  add(todo: FormData): void {
+    alert(this.todoForm.controls['todoMessage'].value);
+    var a: String = this.todoForm.controls['todoMessage'].value;
+    var b: String = this.todoForm.controls['todoM'].value;
+    alert(this.todoForm.controls['todoM'].value);
+    this._todoService
+    .add(a,b)
+      .subscribe((m) => {
+        this.todos.push(todo[0],todo[1]);
+        (<Control>this.todoForm.controls['todoMessage']).updateValue("");
+        (<Control>this.todoForm.controls['todoM']).updateValue("");
+      });
   }
 
   remove(id:string):void {

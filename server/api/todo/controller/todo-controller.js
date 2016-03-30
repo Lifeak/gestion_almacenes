@@ -11,6 +11,7 @@ module.exports = class TodoController {
   }
 
   static createTodo(req, res) {
+    console.log(req.body);
       let _todo = req.body;
 
       TodoDAO
