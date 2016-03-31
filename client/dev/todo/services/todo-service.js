@@ -24,15 +24,9 @@ var TodoService = (function () {
             .map(function (r) { return r.json(); });
     };
     TodoService.prototype.add = function (todoMessage, todoM) {
-        //    let _messageStringified = JSON.stringify({ todoMessage: todoMessaje });
-        // let _m = JSON.stringify({ todoM: m });
-        //let _hola = JSON.stringify(); 
         var body = JSON.stringify({ todoMessage: todoMessage, todoM: todoM });
         var headers = new http_1.Headers();
-        // var datos = [_messageStringified,_m];
         headers.append('Content-Type', 'application/json');
-        //m[0] = _messageStringified;
-        //m[1] = _m;
         return this._http
             .post(TodoService.ENDPOINT.replace(':id', ''), body, { headers: headers })
             .map(function (r) { return r.json(); });
@@ -40,6 +34,16 @@ var TodoService = (function () {
     TodoService.prototype.remove = function (id) {
         return this._http
             .delete(TodoService.ENDPOINT.replace(':id', id));
+    };
+    TodoService.prototype.getbyId = function (id) {
+        return this._http
+            .get(TodoService.ENDPOINT.replace(':id', id))
+            .map(function (r) { return r.json(); });
+    };
+    TodoService.prototype.edit = function (id) {
+        return this._http
+            .get(TodoService.ENDPOINT.replace(':id', ''))
+            .map(function (r) { return r.json(); });
     };
     TodoService.ENDPOINT = '/api/todos/:id';
     TodoService = __decorate([

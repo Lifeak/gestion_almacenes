@@ -14,6 +14,7 @@ import {
 
 import 'rxjs/add/operator/map';
 import {TodoCmp} from '../components/todo-cmp';
+import {TodoListCmp} from '../components/todolist-cmp';
 
 export class TodoService {
   static ENDPOINT: string = '/api/todos/:id';
@@ -28,16 +29,9 @@ export class TodoService {
   }
 
   add(todoMessage: String, todoM: String ): Observable<any> {
-//    let _messageStringified = JSON.stringify({ todoMessage: todoMessaje });
-    // let _m = JSON.stringify({ todoM: m });
-    //let _hola = JSON.stringify(); 
     let body = JSON.stringify({todoMessage,todoM}); 
     let headers = new Headers();
-    // var datos = [_messageStringified,_m];
     headers.append('Content-Type','application/json');
-    //m[0] = _messageStringified;
-    //m[1] = _m;
-
     return this._http
       .post(TodoService.ENDPOINT.replace(':id', ''), body, { headers })
               
@@ -48,5 +42,16 @@ export class TodoService {
   remove(id: string):Observable<any> {
     return this._http
                .delete(TodoService.ENDPOINT.replace(':id', id));
+  }
+
+  getbyId(id: string):Observable<any>{
+    return this._http
+      .get(TodoService.ENDPOINT.replace(':id', id))
+      .map((r) => r.json());
+  }
+  edit(id:string):Observable<any>{
+    return this._http
+    .get(TodoService.ENDPOINT.replace(':id', ''))
+    .map((r) => r.json());
   }
 }

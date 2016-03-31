@@ -13,11 +13,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
-var router_1 = require('angular2/router');
 var todo_service_1 = require('../services/todo-service');
-var TodoDetalles_1 = require('./TodoDetalles');
-var TodoCmp = (function () {
-    function TodoCmp(fb, _todoService) {
+var TodoEditCmp = (function () {
+    function TodoEditCmp(fb, _todoService) {
         this._todoService = _todoService;
         this.title = "ng2do";
         this.todos = [];
@@ -26,10 +24,9 @@ var TodoCmp = (function () {
             "todoM": ["", common_1.Validators.required]
         });
     }
-    TodoCmp.prototype.ngOnInit = function () {
-        this._getAll();
+    TodoEditCmp.prototype.ngOnInit = function () {
     };
-    TodoCmp.prototype._getAll = function () {
+    TodoEditCmp.prototype._getAll = function () {
         var _this = this;
         this._todoService
             .getAll()
@@ -37,56 +34,30 @@ var TodoCmp = (function () {
             _this.todos = todos;
         });
     };
-    TodoCmp.prototype.add = function (todo) {
-        var _this = this;
-        alert(this.todoForm.controls['todoMessage'].value);
-        var a = this.todoForm.controls['todoMessage'].value;
-        var b = this.todoForm.controls['todoM'].value;
-        alert(this.todoForm.controls['todoM'].value);
-        this._todoService
-            .add(a, b)
-            .subscribe(function (m) {
-            _this.todos.push(todo[0], todo[1]);
-            _this.todoForm.controls['todoMessage'].updateValue("");
-            _this.todoForm.controls['todoM'].updateValue("");
-        });
-    };
-    TodoCmp.prototype.remove = function (id) {
-        var _this = this;
-        if (window.confirm("estas seguro de borrar")) {
-            this._todoService
-                .remove(id)
-                .subscribe(function () {
-                _this.todos.forEach(function (t, i) {
-                    if (t._id === id)
-                        return _this.todos.splice(i, 1);
-                });
-            });
-        }
-    };
-    TodoCmp.prototype.getbyId = function (id) {
+    /*edit(id:string):*/
+    TodoEditCmp.prototype.getbyId = function (id) {
         var _this = this;
         this._todoService
             .getbyId(id)
-            .subscribe(function (todo) {
-            _this.todo = todo;
+            .subscribe(function (todos) {
+            _this.todos = todos;
         });
     };
-    TodoCmp = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], TodoEditCmp.prototype, "_id", void 0);
+    TodoEditCmp = __decorate([
         core_1.Component({
-            selector: 'todo-cmp',
-            templateUrl: 'client/dev/todo/templates/todo.html',
+            selector: 'todoedit-cmp',
+            templateUrl: 'client/dev/todo/templates/todoedit.html',
             styleUrls: ['client/dev/todo/styles/todo.css'],
             providers: [todo_service_1.TodoService],
-            directives: [router_1.ROUTER_DIRECTIVES]
         }),
-        router_1.RouteConfig([
-            { path: '/todo/:id', name: 'TodoDetalles', component: TodoDetalles_1.TodoDetalles }
-        ]),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(todo_service_1.TodoService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, todo_service_1.TodoService])
-    ], TodoCmp);
-    return TodoCmp;
+    ], TodoEditCmp);
+    return TodoEditCmp;
 }());
-exports.TodoCmp = TodoCmp;
+exports.TodoEditCmp = TodoEditCmp;

@@ -22,7 +22,10 @@
 
   <div class="todo-list">
     <div *ngFor="#todo of todos;" class="todo-item" (click)="remove(todo._id);">
-      <p>{{todo.todoMessage}}</p>
+      <p>{{todo.todoMessage}} y {{todo.todoM}}</p>
+      <button (click) ="remove(todo._id);">Borrar</button>
+      <button (click) ="edit(todo._id);">Editar</button>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>

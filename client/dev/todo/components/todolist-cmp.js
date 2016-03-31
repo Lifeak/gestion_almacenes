@@ -13,11 +13,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
-var router_1 = require('angular2/router');
 var todo_service_1 = require('../services/todo-service');
-var TodoDetalles_1 = require('./TodoDetalles');
-var TodoCmp = (function () {
-    function TodoCmp(fb, _todoService) {
+var todoedit_cmp_1 = require('./todoedit-cmp');
+var TodoListCmp = (function () {
+    function TodoListCmp(fb, _todoService) {
         this._todoService = _todoService;
         this.title = "ng2do";
         this.todos = [];
@@ -26,10 +25,10 @@ var TodoCmp = (function () {
             "todoM": ["", common_1.Validators.required]
         });
     }
-    TodoCmp.prototype.ngOnInit = function () {
+    TodoListCmp.prototype.ngOnInit = function () {
         this._getAll();
     };
-    TodoCmp.prototype._getAll = function () {
+    TodoListCmp.prototype._getAll = function () {
         var _this = this;
         this._todoService
             .getAll()
@@ -37,21 +36,21 @@ var TodoCmp = (function () {
             _this.todos = todos;
         });
     };
-    TodoCmp.prototype.add = function (todo) {
-        var _this = this;
-        alert(this.todoForm.controls['todoMessage'].value);
-        var a = this.todoForm.controls['todoMessage'].value;
-        var b = this.todoForm.controls['todoM'].value;
-        alert(this.todoForm.controls['todoM'].value);
-        this._todoService
-            .add(a, b)
-            .subscribe(function (m) {
-            _this.todos.push(todo[0], todo[1]);
-            _this.todoForm.controls['todoMessage'].updateValue("");
-            _this.todoForm.controls['todoM'].updateValue("");
+    /*add(todo: FormData): void {
+      alert(this.todoForm.controls['todoMessage'].value);
+      var a: String = this.todoForm.controls['todoMessage'].value;
+      var b: String = this.todoForm.controls['todoM'].value;
+      alert(this.todoForm.controls['todoM'].value);
+      this._todoService
+      .add(a,b)
+        .subscribe((m) => {
+          this.todos.push(todo[0],todo[1]);
+          (<Control>this.todoForm.controls['todoMessage']).updateValue("");
+          (<Control>this.todoForm.controls['todoM']).updateValue("");
         });
-    };
-    TodoCmp.prototype.remove = function (id) {
+    }
+  */
+    TodoListCmp.prototype.remove = function (id) {
         var _this = this;
         if (window.confirm("estas seguro de borrar")) {
             this._todoService
@@ -64,29 +63,29 @@ var TodoCmp = (function () {
             });
         }
     };
-    TodoCmp.prototype.getbyId = function (id) {
+    TodoListCmp.prototype.edit = function (id) {
+        alert("vamos a editar");
+    };
+    TodoListCmp.prototype.getbyId = function (id) {
         var _this = this;
         this._todoService
             .getbyId(id)
-            .subscribe(function (todo) {
-            _this.todo = todo;
+            .subscribe(function (todos) {
+            _this.todos = todos;
         });
     };
-    TodoCmp = __decorate([
+    TodoListCmp = __decorate([
         core_1.Component({
-            selector: 'todo-cmp',
-            templateUrl: 'client/dev/todo/templates/todo.html',
+            selector: 'todolist-cmp',
+            templateUrl: 'client/dev/todo/templates/todolist.html',
             styleUrls: ['client/dev/todo/styles/todo.css'],
             providers: [todo_service_1.TodoService],
-            directives: [router_1.ROUTER_DIRECTIVES]
+            directives: [todoedit_cmp_1.TodoEditCmp]
         }),
-        router_1.RouteConfig([
-            { path: '/todo/:id', name: 'TodoDetalles', component: TodoDetalles_1.TodoDetalles }
-        ]),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(todo_service_1.TodoService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, todo_service_1.TodoService])
-    ], TodoCmp);
-    return TodoCmp;
+    ], TodoListCmp);
+    return TodoListCmp;
 }());
-exports.TodoCmp = TodoCmp;
+exports.TodoListCmp = TodoListCmp;

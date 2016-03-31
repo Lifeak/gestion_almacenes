@@ -11,12 +11,8 @@ import {
   Control
 } from 'angular2/common';
 
-import {
-  RouteConfig, ROUTER_DIRECTIVES
-} from 'angular2/router';
-
 import {TodoService} from '../services/todo-service';
-import {TodoDetalles} from './TodoDetalles';
+import {TodoEditCmp} from './todoedit-cmp';
 
 type Todo = {
   todoMessage: string;
@@ -25,22 +21,15 @@ type Todo = {
 }
 
 @Component({
-  selector: 'todo-cmp',
-  templateUrl: 'client/dev/todo/templates/todo.html',
+  selector: 'todolist-cmp',
+  templateUrl: 'client/dev/todo/templates/todolist.html',
   styleUrls: ['client/dev/todo/styles/todo.css'],
   providers: [TodoService],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [TodoEditCmp]
 })
-
-@RouteConfig([
-   {path:'/todo/:id', name:'TodoDetalles', component: TodoDetalles} 
- ])
-export class TodoCmp implements OnInit {
+export class TodoListCmp implements OnInit {
   title: string = "ng2do";
   todos: Todo[] = [];
-  todo: Todo;
-  todoMessage: string;
-  todoM: string;
   //fb: FormBuilder;
   todoForm: ControlGroup;
 
@@ -64,7 +53,7 @@ export class TodoCmp implements OnInit {
         });
   }
 
-  add(todo: FormData): void {
+  /*add(todo: FormData): void {
     alert(this.todoForm.controls['todoMessage'].value);
     var a: String = this.todoForm.controls['todoMessage'].value;
     var b: String = this.todoForm.controls['todoM'].value;
@@ -77,7 +66,7 @@ export class TodoCmp implements OnInit {
         (<Control>this.todoForm.controls['todoM']).updateValue("");
       });
   }
-
+*/
   remove(id:string):void {
     if (window.confirm("estas seguro de borrar")) {
       this._todoService
@@ -90,12 +79,15 @@ export class TodoCmp implements OnInit {
         })
     }
   }
+  edit(id:string):void{
+    alert("vamos a editar");
+  }
 
   getbyId(id: string):void{
     this._todoService
         .getbyId(id)
-        .subscribe((todo) =>{
-          this.todo = todo;
+        .subscribe((todos) =>{
+          this.todos = todos;
 
         })
   }
