@@ -13,7 +13,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
+var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
+var userlist_cmp_1 = require('./userlist-cmp');
+var userdetails_cmp_1 = require('./userdetails-cmp');
 var UserCmp = (function () {
     function UserCmp(fb, _userService) {
         this._userService = _userService;
@@ -66,10 +69,16 @@ var UserCmp = (function () {
     UserCmp = __decorate([
         core_1.Component({
             selector: 'user-cmp',
-            templateUrl: 'client/dev/user/templates/user.html',
+            templateUrl: 'client/dev/user/templates/index.html',
             styleUrls: ['client/dev/user/styles/cliente.css'],
-            providers: [user_service_1.UserService]
+            providers: [user_service_1.UserService],
+            directives: [router_1.ROUTER_DIRECTIVES]
         }),
+        router_1.RouteConfig([
+            { path: '/user', name: 'Usuarios', component: UserCmp, useAsDefault: true },
+            { path: '/users', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
+            { path: '/user/:id', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp }
+        ]),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(user_service_1.UserService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, user_service_1.UserService])

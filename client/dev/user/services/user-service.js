@@ -14,13 +14,35 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
+var User = (function () {
+    function User(user, pass, nombre, apellido, tipo, _id) {
+        this.user = user;
+        this.pass = pass;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipo = tipo;
+        this._id = _id;
+    }
+    return User;
+}());
+exports.User = User;
 var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
     }
+    UserService.prototype.gotoIndex = function () {
+        return this._http
+            .get(UserService.ENDPOINT.replace(':id', ''))
+            .map(function (r) { return r.json(); });
+    };
     UserService.prototype.getAll = function () {
         return this._http
             .get(UserService.ENDPOINT.replace(':id', ''))
+            .map(function (r) { return r.json(); });
+    };
+    UserService.prototype.getUserId = function (id) {
+        return this._http
+            .get(UserService.ENDPOINT.replace(':id', id))
             .map(function (r) { return r.json(); });
     };
     UserService.prototype.add = function (user, pass, nombre, apellido, tipo) {
@@ -43,6 +65,7 @@ var UserService = (function () {
     };
     UserService.ENDPOINT = '/api/user/:id';
     UserService = __decorate([
+        core_1.Injectable(),
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])
     ], UserService);

@@ -1,10 +1,9 @@
 <div class="todo-container">
   <div class="todo-list">
-    <div *ngFor="#todo of todos;" class="todo-item" (click)="remove(todo._id);">
+    <div *ngFor="#todo of todos;" class="todo-item">
       <p>{{todo.todoMessage}} y {{todo.todoM}}</p>
       <button (click) ="remove(todo._id);">Borrar</button>
       <button (click) ="edit(todo._id);">Editar</button>
     </div>
   </div>
 </div>
-<todoedit *ngIf="id===null" [id]=todo._id>hola</todoedit>

@@ -12,52 +12,28 @@ import {
 } from 'angular2/common';
 
 import {
-  RouteConfig,
-  ROUTER_DIRECTIVES
+Router,
+RouteParams
 } from 'angular2/router';
 
 
-import {UserService} from '../services/user-service';
+import {User, UserService} from '../services/user-service';
 
-import {UserListCmp} from './userlist-cmp';
-import {UserDetailsCmp} from './userdetails-cmp';
 
-type User = {
-  user: string;
-  pass: string;
-  nombre: string;
-  apellido: string;
-  tipo: string;
-  _id: string;
-}
 
 @Component({
-  selector: 'user-cmp',
-  templateUrl: 'client/dev/user/templates/index.html',
-  styleUrls: ['client/dev/user/styles/cliente.css'],
-  providers: [UserService],
-  directives: [ROUTER_DIRECTIVES]
+  templateUrl: 'client/dev/user/templates/list.html',
+  styleUrls: ['client/dev/user/styles/cliente.css']
 })
 
-@RouteConfig([
-    { path: '/user', name: 'Usuarios', component: UserCmp, useAsDefault:true },
-    { path: '/users', name: 'ListUsuarios',  component: UserListCmp},
-    { path: '/user/:id', name: 'DetailsUsuarios', component: UserDetailsCmp}
-])
-
-export class UserCmp implements OnInit {
+export class UserListCmp implements OnInit {
   title: string = "Users";
   users: User[] = [];
-  userForm: ControlGroup;
+  private _selectedId: string;
 
-  constructor(@Inject(FormBuilder) fb:FormBuilder, @Inject(UserService) private _userService: UserService) {
-    this.userForm = fb.group({
-      "user": ["", Validators.required],
-      "pass": ["", Validators.required],
-      "nombre": ["", Validators.required],
-      "apellido": ["", Validators.required],
-      "tipo": ["", Validators.required]
-    });
+
+  constructor(private _userService: UserService, private _router: Router, routeParams: RouteParams) {
+    this._selectedId = routeParams.get('id');
   }
 
   ngOnInit() {
@@ -71,7 +47,13 @@ export class UserCmp implements OnInit {
           this.users = users;
         });
   }
-
+  isSelected(user:User){
+    return user._id === this._selectedId;
+  }
+  onSelect(user:User){
+    this._router.navigate(['DetailsUsuarios',{id: user._id}]);
+  }
+/*
   // Falta arreglar funcion para que añada todo correctamente
   add(user:string, pass: string, nombre:string, apellido:string, tipo:string):void {
     this._userService
@@ -95,5 +77,5 @@ export class UserCmp implements OnInit {
             return this.users.splice(i, 1);
         });
       })
-  }
+  }*/
 }

@@ -34,7 +34,21 @@ var TodoEditCmp = (function () {
             _this.todos = todos;
         });
     };
-    /*edit(id:string):*/
+    TodoEditCmp.prototype.edit = function (id) {
+    };
+    TodoEditCmp.prototype.update = function (id, datos) {
+        /*alert(this.todoForm.controls['todoMessage'].value);
+        var a: String = this.todoForm.controls['todoMessage'].value;
+        var b: String = this.todoForm.controls['todoM'].value;
+        alert(this.todoForm.controls['todoM'].value);
+        this._todoService
+          .add(a, b)
+          .subscribe((m) => {
+            this.todos.push(todo[0], todo[1]);
+            (<Control>this.todoForm.controls['todoMessage']).updateValue("");
+            (<Control>this.todoForm.controls['todoM']).updateValue("");
+          });*/
+    };
     TodoEditCmp.prototype.getbyId = function (id) {
         var _this = this;
         this._todoService

@@ -56,7 +56,22 @@ export class TodoEditCmp implements OnInit {
   }
 
 
-  /*edit(id:string):*/
+  edit(id:string):void{
+  }
+
+  update(id:string, datos: FormData): void {
+    /*alert(this.todoForm.controls['todoMessage'].value);
+    var a: String = this.todoForm.controls['todoMessage'].value;
+    var b: String = this.todoForm.controls['todoM'].value;
+    alert(this.todoForm.controls['todoM'].value);
+    this._todoService
+      .add(a, b)
+      .subscribe((m) => {
+        this.todos.push(todo[0], todo[1]);
+        (<Control>this.todoForm.controls['todoMessage']).updateValue("");
+        (<Control>this.todoForm.controls['todoM']).updateValue("");
+      });*/
+  }
 
   getbyId(id: string):void{
     this._todoService

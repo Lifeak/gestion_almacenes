@@ -1,5 +1,6 @@
 import {
-  Inject
+  Inject,
+  Injectable
 } from 'angular2/core';
 
 import {
@@ -13,8 +14,20 @@ import {
 
 import 'rxjs/add/operator/map';
 
+export class User {
+  constructor(public user:string, public pass: string, public nombre: string, public apellido: string, public tipo: string, public _id:string){}
+}
+
+
+@Injectable()
 export class UserService {
   static ENDPOINT: string = '/api/user/:id';
+  
+  gotoIndex(){
+    return this._http
+      .get(UserService.ENDPOINT.replace(':id', ''))
+      .map((r) => r.json());
+  }
 
   constructor(@Inject(Http) private _http: Http) {
 
@@ -25,6 +38,12 @@ export class UserService {
               .get(UserService.ENDPOINT.replace(':id', ''))
                .map((r) => r.json());
   }
+
+  getUserId(id: string) {
+    return this._http
+    .get(UserService.ENDPOINT.replace(':id', id))
+    .map((r) => r.json());
+  } 
 
   add(user:string, pass:string, nombre:string, apellido:string, tipo:string):Observable<any> {
     let _userStringified = JSON.stringify({user: user});
