@@ -1,6 +1,7 @@
 import {
   Component,
   Inject,
+  provide,
   OnInit
 } from 'angular2/core';
 
@@ -12,10 +13,13 @@ import {
 } from 'angular2/common';
 
 import {
+  Router,
+  RouteParams,
   RouteConfig,
+  ROUTER_PROVIDERS,
   ROUTER_DIRECTIVES
 } from 'angular2/router';
-
+import{bootstrap} from 'angular2/platform/browser';
 
 import {UserService} from '../services/user-service';
 
@@ -33,7 +37,18 @@ type User = {
 
 @Component({
   selector: 'user-cmp',
-  templateUrl: 'client/dev/user/templates/index.html',
+  //templateUrl: 'client/dev/user/templates/index.html',
+  template: `<div class="cliente-container">
+  <h1>MENU</h1>
+  <nav>
+   <li><a [routerLink]="['/ListUsuarios']">Listado</a></li>
+   <li><a [routerLink]="['/DetailsUsuarios']">Detalles</a></li>
+   <a href="http://localhost:3000/api/user">Este listado</a>
+</nav>
+    <div>
+    El resultado es..
+    <router-outlet></router-outlet></div>
+</div>`,
   styleUrls: ['client/dev/user/styles/cliente.css'],
   providers: [UserService],
   directives: [ROUTER_DIRECTIVES]
@@ -41,14 +56,17 @@ type User = {
 
 @RouteConfig([
     { path: '/user', name: 'Usuarios', component: UserCmp, useAsDefault:true },
-    { path: '/users', name: 'ListUsuarios',  component: UserListCmp},
+  { path: '/ListUsuarios', name: 'ListUsuarios', component: UserListCmp },
+    //{ path: '/api/user', name: 'ListUsuarios', component: UserListCmp },
     { path: '/user/:id', name: 'DetailsUsuarios', component: UserDetailsCmp}
 ])
+
 
 export class UserCmp implements OnInit {
   title: string = "Users";
   users: User[] = [];
   userForm: ControlGroup;
+
 
   constructor(@Inject(FormBuilder) fb:FormBuilder, @Inject(UserService) private _userService: UserService) {
     this.userForm = fb.group({

@@ -81,7 +81,7 @@ export class TodoListCmp implements OnInit {
   }
   edit(id:string):void{
     alert("vamos a editar");
-    TodoEditCmp.prototype.getEdit(id);
+    //TodoEditCmp.prototype.getEdit(id);
   }
 
   getbyId(id: string):void{

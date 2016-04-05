@@ -69,14 +69,16 @@ var UserCmp = (function () {
     UserCmp = __decorate([
         core_1.Component({
             selector: 'user-cmp',
-            templateUrl: 'client/dev/user/templates/index.html',
+            //templateUrl: 'client/dev/user/templates/index.html',
+            template: "<div class=\"cliente-container\">\n  <h1>MENU</h1>\n  <nav>\n   <li><a [routerLink]=\"['/ListUsuarios']\">Listado</a></li>\n   <li><a [routerLink]=\"['/DetailsUsuarios']\">Detalles</a></li>\n   <a href=\"http://localhost:3000/api/user\">Este listado</a>\n</nav>\n    <div>\n    El resultado es..\n    <router-outlet></router-outlet></div>\n</div>",
             styleUrls: ['client/dev/user/styles/cliente.css'],
             providers: [user_service_1.UserService],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
         router_1.RouteConfig([
             { path: '/user', name: 'Usuarios', component: UserCmp, useAsDefault: true },
-            { path: '/users', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
+            { path: '/ListUsuarios', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
+            //{ path: '/api/user', name: 'ListUsuarios', component: UserListCmp },
             { path: '/user/:id', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp }
         ]),
         __param(0, core_1.Inject(common_1.FormBuilder)),

@@ -13,7 +13,9 @@ import {
 
 import {
 Router,
-RouteParams
+RouteParams, 
+RouteConfig,
+ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
@@ -22,8 +24,12 @@ import {User, UserService} from '../services/user-service';
 
 
 @Component({
-  templateUrl: 'client/dev/user/templates/list.html',
-  styleUrls: ['client/dev/user/styles/cliente.css']
+  selector: 'ListUsuarios',
+  //templateUrl: 'client/dev/user/templates/list.html',
+  template:`<h1>hola</h1>`,
+  styleUrls: ['client/dev/user/styles/cliente.css'],
+  directives:[ROUTER_DIRECTIVES],
+  providers: [UserService]
 })
 
 export class UserListCmp implements OnInit {
@@ -53,29 +59,4 @@ export class UserListCmp implements OnInit {
   onSelect(user:User){
     this._router.navigate(['DetailsUsuarios',{id: user._id}]);
   }
-/*
-  // Falta arreglar funcion para que añada todo correctamente
-  add(user:string, pass: string, nombre:string, apellido:string, tipo:string):void {
-    this._userService
-        .add(user, pass, nombre, apellido, tipo)
-        .subscribe((m) => {
-          this.users.push(m);
-          (<Control>this.userForm.controls['user']).updateValue("");
-          (<Control>this.userForm.controls['pass']).updateValue("");
-          (<Control>this.userForm.controls['nombre']).updateValue("");
-          (<Control>this.userForm.controls['apellido']).updateValue("");
-          (<Control>this.userForm.controls['tipo']).updateValue("");
-        });
-  }
-
-  remove(id:string):void {
-    this._userService
-      .remove(id)
-      .subscribe(() => {
-        this.users.forEach((t, i) => {
-          if (t._id === id)
-            return this.users.splice(i, 1);
-        });
-      })
-  }*/
 }

@@ -17,6 +17,5 @@ const server = app.listen(PORT);
 RoutesConfig.init(app, express);
 DBConfig.init();
 Routes.init(app, express.Router());
-
 console.log(`up and running @: ${os.hostname()} on port: ${PORT}`);
 console.log(`enviroment: ${process.env.NODE_ENV}`);

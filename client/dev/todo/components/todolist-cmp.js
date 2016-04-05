@@ -65,7 +65,7 @@ var TodoListCmp = (function () {
     };
     TodoListCmp.prototype.edit = function (id) {
         alert("vamos a editar");
-        todoedit_cmp_1.TodoEditCmp.prototype.getEdit(id);
+        //TodoEditCmp.prototype.getEdit(id);
     };
     TodoListCmp.prototype.getbyId = function (id) {
         var _this = this;
