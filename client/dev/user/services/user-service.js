@@ -46,17 +46,12 @@ var UserService = (function () {
             .map(function (r) { return r.json(); });
     };
     UserService.prototype.add = function (user, pass, nombre, apellido, tipo) {
-        var _userStringified = JSON.stringify({ user: user });
-        var _passStringified = JSON.stringify({ pass: pass });
-        var _nombreStringified = JSON.stringify({ nombre: nombre });
-        var _apellidotringified = JSON.stringify({ apellido: apellido });
-        var _tipoStringified = JSON.stringify({ apellido: apellido });
+        var body = JSON.stringify({ user: user, pass: pass, nombre: nombre, apellido: apellido, tipo: tipo });
+        alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        // tiene que faltar : _passStringified, _nombreStringified, _apellidotringified, _tipoStringified,
-        // para que reemplace todos los campos
         return this._http
-            .post(UserService.ENDPOINT.replace(':id', ''), _userStringified, { headers: headers })
+            .post(UserService.ENDPOINT.replace(':id', ''), body, { headers: headers })
             .map(function (r) { return r.json(); });
     };
     UserService.prototype.remove = function (id) {

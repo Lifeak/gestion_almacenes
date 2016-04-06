@@ -1,13 +1,21 @@
 <div class="cliente-container">
   <h1>DETAILS</h1>
     <div *ngIf="user">
-    	<h3>"{{user.user}}"</h3>
+    	<h3>"USUARIO:"</h3>
+        <label>User: </label>
+        <input [(ngModel)]="user.user" placeholder="user"/><br/>
+        <label>Pass: </label>
+        <input [(ngModel)]="user.pass" placeholder="pass"/><br/>
       	<label>Nombre: </label>
-      	<input [(ngModel)]="user.nombre" placeholder="nombre"/>
+      	<input [(ngModel)]="user.nombre" placeholder="nombre"/><br/>
       	<label>Apellido: </label>
-      	<input [(ngModel)]="user.apellido" placeholder="apellido"/>
+      	<input [(ngModel)]="user.apellido" placeholder="apellido"/><br/>
+        <label>Tipo: </label>
+        <input [(ngModel)]="user.tipo" placeholder="tipo"/><br/>
     </div>
     <p>
       <button (click)="gotoIndex()">Back</button>
+      <button (click)="edit(user)">Save</button>
+      <button (click)="delete(user)">Delete</button>
     </p>
 </div>

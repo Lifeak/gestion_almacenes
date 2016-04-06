@@ -1,5 +1,6 @@
 import {
   Component,
+  Input,
   Inject,
   OnInit
 } from 'angular2/core';
@@ -19,6 +20,7 @@ import {
 
 import {UserService, User} from '../services/user-service';
 
+
 //import {UserCmp} from './user-cmp';
 
 
@@ -31,13 +33,23 @@ import {UserService, User} from '../services/user-service';
 
 
 export class UserDetailsCmp implements OnInit {
-  user: User;
+  @Input() user: User;
+  userForm: ControlGroup;
 
-  constructor(private _router: Router, private _routeParams: RouteParams, private _userService: UserService){}
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _userService: UserService){
+    this.userForm = fb.group({
+      "user": ["", Validators.required],
+      "pass": ["", Validators.required],
+      "nombre": ["", Validators.required],
+      "apellido": ["", Validators.required],
+      "tipo": ["", Validators.required]
+    });
+  }
   
 
   ngOnInit() {
-    let id = this._routeParams.get('_id');
+    let id = this._routeParams.get('id');
+    alert(id);
     this._userService
     .getUserId(id)
     .subscribe((user) => {
@@ -47,7 +59,7 @@ export class UserDetailsCmp implements OnInit {
 
   gotoIndex(){
     let userId = this.user ? this.user._id : null;
-    this._router.navigate(['ListUsuarios']);
+    this._router.navigate(['/ListUsuarios']);
   }
   private _getAll():void {
     this._userService
@@ -56,29 +68,37 @@ export class UserDetailsCmp implements OnInit {
           this.user = users;
         });
   }
-/*
-  // Falta arreglar funcion para que añada todo correctamente
-  add(user:string, pass: string, nombre:string, apellido:string, tipo:string):void {
+  edit(user: User){
+
     this._userService
-        .add(user, pass, nombre, apellido, tipo)
-        .subscribe((m) => {
-          this.user.push(m);
+      .add(user.user, user.pass,user.nombre, user.apellido, user.tipo)
+      .subscribe((m) => {
+          //this.user.push(m);
           (<Control>this.userForm.controls['user']).updateValue("");
           (<Control>this.userForm.controls['pass']).updateValue("");
           (<Control>this.userForm.controls['nombre']).updateValue("");
           (<Control>this.userForm.controls['apellido']).updateValue("");
           (<Control>this.userForm.controls['tipo']).updateValue("");
-        });
+    });
+
+    this._userService
+      .remove(user._id)
+      .subscribe(() => {
+        return this.user;
+
+      });
+    this.gotoIndex();
+
+  }
+  delete(user: User) {
+    this._userService
+      .remove(user._id)
+      .subscribe(() => {
+        return this.user;
+
+      });
+    this.gotoIndex();
+
   }
 
-  remove(id:string):void {
-    this._userService
-      .remove(id)
-      .subscribe(() => {
-        this.users.forEach((t, i) => {
-          if (t._id === id)
-            return this.users.splice(i, 1);
-        });
-      })
-  }*/
 }

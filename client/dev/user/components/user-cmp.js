@@ -17,6 +17,7 @@ var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
 var userlist_cmp_1 = require('./userlist-cmp');
 var userdetails_cmp_1 = require('./userdetails-cmp');
+var usercreate_cmp_1 = require('./usercreate-cmp');
 var UserCmp = (function () {
     function UserCmp(fb, _userService) {
         this._userService = _userService;
@@ -69,17 +70,27 @@ var UserCmp = (function () {
     UserCmp = __decorate([
         core_1.Component({
             selector: 'user-cmp',
-            //templateUrl: 'client/dev/user/templates/index.html',
-            template: "<div class=\"cliente-container\">\n  <h1>MENU</h1>\n  <nav>\n   <li><a [routerLink]=\"['/ListUsuarios']\">Listado</a></li>\n   <li><a [routerLink]=\"['/DetailsUsuarios']\">Detalles</a></li>\n   <a href=\"http://localhost:3000/api/user\">Este listado</a>\n</nav>\n    <div>\n    El resultado es..\n    <router-outlet></router-outlet></div>\n</div>",
+            templateUrl: 'client/dev/user/templates/index.html',
+            /* template: `<div class="cliente-container">
+             <h1>MENU</h1>
+             <nav>
+              <li><a [routerLink]="['/ListUsuarios']">Listado</a></li>
+              <li><a [routerLink]="['/DetailsUsuarios']">Detalles</a></li>
+              
+              <a href="http://localhost:3000/api/user">Este listado</a>
+           </nav>
+               <div>
+               El resultado es..
+               <router-outlet></router-outlet></div>
+           </div>`,*/
             styleUrls: ['client/dev/user/styles/cliente.css'],
-            providers: [user_service_1.UserService],
+            providers: [user_service_1.UserService, router_1.ROUTER_PROVIDERS],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
         router_1.RouteConfig([
-            { path: '/user', name: 'Usuarios', component: UserCmp, useAsDefault: true },
             { path: '/ListUsuarios', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
-            //{ path: '/api/user', name: 'ListUsuarios', component: UserListCmp },
-            { path: '/user/:id', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp }
+            { path: '/Create', name: 'CreateUsuario', component: usercreate_cmp_1.UserCreateCmp },
+            { path: '/Details', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp }
         ]),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(user_service_1.UserService)), 

@@ -1,9 +1,9 @@
 <div class="cliente-container">
   <form class="user-form"
         [ngFormModel]="userForm"
-        (submit)="add(userForm.value.user, userForm.value.pass, userForm.value.nombre, userForm.value.apellido, userForm.value.tipo)">
+        (submit)="save(todoForm)">
 
-    <h1 class="cliente-title">{{title}}</h1>
+    <h1 class="cliente-title">Nuevo usuario</h1>
 
     <input type="text"
            ngControl="user"
@@ -32,12 +32,6 @@
            autofocus />
 
     <button type="submit"
-            [disabled]="!userForm.valid">Añadir</button>
+            [disabled]="!todoForm.valid">Añadir</button>
   </form>
 
-  <div class="cliente-list">
-    <div *ngFor="#user of users;" class="cliente-item" (click)="remove(user._id);">
-      <p>{{user.user}}</p>
-    </div>
-  </div>
-</div>

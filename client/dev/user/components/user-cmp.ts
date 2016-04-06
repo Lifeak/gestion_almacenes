@@ -25,6 +25,7 @@ import {UserService} from '../services/user-service';
 
 import {UserListCmp} from './userlist-cmp';
 import {UserDetailsCmp} from './userdetails-cmp';
+import {UserCreateCmp} from './usercreate-cmp';
 
 type User = {
   user: string;
@@ -37,28 +38,29 @@ type User = {
 
 @Component({
   selector: 'user-cmp',
-  //templateUrl: 'client/dev/user/templates/index.html',
-  template: `<div class="cliente-container">
+  templateUrl: 'client/dev/user/templates/index.html',
+ /* template: `<div class="cliente-container">
   <h1>MENU</h1>
   <nav>
    <li><a [routerLink]="['/ListUsuarios']">Listado</a></li>
    <li><a [routerLink]="['/DetailsUsuarios']">Detalles</a></li>
+   
    <a href="http://localhost:3000/api/user">Este listado</a>
 </nav>
     <div>
     El resultado es..
     <router-outlet></router-outlet></div>
-</div>`,
+</div>`,*/
   styleUrls: ['client/dev/user/styles/cliente.css'],
-  providers: [UserService],
+  providers: [UserService, ROUTER_PROVIDERS], // importante poner ROUTE_PROVIDERS
   directives: [ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
-    { path: '/user', name: 'Usuarios', component: UserCmp, useAsDefault:true },
+    
   { path: '/ListUsuarios', name: 'ListUsuarios', component: UserListCmp },
-    //{ path: '/api/user', name: 'ListUsuarios', component: UserListCmp },
-    { path: '/user/:id', name: 'DetailsUsuarios', component: UserDetailsCmp}
+  { path: '/Create', name: 'CreateUsuario', component: UserCreateCmp },
+  { path: '/Details', name: 'DetailsUsuarios', component: UserDetailsCmp}
 ])
 
 

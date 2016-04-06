@@ -16,8 +16,8 @@ var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
 //import {UserCmp} from './user-cmp';
-var UserDetailsCmp = (function () {
-    function UserDetailsCmp(fb, _router, _routeParams, _userService) {
+var UserCreateCmp = (function () {
+    function UserCreateCmp(fb, _router, _routeParams, _userService) {
         this._router = _router;
         this._routeParams = _routeParams;
         this._userService = _userService;
@@ -29,32 +29,22 @@ var UserDetailsCmp = (function () {
             "tipo": ["", common_1.Validators.required]
         });
     }
-    UserDetailsCmp.prototype.ngOnInit = function () {
-        var _this = this;
-        var id = this._routeParams.get('id');
-        alert(id);
-        this._userService
-            .getUserId(id)
-            .subscribe(function (user) {
-            _this.user = user;
-        });
+    UserCreateCmp.prototype.ngOnInit = function () {
     };
-    UserDetailsCmp.prototype.gotoIndex = function () {
+    UserCreateCmp.prototype.gotoIndex = function () {
         var userId = this.user ? this.user._id : null;
         this._router.navigate(['/ListUsuarios']);
     };
-    UserDetailsCmp.prototype._getAll = function () {
+    UserCreateCmp.prototype.save = function (datos) {
         var _this = this;
+        alert("entramos a guardar");
+        var user = this.userForm.controls['user'].value;
+        var pass = this.userForm.controls['pass'].value;
+        var nombre = this.userForm.controls['nombre'].value;
+        var apellido = this.userForm.controls['apellido'].value;
+        var tipo = this.userForm.controls['tipo'].value;
         this._userService
-            .getAll()
-            .subscribe(function (users) {
-            _this.user = users;
-        });
-    };
-    UserDetailsCmp.prototype.edit = function (user) {
-        var _this = this;
-        this._userService
-            .add(user.user, user.pass, user.nombre, user.apellido, user.tipo)
+            .add(user, pass, nombre, apellido, tipo)
             .subscribe(function (m) {
             //this.user.push(m);
             _this.userForm.controls['user'].updateValue("");
@@ -63,35 +53,20 @@ var UserDetailsCmp = (function () {
             _this.userForm.controls['apellido'].updateValue("");
             _this.userForm.controls['tipo'].updateValue("");
         });
-        this._userService
-            .remove(user._id)
-            .subscribe(function () {
-            return _this.user;
-        });
-        this.gotoIndex();
-    };
-    UserDetailsCmp.prototype.delete = function (user) {
-        var _this = this;
-        this._userService
-            .remove(user._id)
-            .subscribe(function () {
-            return _this.user;
-        });
         this.gotoIndex();
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)
-    ], UserDetailsCmp.prototype, "user", void 0);
-    UserDetailsCmp = __decorate([
+    ], UserCreateCmp.prototype, "user", void 0);
+    UserCreateCmp = __decorate([
         core_1.Component({
-            //selector: 'user-cmp',
-            templateUrl: 'client/dev/user/templates/details.html',
+            templateUrl: 'client/dev/user/templates/create.html',
             styleUrls: ['client/dev/user/styles/cliente.css']
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService])
-    ], UserDetailsCmp);
-    return UserDetailsCmp;
+    ], UserCreateCmp);
+    return UserCreateCmp;
 }());
-exports.UserDetailsCmp = UserDetailsCmp;
+exports.UserCreateCmp = UserCreateCmp;

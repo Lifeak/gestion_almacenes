@@ -46,20 +46,14 @@ export class UserService {
   } 
 
   add(user:string, pass:string, nombre:string, apellido:string, tipo:string):Observable<any> {
-    let _userStringified = JSON.stringify({user: user});
-    let _passStringified = JSON.stringify({ pass: pass });
-    let _nombreStringified = JSON.stringify({ nombre: nombre });
-    let _apellidotringified = JSON.stringify({ apellido: apellido });
-    let _tipoStringified = JSON.stringify({ apellido: apellido });
 
+    let body = JSON.stringify({user, pass, nombre, apellido, tipo});
+    alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
-
-    // tiene que faltar : _passStringified, _nombreStringified, _apellidotringified, _tipoStringified,
-    // para que reemplace todos los campos
     return this._http
-    .post(UserService.ENDPOINT.replace(':id', ''), _userStringified,  { headers })
+      .post(UserService.ENDPOINT.replace(':id', ''), body,  { headers })
                .map((r) => r.json());
   }
 

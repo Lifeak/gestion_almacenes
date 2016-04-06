@@ -11,23 +11,38 @@ userSchema.statics.getAll = () => {
 
         User
           .find(_query)
-          .exec((err, todos) => {
+          .exec((err, users) => {
               err ? reject(err)
-                  : resolve(todos);
+                  : resolve(users);
           });
       });
+}
+
+userSchema.statics.getbyId = (id) => {
+    return new Promise((resolve, reject) => {
+        if (!_.isString(id))
+            return reject(new TypeError('Id is not a valid string.'));
+
+        User
+          .findById(id)
+          .exec((err, user) => {
+              err ? reject(err)
+                  : resolve(user);
+          });
+    });
 }
 
 userSchema.statics.createUser = (user) => {
     return new Promise((resolve, reject) => {
       if (!_.isObject(user))
           return reject(new TypeError('User is not a valid object.'));
-
+      
       let _user = new User(user);
-
+      console.log("dao   "+user._id);
       _user.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
+            console.log(err);
       });
     });
 }

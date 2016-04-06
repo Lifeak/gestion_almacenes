@@ -11,6 +11,7 @@ module.exports = class UserRoutes {
 
       router
         .route('/api/user/:id')
+        .get(UserController.getbyId)
         .delete(UserController.deleteUser);
     }
 }
