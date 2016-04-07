@@ -11,12 +11,6 @@ module.exports = class UserController {
   }
 
   static getbyId(req,res){
-    console.log("params");
-    console.log(req.params);
-    console.log("params");
-    console.log(req.params.id);
-    console.log("----------");
-    console.log(req.params._id);
     let _id = req.params.id;
     UserDAO
       .getbyId(_id)
@@ -32,6 +26,7 @@ module.exports = class UserController {
         .createUser(_user)
         .then(user => res.status(201).json(user))
         .catch(error => res.status(400).json(error));
+        console.log("fin instruccion");
   }
 
   static deleteUser(req, res) {

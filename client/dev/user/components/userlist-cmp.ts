@@ -26,7 +26,6 @@ import {User, UserService} from '../services/user-service';
 @Component({
   selector: 'ListUsuarios',
   templateUrl: 'client/dev/user/templates/list.html',
-  //template:`<h1>hola</h1>`,
   styleUrls: ['client/dev/user/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [UserService]

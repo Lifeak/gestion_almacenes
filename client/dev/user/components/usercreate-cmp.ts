@@ -31,7 +31,7 @@ import {UserService, User} from '../services/user-service';
 })
 
 
-export class UserCreateCmp implements OnInit {
+export class UserCreateCmp{
   @Input() user: User;
   userForm: ControlGroup;
 
@@ -45,14 +45,14 @@ export class UserCreateCmp implements OnInit {
     });
   }
   
-
-  ngOnInit() {
-
-  }
-
   gotoIndex(){
     let userId = this.user ? this.user._id : null;
     this._router.navigate(['/ListUsuarios']);
+
+  }
+
+  goBack(){
+    window.history.back();
   }
 
   save(datos: FormData){
@@ -76,6 +76,7 @@ export class UserCreateCmp implements OnInit {
     this.gotoIndex();
 
   }
+
   
 
 }

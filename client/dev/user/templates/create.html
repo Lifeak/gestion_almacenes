@@ -30,8 +30,10 @@
            [class.cliente-error]="!userForm.valid"
            placeholder="tipo"
            autofocus />
-
+<br/>
     <button type="submit"
-            [disabled]="!todoForm.valid">Añadir</button>
-  </form>
+            [disabled]="!userForm.valid">Añadir</button>
 
+</form>
+
+<button (click)="gotoIndex()">Back</button>

@@ -40,7 +40,6 @@ var UserListCmp = (function () {
         core_1.Component({
             selector: 'ListUsuarios',
             templateUrl: 'client/dev/user/templates/list.html',
-            //template:`<h1>hola</h1>`,
             styleUrls: ['client/dev/user/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [user_service_1.UserService]

@@ -29,11 +29,12 @@ var UserCreateCmp = (function () {
             "tipo": ["", common_1.Validators.required]
         });
     }
-    UserCreateCmp.prototype.ngOnInit = function () {
-    };
     UserCreateCmp.prototype.gotoIndex = function () {
         var userId = this.user ? this.user._id : null;
         this._router.navigate(['/ListUsuarios']);
+    };
+    UserCreateCmp.prototype.goBack = function () {
+        window.history.back();
     };
     UserCreateCmp.prototype.save = function (datos) {
         var _this = this;

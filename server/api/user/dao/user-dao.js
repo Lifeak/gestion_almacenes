@@ -38,11 +38,9 @@ userSchema.statics.createUser = (user) => {
           return reject(new TypeError('User is not a valid object.'));
       
       let _user = new User(user);
-      console.log("dao   "+user._id);
       _user.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
-            console.log(err);
       });
     });
 }
