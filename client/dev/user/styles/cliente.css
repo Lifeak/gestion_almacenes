@@ -73,3 +73,13 @@
 .cliente-container .cliente-item:hover {
   background-color: #f1f2f3;
 }
+
+.cliente-container li{
+  color:steelblue;
+}
+
+.cliente-container li:hover{
+  color:steelblue;
+  text-decoration: underline;
+
+}

@@ -24,6 +24,7 @@ var UserCreateCmp = (function () {
         this.userForm = fb.group({
             "user": ["", common_1.Validators.required],
             "pass": ["", common_1.Validators.required],
+            "passs": ["", common_1.Validators.required],
             "nombre": ["", common_1.Validators.required],
             "apellido": ["", common_1.Validators.required],
             "tipo": ["", common_1.Validators.required]
@@ -41,20 +42,25 @@ var UserCreateCmp = (function () {
         alert("entramos a guardar");
         var user = this.userForm.controls['user'].value;
         var pass = this.userForm.controls['pass'].value;
+        var passs = this.userForm.controls['passs'].value;
         var nombre = this.userForm.controls['nombre'].value;
         var apellido = this.userForm.controls['apellido'].value;
         var tipo = this.userForm.controls['tipo'].value;
-        this._userService
-            .add(user, pass, nombre, apellido, tipo)
-            .subscribe(function (m) {
-            //this.user.push(m);
-            _this.userForm.controls['user'].updateValue("");
-            _this.userForm.controls['pass'].updateValue("");
-            _this.userForm.controls['nombre'].updateValue("");
-            _this.userForm.controls['apellido'].updateValue("");
-            _this.userForm.controls['tipo'].updateValue("");
-        });
-        this.gotoIndex();
+        if (pass == passs && pass.length > 3) {
+            this._userService
+                .add(user, pass, nombre, apellido, tipo)
+                .subscribe(function (m) {
+                _this.userForm.controls['user'].updateValue("");
+                _this.userForm.controls['pass'].updateValue("");
+                _this.userForm.controls['nombre'].updateValue("");
+                _this.userForm.controls['apellido'].updateValue("");
+                _this.userForm.controls['tipo'].updateValue("");
+            });
+            this.gotoIndex();
+        }
+        else {
+            alert("Error, pass no valid. Try again.");
+        }
     };
     __decorate([
         core_1.Input(), 

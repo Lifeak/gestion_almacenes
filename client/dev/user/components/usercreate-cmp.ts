@@ -39,6 +39,7 @@ export class UserCreateCmp{
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],
+      "passs": ["", Validators.required],
       "nombre": ["", Validators.required],
       "apellido": ["", Validators.required],
       "tipo": ["", Validators.required]
@@ -59,22 +60,27 @@ export class UserCreateCmp{
       alert("entramos a guardar");
       var user: string = this.userForm.controls['user'].value;
       var pass: string = this.userForm.controls['pass'].value;
+      var passs: string = this.userForm.controls['passs'].value;
       var nombre: string = this.userForm.controls['nombre'].value;
       var apellido: string = this.userForm.controls['apellido'].value;
       var tipo: string = this.userForm.controls['tipo'].value;
-      this._userService
-          .add(user, pass,nombre, apellido, tipo)
-          .subscribe((m) => {
-          //this.user.push(m);
-            (<Control>this.userForm.controls['user']).updateValue("");
-            (<Control>this.userForm.controls['pass']).updateValue("");
-            (<Control>this.userForm.controls['nombre']).updateValue("");
-            (<Control>this.userForm.controls['apellido']).updateValue("");
-            (<Control>this.userForm.controls['tipo']).updateValue("");
-    });
+      if (pass == passs && pass.length>3) {
 
-    this.gotoIndex();
+          this._userService
+              .add(user, pass, nombre, apellido, tipo)
+              .subscribe((m) => {
+          (<Control>this.userForm.controls['user']).updateValue("");
+          (<Control>this.userForm.controls['pass']).updateValue("");
+          (<Control>this.userForm.controls['nombre']).updateValue("");
+          (<Control>this.userForm.controls['apellido']).updateValue("");
+          (<Control>this.userForm.controls['tipo']).updateValue("");
+              });
 
+          this.gotoIndex();
+
+      }else{
+          alert("Error, pass no valid. Try again.")
+      }
   }
 
   
