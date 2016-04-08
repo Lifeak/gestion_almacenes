@@ -12,39 +12,31 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 var core_1 = require('angular2/core');
-var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../services/login-service');
-var LoginCmp = (function () {
-    function LoginCmp(fb, _loginService, router) {
+var isloggedin_1 = require('../services/isloggedin');
+var HomeCmp = (function () {
+    function HomeCmp(_loginService, router) {
         this._loginService = _loginService;
         this.router = router;
         this.title = "Login";
-        this.error = false;
-        this.loginForm = fb.group({
-            "user": ["", common_1.Validators.required],
-            "pass": ["", common_1.Validators.required]
-        });
     }
-    LoginCmp.prototype.login = function (form) {
-        var _this = this;
-        var user = this.loginForm.controls['user'].value;
-        var pass = this.loginForm.controls['pass'].value;
-        this._loginService.login(user, pass)
-            .subscribe(function (token) { return _this.router.navigate(['/Home']); }, function () { _this.error = true; });
+    HomeCmp.prototype.logout = function () {
+        this._loginService.logout();
+        //.subscribe(() => this.router.navigate(['../Login']));
+        this.router.navigate(['../Login']);
     };
-    LoginCmp = __decorate([
+    HomeCmp = __decorate([
         core_1.Component({
-            selector: 'login-cmp',
-            // template:`<h2>Estamos en el login</h2>`,
-            templateUrl: 'client/dev/login/templates/login.html',
+            selector: 'home-cmp',
+            templateUrl: 'client/dev/login/templates/dentro.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [login_service_1.LoginService, router_1.ROUTER_PROVIDERS]
         }),
-        __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(1, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, login_service_1.LoginService, router_1.Router])
-    ], LoginCmp);
-    return LoginCmp;
+        router_1.CanActivate(function () { return isloggedin_1.isLoggedin(); }),
+        __param(0, core_1.Inject(login_service_1.LoginService)), 
+        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
+    ], HomeCmp);
+    return HomeCmp;
 }());
-exports.LoginCmp = LoginCmp;
+exports.HomeCmp = HomeCmp;

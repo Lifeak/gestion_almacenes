@@ -18,6 +18,21 @@ userSchema.statics.getAll = () => {
       });
 }
 
+userSchema.statics.getLogin = (user, pass) => {
+  let _query = User.findOne({user:user, pass:pass});
+   return new Promise((resolve, reject) => {
+    console.log(user,pass);
+    User
+      .find(_query)
+      .exec((err, usuario) => {
+              err ? reject(err)
+                  : resolve(usuario);
+          });
+
+   });
+   console.log("usuario "+usuario)
+}
+
 userSchema.statics.getbyId = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))

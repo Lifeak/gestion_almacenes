@@ -15,16 +15,37 @@ var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
 var LoginService = (function () {
+    //user: string;
     function LoginService(_http) {
         this._http = _http;
+        this.token = localStorage.getItem('jwt');
+        //this.user = this.token && jwt_decode(this.token);
     }
     LoginService.prototype.login = function (user, pass) {
+        var _this = this;
         var datos = JSON.stringify({ user: user, pass: pass });
+        alert("user y pass");
+        alert(datos);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http
             .post(LoginService.ENDPOINT, datos, { headers: headers })
-            .map(function (r) { return r.json(); });
+            .map(function (res) {
+            var data = res.json();
+            var dato = res;
+            if (data.isEmpty()) {
+                alert("existe");
+                _this.token = data.token;
+                localStorage.setItem('jwt', _this.token);
+            }
+            else {
+                alert("no existeee");
+            }
+        });
+    };
+    LoginService.prototype.logout = function () {
+        localStorage.removeItem('jwt');
+        //this.router.parent.navigateByUrl('/login');
     };
     LoginService.ENDPOINT = '/auth/login';
     LoginService = __decorate([

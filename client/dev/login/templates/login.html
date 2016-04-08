@@ -1,0 +1,26 @@
+<div class="cliente-container">
+  <form class="login-form"
+        [ngFormModel]="loginForm"
+        (submit)="login(loginForm)">
+
+    <h1 class="cliente-title">Login</h1>
+    <div *ngIf="error">Try again.</div>
+    <div>
+      <br/>Usuario:<br/>
+      <input type="text"
+           ngControl="user"
+           [class.cliente-error]="!loginForm.valid"
+           placeholder="user"
+           autofocus />
+      <br/>Constraseña:<br/>
+      <input type="password"
+           ngControl="pass"
+           [class.cliente-error]="!loginForm.valid"
+           placeholder="pass"
+           autofocus />
+     </div>
+    <button type="submit"
+            [disabled]="!loginForm.valid">Login</button>
+
+  </form>
+</div>

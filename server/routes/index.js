@@ -10,16 +10,19 @@ const probandoRoutes = require('../commons/static/probando');
 // Rutas del usuario, get y post
 const userRoutes = require('../api/user/routes/user-routes');
 
+const loginRoutes= require('../auth/login/routes/login-routes');
+
 module.exports = class Routes {
    static init(app, router) {
      TodoRoutes.init(router);
      ClienteRoutes.init(router);
      userRoutes.init(router);
+     loginRoutes.init(router);
 
-     router
+ 	router
        .route('/')
        .get(StaticDispatcher.sendIndex);
-  router
+	router
     	.route('/probando')
     	.get(probandoRoutes.sendHola);   
 
