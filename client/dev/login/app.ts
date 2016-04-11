@@ -12,18 +12,19 @@ import {
 	HashLocationStrategy,
 	RouteConfig,
 	Router,
-	RouteParams
-
+	RouteParams,
+	RouterOutlet
 } from 'angular2/router';
 
 import {LoginService} from './services/login-service';
 
 import {LoginCmp} from './components/login-cmp';
 import {HomeCmp} from './components/home-cmp';
+import {Hola} from './components/hola';
 
 @Component({
 	selector:'app',
-	directives: [ROUTER_DIRECTIVES],
+	directives: [ROUTER_DIRECTIVES, RouterOutlet],
 	template:`<h1>Welcome</h1>
 				<router-outlet></router-outlet>
 				` ,
@@ -31,9 +32,9 @@ import {HomeCmp} from './components/home-cmp';
 })
 
 @RouteConfig([
-    { path: '/', redirectTo: ['./Login'] },
-    { path: '/home', name: 'Home', component: HomeCmp},
-    { path: '/login', name: 'Login', component: LoginCmp }
+   // { path: '/', redirectTo: ['./Login'] },
+	{ path: '/home', name: 'Home', component: HomeCmp},
+    { path: '/', name: 'Login', component: LoginCmp}
 ])
 export class App {
 	constructor() { }

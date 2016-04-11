@@ -19,27 +19,36 @@ var LoginService = (function () {
     function LoginService(_http) {
         this._http = _http;
         this.token = localStorage.getItem('jwt');
-        //this.user = this.token && jwt_decode(this.token);
+        // this.user = this.token && jwt_decode(this.token);
     }
     LoginService.prototype.login = function (user, pass) {
         var _this = this;
         var datos = JSON.stringify({ user: user, pass: pass });
-        alert("user y pass");
-        alert(datos);
+        //alert("user y pass");
+        //alert(datos);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http
             .post(LoginService.ENDPOINT, datos, { headers: headers })
             .map(function (res) {
             var data = res.json();
-            var dato = res;
-            if (data.isEmpty()) {
-                alert("existe");
+            var dato = JSON.stringify(data);
+            //alert("ahora data es....");
+            // alert("dato  "+dato);
+            var usuario = user;
+            var u = dato.search("\"user\":\"" + usuario + "\"");
+            // alert("u es igual a.."+u);
+            var pasw = pass;
+            var p = dato.search("\"pass\":\"" + pasw + "\"");
+            //alert("p es igual a.." + p);
+            if (u != -1 && p != -1) {
+                alert("Todo OK.");
                 _this.token = data.token;
+                //alert("el token es   " + this.token);
                 localStorage.setItem('jwt', _this.token);
             }
             else {
-                alert("no existeee");
+                alert("Credenciales incorrectas. Try again.");
             }
         });
     };

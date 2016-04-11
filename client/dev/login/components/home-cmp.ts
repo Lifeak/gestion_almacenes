@@ -22,25 +22,27 @@ import {isLoggedin} from '../services/isloggedin';
 
 
 @Component({
-  selector: 'home-cmp',
-  templateUrl: 'client/dev/login/templates/dentro.html',
+  //selector: 'home-cmp',
+  template:`<h1>estamos dentro</h1>
+`,
+  //templateUrl: 'client/dev/login/templates/dentro.html',
   styleUrls: ['client/dev/cliente/styles/cliente.css'],
   providers: [LoginService, ROUTER_PROVIDERS]
 })
 
-@CanActivate(() => isLoggedin())
+//@CanActivate(() => isLoggedin())
 export class HomeCmp {
-  title: string = "Login";
+  title: string = "Home";
 
 
-  constructor( @Inject(LoginService) private _loginService: LoginService, public router: Router) {
+  constructor( @Inject(LoginService) private _loginService: LoginService, private router: Router) {
 
   }
 
   logout(){
     this._loginService.logout();
       //.subscribe(() => this.router.navigate(['../Login']));
-    this.router.navigate(['../Login']);
+    //this.router.navigate(['../Login']);
   }
 
 }

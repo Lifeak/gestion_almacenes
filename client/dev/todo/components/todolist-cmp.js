@@ -77,7 +77,7 @@ var TodoListCmp = (function () {
     };
     TodoListCmp = __decorate([
         core_1.Component({
-            selector: 'todolist-cmp',
+            // selector: 'todolist-cmp',
             templateUrl: 'client/dev/todo/templates/todolist.html',
             styleUrls: ['client/dev/todo/styles/todo.css'],
             providers: [todo_service_1.TodoService],

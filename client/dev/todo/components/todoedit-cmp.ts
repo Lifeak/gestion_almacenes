@@ -21,7 +21,7 @@ type Todo = {
 }
 
 @Component({
-  selector: 'todoedit-cmp',
+  //selector: 'todoedit-cmp',
   templateUrl: 'client/dev/todo/templates/todoedit.html',
   styleUrls: ['client/dev/todo/styles/todo.css'],
   providers: [TodoService],

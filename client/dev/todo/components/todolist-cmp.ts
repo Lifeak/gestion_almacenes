@@ -21,7 +21,7 @@ type Todo = {
 }
 
 @Component({
-  selector: 'todolist-cmp',
+ // selector: 'todolist-cmp',
   templateUrl: 'client/dev/todo/templates/todolist.html',
   styleUrls: ['client/dev/todo/styles/todo.css'],
   providers: [TodoService],

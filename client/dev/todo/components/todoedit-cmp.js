@@ -63,7 +63,7 @@ var TodoEditCmp = (function () {
     ], TodoEditCmp.prototype, "_id", void 0);
     TodoEditCmp = __decorate([
         core_1.Component({
-            selector: 'todoedit-cmp',
+            //selector: 'todoedit-cmp',
             templateUrl: 'client/dev/todo/templates/todoedit.html',
             styleUrls: ['client/dev/todo/styles/todo.css'],
             providers: [todo_service_1.TodoService],

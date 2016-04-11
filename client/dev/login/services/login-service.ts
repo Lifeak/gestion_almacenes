@@ -24,26 +24,37 @@ export class LoginService {
 
   constructor(@Inject(Http) private _http: Http) {
       this.token = localStorage.getItem('jwt');
-      //this.user = this.token && jwt_decode(this.token);
+     // this.user = this.token && jwt_decode(this.token);
   }
 
   login(user:string,pass:string):Observable<any>{
     let datos = JSON.stringify({ user, pass });
-  alert("user y pass");
-  alert(datos);
+  //alert("user y pass");
+  //alert(datos);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
       return this._http
         .post(LoginService.ENDPOINT, datos, { headers })
         .map((res: any) => {
             let data = res.json();
-            let dato = res
-            if(data.isEmpty()){
-        alert("existe");
+            let dato = JSON.stringify(data);
+            //alert("ahora data es....");
+           // alert("dato  "+dato);
+            let usuario = user;
+            let u = dato.search("\"user\":\""+ usuario+"\"");
+           // alert("u es igual a.."+u);
+            let pasw = pass;
+            let p = dato.search("\"pass\":\"" + pasw + "\"");
+            //alert("p es igual a.." + p);
+
+            if(u!=-1 && p!=-1){
+                  alert("Todo OK.");
                   this.token = data.token;
+                  //alert("el token es   " + this.token);
                   localStorage.setItem('jwt', this.token);
+                  //alert("el token es   " + this.token);
                 }else{
-        alert("no existeee");
+                    alert("Credenciales incorrectas. Try again.");
                 }
         });
   }

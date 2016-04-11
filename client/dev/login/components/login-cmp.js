@@ -31,14 +31,20 @@ var LoginCmp = (function () {
         var user = this.loginForm.controls['user'].value;
         var pass = this.loginForm.controls['pass'].value;
         this._loginService.login(user, pass)
-            .subscribe(function (token) { return _this.router.navigate(['/Home']); }, function () { _this.error = true; });
+            .subscribe(
+        //(token: any) => this.router.navigate(['./Home']),
+        //() => { this.error = true; }
+        function () {
+            _this.router.navigate(['Home']);
+        });
     };
     LoginCmp = __decorate([
         core_1.Component({
-            selector: 'login-cmp',
+            //selector: 'login-cmp',
             // template:`<h2>Estamos en el login</h2>`,
             templateUrl: 'client/dev/login/templates/login.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
+            //directives: [ROUTER_DIRECTIVES],
             providers: [login_service_1.LoginService, router_1.ROUTER_PROVIDERS]
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
