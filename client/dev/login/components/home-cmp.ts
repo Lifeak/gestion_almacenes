@@ -1,7 +1,8 @@
 import {
   Component,
   Inject,
-  OnInit
+  OnInit,
+  provide
 } from 'angular2/core';
 
 import {
@@ -17,6 +18,18 @@ import {
   CanActivate
 } from 'angular2/router';
 
+import {
+  AuthHttp,
+  tokenNotExpired,
+  JwtHelper,
+  AuthConfig
+
+}from 'angular2-jwt';
+import {
+  Http,
+  Headers
+} from 'angular2/http';
+
 import {LoginService} from '../services/login-service';
 import {isLoggedin} from '../services/isloggedin';
 
@@ -24,13 +37,14 @@ import {isLoggedin} from '../services/isloggedin';
 @Component({
   //selector: 'home-cmp',
   template:`<h1>estamos dentro</h1>
+  <button (click)="logout()">Logout</button>
 `,
   //templateUrl: 'client/dev/login/templates/dentro.html',
   styleUrls: ['client/dev/cliente/styles/cliente.css'],
-  providers: [LoginService, ROUTER_PROVIDERS]
+  providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
 })
 
-//@CanActivate(() => isLoggedin())
+@CanActivate(() => isLoggedin())
 export class HomeCmp {
   title: string = "Home";
 
@@ -40,9 +54,9 @@ export class HomeCmp {
   }
 
   logout(){
+    alert("logoutt");
     this._loginService.logout();
-      //.subscribe(() => this.router.navigate(['../Login']));
-    //this.router.navigate(['../Login']);
+    this.router.navigate(['/Login']);
   }
 
 }

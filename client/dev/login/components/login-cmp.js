@@ -31,11 +31,22 @@ var LoginCmp = (function () {
         var user = this.loginForm.controls['user'].value;
         var pass = this.loginForm.controls['pass'].value;
         this._loginService.login(user, pass)
-            .subscribe(
-        //(token: any) => this.router.navigate(['./Home']),
-        //() => { this.error = true; }
-        function () {
-            _this.gotoMenu();
+            .subscribe(function () {
+            var resultado = _this._loginService.isLoggedIn();
+            alert("resultado de 0" + resultado[0]);
+            alert("resultado de 1" + resultado[1]);
+            if (resultado[0] == true && resultado[1] == "admin") {
+                alert("como soy un admin, entro");
+                _this.gotoMenu();
+            }
+            else if (resultado[0] == true && resultado[1] == "encargado") {
+                alert("como soy encargado, entro");
+                _this.gotoMenu();
+            }
+            else {
+                alert("Bye.");
+                window.location.reload();
+            }
         });
     };
     LoginCmp.prototype.gotoMenu = function () {
@@ -46,7 +57,7 @@ var LoginCmp = (function () {
             //selector: 'login-cmp',
             templateUrl: 'client/dev/login/templates/login.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
-            providers: [login_service_1.LoginService]
+            providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http);}, deps:[Http]})*/]
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(login_service_1.LoginService)), 
@@ -55,3 +66,9 @@ var LoginCmp = (function () {
     return LoginCmp;
 }());
 exports.LoginCmp = LoginCmp;
+/*bootstrap([LoginCmp, provide(AuthHttp, {
+    useFactory: (http) => {
+    return new AuthHttp(new AuthConfig(), http);
+    },
+    deps: [Http]
+})])*/ 

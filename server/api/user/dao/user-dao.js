@@ -5,6 +5,7 @@ const Promise = require('bluebird');
 const userSchema = require('../model/user-model');
 const _ = require('lodash');
 
+
 userSchema.statics.getAll = () => {
     return new Promise((resolve, reject) => {
         let _query = {};

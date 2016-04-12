@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../services/login-service');
+var isloggedin_1 = require('../services/isloggedin');
 var HomeCmp = (function () {
     function HomeCmp(_loginService, router) {
         this._loginService = _loginService;
@@ -21,18 +22,19 @@ var HomeCmp = (function () {
         this.title = "Home";
     }
     HomeCmp.prototype.logout = function () {
+        alert("logoutt");
         this._loginService.logout();
-        //.subscribe(() => this.router.navigate(['../Login']));
-        //this.router.navigate(['../Login']);
+        this.router.navigate(['/Login']);
     };
     HomeCmp = __decorate([
         core_1.Component({
             //selector: 'home-cmp',
-            template: "<h1>estamos dentro</h1>\n",
+            template: "<h1>estamos dentro</h1>\n  <button (click)=\"logout()\">Logout</button>\n",
             //templateUrl: 'client/dev/login/templates/dentro.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
-            providers: [login_service_1.LoginService, router_1.ROUTER_PROVIDERS]
+            providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLoggedin(); }),
         __param(0, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
     ], HomeCmp);

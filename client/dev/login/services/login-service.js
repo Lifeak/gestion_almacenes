@@ -13,19 +13,18 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
-require('rxjs/add/operator/map');
+//declare var Auth0Lock;
 var LoginService = (function () {
-    //user: string;
+    //lock = new Auth0Lock('YOUR_AUTH0_CLIENT_ID', 'YOUR_AUTH0_DOMAIN');
+    //jwtHelper: JwtHelper = new JwtHelper();
     function LoginService(_http) {
         this._http = _http;
-        this.token = localStorage.getItem('jwt');
-        // this.user = this.token && jwt_decode(this.token);
+        this.loggedIn = false;
+        this.loggedIn = !!localStorage.getItem(this.token);
     }
     LoginService.prototype.login = function (user, pass) {
         var _this = this;
         var datos = JSON.stringify({ user: user, pass: pass });
-        //alert("user y pass");
-        //alert(datos);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http
@@ -33,29 +32,64 @@ var LoginService = (function () {
             .map(function (res) {
             var data = res.json();
             var dato = JSON.stringify(data);
-            //alert("ahora data es....");
-            // alert("dato  "+dato);
             var usuario = user;
             var u = dato.search("\"user\":\"" + usuario + "\"");
-            // alert("u es igual a.."+u);
             var pasw = pass;
             var p = dato.search("\"pass\":\"" + pasw + "\"");
-            //alert("p es igual a.." + p);
+            //var creds = "username=" + user + "&pass=" + pass;
             if (u != -1 && p != -1) {
                 alert("Todo OK.");
-                _this.token = data.token;
-                //alert("el token es   " + this.token);
-                localStorage.setItem('jwt', _this.token);
+                var cred = dato.search("\"tipo\":\"admin\"");
+                if (cred != -1) {
+                    localStorage.setItem(_this.token, "admin");
+                    alert("es un usuario admin");
+                }
+                else {
+                    localStorage.setItem(_this.token, "encargado");
+                    alert("es un usuario del monton");
+                }
+                _this.loggedIn = true;
             }
             else {
                 alert("Credenciales incorrectas. Try again.");
+                _this.loggedIn = false;
+                localStorage.setItem(_this.token, "");
             }
         });
     };
     LoginService.prototype.logout = function () {
-        localStorage.removeItem('jwt');
-        //this.router.parent.navigateByUrl('/login');
+        localStorage.removeItem(this.token);
+        //localStorage.removeItem('id_token');
     };
+    LoginService.prototype.isLoggedIn = function () {
+        return [this.loggedIn, localStorage.getItem(this.token)];
+    }; /*
+    getSecretThing() {
+      this.authHttp.get('http://localhost:3001/secured/ping')
+        .subscribe(
+        data => console.log(data.json()),
+        err => console.log(err),
+        () => console.log('Complete')
+        );
+    }
+  
+    tokenSubscription() {
+      this.authHttp.tokenStream.subscribe(
+        data => console.log(data),
+        err => console.log(err),
+        () => console.log('Complete')
+        );
+    }
+  
+    useJwtHelper() {
+      var token = localStorage.getItem('id_token');
+  
+      console.log(
+        this.jwtHelper.decodeToken(token),
+        this.jwtHelper.getTokenExpirationDate(token),
+        this.jwtHelper.isTokenExpired(token)
+      );
+    }*/
     LoginService.ENDPOINT = '/auth/login';
     LoginService = __decorate([
         core_1.Injectable(),
@@ -65,3 +99,17 @@ var LoginService = (function () {
     return LoginService;
 }());
 exports.LoginService = LoginService;
+/*
+bootstrap(App, [
+  HTTP_PROVIDERS,
+  ROUTER_PROVIDERS,
+  provide(AuthHttp, {
+    useFactory: (http) => {
+      return new AuthHttp(new AuthConfig(), http);
+    },
+    deps: [Http]
+  }),
+  provide(APP_BASE_HREF, { useValue: '/' })
+]);
+}
+*/
