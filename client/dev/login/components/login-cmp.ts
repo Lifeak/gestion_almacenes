@@ -25,17 +25,11 @@ import {HomeCmp} from './home-cmp';
 
 @Component({
   //selector: 'login-cmp',
- // template:`<h2>Estamos en el login</h2>`,
   templateUrl: 'client/dev/login/templates/login.html',
   styleUrls: ['client/dev/cliente/styles/cliente.css'],
-  //directives: [ROUTER_DIRECTIVES],
-  providers: [LoginService, ROUTER_PROVIDERS]
+  providers: [LoginService]
 })
-/*
-@RouteConfig([
- // { path:'/', name:'Login', component: LoginCmp, useAsDefault:true },
-  { path:'/home', name:'Home', component: HomeCmp}
-])*/
+
 
 export class LoginCmp {
   title: string = "Login";
@@ -60,9 +54,13 @@ export class LoginCmp {
       //() => { this.error = true; }
       () => { 
 
-      this.router.navigate(['Home']);
-    }
-      );
+      this.gotoMenu();
+    });
   }
-      
+  
+  gotoMenu() {
+    this.router.navigate(['/Home']);
+  }
+
+
 }
