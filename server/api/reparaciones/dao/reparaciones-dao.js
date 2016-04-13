@@ -2,56 +2,56 @@
 
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-const clienteSchema = require('../model/cliente-model');
+const reparacionesSchema = require('../model/reparaciones-model');
 const _ = require('lodash');
 
-clienteSchema.statics.getAll = () => {
+
+reparacionesSchema.statics.getAll = () => {
     return new Promise((resolve, reject) => {
         let _query = {};
 
-        Cliente
+        Reparacion
           .find(_query)
-          .exec((err, clientes) => {
+          .exec((err, reparaciones) => {
               err ? reject(err)
-                  : resolve(clientes);
+                  : resolve(reparaciones);
           });
       });
 }
 
-clienteSchema.statics.getbyId = (id) => {
+reparacionesSchema.statics.getbyId = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Cliente
+        Reparacion
           .findById(id)
-          .exec((err, cliente) => {
+          .exec((err, reparacion) => {
               err ? reject(err)
-                  : resolve(cliente);
+                  : resolve(reparacion);
           });
     });
 }
 
-clienteSchema.statics.createCliente = (cliente) => {
+reparacionesSchema.statics.createReparacion = (reparacion) => {
     return new Promise((resolve, reject) => {
-      if (!_.isObject(cliente))
-          return reject(new TypeError('Cliente is not a valid object.'));
-
-      let _cliente = new Cliente(cliente);
-
-      _cliente.save((err, saved) => {
+      if (!_.isObject(reparacion))
+          return reject(new TypeError('Reparacion is not a valid object.'));
+      
+      let _reparacion = new Reparacion(reparacion);
+      _reparacion.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
       });
     });
 }
 
-clienteSchema.statics.deleteCliente = (id) => {
+reparacionesSchema.statics.deleteReparacion = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Todo
+        Reparacion
           .findByIdAndRemove(id)
           .exec((err, deleted) => {
               err ? reject(err)
@@ -60,6 +60,6 @@ clienteSchema.statics.deleteCliente = (id) => {
     });
 }
 
-const Cliente  = mongoose.model('Cliente', clienteSchema);
+const Reparacion  = mongoose.model('Reparacion', reparacionesSchema);
 
-module.exports = Cliente;
+module.exports = Reparacion;

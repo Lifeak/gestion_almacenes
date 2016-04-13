@@ -2,56 +2,56 @@
 
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-const clienteSchema = require('../model/cliente-model');
+const productoSchema = require('../model/producto-model');
 const _ = require('lodash');
 
-clienteSchema.statics.getAll = () => {
+
+productoSchema.statics.getAll = () => {
     return new Promise((resolve, reject) => {
         let _query = {};
 
-        Cliente
+        Producto
           .find(_query)
-          .exec((err, clientes) => {
+          .exec((err, productos) => {
               err ? reject(err)
-                  : resolve(clientes);
+                  : resolve(productos);
           });
       });
 }
 
-clienteSchema.statics.getbyId = (id) => {
+productoSchema.statics.getbyId = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Cliente
+        Producto
           .findById(id)
-          .exec((err, cliente) => {
+          .exec((err, producto) => {
               err ? reject(err)
-                  : resolve(cliente);
+                  : resolve(producto);
           });
     });
 }
 
-clienteSchema.statics.createCliente = (cliente) => {
+productoSchema.statics.createProducto = (producto) => {
     return new Promise((resolve, reject) => {
-      if (!_.isObject(cliente))
-          return reject(new TypeError('Cliente is not a valid object.'));
-
-      let _cliente = new Cliente(cliente);
-
-      _cliente.save((err, saved) => {
+      if (!_.isObject(producto))
+          return reject(new TypeError('Producto is not a valid object.'));
+      
+      let _producto = new Producto(producto);
+      _producto.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
       });
     });
 }
 
-clienteSchema.statics.deleteCliente = (id) => {
+productoSchema.statics.deleteProducto = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Todo
+        Producto
           .findByIdAndRemove(id)
           .exec((err, deleted) => {
               err ? reject(err)
@@ -60,6 +60,6 @@ clienteSchema.statics.deleteCliente = (id) => {
     });
 }
 
-const Cliente  = mongoose.model('Cliente', clienteSchema);
+const Producto  = mongoose.model('Producto', productoSchema);
 
-module.exports = Cliente;
+module.exports = Producto;

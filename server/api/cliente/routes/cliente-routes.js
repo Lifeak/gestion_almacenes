@@ -11,6 +11,7 @@ module.exports = class ClienteRoutes {
 
       router
         .route('/api/cliente/:id')
+ 		.get(ClienteController.getbyId)
         .delete(ClienteController.deleteCliente);
     }
 }

@@ -2,56 +2,57 @@
 
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-const clienteSchema = require('../model/cliente-model');
+const almacenSchema = require('../model/almacen-model');
 const _ = require('lodash');
 
-clienteSchema.statics.getAll = () => {
+
+almacenSchema.statics.getAll = () => {
     return new Promise((resolve, reject) => {
         let _query = {};
 
-        Cliente
+        Almacen
           .find(_query)
-          .exec((err, clientes) => {
+          .exec((err, almacens) => {
               err ? reject(err)
-                  : resolve(clientes);
+                  : resolve(almacens);
           });
       });
 }
 
-clienteSchema.statics.getbyId = (id) => {
+almacenSchema.statics.getbyId = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Cliente
+        Almacen
           .findById(id)
-          .exec((err, cliente) => {
+          .exec((err, almacen) => {
               err ? reject(err)
-                  : resolve(cliente);
+                  : resolve(almacen);
           });
     });
 }
 
-clienteSchema.statics.createCliente = (cliente) => {
+almacenSchema.statics.createAlmacen = (almacen) => {
     return new Promise((resolve, reject) => {
-      if (!_.isObject(cliente))
-          return reject(new TypeError('Cliente is not a valid object.'));
-
-      let _cliente = new Cliente(cliente);
-
-      _cliente.save((err, saved) => {
+      if (!_.isObject(almacen))
+          return reject(new TypeError('Almacen is not a valid object.'));
+      
+      let _almacen = new Almacen(almacen);
+      _almacen
+      .save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
       });
     });
 }
 
-clienteSchema.statics.deleteCliente = (id) => {
+almacenSchema.statics.deleteAlmacen = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Todo
+        Almacen
           .findByIdAndRemove(id)
           .exec((err, deleted) => {
               err ? reject(err)
@@ -60,6 +61,6 @@ clienteSchema.statics.deleteCliente = (id) => {
     });
 }
 
-const Cliente  = mongoose.model('Cliente', clienteSchema);
+const Almacen  = mongoose.model('Almacen', almacenSchema);
 
-module.exports = Cliente;
+module.exports = Almacen;

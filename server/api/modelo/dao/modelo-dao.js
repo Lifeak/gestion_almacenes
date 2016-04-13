@@ -2,56 +2,56 @@
 
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-const clienteSchema = require('../model/cliente-model');
+const modeloSchema = require('../model/modelo-model');
 const _ = require('lodash');
 
-clienteSchema.statics.getAll = () => {
+
+modeloSchema.statics.getAll = () => {
     return new Promise((resolve, reject) => {
         let _query = {};
 
-        Cliente
+        Modelo
           .find(_query)
-          .exec((err, clientes) => {
+          .exec((err, modelos) => {
               err ? reject(err)
-                  : resolve(clientes);
+                  : resolve(modelos);
           });
       });
 }
 
-clienteSchema.statics.getbyId = (id) => {
+modeloSchema.statics.getbyId = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Cliente
+        Modelo
           .findById(id)
-          .exec((err, cliente) => {
+          .exec((err, modelo) => {
               err ? reject(err)
-                  : resolve(cliente);
+                  : resolve(modelo);
           });
     });
 }
 
-clienteSchema.statics.createCliente = (cliente) => {
+modeloSchema.statics.createModelo = (modelo) => {
     return new Promise((resolve, reject) => {
-      if (!_.isObject(cliente))
-          return reject(new TypeError('Cliente is not a valid object.'));
-
-      let _cliente = new Cliente(cliente);
-
-      _cliente.save((err, saved) => {
+      if (!_.isObject(modelo))
+          return reject(new TypeError('modelo is not a valid object.'));
+      
+      let _modelo = new Modelo(modelo);
+      _modelo.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
       });
     });
 }
 
-clienteSchema.statics.deleteCliente = (id) => {
+modeloSchema.statics.deleteModelo = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        Todo
+        Modelo
           .findByIdAndRemove(id)
           .exec((err, deleted) => {
               err ? reject(err)
@@ -60,6 +60,6 @@ clienteSchema.statics.deleteCliente = (id) => {
     });
 }
 
-const Cliente  = mongoose.model('Cliente', clienteSchema);
+const Modelo  = mongoose.model('Modelo', modeloSchema);
 
-module.exports = Cliente;
+module.exports = Modelo;
