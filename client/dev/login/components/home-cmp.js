@@ -34,7 +34,7 @@ var HomeCmp = (function () {
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
         }),
-        router_1.CanActivate(function () { return isloggedin_1.isLoggedin(); }),
+        router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
     ], HomeCmp);

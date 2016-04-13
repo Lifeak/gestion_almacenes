@@ -31,7 +31,7 @@ import {
 } from 'angular2/http';
 
 import {LoginService} from '../services/login-service';
-import {isLoggedin} from '../services/isloggedin';
+import {isLoggedinAdmin} from '../services/isloggedin';
 
 
 @Component({
@@ -44,7 +44,7 @@ import {isLoggedin} from '../services/isloggedin';
   providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
 })
 
-@CanActivate(() => isLoggedin())
+@CanActivate(() => isLoggedinAdmin())
 export class HomeCmp {
   title: string = "Home";
 

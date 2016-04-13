@@ -13,15 +13,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
-//declare var Auth0Lock;
 var LoginService = (function () {
-    //lock = new Auth0Lock('YOUR_AUTH0_CLIENT_ID', 'YOUR_AUTH0_DOMAIN');
-    //jwtHelper: JwtHelper = new JwtHelper();
     function LoginService(_http) {
         this._http = _http;
         this.loggedIn = false;
         this.loggedIn = !!localStorage.getItem(this.token);
     }
+    // La función de login consiste en la comprobación de credenciales a partir de un usuario y contraseña dados.
     LoginService.prototype.login = function (user, pass) {
         var _this = this;
         var datos = JSON.stringify({ user: user, pass: pass });
@@ -36,7 +34,6 @@ var LoginService = (function () {
             var u = dato.search("\"user\":\"" + usuario + "\"");
             var pasw = pass;
             var p = dato.search("\"pass\":\"" + pasw + "\"");
-            //var creds = "username=" + user + "&pass=" + pass;
             if (u != -1 && p != -1) {
                 alert("Todo OK.");
                 var cred = dato.search("\"tipo\":\"admin\"");
@@ -57,39 +54,17 @@ var LoginService = (function () {
             }
         });
     };
+    // Función que se ejecuta para salir de nuestra aplicación. Elimina el token del tipo de usuario
+    // y además, pone a falso el atributo loggedIn.
     LoginService.prototype.logout = function () {
         localStorage.removeItem(this.token);
-        //localStorage.removeItem('id_token');
+        this.loggedIn = false;
     };
+    // Función que devuelve dos valores, el primero booleano, true si el usuario se ha logueado y false en caso contrario.
+    // El segundo parametro nos devuelve el tipo de usuario de la aplicación.
     LoginService.prototype.isLoggedIn = function () {
         return [this.loggedIn, localStorage.getItem(this.token)];
-    }; /*
-    getSecretThing() {
-      this.authHttp.get('http://localhost:3001/secured/ping')
-        .subscribe(
-        data => console.log(data.json()),
-        err => console.log(err),
-        () => console.log('Complete')
-        );
-    }
-  
-    tokenSubscription() {
-      this.authHttp.tokenStream.subscribe(
-        data => console.log(data),
-        err => console.log(err),
-        () => console.log('Complete')
-        );
-    }
-  
-    useJwtHelper() {
-      var token = localStorage.getItem('id_token');
-  
-      console.log(
-        this.jwtHelper.decodeToken(token),
-        this.jwtHelper.getTokenExpirationDate(token),
-        this.jwtHelper.isTokenExpired(token)
-      );
-    }*/
+    };
     LoginService.ENDPOINT = '/auth/login';
     LoginService = __decorate([
         core_1.Injectable(),
@@ -99,17 +74,3 @@ var LoginService = (function () {
     return LoginService;
 }());
 exports.LoginService = LoginService;
-/*
-bootstrap(App, [
-  HTTP_PROVIDERS,
-  ROUTER_PROVIDERS,
-  provide(AuthHttp, {
-    useFactory: (http) => {
-      return new AuthHttp(new AuthConfig(), http);
-    },
-    deps: [Http]
-  }),
-  provide(APP_BASE_HREF, { useValue: '/' })
-]);
-}
-*/

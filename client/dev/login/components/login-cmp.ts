@@ -21,14 +21,6 @@ import {
 } from 'angular2/router';
 
 import {
-  AuthHttp,
-  tokenNotExpired,
-  JwtHelper,
-  AuthConfig
-
-}from 'angular2-jwt';
-
-import {
   Http,
   Headers
 } from 'angular2/http';
@@ -38,10 +30,9 @@ import {App} from '../app';
 import {HomeCmp} from './home-cmp';
 
 @Component({
-  //selector: 'login-cmp',
   templateUrl: 'client/dev/login/templates/login.html',
   styleUrls: ['client/dev/cliente/styles/cliente.css'],
-  providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http);}, deps:[Http]})*/]
+  providers: [LoginService/*, ROUTER_PROVIDER*/]
 })
 
 
@@ -58,6 +49,8 @@ export class LoginCmp {
     });
   }
 
+// La función login, recibe un formulario del cual extraemos usuario y contraseña, se lo mandamos al service, el cual hace sus comprobaciones
+// y en función del tipo de usuario que seas, podrás acceder a un sitio u otro.
   login(form: FormData) {
       var user: string = this.loginForm.controls['user'].value;
       var pass: string = this.loginForm.controls['pass'].value;
@@ -83,16 +76,10 @@ export class LoginCmp {
         
       });
    }
-
+// Función que nos permite navegar al menú de la aplicación.
   gotoMenu() {
     this.router.navigate(['/Home']);
   }
 
 
 }
-/*bootstrap([LoginCmp, provide(AuthHttp, {
-    useFactory: (http) => {
-    return new AuthHttp(new AuthConfig(), http);
-    },
-    deps: [Http]
-})])*/

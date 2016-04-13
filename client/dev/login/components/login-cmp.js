@@ -26,6 +26,8 @@ var LoginCmp = (function () {
             "pass": ["", common_1.Validators.required]
         });
     }
+    // La función login, recibe un formulario del cual extraemos usuario y contraseña, se lo mandamos al service, el cual hace sus comprobaciones
+    // y en función del tipo de usuario que seas, podrás acceder a un sitio u otro.
     LoginCmp.prototype.login = function (form) {
         var _this = this;
         var user = this.loginForm.controls['user'].value;
@@ -49,15 +51,15 @@ var LoginCmp = (function () {
             }
         });
     };
+    // Función que nos permite navegar al menú de la aplicación.
     LoginCmp.prototype.gotoMenu = function () {
         this.router.navigate(['/Home']);
     };
     LoginCmp = __decorate([
         core_1.Component({
-            //selector: 'login-cmp',
             templateUrl: 'client/dev/login/templates/login.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
-            providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http);}, deps:[Http]})*/]
+            providers: [login_service_1.LoginService /*, ROUTER_PROVIDER*/]
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(login_service_1.LoginService)), 
@@ -66,9 +68,3 @@ var LoginCmp = (function () {
     return LoginCmp;
 }());
 exports.LoginCmp = LoginCmp;
-/*bootstrap([LoginCmp, provide(AuthHttp, {
-    useFactory: (http) => {
-    return new AuthHttp(new AuthConfig(), http);
-    },
-    deps: [Http]
-})])*/ 
