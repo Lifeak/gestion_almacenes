@@ -1,2 +1,9 @@
 <h1>estamos dentro</h1>
-<a href="#" (click)="logout()">Logout</a>
+<div *ngIf="logadmin">
+<button  (click)="logout()">Logout</button>
+</div>
+
+<div *ngIf="logadmin==false">
+<p>Eres un encargadillo</p>
+<button  (click)="logout()">Logout</button>
+</div>

@@ -1,39 +1,38 @@
 "use strict";
 
-const UserDAO = require('../dao/user-dao');
+const VentaDAO = require('../dao/ventas-dao');
 
-module.exports = class UserController {
+module.exports = class VentaController {
   static getAll(req, res) {
-      UserDAO
+      VentaDAO
         .getAll()
-        .then(users => res.status(200).json(users))
+        .then(ventas => res.status(200).json(ventas))
         .catch(error => res.status(400).json(error));
   }
 
   static getbyId(req,res){
     let _id = req.params.id;
-    UserDAO
+    VentaDAO
       .getbyId(_id)
-      .then(user => res.status(200).json(user))
+      .then(venta => res.status(200).json(venta))
       .catch(error => res.status(400).json(error));
   }
 
-  static createUser(req, res) {
-      let _user = req.body;
-      console.log("user"+_user.nombre);
+  static createVenta(req, res) {
+      let _venta = req.body;
 
-      UserDAO
-        .createUser(_user)
-        .then(user => res.status(201).json(user))
+      VentaDAO
+        .createVenta(_venta)
+        .then(venta =>Venta res.status(201).json(venta))
         .catch(error => res.status(400).json(error));
         console.log("fin instruccion");
   }
 
-  static deleteUser(req, res) {
+  static deleteVenta(req, res) {
     let _id = req.params.id;
 
-    UserDAO
-      .deleteUser(_id)
+    VentaDAO
+      .deleteVenta(_id)
       .then(() => res.status(200).end())
       .catch(error => res.status(400).json(error));
   }

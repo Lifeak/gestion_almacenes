@@ -20,21 +20,24 @@ var HomeCmp = (function () {
         this._loginService = _loginService;
         this.router = router;
         this.title = "Home";
+        this.logadmin = false;
+        this.logadmin = isloggedin_1.isLoggedinAdmin();
+        alert("logadmin es  " + this.logadmin);
     }
     HomeCmp.prototype.logout = function () {
         alert("logoutt");
         this._loginService.logout();
         this.router.navigate(['/Login']);
+        this.logadmin = false;
     };
     HomeCmp = __decorate([
         core_1.Component({
             //selector: 'home-cmp',
-            template: "<h1>estamos dentro</h1>\n  <button (click)=\"logout()\">Logout</button>\n",
-            //templateUrl: 'client/dev/login/templates/dentro.html',
+            templateUrl: 'client/dev/login/templates/dentro.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
         }),
-        router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
     ], HomeCmp);
