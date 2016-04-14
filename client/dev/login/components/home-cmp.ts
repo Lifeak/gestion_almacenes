@@ -36,7 +36,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../services/islogg
 
 @Component({
   //selector: 'home-cmp',
-  templateUrl: 'client/dev/login/templates/dentro.html',
+  templateUrl: 'client/dev/login/templates/welcome.html',
   styleUrls: ['client/dev/cliente/styles/cliente.css'],
   providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
 })

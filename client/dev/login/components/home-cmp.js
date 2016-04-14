@@ -33,7 +33,7 @@ var HomeCmp = (function () {
     HomeCmp = __decorate([
         core_1.Component({
             //selector: 'home-cmp',
-            templateUrl: 'client/dev/login/templates/dentro.html',
+            templateUrl: 'client/dev/login/templates/welcome.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
         }),
