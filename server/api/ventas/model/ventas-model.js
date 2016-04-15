@@ -10,6 +10,8 @@ const _ventaSchema = {
     numPedido: {type: String, required: true},
     fechaSalida: {type:Date},
     finGarantia: {type:Date},
+    transporte :{type: String, required:true},
+    agente:{type: String},
     observaciones: {type: String},
     lineaventa:[{
     	modelo: {type:String, required: true},

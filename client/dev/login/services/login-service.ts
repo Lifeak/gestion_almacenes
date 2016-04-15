@@ -44,10 +44,8 @@ export class LoginService {
         .map((res: any) => {
             let data = res.json();
             let dato = JSON.stringify(data);
-            let usuario = user;
-            let u = dato.search("\"user\":\""+ usuario+"\"");
-            let pasw = pass;
-            let p = dato.search("\"pass\":\"" + pasw + "\"");
+            let u = dato.search("\"user\":\"" + user + "\"");
+            let p = dato.search("\"pass\":\"" + pass + "\"");
             if(u!=-1 && p!=-1){
                   alert("Todo OK.");
                   let cred = dato.search("\"tipo\":\"admin\"");

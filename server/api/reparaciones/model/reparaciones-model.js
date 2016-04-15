@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 
 const _reparacionesSchema = {
+	numincidencia: {type: String, required: true},
     idpieza: {type: String, required: true},
     estado: {type: String, required: true},
     //fechacambio: {type: Date, default: Date.now},

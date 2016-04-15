@@ -30,10 +30,8 @@ var LoginService = (function () {
             .map(function (res) {
             var data = res.json();
             var dato = JSON.stringify(data);
-            var usuario = user;
-            var u = dato.search("\"user\":\"" + usuario + "\"");
-            var pasw = pass;
-            var p = dato.search("\"pass\":\"" + pasw + "\"");
+            var u = dato.search("\"user\":\"" + user + "\"");
+            var p = dato.search("\"pass\":\"" + pass + "\"");
             if (u != -1 && p != -1) {
                 alert("Todo OK.");
                 var cred = dato.search("\"tipo\":\"admin\"");

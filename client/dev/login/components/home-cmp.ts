@@ -19,13 +19,6 @@ import {
 } from 'angular2/router';
 
 import {
-  AuthHttp,
-  tokenNotExpired,
-  JwtHelper,
-  AuthConfig
-
-}from 'angular2-jwt';
-import {
   Http,
   Headers
 } from 'angular2/http';
