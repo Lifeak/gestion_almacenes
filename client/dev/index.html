@@ -5,9 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <link rel="shortcut icon" type="image/ico" href="favicon.png" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <meta name="Raquel" content="ERP">
 
-    <title>Probando</title>
+    <!-- Bootstrap core CSS -->
+    <link href="login/styles/assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="login/styles/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <!-- Custom styles for this template -->
+    <link href="login/styles/assets/css/style.css" rel="stylesheet">
+    <link href="login/styles/assets/css/style-responsive.css" rel="stylesheet">
+
+   
+
+    <title>Valiryo</title>
   </head>
   <body>
     <app>Loading..</app>
@@ -15,10 +25,7 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script>
       System.config({
-                      defaultJSExtensions: true,
-                      map:{
-                        "angular2-jwt":"node_modules/angular2-jwt/angular2-jwt.js"
-                      }
+                      defaultJSExtensions: true
                     });
     </script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
@@ -27,10 +34,21 @@
     <script src="node_modules/angular2/bundles/http.js"></script>
     <script src="node_modules/angular2/bundles/router.js"></script>
    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-   <script src="//cdn.auth0.com/js/lock-9.0.js"></script>
+
+    <script src="login/styles/assets/js/jquery.js"></script>
+    <script src="login/styles/assets/js/bootstrap.min.js"></script>
+
     <script>
       System.import("client/dev/index.js");
     </script>
+    <script type="text/javascript" src="/login/styles/assets/js/jquery.backstretch.min.js"></script>
+
+        <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.
+    <script type="text/javascript" src="login/styles/assets/js/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("login/styles/assets/img/login-bg.jpg", {speed: 500});
+    </script>-->
 
   </body>
 </html>

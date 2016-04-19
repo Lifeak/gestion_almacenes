@@ -31,7 +31,6 @@ import {HomeCmp} from './home-cmp';
 
 @Component({
   templateUrl: 'client/dev/login/templates/login.html',
-  styleUrls: ['client/dev/cliente/styles/cliente.css'],
   providers: [LoginService/*, ROUTER_PROVIDER*/]
 })
 

@@ -58,7 +58,6 @@ var LoginCmp = (function () {
     LoginCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/login.html',
-            styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [login_service_1.LoginService /*, ROUTER_PROVIDER*/]
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
