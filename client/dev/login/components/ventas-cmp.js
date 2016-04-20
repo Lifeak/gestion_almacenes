@@ -15,38 +15,38 @@ var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../services/login-service');
 var isloggedin_1 = require('../services/isloggedin');
-var ComprasCmp = (function () {
-    function ComprasCmp(_loginService, router) {
+var VentasCmp = (function () {
+    function VentasCmp(_loginService, router) {
         this._loginService = _loginService;
         this.router = router;
-        this.title = "Compras";
+        this.title = "Ventas";
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
         alert("logadmin es  " + this.logadmin);
     }
-    ComprasCmp.prototype.logout = function () {
+    VentasCmp.prototype.logout = function () {
         alert("logoutt");
         this._loginService.logout();
         this.router.navigate(['/Login']);
         this.logadmin = false;
     };
-    ComprasCmp.prototype.compras = function () {
+    VentasCmp.prototype.compras = function () {
         alert("compras");
         this.router.navigate(['/Compras']);
     };
-    ComprasCmp.prototype.ventas = function () {
+    VentasCmp.prototype.ventas = function () {
         alert("ventas");
         this.router.navigate(['/Ventas']);
     };
-    ComprasCmp.prototype.almacen = function () {
+    VentasCmp.prototype.almacen = function () {
         alert("almacen");
         this.router.navigate(['/Almacen']);
     };
-    ComprasCmp.prototype.admin = function () {
+    VentasCmp.prototype.admin = function () {
         alert("admin");
         this.router.navigate(['/Admin']);
     };
-    ComprasCmp = __decorate([
+    VentasCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/compras.html',
             providers: [login_service_1.LoginService]
@@ -54,7 +54,7 @@ var ComprasCmp = (function () {
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
-    ], ComprasCmp);
-    return ComprasCmp;
+    ], VentasCmp);
+    return VentasCmp;
 }());
-exports.ComprasCmp = ComprasCmp;
+exports.VentasCmp = VentasCmp;

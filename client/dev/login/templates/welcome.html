@@ -11,20 +11,16 @@
             <a href="#" class="logo"><b>Valiryo</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" >
-                        	Compras
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
+                        	 Compras
                             <i class="fa fa-tasks"></i>
-                            
                         </a>
-
-                       
                     </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
                         Ventas
                             <i class="fa fa-tasks"></i>
                             
@@ -33,8 +29,17 @@
                        
                     </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
                         Almacen
+                            <i class="fa fa-tasks"></i>
+                            
+                        </a>
+                        
+                       
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()">
+                        Admin
                             <i class="fa fa-tasks"></i>
                             
                         </a>
@@ -48,7 +53,7 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><button  (click)="logout()">Logout</button></li>
+                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()">Logout</button></a></li>
             	</ul>
             </div>
         </header>

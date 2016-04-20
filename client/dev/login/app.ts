@@ -21,6 +21,9 @@ import {LoginService} from './services/login-service';
 import {LoginCmp} from './components/login-cmp';
 import {HomeCmp} from './components/home-cmp';
 import {ComprasCmp} from './components/compras-cmp';
+import {VentasCmp} from './components/ventas-cmp';
+import {AlmacenCmp} from './components/almacen-cmp';
+import {AdminCmp} from './components/admin-cmp';
 
 @Component({
 	selector:'app',
@@ -33,8 +36,11 @@ import {ComprasCmp} from './components/compras-cmp';
 @RouteConfig([
    // { path: '/', redirectTo: ['./Login'] },
 	{ path: '/home', name: 'Home', component: HomeCmp},
-    { path: '/', name: 'Login', component: LoginCmp },
-    { path: '/compras', name: 'Compras', component: ComprasCmp }
+    { path: '/', name: 'Login', component: LoginCmp},
+    { path: '/compras', name: 'Compras', component: ComprasCmp },
+    { path: '/ventas', name: 'Ventas', component: VentasCmp },
+    { path: '/almacen', name: 'Almacen', component: AlmacenCmp },
+    { path: '/admin', name: 'Admin', component: AdminCmp }
 ])
 export class App {
 	constructor() { }

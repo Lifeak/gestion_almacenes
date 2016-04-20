@@ -28,10 +28,8 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../services/islogg
 
 
 @Component({
-  //selector: 'home-cmp',
   templateUrl: 'client/dev/login/templates/compras.html',
-  //styleUrls: ['client/dev/cliente/styles/cliente.css'],
-  providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
+  providers: [LoginService]
 })
 
 @CanActivate(() => isLogged())
@@ -45,5 +43,30 @@ export class ComprasCmp {
       alert("logadmin es  " + this.logadmin);
   }
 
+  logout(){
+    alert("logoutt");
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+    this.logadmin = false;
+  }
+  
+  compras(){
+    alert("compras");
+    this.router.navigate(['/Compras']);
+  }
 
+   ventas(){
+    alert("ventas");
+    this.router.navigate(['/Ventas']);
+  }
+
+   almacen(){
+    alert("almacen");
+    this.router.navigate(['/Almacen']);
+  }
+
+   admin(){
+    alert("admin");
+    this.router.navigate(['/Admin']);
+  }
 }

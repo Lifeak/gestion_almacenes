@@ -14,6 +14,9 @@ var login_service_1 = require('./services/login-service');
 var login_cmp_1 = require('./components/login-cmp');
 var home_cmp_1 = require('./components/home-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
+var ventas_cmp_1 = require('./components/ventas-cmp');
+var almacen_cmp_1 = require('./components/almacen-cmp');
+var admin_cmp_1 = require('./components/admin-cmp');
 var App = (function () {
     function App() {
     }
@@ -28,7 +31,10 @@ var App = (function () {
             // { path: '/', redirectTo: ['./Login'] },
             { path: '/home', name: 'Home', component: home_cmp_1.HomeCmp },
             { path: '/', name: 'Login', component: login_cmp_1.LoginCmp },
-            { path: '/compras', name: 'Compras', component: compras_cmp_1.ComprasCmp }
+            { path: '/compras', name: 'Compras', component: compras_cmp_1.ComprasCmp },
+            { path: '/ventas', name: 'Ventas', component: ventas_cmp_1.VentasCmp },
+            { path: '/almacen', name: 'Almacen', component: almacen_cmp_1.AlmacenCmp },
+            { path: '/admin', name: 'Admin', component: admin_cmp_1.AdminCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

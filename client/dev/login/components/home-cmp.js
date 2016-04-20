@@ -30,6 +30,22 @@ var HomeCmp = (function () {
         this.router.navigate(['/Login']);
         this.logadmin = false;
     };
+    HomeCmp.prototype.compras = function () {
+        alert("compras");
+        this.router.navigate(['/Compras']);
+    };
+    HomeCmp.prototype.ventas = function () {
+        alert("ventas");
+        this.router.navigate(['/Ventas']);
+    };
+    HomeCmp.prototype.almacen = function () {
+        alert("almacen");
+        this.router.navigate(['/Almacen']);
+    };
+    HomeCmp.prototype.admin = function () {
+        alert("admin");
+        this.router.navigate(['/Admin']);
+    };
     HomeCmp = __decorate([
         core_1.Component({
             //selector: 'home-cmp',

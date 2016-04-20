@@ -56,5 +56,25 @@ export class HomeCmp {
     this.router.navigate(['/Login']);
     this.logadmin = false;
   }
+  
+  compras(){
+    alert("compras");
+    this.router.navigate(['/Compras']);
+  }
+
+   ventas(){
+    alert("ventas");
+    this.router.navigate(['/Ventas']);
+  }
+
+   almacen(){
+    alert("almacen");
+    this.router.navigate(['/Almacen']);
+  }
+
+   admin(){
+    alert("admin");
+    this.router.navigate(['/Admin']);
+  }
 
 }
