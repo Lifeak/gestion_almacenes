@@ -20,13 +20,12 @@ import {LoginService} from './services/login-service';
 
 import {LoginCmp} from './components/login-cmp';
 import {HomeCmp} from './components/home-cmp';
-import {Hola} from './components/hola';
+import {ComprasCmp} from './components/compras-cmp';
 
 @Component({
 	selector:'app',
 	directives: [ROUTER_DIRECTIVES, RouterOutlet],
-	template:`<h1>Welcome</h1>
-				<router-outlet></router-outlet>
+	template:`<router-outlet></router-outlet>
 				` ,
 	providers: [ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy }), LoginService]
 })
@@ -34,7 +33,8 @@ import {Hola} from './components/hola';
 @RouteConfig([
    // { path: '/', redirectTo: ['./Login'] },
 	{ path: '/home', name: 'Home', component: HomeCmp},
-    { path: '/', name: 'Login', component: LoginCmp}
+    { path: '/', name: 'Login', component: LoginCmp },
+    { path: '/compras', name: 'Compras', component: ComprasCmp }
 ])
 export class App {
 	constructor() { }

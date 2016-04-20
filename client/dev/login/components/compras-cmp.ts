@@ -15,9 +15,6 @@ import {
 import {
   Router,
   ROUTER_PROVIDERS,
-  ROUTER_DIRECTIVES,
-  RouteConfig,
-  RouterOutlet,
   CanActivate
 } from 'angular2/router';
 
@@ -28,20 +25,18 @@ import {
 
 import {LoginService} from '../services/login-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../services/isloggedin';
-import {ComprasCmp} from './compras-cmp';
+
 
 @Component({
   //selector: 'home-cmp',
-  //directives: [RouterOutlet],
-  templateUrl: 'client/dev/login/templates/welcome.html',
-  styleUrls: ['client/dev/cliente/styles/cliente.css'],
+  templateUrl: 'client/dev/login/templates/compras.html',
+  //styleUrls: ['client/dev/cliente/styles/cliente.css'],
   providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
 })
 
-
 @CanActivate(() => isLogged())
-export class HomeCmp {
-  title: string = "Home";
+export class ComprasCmp {
+  title: string = "Compras";
   logadmin: boolean = false;
 
 
@@ -50,11 +45,5 @@ export class HomeCmp {
       alert("logadmin es  " + this.logadmin);
   }
 
-  logout(){
-    alert("logoutt");
-    this._loginService.logout();
-    this.router.navigate(['/Login']);
-    this.logadmin = false;
-  }
 
 }

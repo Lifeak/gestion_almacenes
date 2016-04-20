@@ -77,7 +77,7 @@ export class LoginCmp {
    }
 // Función que nos permite navegar al menú de la aplicación.
   gotoMenu() {
-    this.router.navigate(['/Home']);
+    this.router.navigate(['Home']);
   }
 
 

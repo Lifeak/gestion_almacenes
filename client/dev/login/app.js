@@ -13,6 +13,7 @@ var router_1 = require('angular2/router');
 var login_service_1 = require('./services/login-service');
 var login_cmp_1 = require('./components/login-cmp');
 var home_cmp_1 = require('./components/home-cmp');
+var compras_cmp_1 = require('./components/compras-cmp');
 var App = (function () {
     function App() {
     }
@@ -20,13 +21,14 @@ var App = (function () {
         core_1.Component({
             selector: 'app',
             directives: [router_1.ROUTER_DIRECTIVES, router_1.RouterOutlet],
-            template: "<h1>Welcome</h1>\n\t\t\t\t<router-outlet></router-outlet>\n\t\t\t\t",
+            template: "<router-outlet></router-outlet>\n\t\t\t\t",
             providers: [router_1.ROUTER_PROVIDERS, core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy }), login_service_1.LoginService]
         }),
         router_1.RouteConfig([
             // { path: '/', redirectTo: ['./Login'] },
             { path: '/home', name: 'Home', component: home_cmp_1.HomeCmp },
-            { path: '/', name: 'Login', component: login_cmp_1.LoginCmp }
+            { path: '/', name: 'Login', component: login_cmp_1.LoginCmp },
+            { path: '/compras', name: 'Compras', component: compras_cmp_1.ComprasCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

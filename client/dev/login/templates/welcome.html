@@ -1,9 +1,73 @@
-<h2>MENÚ</h2>
-<div *ngIf="logadmin">
-<button  (click)="logout()">Logout</button>
-</div>
+<section id="container" >
+     <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="#" class="logo"><b>Valiryo</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" >
+                        	Compras
+                            <i class="fa fa-tasks"></i>
+                            
+                        </a>
 
-<div *ngIf="logadmin==false">
-<p>Eres un encargadillo</p>
-<button  (click)="logout()">Logout</button>
-</div>
+                       
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        Ventas
+                            <i class="fa fa-tasks"></i>
+                            
+                        </a>
+                        
+                       
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        Almacen
+                            <i class="fa fa-tasks"></i>
+                            
+                        </a>
+                        
+                       
+                    </li>
+                    <!-- settings end -->
+                    
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><button  (click)="logout()">Logout</button></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2016 - Raquel Castillo Perez
+                  <i class="fa fa-angle-up"></i>
+          </div>
+      </footer>
+      <!--footer end-->
+</section>
+
+
+
+
