@@ -19,5 +19,8 @@ export function isLogged() {
 	let token: string;
     if (localStorage.getItem(token) == "encargado" || localStorage.getItem(token) == "admin")
 		return true;
-	else return false;
+	else {
+		
+		return false;
+	}
 }

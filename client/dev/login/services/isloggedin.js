@@ -22,7 +22,8 @@ function isLogged() {
     var token;
     if (localStorage.getItem(token) == "encargado" || localStorage.getItem(token) == "admin")
         return true;
-    else
+    else {
         return false;
+    }
 }
 exports.isLogged = isLogged;
