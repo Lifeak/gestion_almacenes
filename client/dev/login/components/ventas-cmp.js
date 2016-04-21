@@ -22,7 +22,7 @@ var VentasCmp = (function () {
         this.title = "Ventas";
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
-        alert("logadmin es  " + this.logadmin);
+        //alert("logadmin es  " + this.logadmin);
     }
     VentasCmp.prototype.logout = function () {
         alert("logoutt");
@@ -31,24 +31,24 @@ var VentasCmp = (function () {
         this.logadmin = false;
     };
     VentasCmp.prototype.compras = function () {
-        alert("compras");
+        //alert("compras");
         this.router.navigate(['/Compras']);
     };
     VentasCmp.prototype.ventas = function () {
-        alert("ventas");
+        //alert("ventas");
         this.router.navigate(['/Ventas']);
     };
     VentasCmp.prototype.almacen = function () {
-        alert("almacen");
+        // alert("almacen");
         this.router.navigate(['/Almacen']);
     };
     VentasCmp.prototype.admin = function () {
-        alert("admin");
+        // alert("admin");
         this.router.navigate(['/Admin']);
     };
     VentasCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/login/templates/compras.html',
+            templateUrl: 'client/dev/login/templates/ventas.html',
             providers: [login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),

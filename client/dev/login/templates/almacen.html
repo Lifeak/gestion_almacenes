@@ -14,15 +14,15 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a  data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
+                        <a  data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()" style="background-color: grey; color:white;">
                         Almacen
                             <i class="fa fa-tasks"></i>    
                         </a>   
                     </li>
 
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()" style="background-color: grey; color:white;">
-                           Compras
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
+                        	 Compras
                             <i class="fa fa-tasks"></i>
                         </a>
                     </li>
@@ -43,9 +43,9 @@
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-              <ul class="nav pull-right top-menu">
+            	<ul class="nav pull-right top-menu">
                     <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()">Logout</button></a></li>
-              </ul>
+            	</ul>
             </div>
         </header>
       <!--header end-->
@@ -58,18 +58,26 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false">
+                      <a href="javascript:;" (click)="d1=true;d2=false;d3=false">
                           <i class="fa fa-home"></i>
-                          <span>Proveedores</span>
+                          <span>Almacen Valiryo</span>
                       </a>
+                      
+                      <ul class="dropdown" *ngIf="d1==true">
+
+                          <li><a  href="general.html">Stock Producto</a></li>
+                          <li><a  href="buttons.html">Stock Piezas</a></li>
+                          <li><a  href="panels.html">Piezas rotas</a></li>
+                      </ul>
+                      
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=true;">
+                      <a href="javascript:;" (click)="d2=true;d1=false;d3=false;">
                           <i class="fa fa-desktop"></i>
-                          <span>Productos</span>
+                          <span>Producto</span>
                       </a>
-                      <ul class="dropdown" *ngIf="c1==true">
+                      <ul class="dropdown" *ngIf="d2==true">
                           <li><a  href="general.html">Producto final</a></li>
                           <li><a  href="buttons.html">Piezas</a></li>
                           <li><a  href="panels.html">Modelos</a></li>
@@ -77,27 +85,25 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false;" >
+                      <a href="javascript:;" (click)="d1=false;d2=false;d3=false;" >
                           <i class="fa fa-cogs"></i>
-                          <span>Pedido de compra</span>
+                          <span>Control de calidad</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false;">
+                      <a href="javascript:;" (click)="d3=true;d1=false;d2=false;">
                           <i class="fa fa-book"></i>
-                          <span>Lotes</span>
+                          <span>Allmacenes externos</span>
                       </a>
+                      <ul class="dropdown" *ngIf="d3==true">
+                          <li><a  href="blank.html">PLASNOR</a></li>
+                          <li><a  href="login.html">LANTEGI</a></li>
+                      </ul>
                   </li>
-                   <li class="sub-menu" *ngIf="false">
-                      <a href="javascript:;" (click)="c1=false;" >
+                   <li class="sub-menu">
+                      <a href="javascript:;" (click)="d1=false;d2=false;d3=false;" >
                           <i class="fa fa-dashboard"></i>
-                          <span>Pedido de fabricacion</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu" *ngIf="false">
-                      <a href="javascript:;" (click)="c1=false;" >
-                          <i class="fa fa-dashboard"></i>
-                          <span>Devoluciones</span>
+                          <span>Reparaciones</span>
                       </a>
                   </li>
 

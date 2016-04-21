@@ -53,7 +53,7 @@ var LoginCmp = (function () {
     };
     // Función que nos permite navegar al menú de la aplicación.
     LoginCmp.prototype.gotoMenu = function () {
-        this.router.navigate(['/Home']);
+        this.router.navigate(['/Almacen']);
     };
     LoginCmp = __decorate([
         core_1.Component({

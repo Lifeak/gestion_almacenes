@@ -14,41 +14,50 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a  data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
                         Almacen
-                            <i class="fa fa-tasks"></i>    
-                        </a>   
-                    </li>
-
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()" style="background-color: grey; color:white;">
-                           Compras
+                            <i class="fa fa-tasks"></i>
+                            
+                        </a>
+                        
+                     </li>   
+                    <li class="dropdown" >
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
+                        	 Compras
                             <i class="fa fa-tasks"></i>
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()" style="background-color: grey; color:white;">
                         Ventas
                             <i class="fa fa-tasks"></i>
+                            
                         </a>
+                       
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()">
                         Admin
-                            <i class="fa fa-tasks"></i> 
-                        </a>   
+                            <i class="fa fa-tasks"></i>
+                            
+                        </a>
+                        
+                       
                     </li>
-                    <!-- settings end -->  
+                    <!-- settings end -->
+                    
                 </ul>
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-              <ul class="nav pull-right top-menu">
+            	<ul class="nav pull-right top-menu">
                     <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()">Logout</button></a></li>
-              </ul>
+            	</ul>
             </div>
         </header>
       <!--header end-->
+      <!--FIN MENU SUPERIOR-->
+
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -57,55 +66,45 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
+
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false">
-                          <i class="fa fa-home"></i>
-                          <span>Proveedores</span>
+                      <a href="javascript:;" >
+                          <i class="fa fa-users"></i>
+                          <span>Clientes</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=true;">
-                          <i class="fa fa-desktop"></i>
-                          <span>Productos</span>
-                      </a>
-                      <ul class="dropdown" *ngIf="c1==true">
-                          <li><a  href="general.html">Producto final</a></li>
-                          <li><a  href="buttons.html">Piezas</a></li>
-                          <li><a  href="panels.html">Modelos</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false;" >
+                      <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
-                          <span>Pedido de compra</span>
+                          <span>Pedidos</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false;">
+                      <a href="javascript:;" >
                           <i class="fa fa-book"></i>
-                          <span>Lotes</span>
-                      </a>
-                  </li>
-                   <li class="sub-menu" *ngIf="false">
-                      <a href="javascript:;" (click)="c1=false;" >
-                          <i class="fa fa-dashboard"></i>
-                          <span>Pedido de fabricacion</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu" *ngIf="false">
-                      <a href="javascript:;" (click)="c1=false;" >
-                          <i class="fa fa-dashboard"></i>
                           <span>Devoluciones</span>
                       </a>
                   </li>
-
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-tasks"></i>
+                          <span>Salidas por avería</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>Garantías</span>
+                      </a>
+                  </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
       </aside>
       <!--sidebar end-->
+      <!--header end-->
+      
 
   <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
@@ -350,13 +349,14 @@
           </section>
       </section>
 
-      <!--main content end-->      <br/>
+      <!--main content end-->      
       <br/>
       <br/>
       <br/>
       <br/>
       <br/>
-      ESTOY EN ALMACEN
+      <br/>
+      ESTOY EN VENTAS
 
       <br/>
       <br/>
