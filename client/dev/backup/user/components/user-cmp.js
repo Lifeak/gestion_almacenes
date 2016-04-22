@@ -13,18 +13,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
-var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
-var login_service_1 = require('../../login/services/login-service');
-var userlist_cmp_1 = require('./userlist-cmp');
-var userdetails_cmp_1 = require('./userdetails-cmp');
-var usercreate_cmp_1 = require('./usercreate-cmp');
-var isloggedin_1 = require('../../login/services/isloggedin');
 var UserCmp = (function () {
-    function UserCmp(fb, _userService, _loginService, router) {
+    function UserCmp(fb, _userService) {
         this._userService = _userService;
-        this._loginService = _loginService;
-        this.router = router;
         this.title = "Users";
         this.users = [];
         this.userForm = fb.group({
@@ -71,47 +63,16 @@ var UserCmp = (function () {
             });
         });
     };
-    UserCmp.prototype.logout = function () {
-        alert("logoutt");
-        this._loginService.logout();
-        window.location.replace("http://localhost:3000/");
-        //this.router.navigate(['/Login']);
-    };
-    UserCmp.prototype.compras = function () {
-        //alert("compras");
-        window.location.replace("http://localhost:3000/#/compras");
-        //this.router.navigate(['/Compras']);
-    };
-    UserCmp.prototype.ventas = function () {
-        //alert("ventas");
-        window.location.replace("http://localhost:3000/#/ventas");
-        //this.router.navigate(['/Ventas']);
-    };
-    UserCmp.prototype.almacen = function () {
-        window.location.replace("http://localhost:3000/#/almacen");
-        //this.router.navigate(['/Almacen']);
-    };
-    UserCmp.prototype.admin = function () {
-        window.location.replace("http://localhost:3000/#/admin");
-        // this.router.navigate(['/Admin']);
-    };
     UserCmp = __decorate([
         core_1.Component({
             selector: 'user-cmp',
             templateUrl: 'client/dev/user/templates/index.html',
-            providers: [user_service_1.UserService, login_service_1.LoginService, router_1.ROUTER_PROVIDERS],
-            directives: [router_1.ROUTER_DIRECTIVES]
+            styleUrls: ['client/dev/user/styles/cliente.css'],
+            providers: [user_service_1.UserService] //, ROUTER_PROVIDERS], // importante poner ROUTE_PROVIDERS
         }),
-        router_1.RouteConfig([
-            { path: '/ListUsuarios', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
-            { path: '/Create', name: 'CreateUsuario', component: usercreate_cmp_1.UserCreateCmp },
-            { path: '/Details', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp }
-        ]),
-        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(1, core_1.Inject(user_service_1.UserService)),
-        __param(2, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, user_service_1.UserService, login_service_1.LoginService, router_1.Router])
+        __param(1, core_1.Inject(user_service_1.UserService)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, user_service_1.UserService])
     ], UserCmp);
     return UserCmp;
 }());

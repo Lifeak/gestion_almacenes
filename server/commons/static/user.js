@@ -3,7 +3,7 @@
 const fs = require('fs');
 
 module.exports = class userRoutes {
-    static sendCRUD(req, res) {
+    static sendHola(req, res) {
       var _root = process.cwd();
 
       res.type('.html');

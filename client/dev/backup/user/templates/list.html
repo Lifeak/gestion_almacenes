@@ -1,0 +1,10 @@
+<div class="cliente-container">
+<h2>LIST</h2>
+    <ul class="items">
+      <li *ngFor="#user of users"
+        [class.selected]="isSelected(user)"
+        (click)="onSelect(user)">
+        <span class="badge">{{user._id}}</span> {{user.nombre}}
+      </li>
+    </ul>
+</div>

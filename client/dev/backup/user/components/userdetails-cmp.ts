@@ -19,7 +19,7 @@ import {
 
 
 import {UserService, User} from '../services/user-service';
-import {LoginService} from '../../login/services/login-service';
+
 
 //import {UserCmp} from './user-cmp';
 
@@ -36,7 +36,7 @@ export class UserDetailsCmp implements OnInit {
   @Input() user: User;
   userForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _userService: UserService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _userService: UserService){
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],
@@ -49,7 +49,7 @@ export class UserDetailsCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    //alert(id);
+    alert(id);
     this._userService
     .getUserId(id)
     .subscribe((user) => {

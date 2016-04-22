@@ -28,13 +28,12 @@ var App = (function () {
             providers: [router_1.ROUTER_PROVIDERS, core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy }), login_service_1.LoginService]
         }),
         router_1.RouteConfig([
-            // { path: '/', redirectTo: ['./Login'] },
             { path: '/home', name: 'Home', component: home_cmp_1.HomeCmp },
             { path: '/', name: 'Login', component: login_cmp_1.LoginCmp },
             { path: '/compras', name: 'Compras', component: compras_cmp_1.ComprasCmp },
             { path: '/ventas', name: 'Ventas', component: ventas_cmp_1.VentasCmp },
             { path: '/almacen', name: 'Almacen', component: almacen_cmp_1.AlmacenCmp },
-            { path: '/admin', name: 'Admin', component: admin_cmp_1.AdminCmp }
+            { path: '/admin', name: 'Admin', component: admin_cmp_1.AdminCmp } //,
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

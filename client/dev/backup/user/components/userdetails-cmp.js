@@ -15,14 +15,12 @@ var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
-var login_service_1 = require('../../login/services/login-service');
 //import {UserCmp} from './user-cmp';
 var UserDetailsCmp = (function () {
-    function UserDetailsCmp(fb, _router, _routeParams, _userService, _loginService) {
+    function UserDetailsCmp(fb, _router, _routeParams, _userService) {
         this._router = _router;
         this._routeParams = _routeParams;
         this._userService = _userService;
-        this._loginService = _loginService;
         this.userForm = fb.group({
             "user": ["", common_1.Validators.required],
             "pass": ["", common_1.Validators.required],
@@ -34,7 +32,7 @@ var UserDetailsCmp = (function () {
     UserDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var id = this._routeParams.get('id');
-        //alert(id);
+        alert(id);
         this._userService
             .getUserId(id)
             .subscribe(function (user) {
@@ -91,9 +89,8 @@ var UserDetailsCmp = (function () {
             templateUrl: 'client/dev/user/templates/details.html',
             styleUrls: ['client/dev/user/styles/cliente.css']
         }),
-        __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(4, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService, login_service_1.LoginService])
+        __param(0, core_1.Inject(common_1.FormBuilder)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService])
     ], UserDetailsCmp);
     return UserDetailsCmp;
 }());

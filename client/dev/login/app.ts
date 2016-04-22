@@ -24,6 +24,7 @@ import {ComprasCmp} from './components/compras-cmp';
 import {VentasCmp} from './components/ventas-cmp';
 import {AlmacenCmp} from './components/almacen-cmp';
 import {AdminCmp} from './components/admin-cmp';
+import {UserCmp} from '../user/components/user-cmp';
 
 @Component({
 	selector:'app',
@@ -34,13 +35,13 @@ import {AdminCmp} from './components/admin-cmp';
 })
 
 @RouteConfig([
-   // { path: '/', redirectTo: ['./Login'] },
 	{ path: '/home', name: 'Home', component: HomeCmp},
     { path: '/', name: 'Login', component: LoginCmp},
     { path: '/compras', name: 'Compras', component: ComprasCmp },
     { path: '/ventas', name: 'Ventas', component: VentasCmp },
     { path: '/almacen', name: 'Almacen', component: AlmacenCmp },
-    { path: '/admin', name: 'Admin', component: AdminCmp }
+    { path: '/admin', name: 'Admin', component: AdminCmp }//,
+    //{ path: '/users', name: 'Usuarios', component: UserCmp}
 ])
 export class App {
 	constructor() { }

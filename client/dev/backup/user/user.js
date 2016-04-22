@@ -1,7 +1,11 @@
 "use strict";
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
+var core_1 = require('angular2/core');
+var router_1 = require('angular2/router');
 var user_cmp_1 = require('./components/user-cmp');
 var userlist_cmp_1 = require('./components/userlist-cmp');
 browser_1.bootstrap(user_cmp_1.UserCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(userlist_cmp_1.UserListCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(user_cmp_1.UserCmp, [router_1.ROUTER_PROVIDERS, core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })]);
+browser_1.bootstrap(userlist_cmp_1.UserListCmp, [router_1.ROUTER_PROVIDERS]);

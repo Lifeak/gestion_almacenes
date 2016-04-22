@@ -71,6 +71,7 @@ export class LoginService {
   logout(){
     localStorage.removeItem(this.token);
     this.loggedIn = false;
+
   }
 
 // Función que devuelve dos valores, el primero booleano, true si el usuario se ha logueado y false en caso contrario.

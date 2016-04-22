@@ -15,6 +15,8 @@ import {
 import {
   Router,
   ROUTER_PROVIDERS,
+  ROUTER_DIRECTIVES,
+  RouteConfig,
   CanActivate
 } from 'angular2/router';
 
@@ -27,9 +29,11 @@ import {LoginService} from '../services/login-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../services/isloggedin';
 
 
+
 @Component({
   templateUrl: 'client/dev/login/templates/admin.html',
-  providers: [LoginService]
+  providers: [LoginService/*, ROUTER_PROVIDERS*/]
+  //directives: [ROUTER_DIRECTIVES]
 })
 
 @CanActivate(() => isLogged())
@@ -38,35 +42,37 @@ export class AdminCmp {
   logadmin: boolean = false;
 
 
-  constructor( @Inject(LoginService) private _loginService: LoginService, private router: Router) {
-      this.logadmin = isLoggedinAdmin();
-     // alert("logadmin es  " + this.logadmin);
+  constructor( @Inject(LoginService) private _loginService: LoginService, public router: Router) {
+    this.logadmin = isLoggedinAdmin();
+    this.router = router;
+    // alert("logadmin es  " + this.logadmin);
   }
 
-  logout(){
+  logout() {
     alert("logoutt");
     this._loginService.logout();
     this.router.navigate(['/Login']);
     this.logadmin = false;
   }
-  
-  compras(){
+
+  compras() {
     //alert("compras");
     this.router.navigate(['/Compras']);
   }
 
-   ventas(){
+  ventas() {
     //alert("ventas");
     this.router.navigate(['/Ventas']);
   }
 
-   almacen(){
-   // alert("almacen");
+  almacen() {
+    // alert("almacen");
     this.router.navigate(['/Almacen']);
   }
 
-   admin(){
+  admin() {
     //alert("admin");
     this.router.navigate(['/Admin']);
   }
+
 }

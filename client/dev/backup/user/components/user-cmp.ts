@@ -17,18 +17,15 @@ import {
   RouteParams,
   RouteConfig,
   ROUTER_PROVIDERS,
-  CanActivate,
   ROUTER_DIRECTIVES
 } from 'angular2/router';
 import{bootstrap} from 'angular2/platform/browser';
 
 import {UserService} from '../services/user-service';
-import {LoginService} from '../../login/services/login-service';
 
 import {UserListCmp} from './userlist-cmp';
 import {UserDetailsCmp} from './userdetails-cmp';
 import {UserCreateCmp} from './usercreate-cmp';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 type User = {
   user: string;
@@ -42,25 +39,26 @@ type User = {
 @Component({
   selector: 'user-cmp',
   templateUrl: 'client/dev/user/templates/index.html',
-  providers: [UserService, LoginService, ROUTER_PROVIDERS], // importante poner ROUTE_PROVIDERS
-  directives: [ROUTER_DIRECTIVES]
+  styleUrls: ['client/dev/user/styles/cliente.css'],
+  providers: [UserService]//, ROUTER_PROVIDERS], // importante poner ROUTE_PROVIDERS
+  //directives: [ROUTER_DIRECTIVES]
 })
-
+/*
 @RouteConfig([
     
   { path: '/ListUsuarios', name: 'ListUsuarios', component: UserListCmp },
   { path: '/Create', name: 'CreateUsuario', component: UserCreateCmp },
   { path: '/Details', name: 'DetailsUsuarios', component: UserDetailsCmp}
-])
+])*/
 
-@CanActivate(() => isLogged())
+
 export class UserCmp implements OnInit {
   title: string = "Users";
   users: User[] = [];
   userForm: ControlGroup;
 
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(UserService) private _userService: UserService,@Inject(LoginService) private _loginService: LoginService, private router : Router) {
+  constructor(@Inject(FormBuilder) fb:FormBuilder, @Inject(UserService) private _userService: UserService) {
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],
@@ -106,36 +104,4 @@ export class UserCmp implements OnInit {
         });
       })
   }
-
-  logout() {
-    alert("logoutt");
-    this._loginService.logout(); 
-    window.location.replace("http://localhost:3000/");
-    //this.router.navigate(['/Login']);
-
-  }
-
-  compras() {
-    //alert("compras");
-    window.location.replace("http://localhost:3000/#/compras");
-    //this.router.navigate(['/Compras']);
-  }
-
-  ventas() {
-    //alert("ventas");
-    window.location.replace("http://localhost:3000/#/ventas");
-    //this.router.navigate(['/Ventas']);
-  }
-
-  almacen() {
-    window.location.replace("http://localhost:3000/#/almacen");
-    //this.router.navigate(['/Almacen']);
-  }
-
-  admin() {
-    window.location.replace("http://localhost:3000/#/admin");
-
-   // this.router.navigate(['/Admin']);
-  }
-
 }

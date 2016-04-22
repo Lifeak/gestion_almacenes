@@ -9,4 +9,5 @@ import {UserCmp} from './components/user-cmp';
 import {UserListCmp} from './components/userlist-cmp';
 bootstrap(UserCmp, [HTTP_PROVIDERS]);
 bootstrap(UserListCmp, [HTTP_PROVIDERS]);
-
+bootstrap(UserCmp, [ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy })]);
+bootstrap(UserListCmp, [ROUTER_PROVIDERS]);

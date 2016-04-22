@@ -19,86 +19,70 @@ import {
 
 
 import {UserService, User} from '../services/user-service';
-import {LoginService} from '../../login/services/login-service';
+
 
 //import {UserCmp} from './user-cmp';
 
 
 
 @Component({
-  //selector: 'user-cmp',
-  templateUrl: 'client/dev/user/templates/details.html',
+  templateUrl: 'client/dev/user/templates/create.html',
   styleUrls: ['client/dev/user/styles/cliente.css']
 })
 
 
-export class UserDetailsCmp implements OnInit {
+export class UserCreateCmp{
   @Input() user: User;
   userForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _userService: UserService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _userService: UserService){
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],
+      "passs": ["", Validators.required],
       "nombre": ["", Validators.required],
       "apellido": ["", Validators.required],
       "tipo": ["", Validators.required]
     });
   }
   
-
-  ngOnInit() {
-    let id = this._routeParams.get('id');
-    //alert(id);
-    this._userService
-    .getUserId(id)
-    .subscribe((user) => {
-      this.user = user;
-    });
-  }
-
   gotoIndex(){
     let userId = this.user ? this.user._id : null;
     this._router.navigate(['/ListUsuarios']);
-  }
-  private _getAll():void {
-    this._userService
-        .getAll()
-        .subscribe((users) => {
-          this.user = users;
-        });
-  }
-  edit(user: User){
 
-    this._userService
-      .add(user.user, user.pass,user.nombre, user.apellido, user.tipo)
-      .subscribe((m) => {
-          //this.user.push(m);
+  }
+
+  goBack(){
+    window.history.back();
+  }
+
+  save(datos: FormData){
+      alert("entramos a guardar");
+      var user: string = this.userForm.controls['user'].value;
+      var pass: string = this.userForm.controls['pass'].value;
+      var passs: string = this.userForm.controls['passs'].value;
+      var nombre: string = this.userForm.controls['nombre'].value;
+      var apellido: string = this.userForm.controls['apellido'].value;
+      var tipo: string = this.userForm.controls['tipo'].value;
+      if (pass == passs && pass.length>3) {
+
+          this._userService
+              .add(user, pass, nombre, apellido, tipo)
+              .subscribe((m) => {
           (<Control>this.userForm.controls['user']).updateValue("");
           (<Control>this.userForm.controls['pass']).updateValue("");
           (<Control>this.userForm.controls['nombre']).updateValue("");
           (<Control>this.userForm.controls['apellido']).updateValue("");
           (<Control>this.userForm.controls['tipo']).updateValue("");
-    });
+              });
 
-    this._userService
-      .remove(user._id)
-      .subscribe(() => {
-        return this.user;
+          this.gotoIndex();
 
-      });
-    this.gotoIndex();
-
+      }else{
+          alert("Error, pass no valid. Try again.")
+      }
   }
-  delete(user: User) {
-    this._userService
-      .remove(user._id)
-      .subscribe(() => {
-        return this.user;
 
-      });
-    this.gotoIndex();
-
-  }
+  
 
 }

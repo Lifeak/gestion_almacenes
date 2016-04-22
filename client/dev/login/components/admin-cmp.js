@@ -22,6 +22,7 @@ var AdminCmp = (function () {
         this.title = "Admin";
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
+        this.router = router;
         // alert("logadmin es  " + this.logadmin);
     }
     AdminCmp.prototype.logout = function () {
@@ -49,7 +50,7 @@ var AdminCmp = (function () {
     AdminCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/admin.html',
-            providers: [login_service_1.LoginService]
+            providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS*/]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(login_service_1.LoginService)), 
