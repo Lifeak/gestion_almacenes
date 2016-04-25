@@ -56,7 +56,6 @@ var ClienteCmp = (function () {
     };
     ClienteCmp = __decorate([
         core_1.Component({
-            selector: 'cliente-cmp',
             templateUrl: 'client/dev/cliente/templates/cliente.html',
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [cliente_service_1.ClienteService]

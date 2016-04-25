@@ -7,7 +7,7 @@ const _almacenSchema = {
     direccion: {type: String, required: true},
     ciudad: {type: String, required: true},
     pais: {type: String, required: true},
-    telefono: {type: Number, required: true},
+    telefono: {type: String, required: true},
     encargado: {type: String, required:true}
 }
 

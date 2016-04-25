@@ -1,0 +1,51 @@
+<div class="cliente-container">
+  <form class="almacen-form"
+        [ngFormModel]="almacenForm"
+        (submit)="save(almacenForm)">
+
+    <h1 class="cliente-title">Nuevo almacen</h1>
+
+    <br/>Nombre:<br/>
+    <input type="text"
+           ngControl="nombre"
+           [class.cliente-error]="!almacenForm.valid"
+           placeholder="Nombre"
+           autofocus />
+   <br/>Direccion:<br/>
+   <input type="text"
+           ngControl="direccion"
+           [class.cliente-error]="!almacenForm.valid"
+           placeholder="Direccion"
+           autofocus />
+  <br/>Ciudad:<br/>
+  <input type="text"
+           ngControl="ciudad"
+           [class.cliente-error]="!almacenForm.valid"
+           placeholder="Ciudad"
+           autofocus />
+   <br/>Pais:<br/>
+   <input type="text"
+           ngControl="pais"
+           [class.cliente-error]="!almacenForm.valid"
+           placeholder="Pais"
+           autofocus />
+   <br/>Telefono:<br/>
+   <input type="text"
+           ngControl="telefono"
+           [class.cliente-error]="!almacenForm.valid"
+           placeholder="telefono"
+           autofocus />
+     <br/>Encargado:<br/>
+     <input type="text"
+           ngControl="encargado"
+           [class.cliente-error]="!almacenForm.valid"
+           placeholder="Nombre del encargado"
+           autofocus />
+     
+<br/><br/>
+    <button type="submit"
+            [disabled]="!almacenForm.valid">Añadir</button>
+
+</form>
+
+<button (click)="gotoIndex()">Back</button>

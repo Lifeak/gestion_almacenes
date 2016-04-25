@@ -12,11 +12,12 @@ almacenSchema.statics.getAll = () => {
 
         Almacen
           .find(_query)
-          .exec((err, almacens) => {
+          .exec((err, almacenes) => {
               err ? reject(err)
-                  : resolve(almacens);
+                  : resolve(almacenes);
           });
       });
+    console.log("los putos almacenes son  "+almacenes);
 }
 
 almacenSchema.statics.getbyId = (id) => {

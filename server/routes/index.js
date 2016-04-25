@@ -11,6 +11,10 @@ const probandoRoutes = require('../commons/static/probando');
 const user= require('../commons/static/user');
 const userRoutes = require('../api/user/routes/user-routes');
 
+// Rutas del almacen, get y post
+const almacen= require('../commons/static/almacen');
+const almacenRoutes = require('../api/almacen/routes/almacen-routes');
+
 const loginRoutes= require('../auth/login/routes/login-routes');
 
 module.exports = class Routes {
@@ -18,6 +22,7 @@ module.exports = class Routes {
      TodoRoutes.init(router);
      ClienteRoutes.init(router);
      userRoutes.init(router);
+     almacenRoutes.init(router);
      loginRoutes.init(router);
 
  	router
@@ -31,8 +36,13 @@ module.exports = class Routes {
     .route('/u')
     .get(user.sendHola);
 
+  router
+    .route('/galmacenes')
+    .get(almacen.sendCRUD);
+
  
      app.use('/', router);
      app.use('/u',router);
+     app.use('/galmacenes',router);
    }
 }

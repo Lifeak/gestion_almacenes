@@ -1,17 +1,17 @@
 "use strict";
 
-const UserController = require('../controller/user-controller');
+const AlmacenController = require('../controller/almacen-controller');
 
-module.exports = class UserRoutes {
+module.exports = class AlmacenRoutes {
     static init(router) {
       router
-        .route('/api/user')
-        .get(UserController.getAll)
-        .post(UserController.createUser);
+        .route('/api/almacen')
+        .get(AlmacenController.getAll)
+        .post(AlmacenController.createAlmacen);
 
       router
-        .route('/api/user/:id')
-        .get(UserController.getbyId)
-        .delete(UserController.deleteUser);
+        .route('/api/almacen/:id')
+        .get(AlmacenController.getbyId)
+        .delete(AlmacenController.deleteAlmacen);
     }
 }

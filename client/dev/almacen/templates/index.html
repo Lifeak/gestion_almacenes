@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()" href="localhost:3000/#/ventas">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
                         Ventas
                             <i class="fa fa-tasks"></i>
                         </a>     
@@ -60,13 +60,13 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
                   <li class="sub-menu">
-                      <a href="/u" (click)="usuarios();" class="active">
+                      <a href="/u" (click)="usuarios();">
                           <i class="fa fa-users"></i>
                           <span>Control de usuarios</span>
                       </a>
                   </li>
                    <li class="sub-menu">
-                      <a href="/galmacenes" (click)="galmacenes();" >
+                      <a href="/galmacenes" (click)="almacenes();" class="active" >
                           <i class="fa fa-desktop"></i>
                           <span>Gestión almacenes</span>
                       </a>
@@ -100,7 +100,7 @@
                   <div class="col-lg-12 main-chart">
                      <nav>
    						<!--<li><a [routerLink]="['/ListUsuarios']">Listado</a></li>-->
-					    <li><a [routerLink]="['/CreateUsuario']">Nuevo usuario</a></li>
+					    <li><a [routerLink]="['/CreateAlmacen']">Nuevo almacen</a></li>
 					</nav>
    				 <div>
 		 		

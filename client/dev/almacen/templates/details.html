@@ -1,0 +1,23 @@
+<div class="cliente-container">
+  <h1>DETAILS</h1>
+    <div *ngIf="almacen">
+    	<h3>ALMACEN:</h3>
+        <label>Nombre: </label>
+        <input [(ngModel)]="almacen.nombre" placeholder="Nombre"/><br/>
+        <label>Direccion: </label>
+        <input [(ngModel)]="almacen.direccion" placeholder="Dirección"/><br/>
+      	<label>Ciudad: </label>
+      	<input [(ngModel)]="almacen.ciudad" placeholder="Ciudad"/><br/>
+      	<label>Pais: </label>
+      	<input [(ngModel)]="almacen.pais" placeholder="País"/><br/>
+        <label>Telefono: </label>
+        <input [(ngModel)]="almacen.telefono" placeholder="Telefono"/><br/>
+        <label>Encargado: </label>
+        <input [(ngModel)]="almacen.encargado" placeholder="Nombre del encargado"/><br/>
+    </div>
+    <p>
+      <button (click)="gotoIndex()">Back</button>
+      <button (click)="edit(almacen)">Save</button>
+      <button (click)="delete(almacen)">Delete</button>
+    </p>
+</div>
