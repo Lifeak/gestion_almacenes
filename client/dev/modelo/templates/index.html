@@ -22,13 +22,13 @@
                         
                      </li>   
                     <li class="dropdown" >
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()" style="background-color: grey; color:white;">
                            Compras
                             <i class="fa fa-tasks"></i>
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()" style="background-color: grey; color:white;">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
                         Ventas
                             <i class="fa fa-tasks"></i>
                             
@@ -58,6 +58,7 @@
       <!--header end-->
       <!--FIN MENU SUPERIOR-->
 
+      <!--header end-->
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -66,44 +67,55 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-
                   <li class="sub-menu">
-                      <a href="/gclientes" (click)="clientes();" class="active"  >
-                          <i class="fa fa-users"></i>
-                          <span>Clientes</span>
+                      <a href="javascript:;" (click)="c1=false">
+                          <i class="fa fa-home"></i>
+                          <span>Proveedores</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;" class="active" (click)="c1=true;" >
+                          <i class="fa fa-desktop"></i>
+                          <span>Productos</span>
+                      </a>
+                      <ul class="dropdown" *ngIf="c1==true">
+                          <li><a  href="general.html">Producto final</a></li>
+                          <li><a  href="buttons.html">Piezas</a></li>
+                          <li><a  href="/gmodelos" class="active">Modelos</a></li>
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" (click)="c1=false;" >
                           <i class="fa fa-cogs"></i>
-                          <span>Pedidos</span>
+                          <span>Pedido de compra</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;" (click)="c1=false;">
                           <i class="fa fa-book"></i>
+                          <span>Lotes</span>
+                      </a>
+                  </li>
+                   <li class="sub-menu" *ngIf="false">
+                      <a href="javascript:;" (click)="c1=false;" >
+                          <i class="fa fa-dashboard"></i>
+                          <span>Pedido de fabricacion</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu" *ngIf="false">
+                      <a href="javascript:;" (click)="c1=false;" >
+                          <i class="fa fa-dashboard"></i>
                           <span>Devoluciones</span>
                       </a>
                   </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-tasks"></i>
-                          <span>Salidas por avería</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>Garantías</span>
-                      </a>
-                  </li>
+
               </ul>
               <!-- sidebar menu end-->
           </div>
       </aside>
       <!--sidebar end-->
-      <!--header end-->
       
       
 
@@ -119,7 +131,7 @@
                   <div class="col-lg-12 main-chart">
                      <nav>
    						<!--<li><a [routerLink]="['/ListUsuarios']">Listado</a></li>-->
-					    <li><a [routerLink]="['/CreateCliente']">Nuevo cliente</a></li>
+					    <li><a [routerLink]="['/CreateModelo']">Nuevo modelo</a></li>
 					</nav>
    				 <div>
 		 		

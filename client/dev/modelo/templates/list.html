@@ -1,0 +1,10 @@
+<div class="cliente-container">
+<h2>LIST</h2>
+    <ul class="items">
+      <li *ngFor="#modelo of modelos"
+        [class.selected]="isSelected(modelo)"
+        (click)="onSelect(modelo)">
+        <span class="badge">{{modelo.nombre}}</span> {{modelo.modeloDe}}
+      </li>
+    </ul>
+</div>

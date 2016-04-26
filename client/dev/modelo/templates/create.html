@@ -1,0 +1,41 @@
+<div class="cliente-container">
+  <form class="modelo-form"
+        [ngFormModel]="modeloForm"
+        (submit)="save(modeloForm)">
+
+    <h1 class="cliente-title">Nuevo modelo</h1>
+
+    <br/>Nombre:<br/>
+    <input type="text"
+           ngControl="nombre"
+           [class.cliente-error]="!modeloForm.valid"
+           placeholder="Nombre de modelo"
+           autofocus />
+   <br/>Referencia interna:<br/>
+   <input type="text"
+           ngControl="refinterna"
+           [class.cliente-error]="!modeloForm.valid"
+           placeholder="Referencia interna"
+           autofocus />
+  <br/>Caracteristicas:<br/>
+  <input type="text"
+           ngControl="caracteristicas"
+           [class.cliente-error]="!modeloForm.valid"
+           placeholder="Caracteristicas"
+           autofocus />
+  <br/>¿Qué tipo de modelo es?:<br/>Recuerda que se considera Producto al Valiryo completo, lo demás son piezas.<br/>
+  <select name="modeloDe"
+           ngControl="modeloDe"
+           placeholder="Selecciona el tipo.."
+           [class.cliente-error]="!modeloForm.valid">
+           <option value="Pieza">Pieza</option>
+           <option value="Producto">Producto</option>
+          </select>
+     
+<br/><br/>
+    <button type="submit"
+            [disabled]="!modeloForm.valid">Añadir</button>
+
+</form>
+
+<button (click)="gotoIndex()">Back</button>

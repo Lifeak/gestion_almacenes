@@ -1,51 +1,72 @@
 <div class="cliente-container">
-  <form class="user-form"
-        [ngFormModel]="userForm"
-        (submit)="save(todoForm)">
+  <form class="cliente-form"
+        [ngFormModel]="clienteForm"
+        (submit)="save(clienteForm)">
 
-    <h1 class="cliente-title">Nuevo usuario</h1>
+    <h1 class="cliente-title">Nuevo cliente</h1>
 
-    <br/>Usuario:<br/>
+    <br/>NIF/DNI:<br/>
     <input type="text"
-           ngControl="user"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="user"
-           autofocus />
-   <br/>Constraseña:<br/>
-   <input type="password"
-           ngControl="pass"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="pass"
-           autofocus />
-  <br/>Confirma la contaseña:<br/>
-  <input type="password"
-           ngControl="passs"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="Confirm pass"
+           ngControl="_id"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="NIF/DNI"
            autofocus />
    <br/>Nombre:<br/>
    <input type="text"
            ngControl="nombre"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="nombre"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="Nombre del cliente"
            autofocus />
-   <br/>Apellido:<br/>
+  <br/>Direccion:<br/>
+  <input type="text"
+           ngControl="direccion"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="Dirección"
+           autofocus />
+   <br/>Ciudad:<br/>
    <input type="text"
-           ngControl="apellido"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="apellido"
+           ngControl="ciudad"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="Ciudad"
            autofocus />
-     <br/>Tipo:<br/>
-     <select name="tipo"
-           ngControl="tipo"
-           placeholder="Selecciona el tipo.."
-           [class.cliente-error]="!userForm.valid">
-           <option value="admin" selected>Admin</option>
-           <option value="encargado">Encargado</option>
-          </select>
+   <br/>Pais:<br/>
+   <input type="text"
+           ngControl="pais"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="País"
+           autofocus />
+   <br/>Telefono:<br/>
+    <input type="text"
+           ngControl="telefono1"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="Teléfono"
+           autofocus />
+   <br/>Telefono2:<br/>
+   <input type="text"
+           ngControl="telefono2"
+           placeholder="Otro teléfono de contacto"
+           autofocus />
+  <br/>Puesto de trabajo:<br/>
+  <input type="text"
+           ngControl="puestoTrabajo"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="Puesto de trabajo o sector"
+           autofocus />
+   <br/>Email:<br/>
+   <input type="text"
+           ngControl="email"
+           [class.cliente-error]="!clienteForm.valid"
+           placeholder="Email"
+           autofocus />
+   <br/>Detalles:<br/>
+   <input type="text"
+           ngControl="detalles"
+           placeholder="Detalles"
+           autofocus />
+     
 <br/><br/>
     <button type="submit"
-            [disabled]="!userForm.valid">Añadir</button>
+            [disabled]="!clienteForm.valid">Añadir</button>
 
 </form>
 

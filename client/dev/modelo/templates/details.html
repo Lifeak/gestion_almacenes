@@ -1,0 +1,14 @@
+<div class="cliente-container">
+  <h1>DETAILS</h1>
+    <div *ngIf="modelo">
+    	<h3>MODELO:</h3>
+        <label>Nombre: </label>
+        <input [(ngModel)]="modelo.nombre" placeholder="Nombre"/><br/>
+
+    </div>
+    <p>
+      <button (click)="gotoIndex()">Back</button>
+      <button (click)="edit(modelo)">Save</button>
+      <button (click)="delete(modelo)">Delete</button>
+    </p>
+</div>

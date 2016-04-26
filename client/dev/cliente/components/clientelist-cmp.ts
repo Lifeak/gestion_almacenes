@@ -19,25 +19,22 @@ ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
-import {User, UserService} from '../services/user-service';
-
-
+import {Cliente, ClienteService} from '../services/cliente-service';
 
 @Component({
   selector: 'ListUsuarios',
-  templateUrl: 'client/dev/user/templates/list.html',
-  styleUrls: ['client/dev/user/styles/cliente.css'],
+  templateUrl: 'client/dev/cliente/templates/list.html',
+  styleUrls: ['client/dev/cliente/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
-  providers: [UserService]
+  providers: [ClienteService]
 })
 
-export class UserListCmp implements OnInit {
-  title: string = "Users";
-  users: User[] = [];
+export class ClienteListCmp implements OnInit {
+  clientes: Cliente[] = [];
   private _selectedId: string;
 
 
-  constructor(private _userService: UserService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _clienteService: ClienteService, private _router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -46,16 +43,16 @@ export class UserListCmp implements OnInit {
   }
 
   private _getAll():void {
-    this._userService
+    this._clienteService
         .getAll()
-        .subscribe((users) => {
-          this.users = users;
+        .subscribe((clientes) => {
+          this.clientes = clientes;
         });
   }
-  isSelected(user:User){
-    return user._id === this._selectedId;
+  isSelected(cliente:Cliente){
+    return cliente._id === this._selectedId;
   }
-  onSelect(user:User){
-    this._router.navigate(['DetailsUsuarios',{id: user._id}]);
+  onSelect(cliente:Cliente){
+    this._router.navigate(['DetailsCliente',{id: cliente._id}]);
   }
 }

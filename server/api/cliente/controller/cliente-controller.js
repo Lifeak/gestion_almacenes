@@ -12,7 +12,7 @@ module.exports = class ClienteController {
 
   static getbyId(req,res){
     let _id = req.params.id;
-    ClienterDAO
+    ClienteDAO
       .getbyId(_id)
       .then(cliente => res.status(200).json(cliente))
       .catch(error => res.status(400).json(error));
@@ -29,7 +29,7 @@ module.exports = class ClienteController {
 
   static deleteCliente(req, res) {
     let _id = req.params.id;
-
+    console.log("al controlador nos llega con el id "+_id);
     ClienteDAO
       .deleteCliente(_id)
       .then(() => res.status(200).end())

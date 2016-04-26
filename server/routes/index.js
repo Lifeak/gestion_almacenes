@@ -15,6 +15,14 @@ const userRoutes = require('../api/user/routes/user-routes');
 const almacen= require('../commons/static/almacen');
 const almacenRoutes = require('../api/almacen/routes/almacen-routes');
 
+// Rutas del cliente, get y post
+const cliente= require('../commons/static/cliente');
+const clienteRoutes = require('../api/cliente/routes/cliente-routes');
+
+// Rutas de los modelos de producto y pieza, get y post
+const modelo= require('../commons/static/modelo');
+const modeloRoutes = require('../api/modelo/routes/modelo-routes');
+
 const loginRoutes= require('../auth/login/routes/login-routes');
 
 module.exports = class Routes {
@@ -23,6 +31,8 @@ module.exports = class Routes {
      ClienteRoutes.init(router);
      userRoutes.init(router);
      almacenRoutes.init(router);
+     clienteRoutes.init(router);
+     modeloRoutes.init(router);
      loginRoutes.init(router);
 
  	router
@@ -40,9 +50,19 @@ module.exports = class Routes {
     .route('/galmacenes')
     .get(almacen.sendCRUD);
 
+  router
+    .route('/gclientes')
+    .get(cliente.sendCRUD);
+
+  router
+    .route('/gmodelos')
+    .get(modelo.sendCRUD);
+
  
      app.use('/', router);
      app.use('/u',router);
      app.use('/galmacenes',router);
+     app.use('/gclientes',router);
+     app.use('/gmodelos',router);
    }
 }

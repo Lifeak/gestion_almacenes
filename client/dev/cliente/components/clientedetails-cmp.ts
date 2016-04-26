@@ -18,83 +18,89 @@ import {
 } from 'angular2/router';
 
 
-import {UserService, User} from '../services/user-service';
+import {ClienteService, Cliente} from '../services/cliente-service';
 import {LoginService} from '../../login/services/login-service';
-
-//import {UserCmp} from './user-cmp';
-
 
 
 @Component({
-  //selector: 'user-cmp',
-  templateUrl: 'client/dev/user/templates/details.html',
-  styleUrls: ['client/dev/user/styles/cliente.css']
+  templateUrl: 'client/dev/cliente/templates/details.html',
+  styleUrls: ['client/dev/cliente/styles/cliente.css']
 })
 
 
-export class UserDetailsCmp implements OnInit {
-  @Input() user: User;
-  userForm: ControlGroup;
+export class ClienteDetailsCmp implements OnInit {
+  @Input() cliente: Cliente;
+  clienteForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _userService: UserService, @Inject(LoginService) private _loginService: LoginService) {
-    this.userForm = fb.group({
-      "user": ["", Validators.required],
-      "pass": ["", Validators.required],
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _clienteService: ClienteService, @Inject(LoginService) private _loginService: LoginService) {
+    this.clienteForm = fb.group({
+      "_id": ["", Validators.required],
       "nombre": ["", Validators.required],
-      "apellido": ["", Validators.required],
-      "tipo": ["", Validators.required]
+      "direccion": ["", Validators.required],
+      "ciudad": ["", Validators.required],
+      "pais": ["", Validators.required],
+      "telefono1": ["", Validators.required],
+      "telefono2": [""],
+      "puestoTrabajo": ["", Validators.required],
+      "email": ["", Validators.required],
+      "detalles": [""]
     });
   }
   
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    //alert(id);
-    this._userService
-    .getUserId(id)
-    .subscribe((user) => {
-      this.user = user;
+    alert(id);
+    this._clienteService
+    .getClienteId(id)
+    .subscribe((cliente) => {
+      this.cliente = cliente;
     });
   }
 
   gotoIndex(){
-    let userId = this.user ? this.user._id : null;
-    this._router.navigate(['/ListUsuarios']);
+    let clienteId = this.cliente ? this.cliente._id : null;
+    this._router.navigate(['/ListClientes']);
   }
   private _getAll():void {
-    this._userService
+    this._clienteService
         .getAll()
-        .subscribe((users) => {
-          this.user = users;
+        .subscribe((clientes) => {
+          this.cliente = clientes;
         });
   }
-  edit(user: User){
-
-    this._userService
-      .add(user.user, user.pass,user.nombre, user.apellido, user.tipo)
-      .subscribe((m) => {
-          //this.user.push(m);
-          (<Control>this.userForm.controls['user']).updateValue("");
-          (<Control>this.userForm.controls['pass']).updateValue("");
-          (<Control>this.userForm.controls['nombre']).updateValue("");
-          (<Control>this.userForm.controls['apellido']).updateValue("");
-          (<Control>this.userForm.controls['tipo']).updateValue("");
-    });
-
-    this._userService
-      .remove(user._id)
+  edit(cliente: Cliente){
+    this._clienteService
+      .remove(cliente._id)
       .subscribe(() => {
-        return this.user;
+        return this.cliente;
 
       });
+    
+    this._clienteService
+      .add(cliente._id,cliente.nombre,cliente.direccion,cliente.ciudad,cliente.pais,cliente.telefono1,cliente.telefono2,cliente.puestoTrabajo, cliente.email,cliente.detalles)
+      .subscribe((m) => {
+          (<Control>this.clienteForm.controls['_id']).updateValue("");
+          (<Control>this.clienteForm.controls['nombre']).updateValue("");
+          (<Control>this.clienteForm.controls['direccion']).updateValue("");
+          (<Control>this.clienteForm.controls['ciudad']).updateValue("");
+          (<Control>this.clienteForm.controls['pais']).updateValue("");
+          (<Control>this.clienteForm.controls['telefono1']).updateValue("");
+          (<Control>this.clienteForm.controls['telefono2']).updateValue("");
+          (<Control>this.clienteForm.controls['puestoTrabajo']).updateValue("");
+          (<Control>this.clienteForm.controls['email']).updateValue("");
+          (<Control>this.clienteForm.controls['detalles']).updateValue("");
+    });
+
+
     this.gotoIndex();
 
   }
-  delete(user: User) {
-    this._userService
-      .remove(user._id)
+  delete(cliente: Cliente) {
+    this._clienteService
+      .remove(cliente._id)
       .subscribe(() => {
-        return this.user;
+      return this.cliente;
 
       });
     this.gotoIndex();

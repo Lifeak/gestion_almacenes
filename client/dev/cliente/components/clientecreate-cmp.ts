@@ -39,10 +39,10 @@ export class ClienteCreateCmp{
       "ciudad": ["", Validators.required],
       "pais": ["", Validators.required],
       "telefono1": ["", Validators.required],
-      "telefono2": ["", Validators.required],
+      "telefono2": [""],
       "puestoTrabajo": ["", Validators.required],
       "email": ["", Validators.required],
-      "detalles": ["", Validators.required]
+      "detalles": [""]
     });
   }
   

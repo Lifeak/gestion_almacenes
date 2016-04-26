@@ -1,21 +1,31 @@
 <div class="cliente-container">
   <h1>DETAILS</h1>
-    <div *ngIf="user">
-    	<h3>"USUARIO:"</h3>
-        <label>User: </label>
-        <input [(ngModel)]="user.user" placeholder="user"/><br/>
-        <label>Pass: </label>
-        <input [(ngModel)]="user.pass" placeholder="pass"/><br/>
-      	<label>Nombre: </label>
-      	<input [(ngModel)]="user.nombre" placeholder="nombre"/><br/>
-      	<label>Apellido: </label>
-      	<input [(ngModel)]="user.apellido" placeholder="apellido"/><br/>
-        <label>Tipo: </label>
-        <input [(ngModel)]="user.tipo" placeholder="tipo"/><br/>
+    <div *ngIf="cliente">
+    	<h3>CLIENTE:</h3>
+        <label>NIF/DNI: </label>
+        <input [(ngModel)]="cliente._id" placeholder="NIF/DNI"/><br/>
+        <label>Nombre: </label>
+        <input [(ngModel)]="cliente.nombre" placeholder="Nombre"/><br/>
+      	<label>Dirección: </label>
+      	<input [(ngModel)]="cliente.direccion" placeholder="Dirección"/><br/>
+      	<label>Ciudad: </label>
+      	<input [(ngModel)]="cliente.ciudad" placeholder="Ciudad"/><br/>
+        <label>País: </label>
+        <input [(ngModel)]="cliente.pais" placeholder="País"/><br/>
+        <label>Teléfono: </label>
+        <input [(ngModel)]="cliente.telefono1" placeholder="Teléfono"/><br/>
+        <label>Otro teléfono: </label>
+        <input [(ngModel)]="cliente.telefono2" placeholder="Teléfono"/><br/>
+        <label>Puesto de trabajo: </label>
+        <input [(ngModel)]="cliente.puestoTrabajo" placeholder="Trabajo"/><br/>
+        <label>Email: </label>
+        <input [(ngModel)]="cliente.email" placeholder="Email"/><br/>
+        <label>Detalles: </label>
+        <input [(ngModel)]="cliente.detalles" placeholder="Detalles"/><br/>
     </div>
     <p>
       <button (click)="gotoIndex()">Back</button>
-      <button (click)="edit(user)">Save</button>
-      <button (click)="delete(user)">Delete</button>
+      <button (click)="edit(cliente)">Save</button>
+      <button (click)="delete(cliente)">Delete</button>
     </p>
 </div>

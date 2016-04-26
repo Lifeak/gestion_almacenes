@@ -14,59 +14,56 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
-var Cliente = (function () {
-    function Cliente(_id, nombre, direccion, ciudad, pais, telefono1, telefono2, puestoTrabajo, email, detalles) {
+var Modelo = (function () {
+    function Modelo(_id, nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades) {
         this._id = _id;
         this.nombre = nombre;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.pais = pais;
-        this.telefono1 = telefono1;
-        this.telefono2 = telefono2;
-        this.puestoTrabajo = puestoTrabajo;
-        this.email = email;
-        this.detalles = detalles;
+        this.refinterna = refinterna;
+        this.caracteristicas = caracteristicas;
+        this.modeloDe = modeloDe;
+        this.compuestoPor = compuestoPor;
+        this.unidades = unidades;
     }
-    return Cliente;
+    return Modelo;
 }());
-exports.Cliente = Cliente;
-var ClienteService = (function () {
-    function ClienteService(_http) {
+exports.Modelo = Modelo;
+var ModeloService = (function () {
+    function ModeloService(_http) {
         this._http = _http;
     }
-    ClienteService.prototype.getAll = function () {
+    ModeloService.prototype.getAll = function () {
         return this._http
-            .get(ClienteService.ENDPOINT.replace(':id', ''))
+            .get(ModeloService.ENDPOINT.replace(':id', ''))
             .map(function (r) { return r.json(); });
     };
-    ClienteService.prototype.gotoIndex = function () {
+    ModeloService.prototype.gotoIndex = function () {
         return this._http
-            .get(ClienteService.ENDPOINT.replace(':id', ''))
+            .get(ModeloService.ENDPOINT.replace(':id', ''))
             .map(function (r) { return r.json(); });
     };
-    ClienteService.prototype.getClienteId = function (id) {
+    ModeloService.prototype.getModeloId = function (id) {
         return this._http
-            .get(ClienteService.ENDPOINT.replace(':id', id))
+            .get(ModeloService.ENDPOINT.replace(':id', id))
             .map(function (r) { return r.json(); });
     };
-    ClienteService.prototype.add = function (_id, nombre, direccion, ciudad, pais, telefono1, telefono2, puestoTrabajo, email, detalles) {
-        var body = JSON.stringify({ _id: _id, nombre: nombre, direccion: direccion, ciudad: ciudad, pais: pais, telefono1: telefono1, telefono2: telefono2, puestoTrabajo: puestoTrabajo, email: email, detalles: detalles });
+    ModeloService.prototype.add = function (nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades) {
+        var body = JSON.stringify({ nombre: nombre, refinterna: refinterna, caracteristicas: caracteristicas, modeloDe: modeloDe, compuestoPor: compuestoPor, unidades: unidades });
         alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http
-            .post(ClienteService.ENDPOINT.replace(':id', ''), body, { headers: headers })
+            .post(ModeloService.ENDPOINT.replace(':id', ''), body, { headers: headers })
             .map(function (r) { return r.json(); });
     };
-    ClienteService.prototype.remove = function (id) {
+    ModeloService.prototype.remove = function (id) {
         return this._http
-            .delete(ClienteService.ENDPOINT.replace(':id', id));
+            .delete(ModeloService.ENDPOINT.replace(':id', id));
     };
-    ClienteService.ENDPOINT = '/api/cliente/:id';
-    ClienteService = __decorate([
+    ModeloService.ENDPOINT = '/api/modelo/:id';
+    ModeloService = __decorate([
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], ClienteService);
-    return ClienteService;
+    ], ModeloService);
+    return ModeloService;
 }());
-exports.ClienteService = ClienteService;
+exports.ModeloService = ModeloService;

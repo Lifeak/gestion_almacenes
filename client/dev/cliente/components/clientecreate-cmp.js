@@ -14,66 +14,72 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var user_service_1 = require('../services/user-service');
-//import {UserCmp} from './user-cmp';
-var UserCreateCmp = (function () {
-    function UserCreateCmp(fb, _router, _routeParams, _userService) {
+var cliente_service_1 = require('../services/cliente-service');
+var ClienteCreateCmp = (function () {
+    function ClienteCreateCmp(fb, _router, _routeParams, _clienteService) {
         this._router = _router;
         this._routeParams = _routeParams;
-        this._userService = _userService;
-        this.userForm = fb.group({
-            "user": ["", common_1.Validators.required],
-            "pass": ["", common_1.Validators.required],
-            "passs": ["", common_1.Validators.required],
+        this._clienteService = _clienteService;
+        this.clienteForm = fb.group({
+            "_id": ["", common_1.Validators.required],
             "nombre": ["", common_1.Validators.required],
-            "apellido": ["", common_1.Validators.required],
-            "tipo": ["", common_1.Validators.required]
+            "direccion": ["", common_1.Validators.required],
+            "ciudad": ["", common_1.Validators.required],
+            "pais": ["", common_1.Validators.required],
+            "telefono1": ["", common_1.Validators.required],
+            "telefono2": [""],
+            "puestoTrabajo": ["", common_1.Validators.required],
+            "email": ["", common_1.Validators.required],
+            "detalles": [""]
         });
     }
-    UserCreateCmp.prototype.gotoIndex = function () {
-        var userId = this.user ? this.user._id : null;
-        this._router.navigate(['/ListUsuarios']);
+    ClienteCreateCmp.prototype.gotoIndex = function () {
+        var clienteId = this.cliente ? this.cliente._id : null;
+        this._router.navigate(['/ListClientes']);
     };
-    UserCreateCmp.prototype.goBack = function () {
+    ClienteCreateCmp.prototype.goBack = function () {
         window.history.back();
     };
-    UserCreateCmp.prototype.save = function (datos) {
+    ClienteCreateCmp.prototype.save = function (datos) {
         var _this = this;
-        alert("entramos a guardar");
-        var user = this.userForm.controls['user'].value;
-        var pass = this.userForm.controls['pass'].value;
-        var passs = this.userForm.controls['passs'].value;
-        var nombre = this.userForm.controls['nombre'].value;
-        var apellido = this.userForm.controls['apellido'].value;
-        var tipo = this.userForm.controls['tipo'].value;
-        if (pass == passs && pass.length > 3) {
-            this._userService
-                .add(user, pass, nombre, apellido, tipo)
-                .subscribe(function (m) {
-                _this.userForm.controls['user'].updateValue("");
-                _this.userForm.controls['pass'].updateValue("");
-                _this.userForm.controls['nombre'].updateValue("");
-                _this.userForm.controls['apellido'].updateValue("");
-                _this.userForm.controls['tipo'].updateValue("");
-            });
-            this.gotoIndex();
-        }
-        else {
-            alert("Error, pass no valid. Try again.");
-        }
+        var _id = this.clienteForm.controls['_id'].value;
+        var nombre = this.clienteForm.controls['nombre'].value;
+        var direccion = this.clienteForm.controls['direccion'].value;
+        var ciudad = this.clienteForm.controls['ciudad'].value;
+        var pais = this.clienteForm.controls['pais'].value;
+        var telefono1 = this.clienteForm.controls['telefono1'].value;
+        var telefono2 = this.clienteForm.controls['telefono2'].value;
+        var puestoTrabajo = this.clienteForm.controls['puestoTrabajo'].value;
+        var email = this.clienteForm.controls['email'].value;
+        var detalles = this.clienteForm.controls['detalles'].value;
+        this._clienteService
+            .add(_id, nombre, direccion, ciudad, pais, telefono1, telefono2, puestoTrabajo, email, detalles)
+            .subscribe(function (m) {
+            _this.clienteForm.controls['_id'].updateValue("");
+            _this.clienteForm.controls['nombre'].updateValue("");
+            _this.clienteForm.controls['direccion'].updateValue("");
+            _this.clienteForm.controls['ciudad'].updateValue("");
+            _this.clienteForm.controls['pais'].updateValue("");
+            _this.clienteForm.controls['telefono1'].updateValue("");
+            _this.clienteForm.controls['telefono2'].updateValue("");
+            _this.clienteForm.controls['puestoTrabajo'].updateValue("");
+            _this.clienteForm.controls['email'].updateValue("");
+            _this.clienteForm.controls['detalles'].updateValue("");
+        });
+        this.gotoIndex();
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', user_service_1.User)
-    ], UserCreateCmp.prototype, "user", void 0);
-    UserCreateCmp = __decorate([
+        __metadata('design:type', cliente_service_1.Cliente)
+    ], ClienteCreateCmp.prototype, "cliente", void 0);
+    ClienteCreateCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/user/templates/create.html',
-            styleUrls: ['client/dev/user/styles/cliente.css']
+            templateUrl: 'client/dev/cliente/templates/create.html',
+            styleUrls: ['client/dev/cliente/styles/cliente.css']
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService])
-    ], UserCreateCmp);
-    return UserCreateCmp;
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, cliente_service_1.ClienteService])
+    ], ClienteCreateCmp);
+    return ClienteCreateCmp;
 }());
-exports.UserCreateCmp = UserCreateCmp;
+exports.ClienteCreateCmp = ClienteCreateCmp;
