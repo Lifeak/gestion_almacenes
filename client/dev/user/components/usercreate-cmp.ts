@@ -20,11 +20,6 @@ import {
 
 import {UserService, User} from '../services/user-service';
 
-
-//import {UserCmp} from './user-cmp';
-
-
-
 @Component({
   templateUrl: 'client/dev/user/templates/create.html',
   styleUrls: ['client/dev/user/styles/cliente.css']

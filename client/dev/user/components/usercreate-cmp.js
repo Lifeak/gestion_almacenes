@@ -15,7 +15,6 @@ var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
-//import {UserCmp} from './user-cmp';
 var UserCreateCmp = (function () {
     function UserCreateCmp(fb, _router, _routeParams, _userService) {
         this._router = _router;

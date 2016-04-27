@@ -31,7 +31,34 @@
            <option value="Pieza">Pieza</option>
            <option value="Producto">Producto</option>
           </select>
-     
+   <br/>Componentes del modelo:<br/>
+   <div *ngFor="#comp of components; #i=index">
+   <label>
+    <input type="checkbox"
+        name="compuesto"
+        ngControl="compuestoPor"
+        value="{{comp}}"
+        (change)="setOption(comp);u=true;"
+        [class.cliente-error]="!modeloForm.valid"
+        />
+        {{comp}}
+        
+        </label></div>
+        <div *ngIf="u==true;">
+           <br/>Unidades:
+            <select id="un" 
+                name="unidades"
+                ngControl="unidades"
+                (change)="setUds(modeloForm);u=false;"
+                (change)="false;setUds(modeloForm);"
+                [class.cliente-error]="!modeloForm.valid">
+                <option selected="selected" value="0" >0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+             </select>   
+        </div>
+ 
+
 <br/><br/>
     <button type="submit"
             [disabled]="!modeloForm.valid">Añadir</button>

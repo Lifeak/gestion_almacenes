@@ -20,6 +20,13 @@ var ModeloCreateCmp = (function () {
         this._router = _router;
         this._routeParams = _routeParams;
         this._modeloService = _modeloService;
+        this.components = ['Carcasa', 'Columna'];
+        this.componentsMAp = {
+            Carcasa: false,
+            Columna: false
+        };
+        this.componentsChecked = [];
+        this.uds = [];
         this.modeloForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "refinterna": ["", common_1.Validators.required],
@@ -28,6 +35,8 @@ var ModeloCreateCmp = (function () {
             "compuestoPor": ["", common_1.Validators.required],
             "unidades": ["", common_1.Validators.required],
         });
+        this.componentsChecked = [];
+        this.uds = [];
     }
     ModeloCreateCmp.prototype.gotoIndex = function () {
         this._router.navigate(['/ListModelos']);
@@ -35,14 +44,53 @@ var ModeloCreateCmp = (function () {
     ModeloCreateCmp.prototype.goBack = function () {
         window.history.back();
     };
+    ModeloCreateCmp.prototype.setOption = function (comp) {
+        var a = false;
+        var ie = -1;
+        alert("el componente es " + comp);
+        for (var i = 0; i <= this.componentsChecked.length; ++i) {
+            alert("hola");
+            if (this.componentsChecked[i] != comp) {
+                a = false;
+            }
+            else {
+                a = true;
+                ie = i;
+                alert("i " + ie);
+                alert("detectada copia");
+            }
+        }
+        if (a == false) {
+            if (this.componentsChecked.indexOf(comp) == -1) {
+                this.componentsChecked.push(comp);
+                if (this.uds.length > 0) {
+                    this.uds.push(this.uds[this.uds.length - 1]);
+                    alert("setOption   uds " + this.uds.toString());
+                }
+            }
+        }
+    };
+    ModeloCreateCmp.prototype.setUds = function (datos) {
+        var u = this.modeloForm.controls['unidades'].value;
+        alert("las unidades son " + u);
+        if (this.uds.length == this.componentsChecked.length) {
+            alert("setUDs   long de uds " + this.uds.length);
+            alert("setUDS   long de components " + this.componentsChecked.length);
+            this.uds.pop();
+            //this.uds[this.uds.length] = this.uds.push(u);
+            this.uds.push(u);
+        }
+        else
+            this.uds.push(u);
+    };
     ModeloCreateCmp.prototype.save = function (datos) {
         var _this = this;
         var nombre = this.modeloForm.controls['nombre'].value;
         var refinterna = this.modeloForm.controls['refinterna'].value;
         var caracteristicas = this.modeloForm.controls['caracteristicas'].value;
         var modeloDe = this.modeloForm.controls['modeloDe'].value;
-        var compuestoPor = this.modeloForm.controls['compuestoPor'].value;
-        var unidades = this.modeloForm.controls['unidades'].value;
+        var compuestoPor = this.componentsChecked;
+        var unidades = this.uds;
         this._modeloService
             .add(nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades)
             .subscribe(function (m) {
