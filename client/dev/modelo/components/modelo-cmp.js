@@ -30,8 +30,8 @@ var ModeloCmp = (function () {
             "refinterna": ["", common_1.Validators.required],
             "caracteristicas": ["", common_1.Validators.required],
             "modeloDe": ["", common_1.Validators.required],
-            "compuestoPor": ["", common_1.Validators.required],
-            "unidades": ["", common_1.Validators.required],
+            "compuestoPor": [""],
+            "unidades": [""],
         });
     }
     ModeloCmp.prototype.ngOnInit = function () {

@@ -38,8 +38,8 @@ export class ModeloDetailsCmp implements OnInit {
       "refinterna": ["", Validators.required],
       "caracteristicas": ["", Validators.required],
       "modeloDe": ["", Validators.required],
-      "compuestoPor": ["", Validators.required],
-      "unidades": ["", Validators.required]
+      "compuestoPor": [""],
+      "unidades": [""]
     });
   }
   
@@ -67,6 +67,7 @@ export class ModeloDetailsCmp implements OnInit {
   }
   edit(modelo: Modelo){
     let id = this._routeParams.get('id');
+    alert("el id del modelo que vamos a borrar es " + id);
     this._modeloService
       .add(modelo.nombre,modelo.refinterna,modelo.caracteristicas,modelo.modeloDe,modelo.compuestoPor,modelo.unidades)
       .subscribe((m) => {

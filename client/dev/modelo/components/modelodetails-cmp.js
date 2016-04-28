@@ -27,8 +27,8 @@ var ModeloDetailsCmp = (function () {
             "refinterna": ["", common_1.Validators.required],
             "caracteristicas": ["", common_1.Validators.required],
             "modeloDe": ["", common_1.Validators.required],
-            "compuestoPor": ["", common_1.Validators.required],
-            "unidades": ["", common_1.Validators.required]
+            "compuestoPor": [""],
+            "unidades": [""]
         });
     }
     ModeloDetailsCmp.prototype.ngOnInit = function () {
@@ -56,6 +56,7 @@ var ModeloDetailsCmp = (function () {
     ModeloDetailsCmp.prototype.edit = function (modelo) {
         var _this = this;
         var id = this._routeParams.get('id');
+        alert("el id del modelo que vamos a borrar es " + id);
         this._modeloService
             .add(modelo.nombre, modelo.refinterna, modelo.caracteristicas, modelo.modeloDe, modelo.compuestoPor, modelo.unidades)
             .subscribe(function (m) {

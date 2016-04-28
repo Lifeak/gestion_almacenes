@@ -69,8 +69,8 @@ export class ModeloCmp implements OnInit {
       "refinterna": ["", Validators.required],
       "caracteristicas": ["", Validators.required],
       "modeloDe": ["", Validators.required],
-      "compuestoPor": ["", Validators.required],
-      "unidades": ["", Validators.required],
+      "compuestoPor": [""],
+      "unidades": [""],
 
     });
   }

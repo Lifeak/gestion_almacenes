@@ -4,7 +4,16 @@
     	<h3>MODELO:</h3>
         <label>Nombre: </label>
         <input [(ngModel)]="modelo.nombre" placeholder="Nombre"/><br/>
-
+        <label>Referencia interna: </label>
+        <input [(ngModel)]="modelo.refinterna" placeholder="Referencia interna"/><br/>
+        <label>Caracteristicas: </label>
+        <input [(ngModel)]="modelo.caracteristicas" placeholder="Caracteristicas"/><br/>
+        <label>Es: </label>
+        <input [(ngModel)]="modelo.modeloDe" placeholder="Es"/><br/>
+        <label>Compuesto Por: </label>
+        <input [(ngModel)]="modelo.compuestoPor" placeholder="Componentes"/><br/>
+        <label>Unidades: </label>
+        <input [(ngModel)]="modelo.unidades" placeholder="Uds"/><br/>
     </div>
     <p>
       <button (click)="gotoIndex()">Back</button>

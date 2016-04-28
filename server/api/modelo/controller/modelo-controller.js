@@ -19,7 +19,9 @@ module.exports = class ModeloController {
   }
 
   static createModelo(req, res) {
+    console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       let _modelo = req.body;
+      console.log("el modelo que deberia llegar es: "+_modelo.nombre,_modelo.refinterna,_modelo.caracteristicas,_modelo.modeloDe, _modelo.compuestoPor);
       ModeloDAO
         .createModelo(_modelo)
         .then(modelo => res.status(201).json(modelo))

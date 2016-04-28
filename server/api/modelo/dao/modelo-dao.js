@@ -34,16 +34,19 @@ modeloSchema.statics.getbyId = (id) => {
 }
 
 modeloSchema.statics.createModelo = (modelo) => {
+  console.log("entro a guardar");
     return new Promise((resolve, reject) => {
       if (!_.isObject(modelo))
           return reject(new TypeError('modelo is not a valid object.'));
-      
+      console.log("voy a guardar");
       let _modelo = new Modelo(modelo);
       _modelo.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
       });
+
     });
+    console.log("en teoria he guardado");
 }
 
 modeloSchema.statics.deleteModelo = (id) => {
