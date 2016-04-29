@@ -1,0 +1,23 @@
+<div class="cliente-container">
+  <h1>DETAILS</h1>
+    <div *ngIf="modelo">
+    	<h3>MODELO: {{modelo.nombre}}</h3>
+        <label>Nombre: </label>
+        <input [(ngModel)]="modelo.nombre" placeholder="Nombre"/><br/>
+        <label>Referencia interna: </label>
+        <input [(ngModel)]="modelo.refinterna" placeholder="Referencia interna"/><br/>
+        <label>Caracteristicas: </label>
+        <input [(ngModel)]="modelo.caracteristicas" placeholder="Caracteristicas"/><br/>
+        <label>Es: </label>
+        <input [(ngModel)]="modelo.modeloDe" placeholder="Es"/><br/><br/>
+        <div *ngIf="modelo.compuestoPor.length!=0">
+        <label>Compuesto Por: </label>
+           <td><ul *ngFor="#item of modelo.compuestoPor; #i=index;" (click)="buscar(item);"><li>{{item}}</li>  </ul></td>
+           <td><ul *ngFor="#it of modelo.unidades; #ie=indexe;">{{it}}  </ul></td>
+       </div>
+
+      <button (click)="gotoIndex()">Back</button>
+      <button (click)="edit(modelo)">Save</button>
+      <button (click)="delete(modelo)">Delete</button>
+
+</div>

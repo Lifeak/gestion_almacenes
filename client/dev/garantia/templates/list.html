@@ -1,0 +1,10 @@
+<div class="cliente-container">
+<h2>LIST</h2>
+       <ul class="items">
+      <li *ngFor="#g of garantias"
+        [class.selected]="isSelected(g)"
+        (click)="onSelect(g)">
+        {{g._id}}
+      </li>
+    </ul>
+</div>

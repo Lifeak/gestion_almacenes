@@ -1,0 +1,11 @@
+"use strict";
+var browser_1 = require('angular2/platform/browser');
+var http_1 = require('angular2/http');
+var pieza_cmp_1 = require('./components/pieza-cmp');
+var piezalist_cmp_1 = require('./components/piezalist-cmp');
+var piezadetails_cmp_1 = require('./components/piezadetails-cmp');
+var piezasubdetails_cmp_1 = require('./components/piezasubdetails-cmp');
+browser_1.bootstrap(pieza_cmp_1.PiezaCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(piezadetails_cmp_1.PiezaDetailsCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(piezasubdetails_cmp_1.PiezaSubDetailsCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(piezalist_cmp_1.PiezaListCmp, [http_1.HTTP_PROVIDERS]);

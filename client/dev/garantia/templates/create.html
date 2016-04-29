@@ -1,0 +1,27 @@
+<div class="cliente-container">
+  <form class="garantia-form"
+        [ngFormModel]="garantiaForm"
+        (submit)="save(garantiaForm)">
+
+    <h1 class="cliente-title">Nueva garantía</h1>
+
+    <br/>Nombre del País o tipo de garantía:<br/>
+    <input type="text"
+           ngControl="_id"
+           [class.cliente-error]="!garantiaForm.valid"
+           placeholder="Nombre"
+           autofocus />
+   <br/>Meses:<br/>
+   <input type="text"
+           ngControl="tiempo"
+           [class.cliente-error]="!garantiaForm.valid"
+           placeholder="Meses"
+           autofocus />
+     
+<br/><br/>
+    <button type="submit"
+            [disabled]="!garantiaForm.valid">Añadir</button>
+
+</form>
+
+<button (click)="gotoIndex()">Back</button>

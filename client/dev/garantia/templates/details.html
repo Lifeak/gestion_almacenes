@@ -1,0 +1,15 @@
+<div class="cliente-container">
+  <h1>DETAILS</h1>
+    <div *ngIf="garantia">
+    	<h3>Garantía:</h3>
+        <label>Tipo o zona de influencia: </label>
+        <input [(ngModel)]="garantia._id" placeholder="Nombre"/><br/>
+        <label>Meses: </label>
+        <input [(ngModel)]="garantia.tiempo" placeholder="Tiempo"/><br/>
+    </div>
+    <p>
+      <button (click)="gotoIndex()">Back</button>
+      <button (click)="edit(garantia)">Save</button>
+      <button (click)="delete(garantia)">Delete</button>
+    </p>
+</div>
