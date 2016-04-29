@@ -46,6 +46,12 @@ var ModeloService = (function () {
             .get(ModeloService.ENDPOINT.replace(':id', id))
             .map(function (r) { return r.json(); });
     };
+    ModeloService.prototype.getModeloName = function (nombre) {
+        //alert("al service le llega " + nombre);
+        return this._http
+            .get(ModeloService.ENDPOINT2.replace(':nombre', nombre))
+            .map(function (r) { return r.json(); });
+    };
     ModeloService.prototype.add = function (nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades) {
         var body = JSON.stringify({ nombre: nombre, refinterna: refinterna, caracteristicas: caracteristicas, modeloDe: modeloDe, compuestoPor: compuestoPor, unidades: unidades });
         alert("body" + body);
@@ -60,6 +66,7 @@ var ModeloService = (function () {
             .delete(ModeloService.ENDPOINT.replace(':id', id));
     };
     ModeloService.ENDPOINT = '/api/modelo/:id';
+    ModeloService.ENDPOINT2 = '/api/modelo/details/:nombre';
     ModeloService = __decorate([
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])

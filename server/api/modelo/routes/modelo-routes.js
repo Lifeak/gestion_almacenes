@@ -13,5 +13,10 @@ module.exports = class ModeloRoutes {
         .route('/api/modelo/:id')
         .get(ModeloController.getbyId)
         .delete(ModeloController.deleteModelo);
+
+    router
+        .route('/api/modelo/details/:nombre')
+        .get(ModeloController.getbyName);
+
     }
 }

@@ -18,6 +18,7 @@ var modelo_service_1 = require('../services/modelo-service');
 var login_service_1 = require('../../login/services/login-service');
 var modelolist_cmp_1 = require('./modelolist-cmp');
 var modelodetails_cmp_1 = require('./modelodetails-cmp');
+var modelosubdetails_cmp_1 = require('./modelosubdetails-cmp');
 var modelocreate_cmp_1 = require('./modelocreate-cmp');
 var ModeloCmp = (function () {
     function ModeloCmp(fb, _modeloService, _loginService, router) {
@@ -104,7 +105,8 @@ var ModeloCmp = (function () {
         router_1.RouteConfig([
             { path: '/Modelos', name: 'ListModelos', component: modelolist_cmp_1.ModeloListCmp },
             { path: '/Create', name: 'CreateModelo', component: modelocreate_cmp_1.ModeloCreateCmp },
-            { path: '/Details', name: 'DetailsModelo', component: modelodetails_cmp_1.ModeloDetailsCmp }
+            { path: '/Details', name: 'DetailsModelo', component: modelodetails_cmp_1.ModeloDetailsCmp },
+            { path: '/Detailss', name: 'DetailsSubModelo', component: modelosubdetails_cmp_1.ModeloSubDetailsCmp }
         ]),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(modelo_service_1.ModeloService)),

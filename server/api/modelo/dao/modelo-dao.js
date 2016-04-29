@@ -33,6 +33,21 @@ modeloSchema.statics.getbyId = (id) => {
     });
 }
 
+modeloSchema.statics.getbyName = (nombre) => {
+  console.log("el nombre del dao es "+nombre);
+    return new Promise((resolve, reject) => {
+        if (!_.isString(nombre))
+            return reject(new TypeError('Nombre is not a valid string.'));
+        let _query = Modelo.findOne({nombre:nombre});
+        Modelo
+          .find(_query)
+          .exec((err, modelo) => {
+              err ? reject(err)
+                  : resolve(modelo);
+          });
+    });
+}
+
 modeloSchema.statics.createModelo = (modelo) => {
   console.log("entro a guardar");
     return new Promise((resolve, reject) => {

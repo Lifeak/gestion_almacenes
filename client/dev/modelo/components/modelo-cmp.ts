@@ -29,6 +29,7 @@ import {LoginService} from '../../login/services/login-service';
 
 import {ModeloListCmp} from './modelolist-cmp';
 import {ModeloDetailsCmp} from './modelodetails-cmp';
+import {ModeloSubDetailsCmp} from './modelosubdetails-cmp';
 import {ModeloCreateCmp} from './modelocreate-cmp';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
@@ -54,7 +55,8 @@ type Modelo = {
 
   { path: '/Modelos', name: 'ListModelos', component:ModeloListCmp },
   { path: '/Create', name: 'CreateModelo', component: ModeloCreateCmp },
-  { path: '/Details', name: 'DetailsModelo', component: ModeloDetailsCmp }
+  { path: '/Details', name: 'DetailsModelo', component: ModeloDetailsCmp },
+  { path: '/Detailss', name: 'DetailsSubModelo', component: ModeloSubDetailsCmp }
 ])
 
 

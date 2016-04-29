@@ -27,6 +27,7 @@ export class Modelo {
 
 export class ModeloService {
   static ENDPOINT: string = '/api/modelo/:id';
+  static ENDPOINT2: string = '/api/modelo/details/:nombre';
 
   constructor(@Inject(Http) private _http: Http) {
 
@@ -47,6 +48,13 @@ export class ModeloService {
   getModeloId(id: string) {
     return this._http
       .get(ModeloService.ENDPOINT.replace(':id', id))
+      .map((r) => r.json());
+  }
+
+  getModeloName(nombre: string) {
+    //alert("al service le llega " + nombre);
+    return this._http
+      .get(ModeloService.ENDPOINT2.replace(':nombre', nombre))
       .map((r) => r.json());
   }
 

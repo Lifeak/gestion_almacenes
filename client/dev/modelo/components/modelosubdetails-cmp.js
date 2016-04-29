@@ -16,8 +16,8 @@ var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var modelo_service_1 = require('../services/modelo-service');
 var login_service_1 = require('../../login/services/login-service');
-var ModeloDetailsCmp = (function () {
-    function ModeloDetailsCmp(fb, _router, _routeParams, _modeloService, _loginService) {
+var ModeloSubDetailsCmp = (function () {
+    function ModeloSubDetailsCmp(fb, _router, _routeParams, _modeloService, _loginService) {
         this._router = _router;
         this._routeParams = _routeParams;
         this._modeloService = _modeloService;
@@ -31,22 +31,22 @@ var ModeloDetailsCmp = (function () {
             "unidades": [""]
         });
     }
-    ModeloDetailsCmp.prototype.ngOnInit = function () {
+    ModeloSubDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
-        var id = this._routeParams.get('id');
-        //alert(id);
+        var name = this._routeParams.get('nombre');
+        //alert("al subdetails le llega:  "+name);
         this._modeloService
-            .getModeloId(id)
+            .getModeloName(name)
             .subscribe(function (modelo) {
             _this.modelo = modelo;
         });
     };
-    ModeloDetailsCmp.prototype.gotoIndex = function () {
-        var clienteId = this.modelo ? this.modelo._id : null;
+    ModeloSubDetailsCmp.prototype.gotoIndex = function () {
         var clienteName = this.modelo ? this.modelo.nombre : null;
-        this._router.navigate(['/ListModelos']);
+        //this._router.navigate(['/ListModelos']);
+        window.history.back();
     };
-    ModeloDetailsCmp.prototype._getAll = function () {
+    ModeloSubDetailsCmp.prototype._getAll = function () {
         var _this = this;
         this._modeloService
             .getAll()
@@ -54,54 +54,23 @@ var ModeloDetailsCmp = (function () {
             _this.modelo = modelos;
         });
     };
-    ModeloDetailsCmp.prototype.buscar = function (nombre) {
+    ModeloSubDetailsCmp.prototype.buscar = function (nombre) {
         //alert("buscamos este nombre "+nombre);
         this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
-    };
-    ModeloDetailsCmp.prototype.edit = function (modelo) {
-        var _this = this;
-        var id = this._routeParams.get('id');
-        // alert("el id del modelo que vamos a editar es " + id);
-        this._modeloService
-            .add(modelo.nombre, modelo.refinterna, modelo.caracteristicas, modelo.modeloDe, modelo.compuestoPor, modelo.unidades)
-            .subscribe(function (m) {
-            _this.modeloForm.controls['nombre'].updateValue("");
-            _this.modeloForm.controls['refinterna'].updateValue("");
-            _this.modeloForm.controls['caracteristicas'].updateValue("");
-            _this.modeloForm.controls['modeloDe'].updateValue("");
-            _this.modeloForm.controls['compuestoPor'].updateValue("");
-            _this.modeloForm.controls['unidades'].updateValue("");
-        });
-        this._modeloService
-            .remove(id)
-            .subscribe(function () {
-            return _this.modelo;
-        });
-        this.gotoIndex();
-    };
-    ModeloDetailsCmp.prototype.delete = function (modelo) {
-        var _this = this;
-        var id = this._routeParams.get('id');
-        this._modeloService
-            .remove(id)
-            .subscribe(function () {
-            return _this.modelo;
-        });
-        this.gotoIndex();
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', modelo_service_1.Modelo)
-    ], ModeloDetailsCmp.prototype, "modelo", void 0);
-    ModeloDetailsCmp = __decorate([
+    ], ModeloSubDetailsCmp.prototype, "modelo", void 0);
+    ModeloSubDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/modelo/templates/details.html',
+            templateUrl: 'client/dev/modelo/templates/detailss.html',
             styleUrls: ['client/dev/modelo/styles/cliente.css']
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(4, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, modelo_service_1.ModeloService, login_service_1.LoginService])
-    ], ModeloDetailsCmp);
-    return ModeloDetailsCmp;
+    ], ModeloSubDetailsCmp);
+    return ModeloSubDetailsCmp;
 }());
-exports.ModeloDetailsCmp = ModeloDetailsCmp;
+exports.ModeloSubDetailsCmp = ModeloSubDetailsCmp;

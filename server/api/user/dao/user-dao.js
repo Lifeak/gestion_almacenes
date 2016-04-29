@@ -31,7 +31,6 @@ userSchema.statics.getLogin = (user, pass) => {
           });
 
    });
-   console.log("usuario "+usuario)
 }
 
 userSchema.statics.getbyId = (id) => {

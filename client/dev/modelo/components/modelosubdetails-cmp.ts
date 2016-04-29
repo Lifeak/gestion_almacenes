@@ -23,12 +23,12 @@ import {LoginService} from '../../login/services/login-service';
 
 
 @Component({
-  templateUrl: 'client/dev/modelo/templates/details.html',
+  templateUrl: 'client/dev/modelo/templates/detailss.html',
   styleUrls: ['client/dev/modelo/styles/cliente.css']
 })
 
 
-export class ModeloDetailsCmp implements OnInit {
+export class ModeloSubDetailsCmp implements OnInit {
   @Input() modelo: Modelo;
   modeloForm: ControlGroup;
 
@@ -45,22 +45,20 @@ export class ModeloDetailsCmp implements OnInit {
   
 
   ngOnInit() {
-    let id = this._routeParams.get('id');
+    let name = this._routeParams.get('nombre');
     
-    //alert(id);
+    //alert("al subdetails le llega:  "+name);
     this._modeloService
-    .getModeloId(id)
+    .getModeloName(name)
     .subscribe((modelo) => {
     this.modelo = modelo;
     });
-
-
   }
 
   gotoIndex(){
-    let clienteId = this.modelo ? this.modelo._id : null;
     let clienteName = this.modelo ? this.modelo.nombre : null;
-    this._router.navigate(['/ListModelos']);
+    //this._router.navigate(['/ListModelos']);
+    window.history.back();
   }
 
   private _getAll():void {
@@ -75,10 +73,10 @@ export class ModeloDetailsCmp implements OnInit {
       //alert("buscamos este nombre "+nombre);
       this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
   }
-
+/*
   edit(modelo: Modelo){
     let id = this._routeParams.get('id');
-   // alert("el id del modelo que vamos a editar es " + id);
+    //alert("el id del modelo que vamos a editar es " + id);
     this._modeloService
       .add(modelo.nombre,modelo.refinterna,modelo.caracteristicas,modelo.modeloDe,modelo.compuestoPor,modelo.unidades)
       .subscribe((m) => {
@@ -110,6 +108,6 @@ export class ModeloDetailsCmp implements OnInit {
       });
     this.gotoIndex();
 
-  }
+  }*/
 
 }

@@ -11,12 +11,23 @@ module.exports = class ModeloController {
   }
 
   static getbyId(req,res){
+    //console.log("entro en getbyId");
     let _id = req.params.id;
     ModeloDAO
       .getbyId(_id)
       .then(modelo => res.status(200).json(modelo))
       .catch(error => res.status(400).json(error));
   }
+
+  static getbyName(req,res){
+    //console.log("el nombre que llega es: "+req.params.nombre);
+    let _name = req.params.nombre;
+    ModeloDAO
+      .getbyName(_name)
+      .then(modelo => res.status(200).json(modelo))
+      .catch(error => res.status(400).json(error));
+  }
+
 
   static createModelo(req, res) {
     console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");

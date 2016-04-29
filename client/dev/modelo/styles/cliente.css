@@ -73,3 +73,9 @@
 .cliente-container .cliente-item:hover {
   background-color: #f1f2f3;
 }
+
+li:hover {
+  color:blue;
+  font-size: 17px;
+
+}
