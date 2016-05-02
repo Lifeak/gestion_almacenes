@@ -48,6 +48,21 @@ modeloSchema.statics.getbyName = (nombre) => {
     });
 }
 
+modeloSchema.statics.getModelosDePieza = () =>{
+  console.log("llegamos al modelo-dao");
+  let pieza = "Pieza";
+     return new Promise((resolve, reject) => {
+        let _query = {modeloDe:pieza};
+        Modelo
+          .find(_query)
+          .exec((err, modelos) => {
+              err ? reject(err)
+                  : resolve(modelos);
+          });
+      });  
+
+}
+
 modeloSchema.statics.createModelo = (modelo) => {
   console.log("entro a guardar");
     return new Promise((resolve, reject) => {

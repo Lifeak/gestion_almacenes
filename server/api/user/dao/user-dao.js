@@ -20,7 +20,8 @@ userSchema.statics.getAll = () => {
 }
 
 userSchema.statics.getLogin = (user, pass) => {
-  let _query = User.findOne({user:user, pass:pass});
+  //let _query = User.findOne({user:user, pass:pass});
+  let _query ={user:user, pass:pass};
    return new Promise((resolve, reject) => {
     console.log(user,pass);
     User

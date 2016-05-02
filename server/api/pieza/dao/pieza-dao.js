@@ -10,7 +10,7 @@ piezaSchema.statics.getAll = () => {
     return new Promise((resolve, reject) => {
         let _query = {};
 
-        pieza
+        Pieza
           .find(_query)
           .exec((err, piezas) => {
               err ? reject(err)
@@ -18,28 +18,13 @@ piezaSchema.statics.getAll = () => {
           });
       });
 }
-/* Se podrá utilizar para la busqueda
-piezaSchema.statics.getLogin = (pieza, pass) => {
-  let _query = pieza.findOne({pieza:pieza, pass:pass});
-   return new Promise((resolve, reject) => {
-    console.log(pieza,pass);
-    pieza
-      .find(_query)
-      .exec((err, usuario) => {
-              err ? reject(err)
-                  : resolve(usuario);
-          });
-
-   });
-   console.log("usuario "+usuario)
-}*/
 
 piezaSchema.statics.getbyId = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        pieza
+        Pieza
           .findById(id)
           .exec((err, pieza) => {
               err ? reject(err)
@@ -52,8 +37,8 @@ piezaSchema.statics.createPieza = (pieza) => {
     return new Promise((resolve, reject) => {
       if (!_.isObject(pieza))
           return reject(new TypeError('pieza is not a valid object.'));
-      
-      let _pieza = new pieza(pieza);
+      console.log("la pieza que llega es "+pieza._id, pieza.modelo, pieza.estado, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor);
+      let _pieza = new Pieza(pieza);
       _pieza.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);
@@ -61,12 +46,17 @@ piezaSchema.statics.createPieza = (pieza) => {
     });
 }
 
+
+piezaSchema.statics.updatePieza = (pieza) => {
+
+}
+
 piezaSchema.statics.deletePieza = (id) => {
     return new Promise((resolve, reject) => {
         if (!_.isString(id))
             return reject(new TypeError('Id is not a valid string.'));
 
-        pieza
+        Pieza
           .findByIdAndRemove(id)
           .exec((err, deleted) => {
               err ? reject(err)
@@ -75,6 +65,6 @@ piezaSchema.statics.deletePieza = (id) => {
     });
 }
 
-const pieza  = mongoose.model('pieza', piezaSchema);
+const Pieza  = mongoose.model('pieza', piezaSchema);
 
 module.exports = Pieza;

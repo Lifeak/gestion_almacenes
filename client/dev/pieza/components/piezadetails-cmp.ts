@@ -18,94 +18,98 @@ import {
 } from 'angular2/router';
 
 
-import {ModeloService, Modelo} from '../services/modelo-service';
+import {Pieza,PiezaService} from '../services/pieza-service';
 import {LoginService} from '../../login/services/login-service';
 
 
 @Component({
-  templateUrl: 'client/dev/modelo/templates/details.html',
-  styleUrls: ['client/dev/modelo/styles/cliente.css']
+  templateUrl: 'client/dev/pieza/templates/details.html',
+  styleUrls: ['client/dev/pieza/styles/cliente.css']
 })
 
 
-export class ModeloDetailsCmp implements OnInit {
-  @Input() modelo: Modelo;
-  modeloForm: ControlGroup;
+export class PiezaDetailsCmp implements OnInit {
+  @Input() pieza: Pieza;
+  piezaForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _modeloService: ModeloService, @Inject(LoginService) private _loginService: LoginService) {
-    this.modeloForm = fb.group({
-      "nombre": ["", Validators.required],
-      "refinterna": ["", Validators.required],
-      "caracteristicas": ["", Validators.required],
-      "modeloDe": ["", Validators.required],
-      "compuestoPor": [""],
-      "unidades": [""]
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService, @Inject(LoginService) private _loginService: LoginService) {
+    this.piezaForm = fb.group({
+      "_id": ["", Validators.required],
+      "modelo": ["", Validators.required],
+      "estado": ["", Validators.required],
+      "lote": ["", Validators.required],
+      "caracteristicas": [""],
+      "almacen": ["",Validators.required],
+      "almacenOrigen":["",Validators.required],
+      "vendido":["",Validators.required],
+      "compuestoPor":[""],
+      "precio":[""]
     });
   }
   
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    
-    //alert(id);
-    this._modeloService
-    .getModeloId(id)
-    .subscribe((modelo) => {
-    this.modelo = modelo;
+    this._piezaService
+    .getPiezaId(id)
+    .subscribe((pieza) => {
+    this.pieza = pieza;
     });
 
 
   }
 
   gotoIndex(){
-    let clienteId = this.modelo ? this.modelo._id : null;
-    let clienteName = this.modelo ? this.modelo.nombre : null;
-    this._router.navigate(['/ListModelos']);
+    let piezaId = this.pieza ? this.pieza._id : null;
+    this._router.navigate(['/ListPiezas']);
   }
 
   private _getAll():void {
-    this._modeloService
+    this._piezaService
         .getAll()
-        .subscribe((modelos) => {
-          this.modelo = modelos;
+        .subscribe((piezas) => {
+          this.pieza = piezas;
         });
   }
-
+/*
   buscar(nombre){
       //alert("buscamos este nombre "+nombre);
       this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
   }
-
-  edit(modelo: Modelo){
+*/
+  edit(pieza: Pieza){
     let id = this._routeParams.get('id');
-   // alert("el id del modelo que vamos a editar es " + id);
-    this._modeloService
-      .add(modelo.nombre,modelo.refinterna,modelo.caracteristicas,modelo.modeloDe,modelo.compuestoPor,modelo.unidades)
+    this._piezaService
+      .add(pieza._id,pieza.modelo,pieza.estado,pieza.lote,pieza.caracterisiticas,pieza.almacen,pieza.almacenOrigen,pieza.vendido,pieza.compuestoPor,pieza.precio)
       .subscribe((m) => {
-          (<Control>this.modeloForm.controls['nombre']).updateValue("");
-          (<Control>this.modeloForm.controls['refinterna']).updateValue("");
-          (<Control>this.modeloForm.controls['caracteristicas']).updateValue("");
-          (<Control>this.modeloForm.controls['modeloDe']).updateValue("");
-          (<Control>this.modeloForm.controls['compuestoPor']).updateValue("");
-          (<Control>this.modeloForm.controls['unidades']).updateValue("");
+          (<Control>this.piezaForm.controls['_id']).updateValue("");
+          (<Control>this.piezaForm.controls['modelo']).updateValue("");
+          (<Control>this.piezaForm.controls['estado']).updateValue("");
+          (<Control>this.piezaForm.controls['lote']).updateValue("");
+          (<Control>this.piezaForm.controls['caracteristicas']).updateValue("");
+          (<Control>this.piezaForm.controls['almacen']).updateValue("");
+          (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
+          (<Control>this.piezaForm.controls['vendido']).updateValue("");
+          (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+          (<Control>this.piezaForm.controls['precio']).updateValue("");
 
     });
 
-    this._modeloService
+    this._piezaService
       .remove(id)
       .subscribe(() => {
-        return this.modelo;
+        return this.pieza;
 
       });
     this.gotoIndex();
-
   }
-  delete(modelo: Modelo) {
+
+  delete(pieza: Pieza) {
     let id = this._routeParams.get('id');
-    this._modeloService
+    this._piezaService
       .remove(id)
       .subscribe(() => {
-      return this.modelo;
+      return this.pieza;
 
       });
     this.gotoIndex();

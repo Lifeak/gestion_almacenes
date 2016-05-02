@@ -10,42 +10,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var modelo_service_1 = require('../services/modelo-service');
-var ModeloListCmp = (function () {
-    function ModeloListCmp(_modeloService, _router, routeParams) {
-        this._modeloService = _modeloService;
+var pieza_service_1 = require('../services/pieza-service');
+var PiezaListCmp = (function () {
+    function PiezaListCmp(_piezaService, _router, routeParams) {
+        this._piezaService = _piezaService;
         this._router = _router;
-        this.modelos = [];
+        this.piezas = [];
         this._selectedId = routeParams.get('id');
     }
-    ModeloListCmp.prototype.ngOnInit = function () {
+    PiezaListCmp.prototype.ngOnInit = function () {
         this._getAll();
     };
-    ModeloListCmp.prototype._getAll = function () {
+    PiezaListCmp.prototype._getAll = function () {
         var _this = this;
-        this._modeloService
+        this._piezaService
             .getAll()
-            .subscribe(function (modelos) {
-            _this.modelos = modelos;
+            .subscribe(function (piezas) {
+            _this.piezas = piezas;
         });
     };
-    ModeloListCmp.prototype.isSelected = function (modelo) {
-        return modelo._id === this._selectedId;
+    PiezaListCmp.prototype.isSelected = function (pieza) {
+        return pieza._id === this._selectedId;
     };
-    ModeloListCmp.prototype.onSelect = function (modelo) {
-        this._router.navigate(['DetailsModelo', { id: modelo._id }]);
+    PiezaListCmp.prototype.onSelect = function (pieza) {
+        this._router.navigate(['DetailsPieza', { id: pieza._id }]);
     };
-    ModeloListCmp = __decorate([
+    PiezaListCmp = __decorate([
         core_1.Component({
-            selector: 'ListModelos',
-            templateUrl: 'client/dev/modelo/templates/list.html',
-            styleUrls: ['client/dev/modelo/styles/cliente.css'],
+            selector: 'ListPiezas',
+            templateUrl: 'client/dev/pieza/templates/list.html',
+            styleUrls: ['client/dev/pieza/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [modelo_service_1.ModeloService]
+            providers: [pieza_service_1.PiezaService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof modelo_service_1.ModeloService !== 'undefined' && modelo_service_1.ModeloService) === 'function' && _a) || Object, router_1.Router, router_1.RouteParams])
-    ], ModeloListCmp);
-    return ModeloListCmp;
-    var _a;
+        __metadata('design:paramtypes', [pieza_service_1.PiezaService, router_1.Router, router_1.RouteParams])
+    ], PiezaListCmp);
+    return PiezaListCmp;
 }());
-exports.ModeloListCmp = ModeloListCmp;
+exports.PiezaListCmp = PiezaListCmp;

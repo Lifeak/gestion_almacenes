@@ -13,5 +13,9 @@ module.exports = class PiezaRoutes {
         .route('/api/pieza/:id')
         .get(PiezaController.getbyId)
         .delete(PiezaController.deletePieza);
+    
+     router
+        .route('/api/p/modelos')
+        .get(PiezaController.getModelos);
     }
 }

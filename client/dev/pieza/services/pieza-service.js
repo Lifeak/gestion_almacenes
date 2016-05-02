@@ -49,6 +49,11 @@ var PiezaService = (function () {
             .get(PiezaService.ENDPOINT.replace(':id', id))
             .map(function (r) { return r.json(); });
     };
+    PiezaService.prototype.getModelos = function () {
+        return this._http
+            .get(PiezaService.ENDPOINT3)
+            .map(function (r) { return r.json(); });
+    };
     PiezaService.prototype.getPiezaName = function (nombre) {
         //alert("al service le llega " + nombre);
         return this._http
@@ -70,6 +75,7 @@ var PiezaService = (function () {
     };
     PiezaService.ENDPOINT = '/api/pieza/:id';
     PiezaService.ENDPOINT2 = '/api/pieza/details/:nombre';
+    PiezaService.ENDPOINT3 = '/api/p/modelos';
     PiezaService = __decorate([
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])

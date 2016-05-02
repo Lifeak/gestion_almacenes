@@ -104,9 +104,9 @@ export class PiezaCmp implements OnInit {
     this.router.navigate(['DetailsPieza', { id: pieza._id }]);
   }
 
-  add(_id:string, modelo:string,estado:string,lote:string,caracteristicas:string, almcen:string,almacenOrigen:string,vendido:boolean,compuestoPor:Array<string>,precio:number): void {
+  add(_id:string, modelo:string,estado:string,lote:string,caracteristicas:string, almacen:string,almacenOrigen:string,vendido:boolean,compuestoPor:Array<string>,precio:number): void {
     this._piezaService
-      .add(_id,modelo,estado,lote,caracteristicas,almcen,almacenOrigen,vendido,compuestoPor,precio)
+      .add(_id,modelo,estado,lote,caracteristicas,almacen,almacenOrigen,vendido,compuestoPor,precio)
       .subscribe((m) => {
         this.piezas.push(m);
         (<Control>this.piezaForm.controls['_id']).updateValue("");

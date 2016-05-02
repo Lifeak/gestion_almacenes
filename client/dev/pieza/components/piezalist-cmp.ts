@@ -19,22 +19,22 @@ ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
-import {Modelo, ModeloService} from '../services/modelo-service';
+import {Pieza,PiezaService} from '../services/pieza-service';
 
 @Component({
-  selector: 'ListModelos',
-  templateUrl: 'client/dev/modelo/templates/list.html',
-  styleUrls: ['client/dev/modelo/styles/cliente.css'],
+  selector: 'ListPiezas',
+  templateUrl: 'client/dev/pieza/templates/list.html',
+  styleUrls: ['client/dev/pieza/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
-  providers: [ModeloService]
+  providers: [PiezaService]
 })
 
-export class ModeloListCmp implements OnInit {
-  modelos: Modelo[] = [];
+export class PiezaListCmp implements OnInit {
+  piezas: Pieza[] = [];
   private _selectedId: string;
 
 
-  constructor(private _modeloService: ModeloService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _piezaService: PiezaService, private _router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -43,16 +43,16 @@ export class ModeloListCmp implements OnInit {
   }
 
   private _getAll():void {
-    this._modeloService
+    this._piezaService
         .getAll()
-        .subscribe((modelos) => {
-          this.modelos = modelos;
+        .subscribe((piezas) => {
+          this.piezas = piezas;
         });
   }
-  isSelected(modelo:Modelo){
-    return modelo._id === this._selectedId;
+  isSelected(pieza:Pieza){
+    return pieza._id === this._selectedId;
   }
-  onSelect(modelo:Modelo){
-    this._router.navigate(['DetailsModelo',{id: modelo._id}]);
+  onSelect(pieza:Pieza){
+    this._router.navigate(['DetailsPieza',{id: pieza._id}]);
   }
 }

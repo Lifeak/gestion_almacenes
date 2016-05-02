@@ -88,6 +88,7 @@ export class ModeloCmp implements OnInit {
       .subscribe((modelos) => {
       this.modelos = modelos;
       });
+
   }
 
   isSelected(modelo: Modelo) {

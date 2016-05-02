@@ -31,6 +31,7 @@ export class Pieza {
 export class PiezaService {
   static ENDPOINT: string = '/api/pieza/:id';
   static ENDPOINT2: string = '/api/pieza/details/:nombre';
+  static ENDPOINT3: string = '/api/p/modelos';
 
   constructor(@Inject(Http) private _http: Http) {
 
@@ -50,8 +51,14 @@ export class PiezaService {
 
   getPiezaId(id: string) {
     return this._http
-    .get(PiezaService.ENDPOINT.replace(':id', id))
-      .map((r) => r.json());
+      .get(PiezaService.ENDPOINT.replace(':id', id))
+    .map((r) =>  r.json());
+  }
+
+  getModelos(): Observable<any> {
+    return this._http
+      .get(PiezaService.ENDPOINT3)
+        .map((r) => r.json());
   }
 
   getPiezaName(nombre: string) {

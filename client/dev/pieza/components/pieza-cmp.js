@@ -57,10 +57,10 @@ var PiezaCmp = (function () {
     PiezaCmp.prototype.onSelect = function (pieza) {
         this.router.navigate(['DetailsPieza', { id: pieza._id }]);
     };
-    PiezaCmp.prototype.add = function (_id, modelo, estado, lote, caracteristicas, almcen, almacenOrigen, vendido, compuestoPor, precio) {
+    PiezaCmp.prototype.add = function (_id, modelo, estado, lote, caracteristicas, almacen, almacenOrigen, vendido, compuestoPor, precio) {
         var _this = this;
         this._piezaService
-            .add(_id, modelo, estado, lote, caracteristicas, almcen, almacenOrigen, vendido, compuestoPor, precio)
+            .add(_id, modelo, estado, lote, caracteristicas, almacen, almacenOrigen, vendido, compuestoPor, precio)
             .subscribe(function (m) {
             _this.piezas.push(m);
             _this.piezaForm.controls['_id'].updateValue("");
