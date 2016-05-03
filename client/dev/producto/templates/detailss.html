@@ -1,0 +1,22 @@
+<div class="cliente-container">
+  <h1>DETAILSSSSS</h1>
+    <div *ngIf="producto">
+      <div *ngFor="#pr of producto; #i=index;">
+      <h3>Producto: {{pr.nombre}}</h3>
+            <label>Nombre: </label>
+            <input [(ngModel)]="pr.nombre" placeholder="Nombre"/><br/>
+            <label>Referencia interna: </label>
+            <input [(ngModel)]="pr.refinterna" placeholder="Referencia interna"/><br/>
+            <label>Caracteristicas: </label>
+            <input [(ngModel)]="item.caracteristicas" placeholder="Caracteristicas"/><br/>
+            <label>Es: </label>
+            <input [(ngModel)]="item.modeloDe" placeholder="Es"/><br/><br/>
+            <div *ngIf="item.compuestoPor.length!=0">
+            <label>Compuesto Por: </label>
+               <td><ul *ngFor="#ite of item.compuestoPor; #i=index;" (click)="buscar(ite);"><li>{{ite}}</li>  </ul></td>
+               <td><ul *ngFor="#it of item.unidades; #ie=indexe;">{{it}}  </ul></td>
+           </div>
+      </div>
+      <button (click)="gotoIndex()">Back</button>
+
+</div>

@@ -1,0 +1,43 @@
+<div class="cliente-container">
+  <h1>DETAILS</h1>
+    <div *ngIf="producto">
+    	<h3>Producto: {{producto._id}}</h3>
+        <label>Nombre: </label>
+        <input [(ngModel)]="producto.nombre" placeholder="Nombre"/><br/>
+        <label>Modelo: </label>
+        <input [(ngModel)]="producto.modelo" placeholder="Modelo"/><br/>
+        <label>Estado del producto: </label>
+        <select name="estado"
+           [(ngModel)]="producto.estado"
+           placeholder="Estado"
+           [class.cliente-error]="!productoForm.valid">
+           <option value="Nuevo">Nuevo</option>
+           <option value="Usado">Usado</option>
+           <option value="Rota">Roto</option>
+           <option value="Reparando">Reparando</option>
+          </select><br/>
+        <label>Caracteristicas: </label>
+        <input [(ngModel)]="producto.caracteristicas" placeholder="Caracteristicas"/><br/>
+        <label>Almacén de ubicación: </label>
+        <input [(ngModel)]="producto.almacen" placeholder="Almacén"/><br/>
+        <label>Vendido: </label>
+         <select name="vendido"
+           [(ngModel)]="producto.vendido"
+           placeholder="¿Está vendido?"
+           [class.cliente-error]="!productoForm.valid">
+           <option value="false">No</option>   
+           <option value="true">Si</option>
+          </select><br/>
+        <label>Número de serie de la carcasa: </label>
+        <input [(ngModel)]="producto.compuestoPor[0]" placeholder="Carcasa"/><br/><br/>
+        <label>Número de serie de la columna: </label>
+        <input [(ngModel)]="producto.compuestoPor[1]" placeholder="Columna"/><br/><br/>
+        <label>Precio: </label>
+        <input [(ngModel)]="producto.precio" placeholder="Precio"/><br/><br/>
+        
+
+      <button (click)="gotoIndex()">Back</button>
+      <button (click)="edit(producto)">Save</button>
+      <button (click)="delete(producto)">Delete</button>
+
+</div>

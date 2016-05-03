@@ -7,6 +7,7 @@ import {
 	HTTP_PROVIDERS
 } from 'angular2/http';
 
+import {ProductoCmp} from './producto/components/producto-cmp';
 import {PiezaCmp} from './pieza/components/pieza-cmp';
 import {GarantiaCmp} from './garantia/components/garantia-cmp';
 import {ModeloCmp} from './modelo/components/modelo-cmp';
@@ -17,6 +18,7 @@ import {LoginCmp} from './login/components/login-cmp';
 import {HomeCmp} from './login/components/home-cmp';
 import {App} from './login/app';
 
+bootstrap(ProductoCmp, [HTTP_PROVIDERS]);
 bootstrap(PiezaCmp, [HTTP_PROVIDERS]);
 bootstrap(GarantiaCmp, [HTTP_PROVIDERS]);
 bootstrap(ModeloCmp, [HTTP_PROVIDERS]);

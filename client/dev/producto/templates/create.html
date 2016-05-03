@@ -1,0 +1,82 @@
+<div class="cliente-container">
+  <form class="producto-form"
+        [ngFormModel]="productoForm"
+        (submit)="save(productoForm)">
+
+    <h1 class="cliente-title">Nuevo producto</h1>
+
+    <br/>Identificador de producto:<br/>
+    <input type="text"
+           ngControl="_id"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Identificador de producto"
+           autofocus />
+    <br/>Nombre:<br/>
+    <input type="text"
+           ngControl="nombre"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Nombre"
+           autofocus />      
+   <br/>Modelo:<br/>
+   <select name="modelo"
+           ngControl ="modelo"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Modelo de producto">
+           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+           </select>
+  <br/>Estado:<br/>
+  <select name="estado"
+           ngControl="estado"
+           placeholder="Selecciona el estado.."
+           [class.cliente-error]="!productoForm.valid">
+           <option value="Nuevo">Nuevo</option>
+           <option value="Usado">Usado</option>
+           <option value="Rota">Roto</option>
+           <option value="Reparando">Reparando</option>
+          </select>
+ <br/>Caracteristicas:<br/>
+  <input type="text"
+           ngControl="caracteristicas"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Caracteristicas"
+           autofocus />
+   <br/>Almacén de ubicación:<br/>
+  <input type="text"
+           ngControl="almacen"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Almacén"
+           autofocus />
+  <br/>¿Está vendido?:<br/>
+  <select name="vendido"
+           ngControl="vendido"
+           placeholder="¿Está vendido?"
+           [class.cliente-error]="!productoForm.valid">
+           <option value="false">No</option>   
+           <option value="true">Si</option>
+          </select>
+  <br/><label>Compuesto por:</label>
+  <br/>Número de serie de la carcasa:<br/>
+  <input type="text"
+           ngControl="carcasa"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Número de serie de la carcasa"
+           autofocus />
+  <br/>Número de serie de la columna:<br/>
+  <input type="text"
+           ngControl="columna"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Número de serie de la columna"
+           autofocus />         
+  <br/>Precio (ejemplo: 26.15):<br/>
+  <input type="text"
+           ngControl="precio"
+           [class.cliente-error]="!productoForm.valid"
+           placeholder="Precio"
+           autofocus />
+  <br>
+    <button type="submit"
+            [disabled]="!productoForm.valid">Añadir</button>
+
+</form>
+
+<button (click)="gotoIndex()">Back</button>

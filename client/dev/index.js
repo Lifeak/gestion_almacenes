@@ -2,6 +2,7 @@
 "use strict";
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
+var producto_cmp_1 = require('./producto/components/producto-cmp');
 var pieza_cmp_1 = require('./pieza/components/pieza-cmp');
 var garantia_cmp_1 = require('./garantia/components/garantia-cmp');
 var modelo_cmp_1 = require('./modelo/components/modelo-cmp');
@@ -11,6 +12,7 @@ var almacen_cmp_1 = require('./almacen/components/almacen-cmp');
 var login_cmp_1 = require('./login/components/login-cmp');
 var home_cmp_1 = require('./login/components/home-cmp');
 var app_1 = require('./login/app');
+browser_1.bootstrap(producto_cmp_1.ProductoCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(pieza_cmp_1.PiezaCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(garantia_cmp_1.GarantiaCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(modelo_cmp_1.ModeloCmp, [http_1.HTTP_PROVIDERS]);

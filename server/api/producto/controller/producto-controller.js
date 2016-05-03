@@ -1,6 +1,7 @@
 "use strict";
 
 const ProductoDAO = require('../dao/producto-dao');
+const ModeloDAO = require('../../modelo/dao/modelo-dao');
 
 module.exports = class ProductoController {
   static getAll(req, res) {
@@ -18,22 +19,30 @@ module.exports = class ProductoController {
       .catch(error => res.status(400).json(error));
   }
 
-  static createProduct(req, res) {
+  static getModelos(req, res){
+    console.log("llegamos al controlador de pieza y mandamos al dao del modelo");
+    ModeloDAO
+      .getModelosDeProducto()
+        .then(modelos => res.status(200).json(modelos))
+        .catch(error => res.status(400).json(error));
+  }
+
+  static createProducto(req, res) {
       let _producto = req.body;
       console.log("producto"+_producto.nombre);
 
       ProductoDAO
-        .createProduct(_producto)
+        .createProducto(_producto)
         .then(producto => res.status(201).json(producto))
         .catch(error => res.status(400).json(error));
         console.log("fin instruccion");
   }
 
-  static deleteProduct(req, res) {
+  static deleteProducto(req, res) {
     let _id = req.params.id;
 
     ProductoDAO
-      .deleteProduct(_id)
+      .deleteProducto(_id)
       .then(() => res.status(200).end())
       .catch(error => res.status(400).json(error));
   }

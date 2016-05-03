@@ -1,0 +1,11 @@
+"use strict";
+var browser_1 = require('angular2/platform/browser');
+var http_1 = require('angular2/http');
+var producto_cmp_1 = require('./components/producto-cmp');
+var productolist_cmp_1 = require('./components/productolist-cmp');
+var productodetails_cmp_1 = require('./components/productodetails-cmp');
+var productosubdetails_cmp_1 = require('./components/productosubdetails-cmp');
+browser_1.bootstrap(producto_cmp_1.ProductoCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(productodetails_cmp_1.ProductoDetailsCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(productosubdetails_cmp_1.ProductoSubDetailsCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(productolist_cmp_1.ProductoListCmp, [http_1.HTTP_PROVIDERS]);

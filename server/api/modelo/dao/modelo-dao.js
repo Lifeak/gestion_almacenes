@@ -63,6 +63,21 @@ modeloSchema.statics.getModelosDePieza = () =>{
 
 }
 
+modeloSchema.statics.getModelosDeProducto = () =>{
+  console.log("llegamos al modelo-dao a producto");
+  let busq = "Producto";
+     return new Promise((resolve, reject) => {
+        let _query = {modeloDe:busq};
+        Modelo
+          .find(_query)
+          .exec((err, modelos) => {
+              err ? reject(err)
+                  : resolve(modelos);
+          });
+      });  
+
+}
+
 modeloSchema.statics.createModelo = (modelo) => {
   console.log("entro a guardar");
     return new Promise((resolve, reject) => {
