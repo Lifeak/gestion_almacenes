@@ -21,6 +21,8 @@ import {
 import {Pieza,PiezaService} from '../services/pieza-service';
 import {LoginService} from '../../login/services/login-service';
 
+import {Modelo} from '../../modelo/services/modelo-service';
+
 
 @Component({
   templateUrl: 'client/dev/pieza/templates/detailss.html',
@@ -31,6 +33,8 @@ import {LoginService} from '../../login/services/login-service';
 export class PiezaSubDetailsCmp implements OnInit {
   @Input() pieza: Pieza;
   piezaForm: ControlGroup;
+  modelos: Modelo[] = [];
+  components: Array<string>;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService, @Inject(LoginService) private _loginService: LoginService) {
     this.piezaForm = fb.group({
@@ -45,20 +49,31 @@ export class PiezaSubDetailsCmp implements OnInit {
       "compuestoPor":[""],
       "precio":[""]
     });
+    this.components = [];
   }
   
 
   ngOnInit() {
+    let id = this._routeParams.get('_id');
     this._piezaService
-    .getPiezaName(name)
+    .getPiezaId(id)
     .subscribe((pieza) => {
-    this.pieza = pieza;
+      this.pieza = pieza;    
+      this.components = this.pieza.compuestoPor;
+    });
+  
+    this._piezaService
+    .getModelos()
+    .subscribe((modelos) => {
+      this.modelos = modelos;
     });
   }
 
   gotoIndex(){
-    let clienteName = this.pieza ? this.pieza._id : null;
-    //this._router.navigate(['/ListModelos']);
+    this._router.navigate(['/ListPiezas']);
+  }
+
+  goBack(){
     window.history.back();
   }
 
@@ -70,10 +85,74 @@ export class PiezaSubDetailsCmp implements OnInit {
         });
   }
 
-  buscar(nombre){
-      //alert("buscamos este nombre "+nombre);
-      this._router.navigate(['DetailsSubPieza', { nombre: nombre }]);
+  buscar(numserie: string) {
+      this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
   }
 
+  edit(pieza: Pieza) {
+    let id = this._routeParams.get('_id');
+    if (pieza.precio == null) {
+          this._piezaService
+        .remove(id)
+        .subscribe(() => {
+          return this.pieza;
+        });
+
+          var compuestoPor: Array<string> = this.components;
+          this._piezaService
+        .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+        .subscribe((m) => {
+          (<Control>this.piezaForm.controls['_id']).updateValue("");
+          (<Control>this.piezaForm.controls['modelo']).updateValue("");
+          (<Control>this.piezaForm.controls['estado']).updateValue("");
+          (<Control>this.piezaForm.controls['lote']).updateValue("");
+          (<Control>this.piezaForm.controls['caracteristicas']).updateValue("");
+          (<Control>this.piezaForm.controls['almacen']).updateValue("");
+          (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
+          (<Control>this.piezaForm.controls['vendido']).updateValue("");
+          (<Control>this.piezaForm.controls['precio']).updateValue("");
+
+        });
+        //  this.gotoIndex();
+    } else if (pieza.precio.toString().indexOf(',') != -1) {
+      alert("Error.La pieza no se puede modificar ya que el precio es incorrecto. Utiliza el . para los decimales.");
+    } else {
+      this._piezaService
+        .remove(id)
+        .subscribe(() => {
+          return this.pieza;
+        });
+
+      var compuestoPor: Array<string> = this.components;
+      this._piezaService
+        .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+        .subscribe((m) => {
+          (<Control>this.piezaForm.controls['_id']).updateValue("");
+          (<Control>this.piezaForm.controls['modelo']).updateValue("");
+          (<Control>this.piezaForm.controls['estado']).updateValue("");
+          (<Control>this.piezaForm.controls['lote']).updateValue("");
+          (<Control>this.piezaForm.controls['caracteristicas']).updateValue("");
+          (<Control>this.piezaForm.controls['almacen']).updateValue("");
+          (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
+          (<Control>this.piezaForm.controls['vendido']).updateValue("");
+          (<Control>this.piezaForm.controls['precio']).updateValue("");
+
+        });
+      //this.gotoIndex();
+    }
+  }
+
+
+
+  plus(data: FormData): void {
+      var nombre: string = this.piezaForm.controls['compuestoPor'].value;
+      this.components.push(nombre);
+      (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+
+  }
+
+  minus(nombre: string): void {
+      this.components.splice(this.components.indexOf(nombre), 1);
+  }
 
 }

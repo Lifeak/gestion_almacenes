@@ -49,7 +49,6 @@ export class PiezaCreateCmp implements OnInit{
       "precio": [""]
     });
      this.components = [];
-      //this.modelos = [];
   }
 
   ngOnInit(){
@@ -71,7 +70,6 @@ export class PiezaCreateCmp implements OnInit{
   }
 
   save(datos: FormData){
-      //this.components = [];
       var _id: string = this.piezaForm.controls['_id'].value;
       var modelo: string = this.piezaForm.controls['modelo'].value;
       var estado: string = this.piezaForm.controls['estado'].value;
@@ -94,7 +92,6 @@ export class PiezaCreateCmp implements OnInit{
         (<Control>this.piezaForm.controls['almacen']).updateValue("");
         (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
         (<Control>this.piezaForm.controls['vendido']).updateValue("");
-        //(<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
         (<Control>this.piezaForm.controls['precio']).updateValue("");
           });
 

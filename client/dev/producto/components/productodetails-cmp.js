@@ -56,12 +56,10 @@ var ProductoDetailsCmp = (function () {
             _this.producto = productos;
         });
     };
-    /*
-      buscar(nombre){
-          //alert("buscamos este nombre "+nombre);
-          this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
-      }
-    */
+    ProductoDetailsCmp.prototype.buscar = function (nombre) {
+        //alert("buscamos este nombre "+nombre);
+        this._router.navigate(['DetailsSubPieza', { nombre: nombre }]);
+    };
     ProductoDetailsCmp.prototype.edit = function (producto) {
         var _this = this;
         var id = this._routeParams.get('id');

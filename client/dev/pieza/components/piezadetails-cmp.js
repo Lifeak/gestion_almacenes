@@ -64,16 +64,36 @@ var PiezaDetailsCmp = (function () {
             _this.pieza = piezas;
         });
     };
-    /*
-      buscar(nombre){
-          //alert("buscamos este nombre "+nombre);
-          this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
-      }
-    */
+    PiezaDetailsCmp.prototype.buscar = function (numserie) {
+        alert("buscamos esta pieza " + numserie);
+        this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
+    };
     PiezaDetailsCmp.prototype.edit = function (pieza) {
         var _this = this;
         var id = this._routeParams.get('id');
-        if (pieza.precio.toString().indexOf(',') != -1) {
+        if (pieza.precio == null) {
+            this._piezaService
+                .remove(id)
+                .subscribe(function () {
+                return _this.pieza;
+            });
+            var compuestoPor = this.components;
+            this._piezaService
+                .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+                .subscribe(function (m) {
+                _this.piezaForm.controls['_id'].updateValue("");
+                _this.piezaForm.controls['modelo'].updateValue("");
+                _this.piezaForm.controls['estado'].updateValue("");
+                _this.piezaForm.controls['lote'].updateValue("");
+                _this.piezaForm.controls['caracteristicas'].updateValue("");
+                _this.piezaForm.controls['almacen'].updateValue("");
+                _this.piezaForm.controls['almacenOrigen'].updateValue("");
+                _this.piezaForm.controls['vendido'].updateValue("");
+                _this.piezaForm.controls['precio'].updateValue("");
+            });
+            this.gotoIndex();
+        }
+        else if (pieza.precio.toString().indexOf(',') != -1) {
             alert("Error.La pieza no se puede modificar ya que el precio es incorrecto. Utiliza el . para los decimales.");
         }
         else {

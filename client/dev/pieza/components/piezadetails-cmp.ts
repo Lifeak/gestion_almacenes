@@ -83,27 +83,23 @@ export class PiezaDetailsCmp implements OnInit {
           this.pieza = piezas;
         });
   }
-/*
-  buscar(nombre){
-      //alert("buscamos este nombre "+nombre);
-      this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+
+  buscar(numserie:string){
+      alert("buscamos esta pieza "+numserie);
+      this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
   }
-*/
+
   edit(pieza: Pieza) {
     let id = this._routeParams.get('id');
-    if (pieza.precio.toString().indexOf(',') != -1) {
-      alert("Error.La pieza no se puede modificar ya que el precio es incorrecto. Utiliza el . para los decimales.");
-
-    } else {
-
-      this._piezaService
+    if (pieza.precio == null) {
+          this._piezaService
         .remove(id)
         .subscribe(() => {
           return this.pieza;
         });
 
-      var compuestoPor: Array<string> = this.components;
-      this._piezaService
+          var compuestoPor: Array<string> = this.components;
+          this._piezaService
         .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
         .subscribe((m) => {
           (<Control>this.piezaForm.controls['_id']).updateValue("");
@@ -117,7 +113,32 @@ export class PiezaDetailsCmp implements OnInit {
           (<Control>this.piezaForm.controls['precio']).updateValue("");
 
         });
-      this.gotoIndex();
+          this.gotoIndex();
+    } else if (pieza.precio.toString().indexOf(',') != -1) {
+        alert("Error.La pieza no se puede modificar ya que el precio es incorrecto. Utiliza el . para los decimales.");
+    }else{
+        this._piezaService
+          .remove(id)
+          .subscribe(() => {
+            return this.pieza;
+          });
+
+        var compuestoPor: Array<string> = this.components;
+        this._piezaService
+          .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+          .subscribe((m) => {
+            (<Control>this.piezaForm.controls['_id']).updateValue("");
+            (<Control>this.piezaForm.controls['modelo']).updateValue("");
+            (<Control>this.piezaForm.controls['estado']).updateValue("");
+            (<Control>this.piezaForm.controls['lote']).updateValue("");
+            (<Control>this.piezaForm.controls['caracteristicas']).updateValue("");
+            (<Control>this.piezaForm.controls['almacen']).updateValue("");
+            (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
+            (<Control>this.piezaForm.controls['vendido']).updateValue("");
+            (<Control>this.piezaForm.controls['precio']).updateValue("");
+
+          });
+        this.gotoIndex();
     }
   }
 

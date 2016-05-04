@@ -22,6 +22,7 @@ var PiezaSubDetailsCmp = (function () {
         this._routeParams = _routeParams;
         this._piezaService = _piezaService;
         this._loginService = _loginService;
+        this.modelos = [];
         this.piezaForm = fb.group({
             "_id": ["", common_1.Validators.required],
             "modelo": ["", common_1.Validators.required],
@@ -34,18 +35,27 @@ var PiezaSubDetailsCmp = (function () {
             "compuestoPor": [""],
             "precio": [""]
         });
+        this.components = [];
     }
     PiezaSubDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
+        var id = this._routeParams.get('_id');
         this._piezaService
-            .getPiezaName(name)
+            .getPiezaId(id)
             .subscribe(function (pieza) {
             _this.pieza = pieza;
+            _this.components = _this.pieza.compuestoPor;
+        });
+        this._piezaService
+            .getModelos()
+            .subscribe(function (modelos) {
+            _this.modelos = modelos;
         });
     };
     PiezaSubDetailsCmp.prototype.gotoIndex = function () {
-        var clienteName = this.pieza ? this.pieza._id : null;
-        //this._router.navigate(['/ListModelos']);
+        this._router.navigate(['/ListPiezas']);
+    };
+    PiezaSubDetailsCmp.prototype.goBack = function () {
         window.history.back();
     };
     PiezaSubDetailsCmp.prototype._getAll = function () {
@@ -56,9 +66,66 @@ var PiezaSubDetailsCmp = (function () {
             _this.pieza = piezas;
         });
     };
-    PiezaSubDetailsCmp.prototype.buscar = function (nombre) {
-        //alert("buscamos este nombre "+nombre);
-        this._router.navigate(['DetailsSubPieza', { nombre: nombre }]);
+    PiezaSubDetailsCmp.prototype.buscar = function (numserie) {
+        alert("buscamos esta pieza " + numserie);
+        this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
+    };
+    PiezaSubDetailsCmp.prototype.edit = function (pieza) {
+        var _this = this;
+        var id = this._routeParams.get('_id');
+        if (pieza.precio == null) {
+            this._piezaService
+                .remove(id)
+                .subscribe(function () {
+                return _this.pieza;
+            });
+            var compuestoPor = this.components;
+            this._piezaService
+                .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+                .subscribe(function (m) {
+                _this.piezaForm.controls['_id'].updateValue("");
+                _this.piezaForm.controls['modelo'].updateValue("");
+                _this.piezaForm.controls['estado'].updateValue("");
+                _this.piezaForm.controls['lote'].updateValue("");
+                _this.piezaForm.controls['caracteristicas'].updateValue("");
+                _this.piezaForm.controls['almacen'].updateValue("");
+                _this.piezaForm.controls['almacenOrigen'].updateValue("");
+                _this.piezaForm.controls['vendido'].updateValue("");
+                _this.piezaForm.controls['precio'].updateValue("");
+            });
+        }
+        else if (pieza.precio.toString().indexOf(',') != -1) {
+            alert("Error.La pieza no se puede modificar ya que el precio es incorrecto. Utiliza el . para los decimales.");
+        }
+        else {
+            this._piezaService
+                .remove(id)
+                .subscribe(function () {
+                return _this.pieza;
+            });
+            var compuestoPor = this.components;
+            this._piezaService
+                .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+                .subscribe(function (m) {
+                _this.piezaForm.controls['_id'].updateValue("");
+                _this.piezaForm.controls['modelo'].updateValue("");
+                _this.piezaForm.controls['estado'].updateValue("");
+                _this.piezaForm.controls['lote'].updateValue("");
+                _this.piezaForm.controls['caracteristicas'].updateValue("");
+                _this.piezaForm.controls['almacen'].updateValue("");
+                _this.piezaForm.controls['almacenOrigen'].updateValue("");
+                _this.piezaForm.controls['vendido'].updateValue("");
+                _this.piezaForm.controls['precio'].updateValue("");
+            });
+        }
+    };
+    PiezaSubDetailsCmp.prototype.plus = function (data) {
+        var nombre = this.piezaForm.controls['compuestoPor'].value;
+        this.components.push(nombre);
+        this.piezaForm.controls['compuestoPor'].updateValue("");
+    };
+    PiezaSubDetailsCmp.prototype.minus = function (nombre) {
+        this.components.splice(this.components.indexOf(nombre), 1);
     };
     __decorate([
         core_1.Input(), 

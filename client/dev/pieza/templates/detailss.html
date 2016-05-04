@@ -1,22 +1,64 @@
 <div class="cliente-container">
-  <h1>DETAILSSSSS</h1>
-    <div *ngIf="modelo">
-      <div *ngFor="#item of modelo; #i=index;">
-      <h3>MODELO: {{item.nombre}}</h3>
-            <label>Nombre: </label>
-            <input [(ngModel)]="item.nombre" placeholder="Nombre"/><br/>
-            <label>Referencia interna: </label>
-            <input [(ngModel)]="item.refinterna" placeholder="Referencia interna"/><br/>
-            <label>Caracteristicas: </label>
-            <input [(ngModel)]="item.caracteristicas" placeholder="Caracteristicas"/><br/>
-            <label>Es: </label>
-            <input [(ngModel)]="item.modeloDe" placeholder="Es"/><br/><br/>
-            <div *ngIf="item.compuestoPor.length!=0">
-            <label>Compuesto Por: </label>
-               <td><ul *ngFor="#ite of item.compuestoPor; #i=index;" (click)="buscar(ite);"><li>{{ite}}</li>  </ul></td>
-               <td><ul *ngFor="#it of item.unidades; #ie=indexe;">{{it}}  </ul></td>
-           </div>
-      </div>
-      <button (click)="gotoIndex()">Back</button>
+  <h1>DETAILS</h1>
+    <div *ngIf="pieza">
+      <h3>Pieza: {{pieza._id}}</h3>
+        <label>Identificador: </label>
+        <input [(ngModel)]="pieza._id" placeholder="Identificador"/><br/>
+        <label>Modelo: </label>
+        <select name="modelo"
+            [(ngModel)]="pieza.modelo"
+           [class.cliente-error]="!piezaForm.valid"
+           placeholder="Modelo de pieza">
+           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+           </select><br/>
+        <label>Estado: </label>
+        <select name="estado"
+           [(ngModel)]="pieza.estado"
+           placeholder="Estado"
+           [class.cliente-error]="!piezaForm.valid">
+           <option value="Nuevo">Nuevo</option>
+           <option value="Usado">Usado</option>
+           <option value="Rota">Roto</option>
+           <option value="Reparando">Reparando</option>
+          </select><br/>
+        <label>Lote: </label>
+        <input [(ngModel)]="pieza.lote" placeholder="Lote"/><br/>
+        <label>Caracteristicas: </label>
+        <input [(ngModel)]="pieza.caracteristicas" placeholder="Caracteristicas"/><br/>
+        <label>Almacén de ubicación: </label>
+        <input [(ngModel)]="pieza.almacen" placeholder="Almacén"/><br/>
+        <label>Almacén de origen: </label>
+        <input [(ngModel)]="pieza.almacenOrigen" placeholder="Almacén de origen"/><br/>
+        <label>¿Está vendida?: </label>
+        <select name="vendido"
+           [(ngModel)]="pieza.vendido"
+           placeholder="¿Está vendida?"
+           [class.cliente-error]="!piezaForm.valid">
+           <option value="false">No</option>   
+           <option value="true">Si</option>
+          </select><br/><br/>
+        <label>Precio: </label>
+        <input [(ngModel)]="pieza.precio" placeholder="Precio"/><br/><br/>
+       
+        <div *ngIf="components.length>0">
+          <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
+
+            <div  *ngFor="#p of components;" >
+             <ul> {{p}}        <button class="btn btn-danger btn-xs" (click)="buscar(p);"><i class="fa fa-search "></i></button><button class="btn btn-danger btn-xs" (click)="minus(p);"><i class="fa fa-trash-o "></i></button></ul> <!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>-->
+            </div>
+          </div>
+        <br/><br/>
+         <form class="pieza-form"
+        [ngFormModel]="piezaForm"
+        ><br/>Componentes de la pieza para añadir:<br/>        
+   <input type="text"
+           ngControl="compuestoPor"
+           placeholder="Compuesta por..."
+           autofocus />   
+           <a (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i></a></form>
+      <button (click)="edit(pieza)">Save</button><br/>
+      <button (click)="goBack();">Back</button>
+      <button (click)="gotoIndex();">Volver al listado</button>
+      
 
 </div>

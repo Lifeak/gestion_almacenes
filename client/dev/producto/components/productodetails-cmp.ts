@@ -71,12 +71,12 @@ export class ProductoDetailsCmp implements OnInit {
           this.producto = productos;
         });
   }
-/*
-  buscar(nombre){
+
+  buscar(nombre:string){
       //alert("buscamos este nombre "+nombre);
-      this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+      this._router.navigate(['DetailsSubPieza', { nombre: nombre }]);
   }
-*/
+
   edit(producto: Producto){
     let id = this._routeParams.get('id');
       if (producto.precio.toString().indexOf(',') != -1) {

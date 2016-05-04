@@ -47,7 +47,6 @@ var ModeloService = (function () {
             .map(function (r) { return r.json(); });
     };
     ModeloService.prototype.getModeloName = function (nombre) {
-        //alert("al service le llega " + nombre);
         return this._http
             .get(ModeloService.ENDPOINT2.replace(':nombre', nombre))
             .map(function (r) { return r.json(); });

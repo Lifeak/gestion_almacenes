@@ -46,8 +46,7 @@ export class ModeloDetailsCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    
-    //alert(id);
+
     this._modeloService
     .getModeloId(id)
     .subscribe((modelo) => {

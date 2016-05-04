@@ -34,7 +34,6 @@ var PiezaCreateCmp = (function () {
             "precio": [""]
         });
         this.components = [];
-        //this.modelos = [];
     }
     PiezaCreateCmp.prototype.ngOnInit = function () {
         var _this = this;
@@ -52,7 +51,6 @@ var PiezaCreateCmp = (function () {
     };
     PiezaCreateCmp.prototype.save = function (datos) {
         var _this = this;
-        //this.components = [];
         var _id = this.piezaForm.controls['_id'].value;
         var modelo = this.piezaForm.controls['modelo'].value;
         var estado = this.piezaForm.controls['estado'].value;
@@ -74,7 +72,6 @@ var PiezaCreateCmp = (function () {
             _this.piezaForm.controls['almacen'].updateValue("");
             _this.piezaForm.controls['almacenOrigen'].updateValue("");
             _this.piezaForm.controls['vendido'].updateValue("");
-            //(<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
             _this.piezaForm.controls['precio'].updateValue("");
         });
         this.gotoIndex();

@@ -52,7 +52,6 @@ export class ModeloService {
   }
 
   getModeloName(nombre: string) {
-    //alert("al service le llega " + nombre);
     return this._http
       .get(ModeloService.ENDPOINT2.replace(':nombre', nombre))
       .map((r) => r.json());
