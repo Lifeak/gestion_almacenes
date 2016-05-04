@@ -67,7 +67,6 @@ var PiezaSubDetailsCmp = (function () {
         });
     };
     PiezaSubDetailsCmp.prototype.buscar = function (numserie) {
-        alert("buscamos esta pieza " + numserie);
         this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
     };
     PiezaSubDetailsCmp.prototype.edit = function (pieza) {

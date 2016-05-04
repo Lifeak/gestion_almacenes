@@ -22,6 +22,9 @@ var ModeloDetailsCmp = (function () {
         this._routeParams = _routeParams;
         this._modeloService = _modeloService;
         this._loginService = _loginService;
+        this.modelos = [];
+        this.components = [];
+        this.uds = [];
         this.modeloForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "refinterna": ["", common_1.Validators.required],
@@ -39,10 +42,13 @@ var ModeloDetailsCmp = (function () {
             .subscribe(function (modelo) {
             _this.modelo = modelo;
         });
+        this._modeloService
+            .getAll()
+            .subscribe(function (modelos) {
+            _this.modelos = modelos;
+        });
     };
     ModeloDetailsCmp.prototype.gotoIndex = function () {
-        var clienteId = this.modelo ? this.modelo._id : null;
-        var clienteName = this.modelo ? this.modelo.nombre : null;
         this._router.navigate(['/ListModelos']);
     };
     ModeloDetailsCmp.prototype._getAll = function () {
@@ -60,9 +66,10 @@ var ModeloDetailsCmp = (function () {
     ModeloDetailsCmp.prototype.edit = function (modelo) {
         var _this = this;
         var id = this._routeParams.get('id');
-        // alert("el id del modelo que vamos a editar es " + id);
+        var compuestoPor = this.components;
+        var unidades = this.uds;
         this._modeloService
-            .add(modelo.nombre, modelo.refinterna, modelo.caracteristicas, modelo.modeloDe, modelo.compuestoPor, modelo.unidades)
+            .add(modelo.nombre, modelo.refinterna, modelo.caracteristicas, modelo.modeloDe, compuestoPor, unidades)
             .subscribe(function (m) {
             _this.modeloForm.controls['nombre'].updateValue("");
             _this.modeloForm.controls['refinterna'].updateValue("");
@@ -85,6 +92,38 @@ var ModeloDetailsCmp = (function () {
             .remove(id)
             .subscribe(function () {
             return _this.modelo;
+        });
+        this.gotoIndex();
+    };
+    ModeloDetailsCmp.prototype.plus = function (data) {
+        var nombre = this.modeloForm.controls['compuestoPor'].value;
+        this.components.push(nombre);
+        this.modeloForm.controls['compuestoPor'].updateValue("");
+        var unidades = this.modeloForm.controls['unidades'].value;
+        this.uds.push(unidades);
+        this.modeloForm.controls['unidades'].updateValue("");
+    };
+    ModeloDetailsCmp.prototype.minus = function (nombre) {
+        this.components.splice(this.components.indexOf(nombre), 1);
+        this.uds.splice(this.components.indexOf(nombre), 1);
+    };
+    ModeloDetailsCmp.prototype.save = function (datos) {
+        var _this = this;
+        var nombre = this.modeloForm.controls['nombre'].value;
+        var refinterna = this.modeloForm.controls['refinterna'].value;
+        var caracteristicas = this.modeloForm.controls['caracteristicas'].value;
+        var modeloDe = this.modeloForm.controls['modeloDe'].value;
+        var compuestoPor = this.components;
+        var unidades = this.uds;
+        this._modeloService
+            .add(nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades)
+            .subscribe(function (m) {
+            _this.modeloForm.controls['nombre'].updateValue("");
+            _this.modeloForm.controls['refinterna'].updateValue("");
+            _this.modeloForm.controls['caracteristicas'].updateValue("");
+            _this.modeloForm.controls['modeloDe'].updateValue("");
+            _this.modeloForm.controls['compuestoPor'].updateValue("");
+            _this.modeloForm.controls['unidades'].updateValue("");
         });
         this.gotoIndex();
     };

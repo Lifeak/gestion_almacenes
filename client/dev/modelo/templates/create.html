@@ -31,34 +31,56 @@
            <option value="Pieza">Pieza</option>
            <option value="Producto">Producto</option>
           </select>
-   <br/>Componentes del modelo:<br/>
-   <div *ngFor="#comp of components; #i=index">
+   <br/>Selecciona los componentes del modelo:<br/>
    <label>
-    <input type="checkbox"
-        name="compuesto"
-        ngControl="compuestoPor"
-        value="{{comp}}"
-        (change)="setOption(comp);u=true;"
-        [class.cliente-error]="!modeloForm.valid"
-        />
-        {{comp}}
-        
-        </label></div>
-        <div *ngIf="u==true;">
-           <br/>Unidades:
-            <select id="un" 
+    <select name="modelo"
+           ngControl ="compuestoPor"
+           [class.cliente-error]="!modeloForm.valid"
+           (change)="a=true"
+           placeholder="Modelo">
+           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+           </select>
+        </label>
+        <label>Unidades:  </label>
+        <select 
                 name="unidades"
                 ngControl="unidades"
-                (change)="setUds(modeloForm);u=false;"
-                (change)="false;setUds(modeloForm);"
+                (change)="b=true"
                 [class.cliente-error]="!modeloForm.valid">
-                <option selected="selected" value="0" >0</option>
+
                 <option value="1">1</option>
                 <option value="2">2</option>
-             </select>   
-        </div>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+             </select>   &nbsp;
+            <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a> 
  
+<div *ngIf="components.length>0">
+  <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
+  <table>
+  <tr>
+   <td><div *ngFor="#u of uds;" >
+        
+         Unidades: {{u}}  &nbsp;</div>
+        
+    </td>
+    <td><div *ngFor="#p of components;" >
+        
+          {{p}}  &nbsp;<a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a></div>
+        
+    </td>
 
+    
+  </tr>
+
+  </table>
+  </div>
 <br/><br/>
     <button type="submit"
             [disabled]="!modeloForm.valid">Añadir</button>
