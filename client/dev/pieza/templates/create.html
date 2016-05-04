@@ -60,19 +60,26 @@
            <option value="false">No</option>   
            <option value="true">Si</option>
           </select>
-  <br/>Compuesta por:<br/>
-  <input type="text"
-           ngControl="compuestoPor"
-           [class.cliente-error]="!piezaForm.valid"
-           placeholder="Compuesta por..."
-           autofocus />
   <br/>Precio:<br/>
   <input type="text"
            ngControl="precio"
            [class.cliente-error]="!piezaForm.valid"
-           placeholder="Pieza"
+           placeholder="Precio"
            autofocus />
+   <br/>Componentes de la pieza para añadir:<br/>        
+   <input type="text"
+           ngControl="compuestoPor"
+           placeholder="Compuesta por..."
+           autofocus />   
+           <a (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i></a> 
 
+<div *ngIf="components.length>0">
+  <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
+
+    <div *ngFor="#p of components;" >
+      {{p}} <button class="btn btn-danger btn-xs" (click)="minus(p);"><i class="fa fa-trash-o "></i></button><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+    </div>
+  </div>
 <br/><br/>
     <button type="submit"
             [disabled]="!piezaForm.valid">Añadir</button>

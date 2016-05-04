@@ -21,6 +21,8 @@ import {
 import {Pieza,PiezaService} from '../services/pieza-service';
 import {LoginService} from '../../login/services/login-service';
 
+import {Modelo} from '../../modelo/services/modelo-service';
+
 
 @Component({
   templateUrl: 'client/dev/pieza/templates/details.html',
@@ -31,6 +33,8 @@ import {LoginService} from '../../login/services/login-service';
 export class PiezaDetailsCmp implements OnInit {
   @Input() pieza: Pieza;
   piezaForm: ControlGroup;
+  modelos: Modelo[] = [];
+  components: Array<string>;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService, @Inject(LoginService) private _loginService: LoginService) {
     this.piezaForm = fb.group({
@@ -45,6 +49,7 @@ export class PiezaDetailsCmp implements OnInit {
       "compuestoPor":[""],
       "precio":[""]
     });
+    this.components = [];
   }
   
 
@@ -53,7 +58,14 @@ export class PiezaDetailsCmp implements OnInit {
     this._piezaService
     .getPiezaId(id)
     .subscribe((pieza) => {
-    this.pieza = pieza;
+      this.pieza = pieza;    
+      this.components = this.pieza.compuestoPor;
+    });
+  
+    this._piezaService
+    .getModelos()
+    .subscribe((modelos) => {
+      this.modelos = modelos;
     });
 
 
@@ -77,11 +89,23 @@ export class PiezaDetailsCmp implements OnInit {
       this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
   }
 */
-  edit(pieza: Pieza){
+  edit(pieza: Pieza) {
     let id = this._routeParams.get('id');
-    this._piezaService
-      .add(pieza._id,pieza.modelo,pieza.estado,pieza.lote,pieza.caracterisiticas,pieza.almacen,pieza.almacenOrigen,pieza.vendido,pieza.compuestoPor,pieza.precio)
-      .subscribe((m) => {
+    if (pieza.precio.toString().indexOf(',') != -1) {
+      alert("Error.La pieza no se puede modificar ya que el precio es incorrecto. Utiliza el . para los decimales.");
+
+    } else {
+
+      this._piezaService
+        .remove(id)
+        .subscribe(() => {
+          return this.pieza;
+        });
+
+      var compuestoPor: Array<string> = this.components;
+      this._piezaService
+        .add(pieza._id, pieza.modelo, pieza.estado, pieza.lote, pieza.caracterisiticas, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor, pieza.precio)
+        .subscribe((m) => {
           (<Control>this.piezaForm.controls['_id']).updateValue("");
           (<Control>this.piezaForm.controls['modelo']).updateValue("");
           (<Control>this.piezaForm.controls['estado']).updateValue("");
@@ -90,18 +114,11 @@ export class PiezaDetailsCmp implements OnInit {
           (<Control>this.piezaForm.controls['almacen']).updateValue("");
           (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
           (<Control>this.piezaForm.controls['vendido']).updateValue("");
-          (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
           (<Control>this.piezaForm.controls['precio']).updateValue("");
 
-    });
-
-    this._piezaService
-      .remove(id)
-      .subscribe(() => {
-        return this.pieza;
-
-      });
-    this.gotoIndex();
+        });
+      this.gotoIndex();
+    }
   }
 
   delete(pieza: Pieza) {
@@ -115,5 +132,17 @@ export class PiezaDetailsCmp implements OnInit {
     this.gotoIndex();
 
   }
+
+  plus(data: FormData): void {
+      var nombre: string = this.piezaForm.controls['compuestoPor'].value;
+      this.components.push(nombre);
+      (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+
+  }
+
+  minus(nombre: string): void {
+      this.components.splice(this.components.indexOf(nombre), 1);
+  }
+
 
 }

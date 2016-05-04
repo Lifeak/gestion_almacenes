@@ -24,7 +24,8 @@ import {Modelo} from '../../modelo/services/modelo-service';
 
 @Component({
   templateUrl: 'client/dev/pieza/templates/create.html',
-  styleUrls: ['client/dev/pieza/styles/cliente.css']
+  //styleUrls: ['client/dev/styles/assets/css/style.css']
+  styleUrls:['client/dev/pieza/styles/cliente.css']
 })
 
 
@@ -70,7 +71,7 @@ export class PiezaCreateCmp implements OnInit{
   }
 
   save(datos: FormData){
-      this.components = [];
+      //this.components = [];
       var _id: string = this.piezaForm.controls['_id'].value;
       var modelo: string = this.piezaForm.controls['modelo'].value;
       var estado: string = this.piezaForm.controls['estado'].value;
@@ -93,7 +94,7 @@ export class PiezaCreateCmp implements OnInit{
         (<Control>this.piezaForm.controls['almacen']).updateValue("");
         (<Control>this.piezaForm.controls['almacenOrigen']).updateValue("");
         (<Control>this.piezaForm.controls['vendido']).updateValue("");
-        (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+        //(<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
         (<Control>this.piezaForm.controls['precio']).updateValue("");
           });
 
@@ -102,6 +103,15 @@ export class PiezaCreateCmp implements OnInit{
 
   }
 
-  
+  plus(data: FormData): void {
+      var nombre: string = this.piezaForm.controls['compuestoPor'].value; 
+      this.components.push(nombre);
+      (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+
+  }
+
+  minus(nombre: string): void {
+      this.components.splice(this.components.indexOf(nombre), 1);
+  }
 
 }

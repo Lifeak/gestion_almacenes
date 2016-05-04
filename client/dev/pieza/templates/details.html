@@ -5,9 +5,22 @@
         <label>Identificador: </label>
         <input [(ngModel)]="pieza._id" placeholder="Identificador"/><br/>
         <label>Modelo: </label>
-        <input [(ngModel)]="pieza.modelo" placeholder="Modelo"/><br/>
+        <select name="modelo"
+            [(ngModel)]="pieza.modelo"
+           [class.cliente-error]="!piezaForm.valid"
+           placeholder="Modelo de pieza">
+           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+           </select><br/>
         <label>Estado: </label>
-        <input [(ngModel)]="pieza.estado" placeholder="Estado"/><br/>
+        <select name="estado"
+           [(ngModel)]="pieza.estado"
+           placeholder="Estado"
+           [class.cliente-error]="!piezaForm.valid">
+           <option value="Nuevo">Nuevo</option>
+           <option value="Usado">Usado</option>
+           <option value="Rota">Roto</option>
+           <option value="Reparando">Reparando</option>
+          </select><br/>
         <label>Lote: </label>
         <input [(ngModel)]="pieza.lote" placeholder="Lote"/><br/>
         <label>Caracteristicas: </label>
@@ -16,13 +29,33 @@
         <input [(ngModel)]="pieza.almacen" placeholder="Almacén"/><br/>
         <label>Almacén de origen: </label>
         <input [(ngModel)]="pieza.almacenOrigen" placeholder="Almacén de origen"/><br/>
-        <label>Vendido: </label>
-        <input [(ngModel)]="pieza.vendido" placeholder="Vendido"/><br/><br/>
-        <label>Compuesto por..: </label>
-        <input [(ngModel)]="pieza.compuestoPor" placeholder="Compuesto por.."/><br/><br/>
+        <label>¿Está vendida?: </label>
+        <select name="vendido"
+           [(ngModel)]="pieza.vendido"
+           placeholder="¿Está vendida?"
+           [class.cliente-error]="!piezaForm.valid">
+           <option value="false">No</option>   
+           <option value="true">Si</option>
+          </select><br/><br/>
         <label>Precio: </label>
         <input [(ngModel)]="pieza.precio" placeholder="Precio"/><br/><br/>
-        
+       
+        <div *ngIf="components.length>0">
+          <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
+
+            <div  *ngFor="#p of components;" >
+              {{p}} <button class="btn btn-danger btn-xs" (click)="minus(p);"><i class="fa fa-trash-o "></i></button><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a>-->
+            </div>
+          </div>
+        <br/><br/>
+         <form class="pieza-form"
+        [ngFormModel]="piezaForm"
+        ><br/>Componentes de la pieza para añadir:<br/>        
+   <input type="text"
+           ngControl="compuestoPor"
+           placeholder="Compuesta por..."
+           autofocus />   
+           <a (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i></a></form>
 
       <button (click)="gotoIndex()">Back</button>
       <button (click)="edit(pieza)">Save</button>

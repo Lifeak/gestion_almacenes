@@ -52,7 +52,7 @@ var PiezaCreateCmp = (function () {
     };
     PiezaCreateCmp.prototype.save = function (datos) {
         var _this = this;
-        this.components = [];
+        //this.components = [];
         var _id = this.piezaForm.controls['_id'].value;
         var modelo = this.piezaForm.controls['modelo'].value;
         var estado = this.piezaForm.controls['estado'].value;
@@ -74,10 +74,18 @@ var PiezaCreateCmp = (function () {
             _this.piezaForm.controls['almacen'].updateValue("");
             _this.piezaForm.controls['almacenOrigen'].updateValue("");
             _this.piezaForm.controls['vendido'].updateValue("");
-            _this.piezaForm.controls['compuestoPor'].updateValue("");
+            //(<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
             _this.piezaForm.controls['precio'].updateValue("");
         });
         this.gotoIndex();
+    };
+    PiezaCreateCmp.prototype.plus = function (data) {
+        var nombre = this.piezaForm.controls['compuestoPor'].value;
+        this.components.push(nombre);
+        this.piezaForm.controls['compuestoPor'].updateValue("");
+    };
+    PiezaCreateCmp.prototype.minus = function (nombre) {
+        this.components.splice(this.components.indexOf(nombre), 1);
     };
     __decorate([
         core_1.Input(), 
@@ -86,6 +94,7 @@ var PiezaCreateCmp = (function () {
     PiezaCreateCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/pieza/templates/create.html',
+            //styleUrls: ['client/dev/styles/assets/css/style.css']
             styleUrls: ['client/dev/pieza/styles/cliente.css']
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
