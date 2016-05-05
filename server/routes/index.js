@@ -35,6 +35,10 @@ const piezaRoutes = require('../api/pieza/routes/pieza-routes');
 const producto = require('../commons/static/producto');
 const productoRoutes = require('../api/producto/routes/producto-routes');
 
+// Rutas de los proveedores, get y post
+const proveedor = require('../commons/static/proveedor');
+const proveedorRoutes = require('../api/proveedor/routes/proveedor-routes');
+
 const loginRoutes= require('../auth/login/routes/login-routes');
 
 module.exports = class Routes {
@@ -49,6 +53,7 @@ module.exports = class Routes {
      garantiaRoutes.init(router);
      piezaRoutes.init(router);
      productoRoutes.init(router);
+     proveedorRoutes.init(router);
 
  	router
        .route('/')
@@ -85,6 +90,10 @@ module.exports = class Routes {
     .route('/gproductos')
     .get(producto.sendCRUD);  
 
+ router
+    .route('/gproveedores')
+    .get(proveedor.sendCRUD);  
+
      app.use('/', router);
      app.use('/u',router);
      app.use('/galmacenes',router);
@@ -93,5 +102,6 @@ module.exports = class Routes {
      app.use('/ggarantias',router);
      app.use('/gpiezas',router);
      app.use('/gproducto',router);
+     app.use('/gproveedores',router);
    }
 }

@@ -1,5 +1,5 @@
 <section id="container">
-         <!-- **********************************************************************************************************************************************************
+     <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
       <!--header start-->
@@ -16,33 +16,27 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
                         Almacen
-                            <i class="fa fa-tasks"></i>
-                            
-                        </a>
-                        
-                     </li>   
-                    <li class="dropdown" >
+                            <i class="fa fa-tasks"></i> 
+                        </a>    
+                    </li>
+                    <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()" style="background-color: grey; color:white;">
-                           Compras
+                        	 Compras
                             <i class="fa fa-tasks"></i>
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()" href="localhost:3000/#/ventas">
                         Ventas
                             <i class="fa fa-tasks"></i>
-                            
-                        </a>
-                       
+                        </a>     
                     </li>
+
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()" >
                         Admin
-                            <i class="fa fa-tasks"></i>
-                            
+                            <i class="fa fa-tasks"></i>     
                         </a>
-                        
-                       
                     </li>
                     <!-- settings end -->
                     
@@ -50,38 +44,35 @@
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-              <ul class="nav pull-right top-menu">
+            	<ul class="nav pull-right top-menu">
                     <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()">Logout</button></a></li>
-              </ul>
+            	</ul>
             </div>
         </header>
-      <!--header end-->
-      <!--FIN MENU SUPERIOR-->
-
       <!--header end-->
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
       <!--sidebar start-->
-      <aside>
+       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                   <li class="sub-menu">
-                      <a href="/gproveedores" (click)="proveedores();c1=false">
+                      <a href="/gproveedores" class="active" (click)="proveedores();c1=false">
                           <i class="fa fa-home"></i>
                           <span>Proveedores</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" class="active" (click)="c1=true;" >
+                      <a href="javascript:;" (click)="c1=true;" >
                           <i class="fa fa-desktop"></i>
                           <span>Productos</span>
                       </a>
                       <ul class="dropdown" *ngIf="c1==true">
-                          <li><a  href="/gproductos" class="active">Producto final</a></li>
-                          <li><a  href="/gpiezas" >Piezas</a></li>
+                          <li><a  href="/gproductos">Producto final</a></li>
+                          <li><a  href="/gpiezas">Piezas</a></li>
                           <li><a  href="/gmodelos">Modelos</a></li>
                       </ul>
                   </li>
@@ -118,6 +109,8 @@
       <!--sidebar end-->
       
       
+      
+      
 
   <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
@@ -131,7 +124,7 @@
                   <div class="col-lg-12 main-chart">
                      <nav>
    						<!--<li><a [routerLink]="['/ListUsuarios']">Listado</a></li>-->
-					    <li><a [routerLink]="['/CreateProducto']">Nuevo producto</a></li>
+					    <li><a [routerLink]="['/CreateProveedor']">Nuevo proveedor</a></li>
 					</nav>
    				 <div>
 		 		
