@@ -39,7 +39,7 @@ export class ModeloDetailsCmp implements OnInit {
     this.modeloForm = fb.group({
       "nombre": ["", Validators.required],
       "refinterna": ["", Validators.required],
-      "caracteristicas": ["", Validators.required],
+      "caracteristicas": [""],
       "modeloDe": ["", Validators.required],
       "compuestoPor": [""],
       "unidades": [""]
@@ -49,11 +49,12 @@ export class ModeloDetailsCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-
     this._modeloService
     .getModeloId(id)
     .subscribe((modelo) => {
     this.modelo = modelo;
+    this.components = this.modelo.compuestoPor;
+    this.uds = this.modelo.unidades;
     });
 
     this._modeloService
@@ -122,7 +123,9 @@ export class ModeloDetailsCmp implements OnInit {
   }
 
   plus(data: FormData): void {
+
       var nombre: string = this.modeloForm.controls['compuestoPor'].value;
+      alert("entramos a plus con nombre " + nombre);
       this.components.push(nombre);
       (<Control>this.modeloForm.controls['compuestoPor']).updateValue("");
       var unidades: number = this.modeloForm.controls['unidades'].value;
@@ -135,30 +138,4 @@ export class ModeloDetailsCmp implements OnInit {
       this.components.splice(this.components.indexOf(nombre), 1);
       this.uds.splice(this.components.indexOf(nombre), 1);
   }
-
-  save(datos: FormData) {
-
-      var nombre: string = this.modeloForm.controls['nombre'].value;
-      var refinterna: string = this.modeloForm.controls['refinterna'].value;
-      var caracteristicas: string = this.modeloForm.controls['caracteristicas'].value;
-      var modeloDe: string = this.modeloForm.controls['modeloDe'].value;
-      var compuestoPor: Array<string> = this.components;
-      var unidades: Array<number> = this.uds;
-
-      this._modeloService
-          .add(nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades)
-          .subscribe((m) => {
-        (<Control>this.modeloForm.controls['nombre']).updateValue("");
-        (<Control>this.modeloForm.controls['refinterna']).updateValue("");
-        (<Control>this.modeloForm.controls['caracteristicas']).updateValue("");
-        (<Control>this.modeloForm.controls['modeloDe']).updateValue("");
-        (<Control>this.modeloForm.controls['compuestoPor']).updateValue("");
-        (<Control>this.modeloForm.controls['unidades']).updateValue("");
-          });
-
-
-      this.gotoIndex();
-
-  }
-
 }

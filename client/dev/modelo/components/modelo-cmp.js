@@ -29,7 +29,7 @@ var ModeloCmp = (function () {
         this.modeloForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "refinterna": ["", common_1.Validators.required],
-            "caracteristicas": ["", common_1.Validators.required],
+            "caracteristicas": [""],
             "modeloDe": ["", common_1.Validators.required],
             "compuestoPor": [""],
             "unidades": [""],

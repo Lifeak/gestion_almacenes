@@ -3,21 +3,77 @@
     <div *ngIf="modelo">
     	<h3>MODELO: {{modelo.nombre}}</h3>
         <label>Nombre: </label>
-        <input [(ngModel)]="modelo.nombre" placeholder="Nombre"/><br/>
+        <select name="nombre"
+            [(ngModel)]="modelo.nombre"
+           [class.cliente-error]="!modeloForm.valid"
+           placeholder="Nombre de modelo">
+           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+         </select><br/>
         <label>Referencia interna: </label>
         <input [(ngModel)]="modelo.refinterna" placeholder="Referencia interna"/><br/>
         <label>Caracteristicas: </label>
         <input [(ngModel)]="modelo.caracteristicas" placeholder="Caracteristicas"/><br/>
-        <label>Es: </label>
-        <input [(ngModel)]="modelo.modeloDe" placeholder="Es"/><br/><br/>
-        <div *ngIf="modelo.compuestoPor.length!=0">
-        <label>Compuesto Por: </label>
-           <td><ul *ngFor="#item of modelo.compuestoPor; #i=index;" (click)="buscar(item);"><li>{{item}}</li>  </ul></td>
-           <td><ul *ngFor="#it of modelo.unidades; #ie=indexe;">{{it}}  </ul></td>
-       </div>
+        <label>Es un modelo de: </label>
+         <select name="modeloDe"
+            [(ngModel)]="modelo.modeloDe"
+            [class.cliente-error]="!modeloForm.valid"
+             placeholder="Es">
+             <option value="Pieza">Pieza</option>
+             <option value="Producto">Producto</option>
+         </select><br/>
 
+      <div *ngIf="modelo.compuestoPor.length>0">
+          <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
+          <table>
+            <tr>
+              <td>
+                <div *ngFor="#u of uds;" >
+                   Unidades: {{u}}  &nbsp;
+                 </div>      
+              </td>
+              <td>
+                <div *ngFor="#p of components;" >
+                  {{p}} &nbsp;
+                  <a  (click)="buscar(p);">Buscar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
+                  <a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>
+                </div>    
+              </td>
+            </tr>
+          </table>
+      </div>
+      <form class="modelo-form" [ngFormModel]="modeloForm">
+      <br/>Añade mas componentes al modelo:<br/>
+      <label>
+      <select name="modelo"
+           ngControl ="compuestoPor"
+           [class.cliente-error]="!modeloForm.valid"
+           (change)="a=true"
+           placeholder="Modelo">
+           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+           </select>
+        </label>
+        <label>Unidades:  </label>
+        <select 
+                name="unidades"
+                ngControl="unidades"
+                (change)="b=true"
+                [class.cliente-error]="!modeloForm.valid">
+
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+             </select>   &nbsp;
+            <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
+        </form>
       <button (click)="gotoIndex()">Back</button>
       <button (click)="edit(modelo)">Save</button>
       <button (click)="delete(modelo)">Delete</button>
-
+ </div>
 </div>

@@ -22,10 +22,13 @@ var ModeloSubDetailsCmp = (function () {
         this._routeParams = _routeParams;
         this._modeloService = _modeloService;
         this._loginService = _loginService;
+        this.modelos = [];
+        this.components = [];
+        this.uds = [];
         this.modeloForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "refinterna": ["", common_1.Validators.required],
-            "caracteristicas": ["", common_1.Validators.required],
+            "caracteristicas": [""],
             "modeloDe": ["", common_1.Validators.required],
             "compuestoPor": [""],
             "unidades": [""]
@@ -34,16 +37,22 @@ var ModeloSubDetailsCmp = (function () {
     ModeloSubDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var name = this._routeParams.get('nombre');
-        //alert("al subdetails le llega:  "+name);
+        alert("estamos en subdetails");
         this._modeloService
             .getModeloName(name)
             .subscribe(function (modelo) {
             _this.modelo = modelo;
+            _this.components = _this.modelo[0].compuestoPor;
+            _this.uds = _this.modelo[0].unidades;
+            //alert("los componentes son: "+this.components.toString()+" y las unidades "+this.uds.toString());
+        });
+        this._modeloService
+            .getAll()
+            .subscribe(function (modelos) {
+            _this.modelos = modelos;
         });
     };
     ModeloSubDetailsCmp.prototype.gotoIndex = function () {
-        var clienteName = this.modelo ? this.modelo.nombre : null;
-        //this._router.navigate(['/ListModelos']);
         window.history.back();
     };
     ModeloSubDetailsCmp.prototype._getAll = function () {
@@ -57,6 +66,41 @@ var ModeloSubDetailsCmp = (function () {
     ModeloSubDetailsCmp.prototype.buscar = function (nombre) {
         //alert("buscamos este nombre "+nombre);
         this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+    };
+    ModeloSubDetailsCmp.prototype.edit = function (modelo) {
+        var _this = this;
+        var id = this._routeParams.get('nombre');
+        var compuestoPor = this.components;
+        var unidades = this.uds;
+        this._modeloService
+            .add(modelo.nombre, modelo.refinterna, modelo.caracteristicas, modelo.modeloDe, compuestoPor, unidades)
+            .subscribe(function (m) {
+            _this.modeloForm.controls['nombre'].updateValue("");
+            _this.modeloForm.controls['refinterna'].updateValue("");
+            _this.modeloForm.controls['caracteristicas'].updateValue("");
+            _this.modeloForm.controls['modeloDe'].updateValue("");
+            _this.modeloForm.controls['compuestoPor'].updateValue("");
+            _this.modeloForm.controls['unidades'].updateValue("");
+        });
+        this._modeloService
+            .remove(id)
+            .subscribe(function () {
+            return _this.modelo;
+        });
+        this.gotoIndex();
+    };
+    ModeloSubDetailsCmp.prototype.plus = function (data) {
+        var nombre = this.modeloForm.controls['compuestoPor'].value;
+        alert("entramos a plus con nombre " + nombre);
+        this.components.push(nombre);
+        this.modeloForm.controls['compuestoPor'].updateValue("");
+        var unidades = this.modeloForm.controls['unidades'].value;
+        this.uds.push(unidades);
+        this.modeloForm.controls['unidades'].updateValue("");
+    };
+    ModeloSubDetailsCmp.prototype.minus = function (nombre) {
+        this.components.splice(this.components.indexOf(nombre), 1);
+        this.uds.splice(this.components.indexOf(nombre), 1);
     };
     __decorate([
         core_1.Input(), 

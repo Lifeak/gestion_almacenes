@@ -69,7 +69,7 @@ export class ModeloCmp implements OnInit {
     this.modeloForm = fb.group({
       "nombre": ["", Validators.required],
       "refinterna": ["", Validators.required],
-      "caracteristicas": ["", Validators.required],
+      "caracteristicas": [""],
       "modeloDe": ["", Validators.required],
       "compuestoPor": [""],
       "unidades": [""],
