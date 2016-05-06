@@ -47,8 +47,8 @@ var ProveedorService = (function () {
             .get(ProveedorService.ENDPOINT.replace(':id', id))
             .map(function (r) { return r.json(); });
     };
-    ProveedorService.prototype.add = function () {
-        var body = JSON.stringify({});
+    ProveedorService.prototype.add = function (nombre, direccion, ciudad, pais, telefono, valoracion, materiales) {
+        var body = JSON.stringify({ nombre: nombre, direccion: direccion, ciudad: ciudad, pais: pais, telefono: telefono, valoracion: valoracion, materiales: materiales });
         alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');

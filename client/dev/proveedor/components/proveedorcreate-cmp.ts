@@ -37,8 +37,10 @@ export class ProveedorCreateCmp{
       "ciudad": ["", Validators.required],
       "pais": ["", Validators.required],
       "telefono": ["", Validators.required],
-      "valoracion": ["", Validators.required],
-      "material": ["", Validators.required]
+      "valoracion": [""],
+      "pieza": [""],
+      "refexterna": [""],
+      "coste1": [""]
     });
   }
   
@@ -50,34 +52,41 @@ export class ProveedorCreateCmp{
   goBack(){
     window.history.back();
   }
-/*
-  save(datos: FormData){
-      alert("entramos a guardar");
-      var user: string = this.userForm.controls['user'].value;
-      var pass: string = this.userForm.controls['pass'].value;
-      var passs: string = this.userForm.controls['passs'].value;
-      var nombre: string = this.userForm.controls['nombre'].value;
-      var apellido: string = this.userForm.controls['apellido'].value;
-      var tipo: string = this.userForm.controls['tipo'].value;
-      if (pass == passs && pass.length>3) {
 
-          this._userService
-              .add(user, pass, nombre, apellido, tipo)
+  save(datos: FormData){
+      alert("entramos a guardar el proveedor");
+      var nombre: string = this.proveedorForm.controls['nombre'].value;
+      var direccion: string = this.proveedorForm.controls['direccion'].value;
+      var ciudad: string = this.proveedorForm.controls['ciudad'].value;
+      var pais: string = this.proveedorForm.controls['pais'].value;
+      var telefono: string = this.proveedorForm.controls['telefono'].value;
+      var valoracion: string = this.proveedorForm.controls['valoracion'].value;
+      var pieza: string = this.proveedorForm.controls['pieza'].value;
+      var refexterna: string = this.proveedorForm.controls['refexterna'].value;
+      var coste1: number = this.proveedorForm.controls['coste1'].value;
+      var materiales: Object = [{pieza, refexterna, coste1}];
+
+
+          this._proveedorService
+              .add(nombre,direccion,ciudad,pais,telefono,valoracion,materiales)
               .subscribe((m) => {
-          (<Control>this.userForm.controls['user']).updateValue("");
-          (<Control>this.userForm.controls['pass']).updateValue("");
-          (<Control>this.userForm.controls['nombre']).updateValue("");
-          (<Control>this.userForm.controls['apellido']).updateValue("");
-          (<Control>this.userForm.controls['tipo']).updateValue("");
+          (<Control>this.proveedorForm.controls['nombre']).updateValue("");
+          (<Control>this.proveedorForm.controls['direccion']).updateValue("");
+          (<Control>this.proveedorForm.controls['ciudad']).updateValue("");
+          (<Control>this.proveedorForm.controls['pais']).updateValue("");
+          (<Control>this.proveedorForm.controls['telefono']).updateValue("");
+          (<Control>this.proveedorForm.controls['valoracion']).updateValue("");
+          (<Control>this.proveedorForm.controls['pieza']).updateValue("");
+          (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
+          (<Control>this.proveedorForm.controls['coste1']).updateValue("");
+          
               });
 
           this.gotoIndex();
 
-      }else{
-          alert("Error, pass no valid. Try again.")
-      }
+
   }
 
-  */
+  
 
 }

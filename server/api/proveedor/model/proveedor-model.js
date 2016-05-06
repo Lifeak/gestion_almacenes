@@ -10,12 +10,11 @@ const _proveedorSchema = {
     telefono: {type: String, required: true},
     valoracion: {type: String},
     materiales: [{
-		pieza: {type: String, required: true},
+        pieza: {type: String, required: true},
         refexterna:{type: String, required: true},
-		coste1: {type: Number, required:true},
+        coste1: {type: Number, required:true},
         coste2: {type: Number},
-		valoracion: {type: String}
+        valoracion: {type: String}
     }]
 }
-
 module.exports = mongoose.Schema(_proveedorSchema);

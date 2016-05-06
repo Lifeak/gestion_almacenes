@@ -33,6 +33,7 @@ export class Proveedor {
 }
 
 
+
 @Injectable()
 export class ProveedorService {
   static ENDPOINT: string = '/api/proveedor/:id';
@@ -59,9 +60,9 @@ export class ProveedorService {
     .map((r) => r.json());
   } 
 
-  add():Observable<any> {
+  add(nombre:string, direccion:string, ciudad: string, pais:string, telefono:string, valoracion:string, materiales: Object):Observable<any> {
 
-    let body = JSON.stringify({});
+    let body = JSON.stringify({nombre, direccion,ciudad,pais,telefono,valoracion, materiales});
     alert("body" + body);
     let headers = new Headers();
 

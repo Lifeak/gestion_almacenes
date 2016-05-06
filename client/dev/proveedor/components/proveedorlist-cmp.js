@@ -15,7 +15,7 @@ var ProveedorListCmp = (function () {
     function ProveedorListCmp(_proveedorService, _router, routeParams) {
         this._proveedorService = _proveedorService;
         this._router = _router;
-        this.proveedores = [];
+        this.proveedors = [];
         this._selectedId = routeParams.get('id');
     }
     ProveedorListCmp.prototype.ngOnInit = function () {
@@ -26,7 +26,8 @@ var ProveedorListCmp = (function () {
         this._proveedorService
             .getAll()
             .subscribe(function (proveedores) {
-            _this.proveedores = proveedores;
+            _this.proveedors = proveedores;
+            alert("proveedores son" + _this.proveedors[1].nombre);
         });
     };
     ProveedorListCmp.prototype.isSelected = function (proveedor) {

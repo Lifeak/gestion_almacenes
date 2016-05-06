@@ -32,7 +32,7 @@ import {Proveedor,ProveedorService} from '../services/proveedor-service';
 })
 
 export class ProveedorListCmp implements OnInit {
-  proveedores: Proveedor[] = [];
+  proveedors: Proveedor[] = [];
   private _selectedId: string;
 
 
@@ -48,7 +48,8 @@ export class ProveedorListCmp implements OnInit {
     this._proveedorService
         .getAll()
         .subscribe((proveedores) => {
-          this.proveedores = proveedores;
+          this.proveedors = proveedores;
+          alert("proveedores son"+this.proveedors[1].nombre);
         });
   }
   isSelected(proveedor:Proveedor){

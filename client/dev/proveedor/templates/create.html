@@ -1,51 +1,68 @@
 <div class="cliente-container">
-  <form class="user-form"
-        [ngFormModel]="userForm"
-        (submit)="save(todoForm)">
+  <form class="proveedor-form"
+        [ngFormModel]="proveedorForm"
+        (submit)="save(proveedorForm)">
 
-    <h1 class="cliente-title">Nuevo usuario</h1>
+    <h1 class="cliente-title">Nuevo proveedor</h1>
 
-    <br/>Usuario:<br/>
+    <br/>Nombre:<br/>
     <input type="text"
-           ngControl="user"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="user"
-           autofocus />
-   <br/>Constraseña:<br/>
-   <input type="password"
-           ngControl="pass"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="pass"
-           autofocus />
-  <br/>Confirma la contaseña:<br/>
-  <input type="password"
-           ngControl="passs"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="Confirm pass"
-           autofocus />
-   <br/>Nombre:<br/>
-   <input type="text"
            ngControl="nombre"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="nombre"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Nombre"
            autofocus />
-   <br/>Apellido:<br/>
+   <br/>Dirección:<br/>
    <input type="text"
-           ngControl="apellido"
-           [class.cliente-error]="!userForm.valid"
-           placeholder="apellido"
+           ngControl="direccion"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Dirección"
            autofocus />
-     <br/>Tipo:<br/>
-     <select name="tipo"
-           ngControl="tipo"
-           placeholder="Selecciona el tipo.."
-           [class.cliente-error]="!userForm.valid">
-           <option value="admin" selected>Admin</option>
-           <option value="encargado">Encargado</option>
-          </select>
+  <br/>Ciudad:<br/>
+  <input type="text"
+           ngControl="ciudad"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Ciudad"
+           autofocus />
+   <br/>País:<br/>
+   <input type="text"
+           ngControl="pais"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="País"
+           autofocus />
+   <br/>Teléfono:<br/>
+   <input type="text"
+           ngControl="telefono"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Teléfono"
+           autofocus />
+     <br/>Valoración:<br/>
+     <input type="text"
+           ngControl="valoracion"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Valoración"
+           autofocus />
+           <br/>Pieza:<br/>
+     <input type="text"
+           ngControl="pieza"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Pieza"
+           autofocus />
+           <br/>Refexterna:<br/>
+     <input type="text"
+           ngControl="refexterna"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Ref externa"
+           autofocus />
+           <br/>Coste:<br/>
+     <input type="text"
+           ngControl="coste1"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Coste"
+           autofocus />
+     
 <br/><br/>
     <button type="submit"
-            [disabled]="!userForm.valid">Añadir</button>
+            [disabled]="!proveedorForm.valid">Añadir</button>
 
 </form>
 

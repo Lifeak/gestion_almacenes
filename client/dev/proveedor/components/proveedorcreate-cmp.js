@@ -26,8 +26,10 @@ var ProveedorCreateCmp = (function () {
             "ciudad": ["", common_1.Validators.required],
             "pais": ["", common_1.Validators.required],
             "telefono": ["", common_1.Validators.required],
-            "valoracion": ["", common_1.Validators.required],
-            "material": ["", common_1.Validators.required]
+            "valoracion": [""],
+            "pieza": [""],
+            "refexterna": [""],
+            "coste1": [""]
         });
     }
     ProveedorCreateCmp.prototype.gotoIndex = function () {
@@ -35,6 +37,34 @@ var ProveedorCreateCmp = (function () {
     };
     ProveedorCreateCmp.prototype.goBack = function () {
         window.history.back();
+    };
+    ProveedorCreateCmp.prototype.save = function (datos) {
+        var _this = this;
+        alert("entramos a guardar el proveedor");
+        var nombre = this.proveedorForm.controls['nombre'].value;
+        var direccion = this.proveedorForm.controls['direccion'].value;
+        var ciudad = this.proveedorForm.controls['ciudad'].value;
+        var pais = this.proveedorForm.controls['pais'].value;
+        var telefono = this.proveedorForm.controls['telefono'].value;
+        var valoracion = this.proveedorForm.controls['valoracion'].value;
+        var pieza = this.proveedorForm.controls['pieza'].value;
+        var refexterna = this.proveedorForm.controls['refexterna'].value;
+        var coste1 = this.proveedorForm.controls['coste1'].value;
+        var materiales = [{ pieza: pieza, refexterna: refexterna, coste1: coste1 }];
+        this._proveedorService
+            .add(nombre, direccion, ciudad, pais, telefono, valoracion, materiales)
+            .subscribe(function (m) {
+            _this.proveedorForm.controls['nombre'].updateValue("");
+            _this.proveedorForm.controls['direccion'].updateValue("");
+            _this.proveedorForm.controls['ciudad'].updateValue("");
+            _this.proveedorForm.controls['pais'].updateValue("");
+            _this.proveedorForm.controls['telefono'].updateValue("");
+            _this.proveedorForm.controls['valoracion'].updateValue("");
+            _this.proveedorForm.controls['pieza'].updateValue("");
+            _this.proveedorForm.controls['refexterna'].updateValue("");
+            _this.proveedorForm.controls['coste1'].updateValue("");
+        });
+        this.gotoIndex();
     };
     __decorate([
         core_1.Input(), 
