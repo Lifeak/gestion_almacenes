@@ -20,6 +20,8 @@ var ProveedorCreateCmp = (function () {
         this._router = _router;
         this._routeParams = _routeParams;
         this._proveedorService = _proveedorService;
+        this.mat = [];
+        this.cuenta = [];
         this.proveedorForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "direccion": ["", common_1.Validators.required],
@@ -29,7 +31,9 @@ var ProveedorCreateCmp = (function () {
             "valoracion": [""],
             "pieza": [""],
             "refexterna": [""],
-            "coste1": [""]
+            "coste1": [""],
+            "coste2": [""],
+            "val": [""]
         });
     }
     ProveedorCreateCmp.prototype.gotoIndex = function () {
@@ -37,6 +41,32 @@ var ProveedorCreateCmp = (function () {
     };
     ProveedorCreateCmp.prototype.goBack = function () {
         window.history.back();
+    };
+    ProveedorCreateCmp.prototype.plus = function (datos) {
+        var pieza = this.proveedorForm.controls['pieza'].value;
+        var refexterna = this.proveedorForm.controls['refexterna'].value;
+        var coste1 = this.proveedorForm.controls['coste1'].value;
+        var coste2 = this.proveedorForm.controls['coste2'].value;
+        var val = this.proveedorForm.controls['val'].value;
+        if (pieza == "" || refexterna == "" || coste1.toString() == "") {
+            alert("Debes rellenar todos los campos sobre la pieza a añadir");
+        }
+        else {
+            this.proveedorForm.controls['pieza'].updateValue("");
+            this.proveedorForm.controls['refexterna'].updateValue("");
+            this.proveedorForm.controls['coste1'].updateValue("");
+            this.proveedorForm.controls['coste2'].updateValue("");
+            this.proveedorForm.controls['val'].updateValue("");
+            this.cuenta.push(pieza);
+            var m = { pieza: pieza, refexterna: refexterna, coste1: coste1 };
+            alert("añadimos el material " + JSON.stringify(m));
+            this.mat.push(m);
+            m = [];
+        }
+    };
+    ProveedorCreateCmp.prototype.minus = function (pos) {
+        this.mat.splice(pos, 1);
+        this.cuenta.splice(pos, 1);
     };
     ProveedorCreateCmp.prototype.save = function (datos) {
         var _this = this;
@@ -50,7 +80,9 @@ var ProveedorCreateCmp = (function () {
         var pieza = this.proveedorForm.controls['pieza'].value;
         var refexterna = this.proveedorForm.controls['refexterna'].value;
         var coste1 = this.proveedorForm.controls['coste1'].value;
-        var materiales = [{ pieza: pieza, refexterna: refexterna, coste1: coste1 }];
+        var coste2 = this.proveedorForm.controls['coste2'].value;
+        var val = this.proveedorForm.controls['val'].value;
+        var materiales = this.mat;
         this._proveedorService
             .add(nombre, direccion, ciudad, pais, telefono, valoracion, materiales)
             .subscribe(function (m) {

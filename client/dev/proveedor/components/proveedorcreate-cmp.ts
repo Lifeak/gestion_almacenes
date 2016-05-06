@@ -29,6 +29,8 @@ import {Proveedor, ProveedorService} from '../services/proveedor-service';
 export class ProveedorCreateCmp{
   @Input() proveedor: Proveedor;
   proveedorForm: ControlGroup;
+  mat: Array<Object> = [];
+  cuenta: Array<string> = [];
 
   constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
     this.proveedorForm = fb.group({
@@ -40,7 +42,9 @@ export class ProveedorCreateCmp{
       "valoracion": [""],
       "pieza": [""],
       "refexterna": [""],
-      "coste1": [""]
+      "coste1": [""],
+      "coste2":[""],
+      "val":[""]
     });
   }
   
@@ -53,6 +57,34 @@ export class ProveedorCreateCmp{
     window.history.back();
   }
 
+  plus (datos: FormData){
+    var pieza: string = this.proveedorForm.controls['pieza'].value;
+    var refexterna: string = this.proveedorForm.controls['refexterna'].value;
+    var coste1: number = this.proveedorForm.controls['coste1'].value;
+    var coste2: number = this.proveedorForm.controls['coste2'].value;
+    var val: string = this.proveedorForm.controls['val'].value;
+    if (pieza == "" || refexterna == "" || coste1.toString() == "") {
+      alert("Debes rellenar todos los campos sobre la pieza a añadir");
+    } else {
+      (<Control>this.proveedorForm.controls['pieza']).updateValue("");
+      (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
+      (<Control>this.proveedorForm.controls['coste1']).updateValue("");
+      (<Control>this.proveedorForm.controls['coste2']).updateValue("");
+      (<Control>this.proveedorForm.controls['val']).updateValue("");
+      this.cuenta.push(pieza);
+      var m: Object = { pieza, refexterna, coste1 };
+      alert("añadimos el material " + JSON.stringify(m));
+      this.mat.push(m);
+      m = [];
+  }
+}
+
+  minus(pos:number) {
+
+    this.mat.splice(pos, 1);
+    this.cuenta.splice(pos, 1);
+  }
+
   save(datos: FormData){
       alert("entramos a guardar el proveedor");
       var nombre: string = this.proveedorForm.controls['nombre'].value;
@@ -63,8 +95,10 @@ export class ProveedorCreateCmp{
       var valoracion: string = this.proveedorForm.controls['valoracion'].value;
       var pieza: string = this.proveedorForm.controls['pieza'].value;
       var refexterna: string = this.proveedorForm.controls['refexterna'].value;
-      var coste1: number = this.proveedorForm.controls['coste1'].value;
-      var materiales: Object = [{pieza, refexterna, coste1}];
+      var coste1: number = this.proveedorForm.controls['coste1'].value; 
+      var coste2: number = this.proveedorForm.controls['coste2'].value;
+      var val: string = this.proveedorForm.controls['val'].value;
+      var materiales = this.mat;
 
 
           this._proveedorService
@@ -86,7 +120,4 @@ export class ProveedorCreateCmp{
 
 
   }
-
-  
-
 }

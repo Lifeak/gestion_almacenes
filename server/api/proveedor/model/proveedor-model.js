@@ -14,7 +14,7 @@ const _proveedorSchema = {
         refexterna:{type: String, required: true},
         coste1: {type: Number, required:true},
         coste2: {type: Number},
-        valoracion: {type: String}
+        val: {type: String}
     }]
 }
 module.exports = mongoose.Schema(_proveedorSchema);

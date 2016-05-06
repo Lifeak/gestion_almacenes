@@ -41,7 +41,9 @@
            [class.cliente-error]="!proveedorForm.valid"
            placeholder="Valoración"
            autofocus />
-           <br/>Pieza:<br/>
+     <a (click)="a=true;"><i class="fa fa-plus" aria-hidden="true">Añadir material</i></a>
+     <div *ngIf="a==true;">       
+     <br/>Pieza:<br/>
      <input type="text"
            ngControl="pieza"
            [class.cliente-error]="!proveedorForm.valid"
@@ -53,13 +55,42 @@
            [class.cliente-error]="!proveedorForm.valid"
            placeholder="Ref externa"
            autofocus />
-           <br/>Coste:<br/>
+     <br/>Coste:<br/>
      <input type="text"
            ngControl="coste1"
            [class.cliente-error]="!proveedorForm.valid"
            placeholder="Coste"
            autofocus />
-     
+     <br/>Otro tipo de coste:<br/>
+     <input type="text"
+           ngControl="coste2"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Coste"
+           autofocus />
+           <br/>Valoración de la pieza:<br/>
+     <input type="text"
+           ngControl="val"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Valoración"
+           autofocus />
+            <a (click)="plus(proveedorForm);a=false;"><i class="fa fa-plus" aria-hidden="true">Save material</i></a>
+     </div>
+
+     <div *ngIf="mat.length>0">
+  <h5><i class="fa fa-list"></i>Materiales añadidos:</h5>
+  <table>
+  <tr>
+   <td><div *ngFor="#m of cuenta; #i=index" >
+        
+         Material: {{m}}  &nbsp;<a (click)="minus(i);"><i class="fa fa-minus" aria-hidden="true">Eliminar</i></a></div>
+        
+    </td>
+ 
+    
+  </tr>
+
+  </table>
+  </div>
 <br/><br/>
     <button type="submit"
             [disabled]="!proveedorForm.valid">Añadir</button>
