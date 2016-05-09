@@ -49,7 +49,7 @@ export class ProveedorListCmp implements OnInit {
         .getAll()
         .subscribe((proveedores) => {
           this.proveedors = proveedores;
-          alert("proveedores son"+this.proveedors[1].nombre);
+          //alert("proveedores son"+this.proveedors[1].nombre);
         });
   }
   isSelected(proveedor:Proveedor){

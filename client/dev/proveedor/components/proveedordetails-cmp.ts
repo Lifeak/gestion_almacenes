@@ -30,6 +30,7 @@ import {LoginService} from '../../login/services/login-service';
 export class ProveedorDetailsCmp implements OnInit {
   @Input() proveedor: Proveedor;
   proveedorForm: ControlGroup;
+  mat: Object = [];
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _proveedorService: ProveedorService, @Inject(LoginService) private _loginService: LoginService) {
     this.proveedorForm = fb.group({
@@ -39,18 +40,23 @@ export class ProveedorDetailsCmp implements OnInit {
       "pais": ["", Validators.required],
       "telefono": ["", Validators.required],
       "valoracion": ["", Validators.required],
-      "material": ["", Validators.required]
+      "pieza": [""],
+      "refexterna": [""],
+      "coste1": [""],
+      "coste2":[""],
+      "val":[""]
     });
   }
   
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    //alert(id);
     this._proveedorService
     .getProveedorId(id)
     .subscribe((proveedor) => {
       this.proveedor = proveedor;
+      alert("details "+JSON.stringify(this.proveedor));
+      this.mat = this.proveedor.materiales;
     });
   }
 

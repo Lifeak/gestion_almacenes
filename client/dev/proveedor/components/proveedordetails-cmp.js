@@ -22,6 +22,7 @@ var ProveedorDetailsCmp = (function () {
         this._routeParams = _routeParams;
         this._proveedorService = _proveedorService;
         this._loginService = _loginService;
+        this.mat = [];
         this.proveedorForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "direccion": ["", common_1.Validators.required],
@@ -29,17 +30,22 @@ var ProveedorDetailsCmp = (function () {
             "pais": ["", common_1.Validators.required],
             "telefono": ["", common_1.Validators.required],
             "valoracion": ["", common_1.Validators.required],
-            "material": ["", common_1.Validators.required]
+            "pieza": [""],
+            "refexterna": [""],
+            "coste1": [""],
+            "coste2": [""],
+            "val": [""]
         });
     }
     ProveedorDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var id = this._routeParams.get('id');
-        //alert(id);
         this._proveedorService
             .getProveedorId(id)
             .subscribe(function (proveedor) {
             _this.proveedor = proveedor;
+            alert("details " + JSON.stringify(_this.proveedor));
+            _this.mat = _this.proveedor.materiales;
         });
     };
     ProveedorDetailsCmp.prototype.gotoIndex = function () {

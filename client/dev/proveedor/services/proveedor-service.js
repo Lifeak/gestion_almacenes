@@ -15,7 +15,7 @@ var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
 var Proveedor = (function () {
-    function Proveedor(_id, nombre, direccion, ciudad, pais, telefono, valoracion, material) {
+    function Proveedor(_id, nombre, direccion, ciudad, pais, telefono, valoracion, materiales) {
         this._id = _id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -23,7 +23,7 @@ var Proveedor = (function () {
         this.pais = pais;
         this.telefono = telefono;
         this.valoracion = valoracion;
-        this.material = material;
+        this.materiales = materiales;
     }
     return Proveedor;
 }());

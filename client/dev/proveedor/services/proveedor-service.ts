@@ -23,12 +23,12 @@ export class Proveedor {
     public pais:string, 
     public telefono:string, 
     public valoracion:string,
-    public material :{
+    public materiales :{
         pieza:string,
         refexterna:string,
         coste1:number,
         coste2:number,
-        valoracion:string
+        val:string
     }){}
 }
 
