@@ -16,6 +16,7 @@ export function isLoggedinEncargado() {
 
 //Funcion que comprueba si el usuario esta logueado
 export function isLogged() {
+	alert("entro en isLogged");
 	let token: string;
     if (localStorage.getItem(token) == "encargado" || localStorage.getItem(token) == "admin")
 		return true;

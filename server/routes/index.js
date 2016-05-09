@@ -40,6 +40,7 @@ const proveedor = require('../commons/static/proveedor');
 const proveedorRoutes = require('../api/proveedor/routes/proveedor-routes');
 
 const loginRoutes= require('../auth/login/routes/login-routes');
+const isLogged = require('./middlewares').isLogged;
 
 module.exports = class Routes {
    static init(app, router) {
@@ -63,8 +64,11 @@ module.exports = class Routes {
     	.get(probandoRoutes.sendHola);   
 
   router
+  .use(isLogged)
     .route('/u')
-    .get(user.sendHola);
+
+    .get(user.sendHola)
+    ;
 
   router
     .route('/galmacenes')
@@ -94,6 +98,15 @@ module.exports = class Routes {
     .route('/gproveedores')
     .get(proveedor.sendCRUD);  
 
+router
+.use(isLogged);
+/*    app.use('/', function(req, res, next){
+  if(!req.session.logged){
+    res.end(401, "Debe loguearse <a href='/login'>aca</a>");
+  }else{
+    next(); // si está logueado continúa la ejecución de los siguientes get
+  }
+});*/
      app.use('/', router);
      app.use('/u',router);
      app.use('/galmacenes',router);
@@ -103,5 +116,6 @@ module.exports = class Routes {
      app.use('/gpiezas',router);
      app.use('/gproducto',router);
      app.use('/gproveedores',router);
+     //app.use(isLogged);
    }
 }

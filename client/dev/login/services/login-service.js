@@ -36,10 +36,12 @@ var LoginService = (function () {
                 alert("Todo OK.");
                 var cred = dato.search("\"tipo\":\"admin\"");
                 if (cred != -1) {
+                    localStorage.setItem(user, "admin");
                     localStorage.setItem(_this.token, "admin");
                     alert("es un usuario admin");
                 }
                 else {
+                    localStorage.setItem(user, "encargado");
                     localStorage.setItem(_this.token, "encargado");
                     alert("es un usuario del monton");
                 }
@@ -48,7 +50,7 @@ var LoginService = (function () {
             else {
                 alert("Credenciales incorrectas. Try again.");
                 _this.loggedIn = false;
-                localStorage.setItem(_this.token, "");
+                localStorage.setItem("", "");
             }
         });
     };
@@ -56,11 +58,13 @@ var LoginService = (function () {
     // y además, pone a falso el atributo loggedIn.
     LoginService.prototype.logout = function () {
         localStorage.removeItem(this.token);
+        localStorage.clear();
         this.loggedIn = false;
     };
     // Función que devuelve dos valores, el primero booleano, true si el usuario se ha logueado y false en caso contrario.
     // El segundo parametro nos devuelve el tipo de usuario de la aplicación.
     LoginService.prototype.isLoggedIn = function () {
+        alert("localStorage.getItem(this.token) " + localStorage.getItem(this.token));
         return [this.loggedIn, localStorage.getItem(this.token)];
     };
     LoginService.ENDPOINT = '/auth/login';

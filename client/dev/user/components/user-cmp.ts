@@ -20,10 +20,10 @@ import {
   CanActivate,
   ROUTER_DIRECTIVES
 } from 'angular2/router';
-import{bootstrap} from 'angular2/platform/browser';
 
 import {UserService} from '../services/user-service';
 import {LoginService} from '../../login/services/login-service';
+import {LoginCmp} from '../../login/components/login-cmp';
 
 import {UserListCmp} from './userlist-cmp';
 import {UserDetailsCmp} from './userdetails-cmp';
@@ -50,7 +50,8 @@ type User = {
     
   { path: '/ListUsuarios', name: 'ListUsuarios', component: UserListCmp},
   { path: '/Create', name: 'CreateUsuario', component: UserCreateCmp },
-  { path: '/Details', name: 'DetailsUsuarios', component: UserDetailsCmp}
+  { path: '/Details', name: 'DetailsUsuarios', component: UserDetailsCmp},
+  { path: '/', name: 'Login', component: LoginCmp}
 ])
 
 @CanActivate(() => isLogged())
@@ -58,6 +59,7 @@ export class UserCmp implements OnInit {
   title: string = "Users";
   users: User[] = [];
   userForm: ControlGroup;
+  token: string;
   private _selectedId: string;
 
 
@@ -72,8 +74,16 @@ export class UserCmp implements OnInit {
   }
 
   ngOnInit() {
-    this._getAll();
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) != "encargado" || localStorage.getItem(this.token) != "encargado") {
+        alert("Te voy a mandar fuera porque el token es " + localStorage.getItem(this.token));
+        
+
+        alert("Deberiamos estar en el login");
+        // window.location.replace("http://localhost:3000/");
+    } else {
+      this._getAll();
+      this.router.navigate(['/ListUsuarios']);
+    }
   }
 
   private _getAll():void {
