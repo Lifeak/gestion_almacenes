@@ -31,8 +31,12 @@ var ProveedorCmp /*implements OnInit*/ = (function () {
             "ciudad": ["", common_1.Validators.required],
             "pais": ["", common_1.Validators.required],
             "telefono": ["", common_1.Validators.required],
-            "valoracion": ["", common_1.Validators.required],
-            "material": ["", common_1.Validators.required]
+            "valoracion": [""],
+            "pieza": [""],
+            "refexterna": [""],
+            "coste1": [""],
+            "coste2": [""],
+            "val": [""]
         });
     }
     ProveedorCmp /*implements OnInit*/.prototype.ngOnInit = function () {
@@ -53,29 +57,6 @@ var ProveedorCmp /*implements OnInit*/ = (function () {
     ProveedorCmp /*implements OnInit*/.prototype.onSelect = function (proveedor) {
         this.router.navigate(['DetailsProveedor', { id: proveedor._id }]);
     };
-    /*  add():void {
-       this._userService
-           .add(user, pass, nombre, apellido, tipo)
-           .subscribe((m) => {
-             this.users.push(m);
-             (<Control>this.userForm.controls['user']).updateValue("");
-             (<Control>this.userForm.controls['pass']).updateValue("");
-             (<Control>this.userForm.controls['nombre']).updateValue("");
-             (<Control>this.userForm.controls['apellido']).updateValue("");
-             (<Control>this.userForm.controls['tipo']).updateValue("");
-           });
-     }
-   
-     remove(id:string):void {
-       this._userService
-         .remove(id)
-         .subscribe(() => {
-           this.users.forEach((t, i) => {
-             if (t._id === id)
-               return this.users.splice(i, 1);
-           });
-         })
-     }*/
     ProveedorCmp /*implements OnInit*/.prototype.logout = function () {
         this._loginService.logout();
         window.location.replace("http://localhost:3000/");

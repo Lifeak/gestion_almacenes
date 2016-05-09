@@ -15,6 +15,61 @@
         <label>Valoracion: </label>
         <input [(ngModel)]="proveedor.valoracion" placeholder="Valoración"/><br/>
 
+
+      <div *ngIf="mat.length>0">
+          <h5><i class="fa fa-list"></i>Materiales:</h5>
+          <table>
+            <tr>
+              <td>
+                <div *ngFor="#p of mat; #i=index;">
+                    
+                  Pieza: {{p.pieza}} &nbsp; Refexterna: {{p.refexterna}} &nbsp; Coste: {{p.coste1}} &nbsp;
+                  <a  (click)="editarmat(i,p.pieza,p.refexterna,p.coste1.p,coste2,p.val);a=true;">Editar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
+                  <a  (click)="minus(i);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>
+                </div>  
+              </td>
+            </tr>
+          </table>
+      </div>
+
+    <form class="proveedor-form" [ngFormModel]="proveedorForm">
+    <a (click)="a=true;"><i class="fa fa-plus" aria-hidden="true">Añadir material</i></a>
+     <div *ngIf="a==true;">       
+     <br/>Pieza:<br/>
+     <input type="text"
+           ngControl="pieza"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Pieza"
+           autofocus />
+           <br/>Refexterna:<br/>
+     <input type="text"
+           ngControl="refexterna"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Ref externa"
+           autofocus />
+     <br/>Coste:<br/>
+     <input type="text"
+           ngControl="coste1"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Coste"
+           autofocus />
+     <br/>Otro tipo de coste:<br/>
+     <input type="text"
+           ngControl="coste2"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Coste"
+           autofocus />
+           <br/>Valoración de la pieza:<br/>
+     <input type="text"
+           ngControl="val"
+           [class.cliente-error]="!proveedorForm.valid"
+           placeholder="Valoración"
+           autofocus />
+           <br/> 
+           <a (click)="plus(proveedorForm);a=false;"><i class="fa fa-plus" aria-hidden="true">Guardar material</i></a>
+           <a (click)="backedit();a=false;"><i class="fa fa-plus" aria-hidden="true">Cancelar material</i></a>
+    </div></form>
+
     </div>
     <p>
       <button (click)="gotoIndex()">Back</button>

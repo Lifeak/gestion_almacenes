@@ -23,6 +23,8 @@ var ProveedorDetailsCmp = (function () {
         this._proveedorService = _proveedorService;
         this._loginService = _loginService;
         this.mat = [];
+        this.index = null;
+        this.indexpieza = "";
         this.proveedorForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "direccion": ["", common_1.Validators.required],
@@ -58,6 +60,88 @@ var ProveedorDetailsCmp = (function () {
             .subscribe(function (proveedores) {
             _this.proveedor = proveedores;
         });
+    };
+    ProveedorDetailsCmp.prototype.plus = function (datos) {
+        var pieza = this.proveedorForm.controls['pieza'].value;
+        var refexterna = this.proveedorForm.controls['refexterna'].value;
+        var coste1 = this.proveedorForm.controls['coste1'].value;
+        var coste2 = this.proveedorForm.controls['coste2'].value;
+        var val = this.proveedorForm.controls['val'].value;
+        var busqueda = "pieza:" + '"' + this.indexpieza + '"';
+        if (pieza == "" || refexterna == "" || coste1.toString() == "") {
+            alert("Debes rellenar todos los campos sobre la pieza a añadir");
+        }
+        else {
+            this.proveedorForm.controls['pieza'].updateValue("");
+            this.proveedorForm.controls['refexterna'].updateValue("");
+            this.proveedorForm.controls['coste1'].updateValue("");
+            this.proveedorForm.controls['coste2'].updateValue("");
+            this.proveedorForm.controls['val'].updateValue("");
+            var nuevo = { pieza: pieza, refexterna: refexterna, coste1: coste1, coste2: coste2, val: val };
+            this.mat.push(nuevo);
+            alert("añadimos el material " + JSON.stringify(nuevo));
+            nuevo = [];
+            if (this.indexpieza != "") {
+                if (this.mat.toString().search(busqueda))
+                    this.mat.splice(this.index, 1);
+                this.index = null;
+                this.indexpieza = "";
+            }
+        }
+    };
+    ProveedorDetailsCmp.prototype.minus = function (material) {
+        alert("eliminamos el numero " + material);
+        this.mat.splice(material, 1);
+    };
+    ProveedorDetailsCmp.prototype.editarmat = function (material, pieza, refexterna, coste1, coste2, val) {
+        this.index = material;
+        this.indexpieza = pieza;
+        this.proveedorForm.controls['pieza'].updateValue(pieza);
+        this.proveedorForm.controls['refexterna'].updateValue(refexterna);
+        this.proveedorForm.controls['coste1'].updateValue(coste1);
+        this.proveedorForm.controls['coste2'].updateValue(coste2);
+        this.proveedorForm.controls['val'].updateValue(val);
+    };
+    ProveedorDetailsCmp.prototype.backedit = function () {
+        this.proveedorForm.controls['pieza'].updateValue("");
+        this.proveedorForm.controls['refexterna'].updateValue("");
+        this.proveedorForm.controls['coste1'].updateValue("");
+        this.proveedorForm.controls['coste2'].updateValue("");
+        this.proveedorForm.controls['val'].updateValue("");
+    };
+    ProveedorDetailsCmp.prototype.edit = function (proveedor) {
+        var _this = this;
+        var materiales = this.mat;
+        this._proveedorService
+            .add(proveedor.nombre, proveedor.direccion, proveedor.ciudad, proveedor.pais, proveedor.telefono, proveedor.valoracion, materiales)
+            .subscribe(function (m) {
+            _this.proveedorForm.controls['nombre'].updateValue("");
+            _this.proveedorForm.controls['direccion'].updateValue("");
+            _this.proveedorForm.controls['ciudad'].updateValue("");
+            _this.proveedorForm.controls['pais'].updateValue("");
+            _this.proveedorForm.controls['telefono'].updateValue("");
+            _this.proveedorForm.controls['valoracion'].updateValue("");
+            _this.proveedorForm.controls['pieza'].updateValue("");
+            _this.proveedorForm.controls['refexterna'].updateValue("");
+            _this.proveedorForm.controls['coste1'].updateValue("");
+            _this.proveedorForm.controls['coste2'].updateValue("");
+            _this.proveedorForm.controls['val'].updateValue("");
+        });
+        this._proveedorService
+            .remove(proveedor._id)
+            .subscribe(function () {
+            return _this.proveedor;
+        });
+        this.gotoIndex();
+    };
+    ProveedorDetailsCmp.prototype.delete = function (proveedor) {
+        var _this = this;
+        this._proveedorService
+            .remove(proveedor._id)
+            .subscribe(function () {
+            return _this.proveedor;
+        });
+        this.gotoIndex();
     };
     __decorate([
         core_1.Input(), 

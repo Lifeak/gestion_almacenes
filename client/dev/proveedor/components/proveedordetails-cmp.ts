@@ -30,7 +30,9 @@ import {LoginService} from '../../login/services/login-service';
 export class ProveedorDetailsCmp implements OnInit {
   @Input() proveedor: Proveedor;
   proveedorForm: ControlGroup;
-  mat: Object = [];
+  mat: Array<Object>=[];
+  index: number = null;
+  indexpieza: string = "";
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _proveedorService: ProveedorService, @Inject(LoginService) private _loginService: LoginService) {
     this.proveedorForm = fb.group({
@@ -57,7 +59,10 @@ export class ProveedorDetailsCmp implements OnInit {
       this.proveedor = proveedor;
       alert("details "+JSON.stringify(this.proveedor));
       this.mat = this.proveedor.materiales;
+
+
     });
+
   }
 
   gotoIndex(){
@@ -69,38 +74,98 @@ export class ProveedorDetailsCmp implements OnInit {
         .subscribe((proveedores) => {
           this.proveedor = proveedores;
         });
-  }
-  /*edit(user: User){
 
-    this._userService
-      .add(user.user, user.pass,user.nombre, user.apellido, user.tipo)
+  }
+
+  plus(datos: FormData) {
+    var pieza: string = this.proveedorForm.controls['pieza'].value;
+    var refexterna: string = this.proveedorForm.controls['refexterna'].value;
+    var coste1: number = this.proveedorForm.controls['coste1'].value;
+    var coste2: number = this.proveedorForm.controls['coste2'].value;
+    var val: string = this.proveedorForm.controls['val'].value;
+    var busqueda = "pieza:" + '"' + this.indexpieza + '"';
+    if (pieza == "" || refexterna == "" || coste1.toString() == "") {
+      alert("Debes rellenar todos los campos sobre la pieza a añadir");
+    } else {
+      (<Control>this.proveedorForm.controls['pieza']).updateValue("");
+      (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
+      (<Control>this.proveedorForm.controls['coste1']).updateValue("");
+      (<Control>this.proveedorForm.controls['coste2']).updateValue("");
+      (<Control>this.proveedorForm.controls['val']).updateValue("");
+      var nuevo: Object = { pieza, refexterna, coste1, coste2, val };
+      this.mat.push(nuevo);
+      alert("añadimos el material " + JSON.stringify(nuevo));
+      nuevo = [];
+      if (this.indexpieza != "") {
+          if (this.mat.toString().search(busqueda))
+              this.mat.splice(this.index, 1);
+          this.index = null;
+          this.indexpieza = "";
+      }
+    }
+  }
+
+  minus(material: number) {
+    alert("eliminamos el numero " + material);
+    this.mat.splice(material, 1);
+  }
+
+  editarmat(material:number,pieza:string,refexterna:string,coste1:string,coste2:number,val:string){
+    this.index = material;
+    this.indexpieza = pieza;
+    (<Control>this.proveedorForm.controls['pieza']).updateValue(pieza);
+    (<Control>this.proveedorForm.controls['refexterna']).updateValue(refexterna);
+    (<Control>this.proveedorForm.controls['coste1']).updateValue(coste1);
+    (<Control>this.proveedorForm.controls['coste2']).updateValue(coste2);
+    (<Control>this.proveedorForm.controls['val']).updateValue(val);
+  }
+
+  backedit(){
+    (<Control>this.proveedorForm.controls['pieza']).updateValue("");
+    (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
+    (<Control>this.proveedorForm.controls['coste1']).updateValue("");
+    (<Control>this.proveedorForm.controls['coste2']).updateValue("");
+    (<Control>this.proveedorForm.controls['val']).updateValue("");
+
+  }
+
+  edit(proveedor: Proveedor){
+    var materiales = this.mat;
+    this._proveedorService
+      .add(proveedor.nombre, proveedor.direccion, proveedor.ciudad, proveedor.pais, proveedor.telefono, proveedor.valoracion, materiales)
       .subscribe((m) => {
-          //this.user.push(m);
-          (<Control>this.userForm.controls['user']).updateValue("");
-          (<Control>this.userForm.controls['pass']).updateValue("");
-          (<Control>this.userForm.controls['nombre']).updateValue("");
-          (<Control>this.userForm.controls['apellido']).updateValue("");
-          (<Control>this.userForm.controls['tipo']).updateValue("");
+          (<Control>this.proveedorForm.controls['nombre']).updateValue("");
+          (<Control>this.proveedorForm.controls['direccion']).updateValue("");
+          (<Control>this.proveedorForm.controls['ciudad']).updateValue("");
+          (<Control>this.proveedorForm.controls['pais']).updateValue("");
+          (<Control>this.proveedorForm.controls['telefono']).updateValue("");
+          (<Control>this.proveedorForm.controls['valoracion']).updateValue("");
+          (<Control>this.proveedorForm.controls['pieza']).updateValue("");
+          (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
+          (<Control>this.proveedorForm.controls['coste1']).updateValue("");
+          (<Control>this.proveedorForm.controls['coste2']).updateValue("");
+          (<Control>this.proveedorForm.controls['val']).updateValue("");
     });
 
-    this._userService
-      .remove(user._id)
+    this._proveedorService
+      .remove(proveedor._id)
       .subscribe(() => {
-        return this.user;
+        return this.proveedor;
 
       });
     this.gotoIndex();
 
   }
-  delete(user: User) {
-    this._userService
-      .remove(user._id)
+
+  delete(proveedor: Proveedor) {
+    this._proveedorService
+      .remove(proveedor._id)
       .subscribe(() => {
-        return this.user;
+        return this.proveedor;
 
       });
     this.gotoIndex();
 
   }
-*/
+
 }
