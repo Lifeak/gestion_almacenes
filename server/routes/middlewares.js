@@ -6,6 +6,7 @@ const middlewares = {
         /*if (req.user) return next();
         res.redirect('/');*/
         console.log("eeeeeeeee");
+        next();
     }
 };
 module.exports = middlewares;

@@ -64,43 +64,47 @@ module.exports = class Routes {
     	.get(probandoRoutes.sendHola);   
 
   router
-  .use(isLogged)
     .route('/u')
-
-    .get(user.sendHola)
-    ;
+    .get(user.sendHola);
 
   router
+  .use(isLogged)
     .route('/galmacenes')
     .get(almacen.sendCRUD);
 
   router
+  .use(isLogged)
     .route('/gclientes')
     .get(cliente.sendCRUD);
 
   router
+  .use(isLogged)
     .route('/gmodelos')
     .get(modelo.sendCRUD);
 
   router
+  .use(isLogged)
     .route('/ggarantias')
     .get(garantia.sendCRUD);
 
   router
+  .use(isLogged)
     .route('/gpiezas')
     .get(pieza.sendCRUD);
  
   router
+  .use(isLogged)
     .route('/gproductos')
     .get(producto.sendCRUD);  
 
  router
+ .use(isLogged)
     .route('/gproveedores')
     .get(proveedor.sendCRUD);  
 
-router
-.use(isLogged);
-/*    app.use('/', function(req, res, next){
+/*   router
+  .use(isLogged);
+   app.use('/', function(req, res, next){
   if(!req.session.logged){
     res.end(401, "Debe loguearse <a href='/login'>aca</a>");
   }else{
