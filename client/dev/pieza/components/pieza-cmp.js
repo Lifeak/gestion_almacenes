@@ -108,7 +108,7 @@ var PiezaCmp = (function () {
             selector: 'pieza-cmp',
             templateUrl: 'client/dev/pieza/templates/index.html',
             styleUrls: ['client/dev/pieza/styles/cliente.css'],
-            providers: [pieza_service_1.PiezaService, login_service_1.LoginService, router_1.ROUTER_PROVIDERS],
+            providers: [pieza_service_1.PiezaService, router_1.ROUTER_PROVIDERS],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
         router_1.RouteConfig([

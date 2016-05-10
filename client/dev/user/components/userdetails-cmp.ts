@@ -28,7 +28,7 @@ import {LoginService} from '../../login/services/login-service';
   styleUrls: ['client/dev/user/styles/cliente.css']
 })
 
-  @CanActivate(() => isLogged())
+@CanActivate(() => isLogged())
 export class UserDetailsCmp implements OnInit {
   @Input() user: User;
   userForm: ControlGroup;
@@ -46,7 +46,7 @@ export class UserDetailsCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    //alert(id);
+    alert(id);
     this._userService
     .getUserId(id)
     .subscribe((user) => {

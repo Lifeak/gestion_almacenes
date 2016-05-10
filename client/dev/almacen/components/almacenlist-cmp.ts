@@ -31,7 +31,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/servic
   providers: [AlmacenService]
 })
 
-@CanActivate(() => isLoggedinAdmin())
+@CanActivate(() => isLogged())
 export class AlmacenListCmp implements OnInit {
   almacens: Almacen[] = [];
   private _selectedId: string;

@@ -34,7 +34,7 @@ var UserDetailsCmp = (function () {
     UserDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var id = this._routeParams.get('id');
-        //alert(id);
+        alert(id);
         this._userService
             .getUserId(id)
             .subscribe(function (user) {

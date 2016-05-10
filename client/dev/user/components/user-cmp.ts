@@ -2,6 +2,7 @@ import {
   Component,
   Inject,
   provide,
+  Input,
   OnInit
 } from 'angular2/core';
 
@@ -56,11 +57,12 @@ type User = {
 
 @CanActivate(() => isLogged())
 export class UserCmp implements OnInit {
-  title: string = "Users";
+  @Input() user: User;
   users: User[] = [];
   userForm: ControlGroup;
   token: string;
   private _selectedId: string;
+  public profile: string;
 
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(UserService) private _userService: UserService, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
@@ -71,19 +73,26 @@ export class UserCmp implements OnInit {
       "apellido": ["", Validators.required],
       "tipo": ["", Validators.required]
     });
+    //this.profile = "";
   }
 
   ngOnInit() {
-    if (localStorage.getItem(this.token) != "encargado" || localStorage.getItem(this.token) != "encargado") {
-        alert("Te voy a mandar fuera porque el token es " + localStorage.getItem(this.token));
-        
-
-        alert("Deberiamos estar en el login");
-        // window.location.replace("http://localhost:3000/");
+    if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+    alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+        localStorage.clear();
+        window.location.replace("http://localhost:3000/");
+       // window.history.back();
     } else {
-      this._getAll();
-      this.router.navigate(['/ListUsuarios']);
-    }
+        if (localStorage.getItem(this.token) == "encargado"){
+            alert("soy un encargadillo");
+            let u = localStorage.key(1);
+            alert("en u tenemos " + u);
+            this.getProfile(u);
+        }else
+          alert("soy admin");
+          this._getAll();
+          this.router.navigate(['/ListUsuarios']);
+        }
   }
 
   private _getAll():void {
@@ -92,6 +101,17 @@ export class UserCmp implements OnInit {
         .subscribe((users) => {
           this.users = users;
         });
+  }
+
+  public getProfile(name: string){
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+      this.user = user[0];
+       this.profile = user[0]._id;
+       this.router.navigate(['DetailsUsuarios', { id: this.profile }]);
+       alert("en el get, el id es " +this.profile);
+      });
   }
 
   isSelected(user: User) {
@@ -130,31 +150,22 @@ export class UserCmp implements OnInit {
     alert("logoutt");
     this._loginService.logout(); 
     window.location.replace("http://localhost:3000/");
-    //this.router.navigate(['/Login']);
-
   }
 
   compras() {
-    //alert("compras");
     window.location.replace("http://localhost:3000/#/compras");
-    //this.router.navigate(['/Compras']);
   }
 
   ventas() {
-    //alert("ventas");
     window.location.replace("http://localhost:3000/#/ventas");
-    //this.router.navigate(['/Ventas']);
   }
 
   almacen() {
     window.location.replace("http://localhost:3000/#/almacen");
-    //this.router.navigate(['/Almacen']);
   }
 
   admin() {
     window.location.replace("http://localhost:3000/#/admin");
-
-   // this.router.navigate(['/Admin']);
   }
 
 }

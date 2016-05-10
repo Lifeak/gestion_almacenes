@@ -37,7 +37,7 @@ export class PiezaDetailsCmp implements OnInit {
   modelos: Modelo[] = [];
   components: Array<string>;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService) {
     this.piezaForm = fb.group({
       "_id": ["", Validators.required],
       "modelo": ["", Validators.required],

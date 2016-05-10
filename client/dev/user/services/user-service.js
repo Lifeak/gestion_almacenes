@@ -45,6 +45,11 @@ var UserService = (function () {
             .get(UserService.ENDPOINT.replace(':id', id))
             .map(function (r) { return r.json(); });
     };
+    UserService.prototype.getProfile = function (user) {
+        return this._http
+            .get(UserService.ENDP.replace(':user', user))
+            .map(function (r) { return r.json(); });
+    };
     UserService.prototype.add = function (user, pass, nombre, apellido, tipo) {
         var body = JSON.stringify({ user: user, pass: pass, nombre: nombre, apellido: apellido, tipo: tipo });
         alert("body" + body);
@@ -59,6 +64,7 @@ var UserService = (function () {
             .delete(UserService.ENDPOINT.replace(':id', id));
     };
     UserService.ENDPOINT = '/api/user/:id';
+    UserService.ENDP = '/api/user/profile/:user';
     UserService = __decorate([
         core_1.Injectable(),
         __param(0, core_1.Inject(http_1.Http)), 

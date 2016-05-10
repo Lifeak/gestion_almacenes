@@ -26,7 +26,6 @@ var UserCmp = (function () {
         this._userService = _userService;
         this._loginService = _loginService;
         this.router = router;
-        this.title = "Users";
         this.users = [];
         this.userForm = fb.group({
             "user": ["", common_1.Validators.required],
@@ -35,13 +34,23 @@ var UserCmp = (function () {
             "apellido": ["", common_1.Validators.required],
             "tipo": ["", common_1.Validators.required]
         });
+        //this.profile = "";
     }
     UserCmp.prototype.ngOnInit = function () {
-        if (localStorage.getItem(this.token) != "encargado" || localStorage.getItem(this.token) != "encargado") {
-            alert("Te voy a mandar fuera porque el token es " + localStorage.getItem(this.token));
-            alert("Deberiamos estar en el login");
+        if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+            alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+            localStorage.clear();
+            window.location.replace("http://localhost:3000/");
         }
         else {
+            if (localStorage.getItem(this.token) == "encargado") {
+                alert("soy un encargadillo");
+                var u = localStorage.key(1);
+                alert("en u tenemos " + u);
+                this.getProfile(u);
+            }
+            else
+                alert("soy admin");
             this._getAll();
             this.router.navigate(['/ListUsuarios']);
         }
@@ -52,6 +61,17 @@ var UserCmp = (function () {
             .getAll()
             .subscribe(function (users) {
             _this.users = users;
+        });
+    };
+    UserCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.user = user[0];
+            _this.profile = user[0]._id;
+            _this.router.navigate(['DetailsUsuarios', { id: _this.profile }]);
+            alert("en el get, el id es " + _this.profile);
         });
     };
     UserCmp.prototype.isSelected = function (user) {
@@ -89,26 +109,23 @@ var UserCmp = (function () {
         alert("logoutt");
         this._loginService.logout();
         window.location.replace("http://localhost:3000/");
-        //this.router.navigate(['/Login']);
     };
     UserCmp.prototype.compras = function () {
-        //alert("compras");
         window.location.replace("http://localhost:3000/#/compras");
-        //this.router.navigate(['/Compras']);
     };
     UserCmp.prototype.ventas = function () {
-        //alert("ventas");
         window.location.replace("http://localhost:3000/#/ventas");
-        //this.router.navigate(['/Ventas']);
     };
     UserCmp.prototype.almacen = function () {
         window.location.replace("http://localhost:3000/#/almacen");
-        //this.router.navigate(['/Almacen']);
     };
     UserCmp.prototype.admin = function () {
         window.location.replace("http://localhost:3000/#/admin");
-        // this.router.navigate(['/Admin']);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], UserCmp.prototype, "user", void 0);
     UserCmp = __decorate([
         core_1.Component({
             selector: 'user-cmp',

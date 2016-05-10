@@ -22,6 +22,7 @@ export class User {
 @Injectable()
 export class UserService {
   static ENDPOINT: string = '/api/user/:id';
+  static ENDP: string = '/api/user/profile/:user';
   
   gotoIndex(){
     return this._http
@@ -44,6 +45,12 @@ export class UserService {
     .get(UserService.ENDPOINT.replace(':id', id))
     .map((r) => r.json());
   } 
+
+  getProfile(user: string){
+    return this._http
+      .get(UserService.ENDP.replace(':user',user))
+      .map((r) => r.json());
+  }
 
   add(user:string, pass:string, nombre:string, apellido:string, tipo:string):Observable<any> {
 

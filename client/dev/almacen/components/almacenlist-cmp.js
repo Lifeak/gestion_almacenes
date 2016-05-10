@@ -43,7 +43,7 @@ var AlmacenListCmp = (function () {
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [almacen_service_1.AlmacenService]
         }),
-        router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }), 
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
         __metadata('design:paramtypes', [almacen_service_1.AlmacenService, router_1.Router, router_1.RouteParams])
     ], AlmacenListCmp);
     return AlmacenListCmp;

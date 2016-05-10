@@ -48,6 +48,21 @@ userSchema.statics.getbyId = (id) => {
     });
 }
 
+userSchema.statics.getProfile = (u) => {
+  console.log("el user del dao es "+u);
+    return new Promise((resolve, reject) => {
+        if (!_.isString(u))
+            return reject(new TypeError('User is not a valid string.'));
+        let _query = User.findOne({user:u});
+        User
+          .find(_query)
+          .exec((err, user) => {
+              err ? reject(err)
+                  : resolve(user);
+          });
+    });
+}
+
 userSchema.statics.createUser = (user) => {
     return new Promise((resolve, reject) => {
       if (!_.isObject(user))

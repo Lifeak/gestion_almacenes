@@ -4,6 +4,7 @@ const UserDAO = require('../dao/user-dao');
 
 module.exports = class UserController {
   static getAll(req, res) {
+    console.log("entro en getAll");
       UserDAO
         .getAll()
         .then(users => res.status(200).json(users))
@@ -11,6 +12,7 @@ module.exports = class UserController {
   }
 
   static getbyId(req,res){
+    console.log("Entro en getbyid");
     let _id = req.params.id;
     UserDAO
       .getbyId(_id)
@@ -18,10 +20,18 @@ module.exports = class UserController {
       .catch(error => res.status(400).json(error));
   }
 
+  static getProfile(req,res){
+    console.log("entro en getProfile");
+    let _user = req.params.user;
+    console.log("el user del controller es "+JSON.stringify(req.params));
+    UserDAO
+      .getProfile(_user)
+      .then(user => res.status(200).json(user))
+      .catch(error => res.status(400).json(error));
+  }
+
   static createUser(req, res) {
       let _user = req.body;
-      console.log("user"+_user.nombre);
-
       UserDAO
         .createUser(_user)
         .then(user => res.status(201).json(user))

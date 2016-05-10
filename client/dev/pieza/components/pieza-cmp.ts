@@ -50,7 +50,7 @@ type Pieza = {
   selector:'pieza-cmp',
   templateUrl: 'client/dev/pieza/templates/index.html',
   styleUrls: ['client/dev/pieza/styles/cliente.css'],
-  providers: [PiezaService, LoginService, ROUTER_PROVIDERS],
+  providers: [PiezaService, ROUTER_PROVIDERS],
   directives: [ROUTER_DIRECTIVES]
 })
 

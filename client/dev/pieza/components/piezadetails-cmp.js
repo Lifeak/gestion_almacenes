@@ -17,11 +17,10 @@ var router_1 = require('angular2/router');
 var pieza_service_1 = require('../services/pieza-service');
 var isloggedin_1 = require('../../login/services/isloggedin');
 var PiezaDetailsCmp = (function () {
-    function PiezaDetailsCmp(fb, _router, _routeParams, _piezaService, _loginService) {
+    function PiezaDetailsCmp(fb, _router, _routeParams, _piezaService) {
         this._router = _router;
         this._routeParams = _routeParams;
         this._piezaService = _piezaService;
-        this._loginService = _loginService;
         this.modelos = [];
         this.piezaForm = fb.group({
             "_id": ["", common_1.Validators.required],
@@ -147,9 +146,8 @@ var PiezaDetailsCmp = (function () {
             styleUrls: ['client/dev/pieza/styles/cliente.css']
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
-        __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(4, core_1.Inject(LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, pieza_service_1.PiezaService, Object])
+        __param(0, core_1.Inject(common_1.FormBuilder)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, pieza_service_1.PiezaService])
     ], PiezaDetailsCmp);
     return PiezaDetailsCmp;
 }());
