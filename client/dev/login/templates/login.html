@@ -1,53 +1,35 @@
-<div id="login-page" style="background-image:url(client/dev/login/templates/img/logo.png);">
-  <div class="container">
-    <form class="form-login"
-           [ngFormModel]="loginForm"
-          (submit)="login(loginForm)">
+<div class="container-fluid" id="login-page">
+  <form class="form-login"
+         [ngFormModel]="loginForm"
+        (submit)="login(loginForm)">
 
-      <h2 class="form-login-heading">Login</h2>
-      <div *ngIf="Error">Try again.</div>
-      <div class="login-wrap">
-          <div>
-            <br/>Usuario:<br/>
-            <input type="text"
-                 ngControl="user"
-                  class="form-control"
-                  [class.cliente-error]="!loginForm.valid"
-                 placeholder="user"
-                 autofocus />
-            <br/>Constraseña:<br/>
-            <input type="password"
-                 ngControl="pass"
-                 class="form-control"
-                 [class.cliente-error]="!loginForm.valid"
-                 placeholder="pass"
-                 autofocus />
-           </div>
-           <br/>
-      <button class="btn btn-theme btn-block" type="submit"
-              [disabled]="!loginForm.valid"><i class="fa fa-lock"></i>Login</button>
-    </div>
-    </form>
-
+    <h2 class="form-login-heading">Gestion de almacenes</h2>
+    <div *ngIf="Error">Error. Inténtalo de nuevo.</div>
+    <div class="login-wrap">
+        <div>
+          <br/>Usuario:<br/>
+          <input type="text"
+               ngControl="user"
+                class="form-control"
+                [class.cliente-error]="!loginForm.valid"
+               placeholder="usuario"
+               autofocus />
+          <br/>Constraseña:<br/>
+          <input type="password"
+               ngControl="pass"
+               class="form-control"
+               [class.cliente-error]="!loginForm.valid"
+               placeholder="contraseña"
+               autofocus />
+         </div>
+         <br/>
+    <button class="btn btn-theme btn-block" type="submit"
+            [disabled]="!loginForm.valid"><i class="fa fa-lock"></i> Acceder</button>
   </div>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  <footer class="site-footer" style="background-color:grey;">
-          <div class="text-center">
-              2016 - Raquel Castillo Perez
-                  <i class="fa fa-smile-o"></i>
-          </div>
-      </footer>
+  </form>
+
 </div>
+
 
 
       
