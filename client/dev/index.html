@@ -29,7 +29,7 @@
     <title>Valiryo</title>
   </head>
   <body>
-    <app>Loading..</app>
+    <app *ngIf="isLogged();">Loading..</app>
     <script src="node_modules/systemjs/dist/system.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script>

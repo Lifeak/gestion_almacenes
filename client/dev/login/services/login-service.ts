@@ -31,6 +31,7 @@ export class LoginService {
 
   constructor( @Inject(Http) private _http: Http) {
       this.loggedIn = !!localStorage.getItem(this.token);
+
      
   }
 
@@ -48,11 +49,14 @@ export class LoginService {
             let p = dato.search("\"pass\":\"" + pass + "\"");
             if(u!=-1 && p!=-1){
                   alert("Todo OK.");
+
                   let cred = dato.search("\"tipo\":\"admin\"");
                   if(cred!=-1){
-                      localStorage.setItem(this.token, "admin");
+                      localStorage.setItem(user, "admin");
+                      localStorage.setItem(this.token, "admin")
                       alert("es un usuario admin");
                   }else{
+                      localStorage.setItem(user, "encargado");
                       localStorage.setItem(this.token, "encargado");
                       alert("es un usuario del monton");
                   }
@@ -61,7 +65,7 @@ export class LoginService {
                 }else{
                     alert("Credenciales incorrectas. Try again.");
                     this.loggedIn = false;
-                    localStorage.setItem(this.token, "");
+                    localStorage.setItem("", "");
                 }
         });
   }
@@ -70,6 +74,7 @@ export class LoginService {
   // y además, pone a falso el atributo loggedIn.
   logout(){
     localStorage.removeItem(this.token);
+    localStorage.clear();
     this.loggedIn = false;
 
   }
@@ -77,6 +82,7 @@ export class LoginService {
 // Función que devuelve dos valores, el primero booleano, true si el usuario se ha logueado y false en caso contrario.
 // El segundo parametro nos devuelve el tipo de usuario de la aplicación.
   isLoggedIn(){
+    alert("localStorage.getItem(this.token) " + localStorage.getItem(this.token));
     return [this.loggedIn, localStorage.getItem(this.token)];
   }
 }

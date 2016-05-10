@@ -12,15 +12,16 @@ import {
 } from 'angular2/common';
 
 import {
-Router,
-RouteParams, 
-RouteConfig,
-ROUTER_DIRECTIVES
+  Router,
+  RouteParams, 
+  RouteConfig,
+  CanActivate,
+  ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
 import {User, UserService} from '../services/user-service';
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -31,6 +32,7 @@ import {User, UserService} from '../services/user-service';
   providers: [UserService]
 })
 
+@CanActivate(() => isLoggedinAdmin())
 export class UserListCmp implements OnInit {
   title: string = "Users";
   users: User[] = [];

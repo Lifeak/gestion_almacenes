@@ -55,13 +55,17 @@ export class ProveedorCmp /*implements OnInit*/ {
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(ProveedorService) private _proveedorService: ProveedorService, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
     this.proveedorForm = fb.group({
-      "nombre": ["", Validators.required],
-      "direccion": ["", Validators.required],
-      "ciudad": ["", Validators.required],
-      "pais": ["", Validators.required],
-      "telefono": ["", Validators.required],
-      "valoracion": ["", Validators.required],
-      "material": ["", Validators.required]
+    "nombre": ["", Validators.required],
+    "direccion": ["", Validators.required],
+    "ciudad": ["", Validators.required],
+    "pais": ["", Validators.required],
+    "telefono": ["", Validators.required],
+    "valoracion": [""],
+    "pieza": [""],
+    "refexterna": [""],
+    "coste1": [""],
+    "coste2": [""],
+    "val": [""]
     });
   }
 
@@ -84,30 +88,6 @@ export class ProveedorCmp /*implements OnInit*/ {
   onSelect(proveedor: Proveedor) {
     this.router.navigate(['DetailsProveedor', { id: proveedor._id }]);
   }
-
- /*  add():void {
-    this._userService
-        .add(user, pass, nombre, apellido, tipo)
-        .subscribe((m) => {
-          this.users.push(m);
-          (<Control>this.userForm.controls['user']).updateValue("");
-          (<Control>this.userForm.controls['pass']).updateValue("");
-          (<Control>this.userForm.controls['nombre']).updateValue("");
-          (<Control>this.userForm.controls['apellido']).updateValue("");
-          (<Control>this.userForm.controls['tipo']).updateValue("");
-        });
-  }
-
-  remove(id:string):void {
-    this._userService
-      .remove(id)
-      .subscribe(() => {
-        this.users.forEach((t, i) => {
-          if (t._id === id)
-            return this.users.splice(i, 1);
-        });
-      })
-  }*/
 
   logout() {
     this._loginService.logout(); 

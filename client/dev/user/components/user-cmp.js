@@ -16,6 +16,7 @@ var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user-service');
 var login_service_1 = require('../../login/services/login-service');
+var login_cmp_1 = require('../../login/components/login-cmp');
 var userlist_cmp_1 = require('./userlist-cmp');
 var userdetails_cmp_1 = require('./userdetails-cmp');
 var usercreate_cmp_1 = require('./usercreate-cmp');
@@ -36,8 +37,14 @@ var UserCmp = (function () {
         });
     }
     UserCmp.prototype.ngOnInit = function () {
-        this._getAll();
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) != "encargado" || localStorage.getItem(this.token) != "encargado") {
+            alert("Te voy a mandar fuera porque el token es " + localStorage.getItem(this.token));
+            alert("Deberiamos estar en el login");
+        }
+        else {
+            this._getAll();
+            this.router.navigate(['/ListUsuarios']);
+        }
     };
     UserCmp.prototype._getAll = function () {
         var _this = this;
@@ -112,7 +119,8 @@ var UserCmp = (function () {
         router_1.RouteConfig([
             { path: '/ListUsuarios', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
             { path: '/Create', name: 'CreateUsuario', component: usercreate_cmp_1.UserCreateCmp },
-            { path: '/Details', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp }
+            { path: '/Details', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp },
+            { path: '/', name: 'Login', component: login_cmp_1.LoginCmp }
         ]),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

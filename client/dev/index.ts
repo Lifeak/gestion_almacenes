@@ -7,6 +7,8 @@ import {
 	HTTP_PROVIDERS
 } from 'angular2/http';
 
+import {isLogged} from './login/services/isloggedin';
+
 import {ProveedorCmp} from './proveedor/components/proveedor-cmp';
 import {ProductoCmp} from './producto/components/producto-cmp';
 import {PiezaCmp} from './pieza/components/pieza-cmp';

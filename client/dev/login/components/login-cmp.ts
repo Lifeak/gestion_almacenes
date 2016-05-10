@@ -58,13 +58,9 @@ export class LoginCmp {
       .subscribe(
         () => {
         let resultado = this._loginService.isLoggedIn();
-        //alert("resultado de 0"+resultado[0]);
-        //alert("resultado de 1" + resultado[1]);
         if (resultado[0] == true && resultado[1]=="admin") {
-          //alert("como soy un admin, entro");
           this.gotoMenu();
         } else if (resultado[0] == true && resultado[1] == "encargado") {
-           // alert("como soy encargado, entro");
             this.gotoMenu();
         }else{
           alert("Bye.");
