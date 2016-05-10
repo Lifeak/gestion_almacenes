@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var producto_service_1 = require('../services/producto-service');
 var ProductoListCmp = (function () {
     function ProductoListCmp(_productoService, _router, routeParams) {
@@ -42,7 +43,8 @@ var ProductoListCmp = (function () {
             styleUrls: ['client/dev/producto/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [producto_service_1.ProductoService]
-        }), 
+        }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
         __metadata('design:paramtypes', [producto_service_1.ProductoService, router_1.Router, router_1.RouteParams])
     ], ProductoListCmp);
     return ProductoListCmp;

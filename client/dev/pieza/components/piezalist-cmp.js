@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var pieza_service_1 = require('../services/pieza-service');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var PiezaListCmp = (function () {
     function PiezaListCmp(_piezaService, _router, routeParams) {
         this._piezaService = _piezaService;
@@ -42,7 +43,8 @@ var PiezaListCmp = (function () {
             styleUrls: ['client/dev/pieza/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [pieza_service_1.PiezaService]
-        }), 
+        }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
         __metadata('design:paramtypes', [pieza_service_1.PiezaService, router_1.Router, router_1.RouteParams])
     ], PiezaListCmp);
     return PiezaListCmp;

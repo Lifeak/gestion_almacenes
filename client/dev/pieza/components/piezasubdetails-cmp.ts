@@ -14,12 +14,13 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
 
 import {Pieza,PiezaService} from '../services/pieza-service';
-import {LoginService} from '../../login/services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 import {Modelo} from '../../modelo/services/modelo-service';
 
@@ -29,7 +30,7 @@ import {Modelo} from '../../modelo/services/modelo-service';
   styleUrls: ['client/dev/pieza/styles/cliente.css']
 })
 
-
+  @CanActivate(() => isLogged())
 export class PiezaSubDetailsCmp implements OnInit {
   @Input() pieza: Pieza;
   piezaForm: ControlGroup;

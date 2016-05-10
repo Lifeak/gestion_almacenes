@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var almacen_service_1 = require('../services/almacen-service');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var AlmacenListCmp = (function () {
     function AlmacenListCmp(_almacenService, _router, routeParams) {
         this._almacenService = _almacenService;
@@ -41,7 +42,8 @@ var AlmacenListCmp = (function () {
             styleUrls: ['client/dev/almacen/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [almacen_service_1.AlmacenService]
-        }), 
+        }),
+        router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }), 
         __metadata('design:paramtypes', [almacen_service_1.AlmacenService, router_1.Router, router_1.RouteParams])
     ], AlmacenListCmp);
     return AlmacenListCmp;

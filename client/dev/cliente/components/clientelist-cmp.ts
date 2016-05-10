@@ -15,10 +15,11 @@ import {
 Router,
 RouteParams, 
 RouteConfig,
+CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {Cliente, ClienteService} from '../services/cliente-service';
 
 @Component({
@@ -29,6 +30,7 @@ import {Cliente, ClienteService} from '../services/cliente-service';
   providers: [ClienteService]
 })
 
+  @CanActivate(() => isLogged())
 export class ClienteListCmp implements OnInit {
   clientes: Cliente[] = [];
   private _selectedId: string;

@@ -61,7 +61,7 @@ type Producto = {
   { path: '/Detailss', name: 'DetailsSubProducto', component: ProductoSubDetailsCmp }
 ])
 
-
+  @CanActivate(() => isLogged())
 export class ProductoCmp implements OnInit {
   productos: Producto[] = [];
   productoForm: ControlGroup;

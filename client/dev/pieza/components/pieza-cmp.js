@@ -20,6 +20,7 @@ var piezalist_cmp_1 = require('./piezalist-cmp');
 var piezadetails_cmp_1 = require('./piezadetails-cmp');
 var piezasubdetails_cmp_1 = require('./piezasubdetails-cmp');
 var piezacreate_cmp_1 = require('./piezacreate-cmp');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var PiezaCmp = (function () {
     function PiezaCmp(fb, _piezaService, _loginService, router) {
         this._piezaService = _piezaService;
@@ -116,6 +117,7 @@ var PiezaCmp = (function () {
             { path: '/Details', name: 'DetailsPieza', component: piezadetails_cmp_1.PiezaDetailsCmp },
             { path: '/Detailss', name: 'DetailsSubPieza', component: piezasubdetails_cmp_1.PiezaSubDetailsCmp }
         ]),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(pieza_service_1.PiezaService)),
         __param(2, core_1.Inject(login_service_1.LoginService)), 

@@ -14,10 +14,11 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {Proveedor, ProveedorService} from '../services/proveedor-service';
 import {LoginService} from '../../login/services/login-service';
 
@@ -26,7 +27,7 @@ import {LoginService} from '../../login/services/login-service';
   styleUrls: ['client/dev/proveedor/styles/cliente.css']
 })
 
-
+  @CanActivate(() => isLogged())
 export class ProveedorDetailsCmp implements OnInit {
   @Input() proveedor: Proveedor;
   proveedorForm: ControlGroup;

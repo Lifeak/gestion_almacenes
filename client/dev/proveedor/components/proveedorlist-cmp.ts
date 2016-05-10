@@ -15,12 +15,13 @@ import {
 Router,
 RouteParams, 
 RouteConfig,
+CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
 import {Proveedor,ProveedorService} from '../services/proveedor-service';
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -31,6 +32,7 @@ import {Proveedor,ProveedorService} from '../services/proveedor-service';
   providers: [ProveedorService]
 })
 
+  @CanActivate(() => isLogged())
 export class ProveedorListCmp implements OnInit {
   proveedors: Proveedor[] = [];
   private _selectedId: string;

@@ -15,12 +15,13 @@ import {
 Router,
 RouteParams, 
 RouteConfig,
+CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
 import {Garantia, GarantiaService} from '../services/garantia-service';
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -30,6 +31,7 @@ import {Garantia, GarantiaService} from '../services/garantia-service';
   providers: [GarantiaService]
 })
 
+  @CanActivate(() => isLogged())
 export class GarantiaListCmp implements OnInit {
   garantias: Garantia[] = [];
   private _selectedId: string;

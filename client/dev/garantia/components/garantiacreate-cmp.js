@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var garantia_service_1 = require('../services/garantia-service');
 var GarantiaCreateCmp = (function () {
     function GarantiaCreateCmp(fb, _router, _routeParams, _garantiaService) {
@@ -52,6 +53,7 @@ var GarantiaCreateCmp = (function () {
         core_1.Component({
             templateUrl: 'client/dev/garantia/templates/create.html'
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, garantia_service_1.GarantiaService])
     ], GarantiaCreateCmp);

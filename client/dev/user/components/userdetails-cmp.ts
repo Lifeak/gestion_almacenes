@@ -14,24 +14,21 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {UserService, User} from '../services/user-service';
 import {LoginService} from '../../login/services/login-service';
 
-//import {UserCmp} from './user-cmp';
-
-
 
 @Component({
-  //selector: 'user-cmp',
   templateUrl: 'client/dev/user/templates/details.html',
   styleUrls: ['client/dev/user/styles/cliente.css']
 })
 
-
+  @CanActivate(() => isLogged())
 export class UserDetailsCmp implements OnInit {
   @Input() user: User;
   userForm: ControlGroup;

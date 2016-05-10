@@ -20,6 +20,7 @@ var productolist_cmp_1 = require('./productolist-cmp');
 var productodetails_cmp_1 = require('./productodetails-cmp');
 var productosubdetails_cmp_1 = require('./productosubdetails-cmp');
 var productocreate_cmp_1 = require('./productocreate-cmp');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var ProductoCmp = (function () {
     function ProductoCmp(fb, _productoService, _loginService, router) {
         this._productoService = _productoService;
@@ -114,6 +115,7 @@ var ProductoCmp = (function () {
             { path: '/Details', name: 'DetailsProducto', component: productodetails_cmp_1.ProductoDetailsCmp },
             { path: '/Detailss', name: 'DetailsSubProducto', component: productosubdetails_cmp_1.ProductoSubDetailsCmp }
         ]),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(producto_service_1.ProductoService)),
         __param(2, core_1.Inject(login_service_1.LoginService)), 

@@ -60,7 +60,7 @@ type Cliente = {
   { path: '/Details', name: 'DetailsCliente', component: ClienteDetailsCmp }
 ])
 
-
+  @CanActivate(() => isLogged())
 export class ClienteCmp implements OnInit {
   clientes: Cliente[] = [];
   clienteForm: ControlGroup;

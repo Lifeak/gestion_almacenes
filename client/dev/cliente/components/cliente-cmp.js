@@ -19,6 +19,7 @@ var login_service_1 = require('../../login/services/login-service');
 var clientelist_cmp_1 = require('./clientelist-cmp');
 var clientedetails_cmp_1 = require('./clientedetails-cmp');
 var clientecreate_cmp_1 = require('./clientecreate-cmp');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var ClienteCmp = (function () {
     function ClienteCmp(fb, _clienteService, _loginService, router) {
         this._clienteService = _clienteService;
@@ -114,6 +115,7 @@ var ClienteCmp = (function () {
             { path: '/Create', name: 'CreateCliente', component: clientecreate_cmp_1.ClienteCreateCmp },
             { path: '/Details', name: 'DetailsCliente', component: clientedetails_cmp_1.ClienteDetailsCmp }
         ]),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(cliente_service_1.ClienteService)),
         __param(2, core_1.Inject(login_service_1.LoginService)), 

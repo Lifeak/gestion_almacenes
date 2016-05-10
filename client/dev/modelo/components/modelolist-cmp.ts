@@ -15,10 +15,11 @@ import {
 Router,
 RouteParams, 
 RouteConfig,
+CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {Modelo, ModeloService} from '../services/modelo-service';
 
 @Component({
@@ -29,6 +30,7 @@ import {Modelo, ModeloService} from '../services/modelo-service';
   providers: [ModeloService]
 })
 
+  @CanActivate(() => isLogged())
 export class ModeloListCmp implements OnInit {
   modelos: Modelo[] = [];
   private _selectedId: string;

@@ -15,12 +15,13 @@ import {
 Router,
 RouteParams, 
 RouteConfig,
+CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
 import {Almacen, AlmacenService} from '../services/almacen-service';
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -30,6 +31,7 @@ import {Almacen, AlmacenService} from '../services/almacen-service';
   providers: [AlmacenService]
 })
 
+@CanActivate(() => isLoggedinAdmin())
 export class AlmacenListCmp implements OnInit {
   almacens: Almacen[] = [];
   private _selectedId: string;

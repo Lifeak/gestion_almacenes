@@ -15,6 +15,7 @@ var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var pieza_service_1 = require('../services/pieza-service');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var PiezaCreateCmp = (function () {
     function PiezaCreateCmp(fb, _router, _routeParams, _piezaService) {
         this._router = _router;
@@ -94,6 +95,7 @@ var PiezaCreateCmp = (function () {
             //styleUrls: ['client/dev/styles/assets/css/style.css']
             styleUrls: ['client/dev/pieza/styles/cliente.css']
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, pieza_service_1.PiezaService])
     ], PiezaCreateCmp);

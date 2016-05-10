@@ -14,13 +14,14 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
 
 import {ProductoService,Producto} from '../services/producto-service';
 import {Modelo} from '../../modelo/services/modelo-service';
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -29,8 +30,7 @@ import {Modelo} from '../../modelo/services/modelo-service';
 })
 
 
-
-
+  @CanActivate(() => isLogged())
 export class ProductoCreateCmp implements OnInit{
   @Input() producto: Producto;
   modelos: Modelo[]=[];

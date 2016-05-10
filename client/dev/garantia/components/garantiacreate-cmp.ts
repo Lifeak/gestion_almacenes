@@ -14,17 +14,18 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {Garantia,GarantiaService} from '../services/garantia-service';
 
 @Component({
   templateUrl: 'client/dev/garantia/templates/create.html'
 })
 
-
+  @CanActivate(() => isLogged())
 export class GarantiaCreateCmp{
   @Input() garantia: Garantia;
   garantiaForm: ControlGroup;

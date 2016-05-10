@@ -15,11 +15,14 @@ import {
 Router,
 RouteParams, 
 RouteConfig,
+CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
 import {Pieza,PiezaService} from '../services/pieza-service';
+
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 @Component({
   selector: 'ListPiezas',
@@ -29,6 +32,7 @@ import {Pieza,PiezaService} from '../services/pieza-service';
   providers: [PiezaService]
 })
 
+  @CanActivate(() => isLogged())
 export class PiezaListCmp implements OnInit {
   piezas: Pieza[] = [];
   private _selectedId: string;

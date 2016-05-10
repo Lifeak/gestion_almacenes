@@ -62,7 +62,7 @@ type Pieza = {
   { path: '/Detailss', name: 'DetailsSubPieza', component: PiezaSubDetailsCmp }
 ])
 
-
+  @CanActivate(() => isLogged())
 export class PiezaCmp implements OnInit {
   piezas: Pieza[] = [];
   piezaForm: ControlGroup;

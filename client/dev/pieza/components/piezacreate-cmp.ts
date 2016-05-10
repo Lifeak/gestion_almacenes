@@ -14,12 +14,14 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
 
 import {Pieza,PiezaService} from '../services/pieza-service';
 import {Modelo} from '../../modelo/services/modelo-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -28,7 +30,7 @@ import {Modelo} from '../../modelo/services/modelo-service';
   styleUrls:['client/dev/pieza/styles/cliente.css']
 })
 
-
+  @CanActivate(() => isLogged())
 export class PiezaCreateCmp implements OnInit{
   @Input() pieza: Pieza;
   modelos: Modelo[]=[];

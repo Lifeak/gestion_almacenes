@@ -14,10 +14,11 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {UserService, User} from '../services/user-service';
 
 @Component({
@@ -25,7 +26,7 @@ import {UserService, User} from '../services/user-service';
   styleUrls: ['client/dev/user/styles/cliente.css']
 })
 
-
+@CanActivate(() => isLoggedinAdmin())
 export class UserCreateCmp{
   @Input() user: User;
   userForm: ControlGroup;

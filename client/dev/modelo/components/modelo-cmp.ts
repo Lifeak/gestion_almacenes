@@ -59,7 +59,7 @@ type Modelo = {
   { path: '/Detailss', name: 'DetailsSubModelo', component: ModeloSubDetailsCmp }
 ])
 
-
+  @CanActivate(() => isLogged())
 export class ModeloCmp implements OnInit {
   modelos: Modelo[] = [];
   modeloForm: ControlGroup;

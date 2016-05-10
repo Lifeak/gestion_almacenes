@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var proveedor_service_1 = require('../services/proveedor-service');
 var login_service_1 = require('../../login/services/login-service');
 var ProveedorDetailsCmp = (function () {
@@ -152,6 +153,7 @@ var ProveedorDetailsCmp = (function () {
             templateUrl: 'client/dev/proveedor/templates/details.html',
             styleUrls: ['client/dev/proveedor/styles/cliente.css']
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(4, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, proveedor_service_1.ProveedorService, login_service_1.LoginService])

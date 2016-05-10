@@ -20,6 +20,7 @@ var modelolist_cmp_1 = require('./modelolist-cmp');
 var modelodetails_cmp_1 = require('./modelodetails-cmp');
 var modelosubdetails_cmp_1 = require('./modelosubdetails-cmp');
 var modelocreate_cmp_1 = require('./modelocreate-cmp');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var ModeloCmp = (function () {
     function ModeloCmp(fb, _modeloService, _loginService, router) {
         this._modeloService = _modeloService;
@@ -108,6 +109,7 @@ var ModeloCmp = (function () {
             { path: '/Details', name: 'DetailsModelo', component: modelodetails_cmp_1.ModeloDetailsCmp },
             { path: '/Detailss', name: 'DetailsSubModelo', component: modelosubdetails_cmp_1.ModeloSubDetailsCmp }
         ]),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(modelo_service_1.ModeloService)),
         __param(2, core_1.Inject(login_service_1.LoginService)), 

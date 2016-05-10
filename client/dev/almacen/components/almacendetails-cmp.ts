@@ -14,10 +14,11 @@ import {
 
 import {
   RouteParams,
-  Router
+  Router,
+  CanActivate
 } from 'angular2/router';
 
-
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 import {AlmacenService, Almacen} from '../services/almacen-service';
 import {LoginService} from '../../login/services/login-service';
 
@@ -25,7 +26,7 @@ import {LoginService} from '../../login/services/login-service';
   templateUrl: 'client/dev/almacen/templates/details.html'
 })
 
-
+  @CanActivate(() => isLoggedinAdmin())
 export class AlmacenDetailsCmp implements OnInit {
   @Input() almacen: Almacen;
   almacenForm: ControlGroup;

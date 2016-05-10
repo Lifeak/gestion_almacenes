@@ -14,12 +14,14 @@ import {
 
 import {
   RouteParams,
+  CanActivate,
   Router
 } from 'angular2/router';
 
 
 import {Producto,ProductoService} from '../services/producto-service';
 import {LoginService} from '../../login/services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 
 @Component({
@@ -27,7 +29,7 @@ import {LoginService} from '../../login/services/login-service';
   styleUrls: ['client/dev/producto/styles/cliente.css']
 })
 
-
+@CanActivate(() => isLogged())
 export class ProductoDetailsCmp implements OnInit {
   @Input() producto: Producto;
   productoForm: ControlGroup;

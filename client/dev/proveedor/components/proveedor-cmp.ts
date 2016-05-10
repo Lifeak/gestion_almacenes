@@ -34,7 +34,6 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/servic
 @Component({
   selector: 'proveedor-cmp',
   templateUrl: 'client/dev/proveedor/templates/index.html',
-  //template: `<h1>holaaaaaaaaaaaaaaa</h1><h1>holaaaaaaaaaaaaaaa</h1><h1>holaaaaaaaaaaaaaaa</h1><h1>holaaaaaaaaaaaaaaa</h1>`,
   providers: [ProveedorService, LoginService, ROUTER_PROVIDERS], // importante poner ROUTE_PROVIDERS
   directives: [ROUTER_DIRECTIVES]
 })
@@ -46,7 +45,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/servic
   { path: '/Details', name: 'DetailsProveedor', component: ProveedorDetailsCmp}
 ])
 
-
+  @CanActivate(() => isLogged())
 export class ProveedorCmp /*implements OnInit*/ {
   proveedores: Proveedor[] = [];
   proveedorForm: ControlGroup;

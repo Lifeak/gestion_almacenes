@@ -16,6 +16,7 @@ var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var producto_service_1 = require('../services/producto-service');
 var login_service_1 = require('../../login/services/login-service');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var ProductoDetailsCmp = (function () {
     function ProductoDetailsCmp(fb, _router, _routeParams, _productoService, _loginService) {
         this._router = _router;
@@ -108,6 +109,7 @@ var ProductoDetailsCmp = (function () {
             templateUrl: 'client/dev/producto/templates/details.html',
             styleUrls: ['client/dev/producto/styles/cliente.css']
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(4, core_1.Inject(login_service_1.LoginService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, producto_service_1.ProductoService, login_service_1.LoginService])

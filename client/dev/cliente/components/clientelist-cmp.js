@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var cliente_service_1 = require('../services/cliente-service');
 var ClienteListCmp = (function () {
     function ClienteListCmp(_clienteService, _router, routeParams) {
@@ -42,7 +43,8 @@ var ClienteListCmp = (function () {
             styleUrls: ['client/dev/cliente/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [cliente_service_1.ClienteService]
-        }), 
+        }),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
         __metadata('design:paramtypes', [cliente_service_1.ClienteService, router_1.Router, router_1.RouteParams])
     ], ClienteListCmp);
     return ClienteListCmp;

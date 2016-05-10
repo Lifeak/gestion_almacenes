@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var user_service_1 = require('../services/user-service');
 var UserCreateCmp = (function () {
     function UserCreateCmp(fb, _router, _routeParams, _userService) {
@@ -70,6 +71,7 @@ var UserCreateCmp = (function () {
             templateUrl: 'client/dev/user/templates/create.html',
             styleUrls: ['client/dev/user/styles/cliente.css']
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService])
     ], UserCreateCmp);

@@ -19,6 +19,7 @@ var login_service_1 = require('../../login/services/login-service');
 var proveedorlist_cmp_1 = require('./proveedorlist-cmp');
 var proveedordetails_cmp_1 = require('./proveedordetails-cmp');
 var proveedorcreate_cmp_1 = require('./proveedorcreate-cmp');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var ProveedorCmp /*implements OnInit*/ = (function () {
     function ProveedorCmp /*implements OnInit*/(fb, _proveedorService, _loginService, router) {
         this._proveedorService = _proveedorService;
@@ -77,7 +78,6 @@ var ProveedorCmp /*implements OnInit*/ = (function () {
         core_1.Component({
             selector: 'proveedor-cmp',
             templateUrl: 'client/dev/proveedor/templates/index.html',
-            //template: `<h1>holaaaaaaaaaaaaaaa</h1><h1>holaaaaaaaaaaaaaaa</h1><h1>holaaaaaaaaaaaaaaa</h1><h1>holaaaaaaaaaaaaaaa</h1>`,
             providers: [proveedor_service_1.ProveedorService, login_service_1.LoginService, router_1.ROUTER_PROVIDERS],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
@@ -86,6 +86,7 @@ var ProveedorCmp /*implements OnInit*/ = (function () {
             { path: '/Create', name: 'CreateProveedor', component: proveedorcreate_cmp_1.ProveedorCreateCmp },
             { path: '/Details', name: 'DetailsProveedor', component: proveedordetails_cmp_1.ProveedorDetailsCmp }
         ]),
+        router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(proveedor_service_1.ProveedorService)),
         __param(2, core_1.Inject(login_service_1.LoginService)), 

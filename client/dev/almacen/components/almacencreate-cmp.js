@@ -15,6 +15,7 @@ var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var almacen_service_1 = require('../services/almacen-service');
+var isloggedin_1 = require('../../login/services/isloggedin');
 var AlmacenCreateCmp = (function () {
     function AlmacenCreateCmp(fb, _router, _routeParams, _almacenService) {
         this._router = _router;
@@ -64,6 +65,7 @@ var AlmacenCreateCmp = (function () {
         core_1.Component({
             templateUrl: 'client/dev/almacen/templates/create.html'
         }),
+        router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, almacen_service_1.AlmacenService])
     ], AlmacenCreateCmp);
