@@ -29,6 +29,7 @@ import {LoginCmp} from '../../login/components/login-cmp';
 import {UserListCmp} from './userlist-cmp';
 import {UserDetailsCmp} from './userdetails-cmp';
 import {UserCreateCmp} from './usercreate-cmp';
+import {UserProfileCmp} from './userprofile-cmp';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
 
 type User = {
@@ -52,12 +53,12 @@ type User = {
   { path: '/ListUsuarios', name: 'ListUsuarios', component: UserListCmp},
   { path: '/Create', name: 'CreateUsuario', component: UserCreateCmp },
   { path: '/Details', name: 'DetailsUsuarios', component: UserDetailsCmp},
+  {path: '/Profile', name: 'Perfil', component: UserProfileCmp},
   { path: '/', name: 'Login', component: LoginCmp}
 ])
 
 @CanActivate(() => isLogged())
 export class UserCmp implements OnInit {
-  @Input() user: User;
   users: User[] = [];
   userForm: ControlGroup;
   token: string;
@@ -78,18 +79,19 @@ export class UserCmp implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
-    alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+    //alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
         localStorage.clear();
         window.location.replace("http://localhost:3000/");
        // window.history.back();
     } else {
         if (localStorage.getItem(this.token) == "encargado"){
-            alert("soy un encargadillo");
+            //alert("soy un encargadillo");
             let u = localStorage.key(1);
-            alert("en u tenemos " + u);
+            //alert("en u tenemos " + u);
             this.getProfile(u);
+            
         }else
-          alert("soy admin");
+          //alert("soy admin");
           this._getAll();
           this.router.navigate(['/ListUsuarios']);
         }
@@ -107,10 +109,9 @@ export class UserCmp implements OnInit {
     this._userService
       .getProfile(name)
       .subscribe((user) => {
-      this.user = user[0];
        this.profile = user[0]._id;
-       this.router.navigate(['DetailsUsuarios', { id: this.profile }]);
-       alert("en el get, el id es " +this.profile);
+       this.router.navigate(['Perfil', { id: this.profile }]);
+       //alert("en el get, el id es " +this.profile);
       });
   }
 

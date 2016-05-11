@@ -67,6 +67,7 @@ export class PiezaCmp implements OnInit {
   piezas: Pieza[] = [];
   piezaForm: ControlGroup;
   private _selectedId: string;
+  token: string;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(PiezaService) private _piezaService: PiezaService, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
     this.piezaForm = fb.group({
@@ -85,8 +86,15 @@ export class PiezaCmp implements OnInit {
   }
 
   ngOnInit() {
-    this._getAll();
-    this.router.navigate(['/ListPiezas']);
+     if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+       // alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+        localStorage.clear();
+        window.location.replace("http://localhost:3000/");
+        // window.history.back();
+     } else {
+      this._getAll();
+      this.router.navigate(['/ListPiezas']);
+    }
   }
 
   private _getAll(): void {

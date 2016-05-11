@@ -65,6 +65,7 @@ export class ClienteCmp implements OnInit {
   clientes: Cliente[] = [];
   clienteForm: ControlGroup;
   private _selectedId: string;
+  token: string;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(ClienteService) private _clienteService: ClienteService, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
     this.clienteForm = fb.group({
@@ -82,8 +83,15 @@ export class ClienteCmp implements OnInit {
   }
 
   ngOnInit() {
-    this._getAll();
-    this.router.navigate(['/ListClientes']);
+     if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+        //alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+        localStorage.clear();
+        window.location.replace("http://localhost:3000/");
+        // window.history.back();
+     } else {
+      this._getAll();
+      this.router.navigate(['/ListClientes']);
+    }
   }
 
   private _getAll(): void {

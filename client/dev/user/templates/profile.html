@@ -1,0 +1,18 @@
+<div class="cliente-container">
+  <h1>PROFILE</h1>
+    <div *ngIf="user">
+        <label>User: </label>
+        <input [(ngModel)]="user.user" placeholder="user"/><br/>
+        <label>Pass: </label>
+        <input [(ngModel)]="user.pass" placeholder="pass"/><br/>
+      	<label>Nombre: </label>
+      	<input [(ngModel)]="user.nombre" placeholder="nombre"/><br/>
+      	<label>Apellido: </label>
+      	<input [(ngModel)]="user.apellido" placeholder="apellido"/><br/>
+    </div>
+    <p>
+
+      <button (click)="edit(user)">Save changes</button>
+
+    </p>
+</div>

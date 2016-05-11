@@ -41,8 +41,15 @@ var PiezaCmp = (function () {
         });
     }
     PiezaCmp.prototype.ngOnInit = function () {
-        this._getAll();
-        this.router.navigate(['/ListPiezas']);
+        if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+            // alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+            localStorage.clear();
+            window.location.replace("http://localhost:3000/");
+        }
+        else {
+            this._getAll();
+            this.router.navigate(['/ListPiezas']);
+        }
     };
     PiezaCmp.prototype._getAll = function () {
         var _this = this;

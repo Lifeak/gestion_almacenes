@@ -20,6 +20,7 @@ var login_cmp_1 = require('../../login/components/login-cmp');
 var userlist_cmp_1 = require('./userlist-cmp');
 var userdetails_cmp_1 = require('./userdetails-cmp');
 var usercreate_cmp_1 = require('./usercreate-cmp');
+var userprofile_cmp_1 = require('./userprofile-cmp');
 var isloggedin_1 = require('../../login/services/isloggedin');
 var UserCmp = (function () {
     function UserCmp(fb, _userService, _loginService, router) {
@@ -38,20 +39,20 @@ var UserCmp = (function () {
     }
     UserCmp.prototype.ngOnInit = function () {
         if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
-            alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+            //alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
             localStorage.clear();
             window.location.replace("http://localhost:3000/");
         }
         else {
             if (localStorage.getItem(this.token) == "encargado") {
-                alert("soy un encargadillo");
+                //alert("soy un encargadillo");
                 var u = localStorage.key(1);
-                alert("en u tenemos " + u);
+                //alert("en u tenemos " + u);
                 this.getProfile(u);
             }
             else
-                alert("soy admin");
-            this._getAll();
+                //alert("soy admin");
+                this._getAll();
             this.router.navigate(['/ListUsuarios']);
         }
     };
@@ -68,10 +69,9 @@ var UserCmp = (function () {
         this._userService
             .getProfile(name)
             .subscribe(function (user) {
-            _this.user = user[0];
             _this.profile = user[0]._id;
-            _this.router.navigate(['DetailsUsuarios', { id: _this.profile }]);
-            alert("en el get, el id es " + _this.profile);
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
         });
     };
     UserCmp.prototype.isSelected = function (user) {
@@ -122,10 +122,6 @@ var UserCmp = (function () {
     UserCmp.prototype.admin = function () {
         window.location.replace("http://localhost:3000/#/admin");
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], UserCmp.prototype, "user", void 0);
     UserCmp = __decorate([
         core_1.Component({
             selector: 'user-cmp',
@@ -137,6 +133,7 @@ var UserCmp = (function () {
             { path: '/ListUsuarios', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
             { path: '/Create', name: 'CreateUsuario', component: usercreate_cmp_1.UserCreateCmp },
             { path: '/Details', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp },
+            { path: '/Profile', name: 'Perfil', component: userprofile_cmp_1.UserProfileCmp },
             { path: '/', name: 'Login', component: login_cmp_1.LoginCmp }
         ]),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),

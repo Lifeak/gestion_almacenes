@@ -41,8 +41,15 @@ var ProveedorCmp /*implements OnInit*/ = (function () {
         });
     }
     ProveedorCmp /*implements OnInit*/.prototype.ngOnInit = function () {
-        this._getAll();
-        this.router.navigate(['/ListProveedores']);
+        if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+            //alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+            localStorage.clear();
+            window.location.replace("http://localhost:3000/");
+        }
+        else {
+            this._getAll();
+            this.router.navigate(['/ListProveedores']);
+        }
     };
     ProveedorCmp /*implements OnInit*/.prototype._getAll = function () {
         var _this = this;

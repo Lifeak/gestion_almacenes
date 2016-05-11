@@ -59,6 +59,7 @@ export class AlmacenCmp implements OnInit {
   almacens: Almacen[] = [];
   almacenForm: ControlGroup;
   private _selectedId: string;
+  token: string;
 
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(AlmacenService) private _almacenService: AlmacenService, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
@@ -73,8 +74,15 @@ export class AlmacenCmp implements OnInit {
   }
 
   ngOnInit() {
-    this._getAll();
-    this.router.navigate(['/ListAlmacen']);
+     if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+        //alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+        localStorage.clear();
+        window.location.replace("http://localhost:3000/");
+        // window.history.back();
+     } else {
+      this._getAll();
+      this.router.navigate(['/ListAlmacen']);
+    }
   }
 
   private _getAll():void {
@@ -82,7 +90,7 @@ export class AlmacenCmp implements OnInit {
         .getAll()
         .subscribe((almacens) => {
           this.almacens = almacens;
-          alert("almacen tiene todo esto  " + this.almacens);
+          //alert("almacen tiene todo esto  " + this.almacens);
         });
   }
 

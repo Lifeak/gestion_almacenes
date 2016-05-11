@@ -38,12 +38,10 @@ var LoginService = (function () {
                 if (cred != -1) {
                     localStorage.setItem(user, "admin");
                     localStorage.setItem(_this.token, "admin");
-                    alert("es un usuario admin");
                 }
                 else {
                     localStorage.setItem(user, "encargado");
                     localStorage.setItem(_this.token, "encargado");
-                    alert("es un usuario del monton");
                 }
                 _this.loggedIn = true;
             }
@@ -64,7 +62,7 @@ var LoginService = (function () {
     // Función que devuelve dos valores, el primero booleano, true si el usuario se ha logueado y false en caso contrario.
     // El segundo parametro nos devuelve el tipo de usuario de la aplicación.
     LoginService.prototype.isLoggedIn = function () {
-        alert("localStorage.getItem(this.token) " + localStorage.getItem(this.token));
+        //alert("localStorage.getItem(this.token) " + localStorage.getItem(this.token));
         return [this.loggedIn, localStorage.getItem(this.token)];
     };
     LoginService.ENDPOINT = '/auth/login';

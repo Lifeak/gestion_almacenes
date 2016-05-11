@@ -54,6 +54,7 @@ export class GarantiaCmp implements OnInit {
   garantias: Garantia[] = [];
   garantiaForm: ControlGroup;
   private _selectedId: string;
+  token: string;
 
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, @Inject(GarantiaService) private _garantiaService: GarantiaService, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
@@ -64,8 +65,15 @@ export class GarantiaCmp implements OnInit {
   }
 
   ngOnInit() {
-    this._getAll();
-    this.router.navigate(['/ListGarantias']);
+     if (localStorage.getItem(this.token) != "encargado" && localStorage.getItem(this.token) != "admin") {
+        //alert("en user cmp el localstorage es " + localStorage.getItem(this.token));
+        localStorage.clear();
+        window.location.replace("http://localhost:3000/");
+        // window.history.back();
+     } else {
+      this._getAll();
+      this.router.navigate(['/ListGarantias']);
+    }
   }
 
   private _getAll():void {
