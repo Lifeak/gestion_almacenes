@@ -1,12 +1,25 @@
-<a [routerLink]="['/CreateProducto']">Nuevo producto</a>
+<div class="nav-enlaces">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-md-offset-5">
+			<div class="box">
+			    <i class="fa fa-barcode fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateProducto']">Nuevo producto</a>
+		</div>
+	</div>
+</div>
 
 <div class="cliente-container">
-<h2>LIST</h2>
-    <ul class="items">
-      <li *ngFor="#producto of productos"
-        [class.selected]="isSelected(producto)"
-        (click)="onSelect(producto)">
-        <span class="badge">{{producto._id}}</span>{{producto.modelo}}
-      </li>
-    </ul>
+	<div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+      		<h1 class="cliente-title">Listado de productos</h1>
+		    <ul class="items">
+		      <li *ngFor="#producto of productos"
+		        [class.selected]="isSelected(producto)"
+		        (click)="onSelect(producto)">
+		        <span class="badge">{{producto._id}}</span>{{producto.modelo}}
+		      </li>
+		    </ul>
+		</div>
+	</div>
 </div>

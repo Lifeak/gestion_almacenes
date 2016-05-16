@@ -1,11 +1,25 @@
-<a [routerLink]="['/CreateCliente']">Nuevo cliente</a>
+<div class="nav-enlaces">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-md-offset-5">
+			<div class="box">
+			    <i class="fa fa-user fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateCliente']">Nuevo cliente</a>
+		</div>
+	</div>
+</div>
+
 <div class="cliente-container">
-<h2>LIST</h2>
-    <ul class="items">
-      <li *ngFor="#cliente of clientes"
-        [class.selected]="isSelected(cliente)"
-        (click)="onSelect(cliente)">
-        <span class="badge">{{cliente._id}}</span> {{cliente.nombre}}
-      </li>
-    </ul>
+	<div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+      		<h1 class="cliente-title">Listado de clientes</h1>
+		    <ul class="items">
+		      <li *ngFor="#cliente of clientes"
+		        [class.selected]="isSelected(cliente)"
+		        (click)="onSelect(cliente)">
+		        <span class="badge">{{cliente._id}}</span> {{cliente.nombre}}
+		      </li>
+		    </ul>
+		</div>
+	</div>
 </div>

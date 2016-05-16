@@ -849,6 +849,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .box1 {
+    height: 12em;
 	padding: 15px;
 	text-align: center;
 	color: #989898;
@@ -1938,8 +1939,8 @@ label {
 
 /*LOGIN CONFIGURATION PAGE*/
 .form-login {
-	max-width: 440px;
-	margin: 355px auto 283px;
+	/*max-width: 440px;*/
+	/*margin: 260px auto 283px; /*355px auto 283px*/
 	background: #fff;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -2254,15 +2255,137 @@ label {
     min-height: 900px;
 }
 
+/***************GENERAL****************/
+h1 {font-family: "Roboto", Segoe UI, sans-serif; margin-bottom: 1.5em;}
+
+
 /*********** LOGIN PAGE **************/
-div#login-page{
+/*div#login-page{
     background-image: url("/client/dev/login/templates/img/logo.png");
     background-repeat: no-repeat;
     background-position: 51% 8%;
     background-color: white;
     background-size: 25%;
+}*/
+.logoregistro{
+    /*background-image: url("/client/dev/login/templates/img/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;*/
+    width: 80% !important;
+    margin:10%;
+
+}
+/*********** MENÚ SUPERIOR *****************/
+.logo img{width:11%;}
+.btn-logout {
+    background-color: #464646; 
+    color: #b6b6b6; 
+    font-size: 16px    
+} /*color: #c9aa5f;*/
+.btn-logout:hover {
+    color: white;
 }
 
-/*********** ALMACEN *****************/
-.logo img{width:11%;}
+/*********** COLOR LINK ACTIVO *****************/
+.link-activo { color: #c9aa5f!important;}
 
+/*********** CONTROLES FORMULARIO (COMPRAS > PROVEEDORES)*****************/
+label {
+    font-size: 16px;
+    font-family: 'Ruda', sans-serif;
+    font-weight: bold;
+}
+input {
+    border: 1px solid #989898; 
+    margin-bottom: 1.5em;
+    width: 100%;
+}
+
+/*.cliente-container {
+    border-bottom-color: white !important;
+}*/
+
+.btn-formulario {
+    margin-top: 2em;
+    margin-bottom: 3em;
+    background-color:  #464646;
+    color: white; 
+    font-size: 16px;
+    font-family:  "Roboto" !important, Segoe UI, sans-serif;
+}
+.btn-formulario:hover { color: #c9aa5f; }
+.btn-formulario i {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.margen-izda {
+    margin-left: 1em;
+}
+/*.btn-atras {
+    margin-top: 1em;
+    margin-bottom: 3em;
+    margin-left: 1em !important;
+    background-color:  #464646;
+    color: white; 
+    font-size: 16px;
+    font-family: "Roboto" !important, Segoe UI, sans-serif;
+}*/
+
+.box {
+    padding: 15px;
+    text-align: center;
+    color: #989898;
+    border-bottom: 1px solid #989898;
+}
+.nav-enlaces, .nav-enlaces a{
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color:#989898;
+}
+.nav-enlaces a:hover { color:#333; }
+.cliente-container ul {
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    padding-left: 0px !important;
+}
+.badge  {
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    font-size: 16px;
+    color:#989898;
+    line-height: 1.7;
+    font-weight: normal;
+    text-align: left;
+    background: none;
+}
+.badge:hover {
+    color: #333;
+}
+
+/*Estilos nav MobileMenu*/
+#MobileMenu {
+    position: relative;
+    top: 70px;
+    z-index: 1;
+    background: #464646!important;
+
+}
+#MobileMenu a{
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    font-size: 16px;
+    color:#989898;
+    line-height: 1.7;
+    font-weight: normal;
+    text-align: left;
+    text-decoration: none;
+}
+#MobileMenu .margen-izq{
+    padding-left: 3em;
+}
+#MobileMenu .dbl-margen-izq{
+    padding-left: 6em;
+}
+#MobileMenu .list-group-item {
+    border: none;
+    background-color: #464646;
+}

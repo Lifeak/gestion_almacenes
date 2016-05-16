@@ -1,15 +1,27 @@
 <div class="cliente-container">
-  <h1>DETAILS</h1>
-    <div *ngIf="garantia">
-    	<h3>Garantía:</h3>
-        <label>Tipo o zona de influencia: </label>
-        <input [(ngModel)]="garantia._id" placeholder="Nombre"/><br/>
-        <label>Meses: </label>
-        <input [(ngModel)]="garantia.tiempo" placeholder="Tiempo"/><br/>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="cliente-title">Detalles de garantía</h1>
+      <div *ngIf="garantia">
+      
+      <div class="form-group">
+          <label for="_id">Tipo o zona de influencia:</label>
+          <input [(ngModel)]="garantia._id" 
+          class="form-control" 
+          id="_id"
+          placeholder="Nombre"/>
+      </div>
+      <div class="form-group">
+          <label for="tiempo">Meses:</label>
+          <input [(ngModel)]="garantia.tiempo"
+          class="form-control" 
+          id="tiempo"
+          placeholder="Tiempo"/>
+      </div>
     </div>
     <p>
-      <button (click)="gotoIndex()">Back</button>
-      <button (click)="edit(garantia)">Save</button>
-      <button (click)="delete(garantia)">Delete</button>
+       <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+        <button (click)="edit(garantia)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar garantía</i></button>
+        <button (click)="delete(garantia)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar garantía</i></button>
     </p>
 </div>

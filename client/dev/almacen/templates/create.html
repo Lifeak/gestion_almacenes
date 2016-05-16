@@ -1,51 +1,72 @@
 <div class="cliente-container">
-  <form class="almacen-form"
-        [ngFormModel]="almacenForm"
-        (submit)="save(almacenForm)">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="cliente-title">Nuevo almacén</h1>
+  
+      <form class="almacen-form"
+            [ngFormModel]="almacenForm"
+            (submit)="save(almacenForm)">
+        
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" 
+              class="form-control" 
+              id="nombre" 
+              ngControl="nombre"
+              [class.cliente-error]="!almacenForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" 
+              class="form-control" 
+              id="direccion" 
+              ngControl="direccion"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="ciudad">Ciudad:</label>
+          <input type="text" 
+              class="form-control" 
+              id="ciudad" 
+              ngControl="ciudad"
+              [class.cliente-error]="!almacenForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <input type="text" 
+              class="form-control" 
+              id="pais" 
+              ngControl="pais"
+              [class.cliente-error]="!almacenForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" 
+              class="form-control" 
+              id="telefono" 
+              ngControl="telefono"
+              [class.cliente-error]="!almacenForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="encargado">Encargado:</label>
+          <input type="text" 
+              class="form-control" 
+              id="encargado" 
+              ngControl="encargado"
+              [class.cliente-error]="!almacenForm.valid"
+              autofocus />
+        </div>
 
-    <h1 class="cliente-title">Nuevo almacen</h1>
+        <button type="submit"
+                [disabled]="!almacenForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar almacén</i></button>
 
-    <br/>Nombre:<br/>
-    <input type="text"
-           ngControl="nombre"
-           [class.cliente-error]="!almacenForm.valid"
-           placeholder="Nombre"
-           autofocus />
-   <br/>Direccion:<br/>
-   <input type="text"
-           ngControl="direccion"
-           [class.cliente-error]="!almacenForm.valid"
-           placeholder="Direccion"
-           autofocus />
-  <br/>Ciudad:<br/>
-  <input type="text"
-           ngControl="ciudad"
-           [class.cliente-error]="!almacenForm.valid"
-           placeholder="Ciudad"
-           autofocus />
-   <br/>Pais:<br/>
-   <input type="text"
-           ngControl="pais"
-           [class.cliente-error]="!almacenForm.valid"
-           placeholder="Pais"
-           autofocus />
-   <br/>Telefono:<br/>
-   <input type="text"
-           ngControl="telefono"
-           [class.cliente-error]="!almacenForm.valid"
-           placeholder="telefono"
-           autofocus />
-     <br/>Encargado:<br/>
-     <input type="text"
-           ngControl="encargado"
-           [class.cliente-error]="!almacenForm.valid"
-           placeholder="Nombre del encargado"
-           autofocus />
-     
-<br/><br/>
-    <button type="submit"
-            [disabled]="!almacenForm.valid">Añadir</button>
-
-</form>
-
-<button (click)="gotoIndex()">Back</button>
+        </form>
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+    </div>
+  </div>
+</div

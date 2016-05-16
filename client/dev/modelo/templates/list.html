@@ -1,4 +1,42 @@
-<a [routerLink]="['/CreateModelo']">Nuevo modelo</a>
+<div class="nav-enlaces">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-md-offset-3">
+			<div class="box">
+			    <i class="fa fa-barcode fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateProducto']">Nuevo producto</a>
+		</div>
+		<div class="col-md-2 col-sm-2">
+			<div class="box">
+			    <i class="fa fa-cube fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreatePieza']">Nueva pieza</a>
+		</div>
+		<div class="col-md-2 col-sm-2">
+			<div class="box">
+			    <i class="fa fa-tags fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateModelo']">Nuevo modelo</a>
+		</div>
+	</div>
+</div>
+
+<div class="cliente-container">
+	<div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+      		<h1 class="cliente-title">Listado de proveedores</h1>
+		    <ul class="items">
+		      <li *ngFor="#modelo of modelos"
+		        [class.selected]="isSelected(modelo)"
+		        (click)="onSelect(modelo)">
+		        <span class="badge">{{modelo.nombre}}</span>
+		      </li>
+    		</ul>
+		</div>
+	</div>
+</div>
+
+<!-- <a [routerLink]="['/CreateModelo']">Nuevo modelo</a>
 <div class="cliente-container">
 <h2>LIST</h2>
     <ul class="items">
@@ -8,4 +46,4 @@
         <span class="badge">{{modelo.nombre}}</span>
       </li>
     </ul>
-</div>
+</div> -->

@@ -1,11 +1,25 @@
-<a [routerLink]="['/CreateAlmacen']">Nuevo almacen</a>
+<div class="nav-enlaces">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-md-offset-5">
+			<div class="box">
+			    <i class="fa fa-cubes fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateAlmacen']">Nuevo almacén</a>
+		</div>
+	</div>
+</div>
+
 <div class="cliente-container">
-<h2>LIST</h2>
-       <ul class="items">
-      <li *ngFor="#almacen of almacens"
-        [class.selected]="isSelected(almacen)"
-        (click)="onSelect(almacen)">
-        <span class="badge">{{almacen._id}}</span> {{almacen.nombre}}
-      </li>
-    </ul>
+	<div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+      		<h1 class="cliente-title">Listado de alamacenes</h1>
+	       	<ul class="items">
+		      	<li *ngFor="#almacen of almacens"
+		        [class.selected]="isSelected(almacen)"
+		        (click)="onSelect(almacen)">
+		        <span class="badge">{{almacen._id}}</span> {{almacen.nombre}}
+		      	</li>
+	    	</ul>
+		</div>
+	</div>
 </div>

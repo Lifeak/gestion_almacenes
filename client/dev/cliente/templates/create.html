@@ -1,73 +1,86 @@
 <div class="cliente-container">
-  <form class="cliente-form"
-        [ngFormModel]="clienteForm"
-        (submit)="save(clienteForm)">
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="cliente-title">Nuevo cliente</h1>
+      <form class="cliente-form"
+            [ngFormModel]="clienteForm"
+            (submit)="save(clienteForm)">
+        
+        <div class="form-group">
+          <label for="_id">NIF / DNI:</label>
+          <input type="text" class="form-control" id="_id" 
+              ngControl="_id"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" class="form-control" id="nombre" 
+              ngControl="nombre"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" class="form-control" id="direccion" 
+              ngControl="direccion"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="ciudad">Ciudad:</label>
+          <input type="text" class="form-control" id="ciudad" 
+              ngControl="ciudad"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <input type="text" class="form-control" id="pais" 
+              ngControl="pais"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="telefono1">Teléfono:</label>
+          <input type="text" class="form-control" id="telefono1" 
+              ngControl="telefono1"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="telefono2">Teléfono 2:</label>
+          <input type="text" class="form-control" id="telefono2" 
+              ngControl="telefono2"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="puestoTrabajo">Puesto de trabajo:</label>
+          <input type="text" class="form-control" id="puestoTrabajo" 
+              ngControl="puestoTrabajo"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" class="form-control" id="email" 
+              ngControl="email"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="detalles">Detalles:</label>
+          <input type="text" class="form-control" id="detalles" 
+              ngControl="detalles"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <button type="submit"
+            [disabled]="!clienteForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"> Guardar cliente</i></button>
+      </form>
 
-    <h1 class="cliente-title">Nuevo cliente</h1>
-
-    <br/>NIF/DNI:<br/>
-    <input type="text"
-           ngControl="_id"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="NIF/DNI"
-           autofocus />
-   <br/>Nombre:<br/>
-   <input type="text"
-           ngControl="nombre"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="Nombre del cliente"
-           autofocus />
-  <br/>Direccion:<br/>
-  <input type="text"
-           ngControl="direccion"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="Dirección"
-           autofocus />
-   <br/>Ciudad:<br/>
-   <input type="text"
-           ngControl="ciudad"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="Ciudad"
-           autofocus />
-   <br/>Pais:<br/>
-   <input type="text"
-           ngControl="pais"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="País"
-           autofocus />
-   <br/>Telefono:<br/>
-    <input type="text"
-           ngControl="telefono1"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="Teléfono"
-           autofocus />
-   <br/>Telefono2:<br/>
-   <input type="text"
-           ngControl="telefono2"
-           placeholder="Otro teléfono de contacto"
-           autofocus />
-  <br/>Puesto de trabajo:<br/>
-  <input type="text"
-           ngControl="puestoTrabajo"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="Puesto de trabajo o sector"
-           autofocus />
-   <br/>Email:<br/>
-   <input type="text"
-           ngControl="email"
-           [class.cliente-error]="!clienteForm.valid"
-           placeholder="Email"
-           autofocus />
-   <br/>Detalles:<br/>
-   <input type="text"
-           ngControl="detalles"
-           placeholder="Detalles"
-           autofocus />
-     
-<br/><br/>
-    <button type="submit"
-            [disabled]="!clienteForm.valid">Añadir</button>
-
-</form>
-
-<button (click)="gotoIndex()">Back</button>
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+    </div>
+  </div>
+</div>

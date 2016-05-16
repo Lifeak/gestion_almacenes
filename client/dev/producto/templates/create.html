@@ -1,82 +1,99 @@
 <div class="cliente-container">
-  <form class="producto-form"
-        [ngFormModel]="productoForm"
-        (submit)="save(productoForm)">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="producto-title">Nuevo producto</h1>
+      <form class="producto-form"
+            [ngFormModel]="productoForm"
+            (submit)="save(productoForm)">
 
-    <h1 class="cliente-title">Nuevo producto</h1>
-
-    <br/>Identificador de producto:<br/>
-    <input type="text"
-           ngControl="_id"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Identificador de producto"
-           autofocus />
-    <br/>Nombre:<br/>
-    <input type="text"
-           ngControl="nombre"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Nombre"
-           autofocus />      
-   <br/>Modelo:<br/>
-   <select name="modelo"
-           ngControl ="modelo"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Modelo de producto">
-           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
-           </select>
-  <br/>Estado:<br/>
-  <select name="estado"
-           ngControl="estado"
-           placeholder="Selecciona el estado.."
-           [class.cliente-error]="!productoForm.valid">
-           <option value="Nuevo">Nuevo</option>
-           <option value="Usado">Usado</option>
-           <option value="Rota">Roto</option>
-           <option value="Reparando">Reparando</option>
+        <div class="form-group">
+          <label for="idproducto">Identificador de producto:</label>
+          <input type="text" class="form-control" id="idproducto" 
+              ngControl="_id"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" class="form-control" id="nombre" 
+              ngControl="nombre"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="modelo">Modelo de producto:</label>
+          <select name="modelo" id="modelo" class="form-control"
+               ngControl ="modelo"
+               [class.cliente-error]="!productoForm.valid">
+               <option *ngFor="#model of modelos" >{{model.nombre}}</option>
           </select>
- <br/>Caracteristicas:<br/>
-  <input type="text"
-           ngControl="caracteristicas"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Caracteristicas"
-           autofocus />
-   <br/>Almacén de ubicación:<br/>
-  <input type="text"
-           ngControl="almacen"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Almacén"
-           autofocus />
-  <br/>¿Está vendido?:<br/>
-  <select name="vendido"
-           ngControl="vendido"
-           placeholder="¿Está vendido?"
-           [class.cliente-error]="!productoForm.valid">
-           <option value="false">No</option>   
-           <option value="true">Si</option>
+        </div>
+        <div class="form-group">
+          <label for="estado">Estado:</label>
+          <select name="estado" id="estado" class="form-control"
+               ngControl="estado"
+               placeholder="Selecciona el estado.."
+               [class.cliente-error]="!productoForm.valid">
+               <option value="Nuevo">Nuevo</option>
+               <option value="Usado">Usado</option>
+               <option value="Rota">Roto</option>
+               <option value="Reparando">Reparando</option>
           </select>
-  <br/><label>Compuesto por:</label>
-  <br/>Número de serie de la carcasa:<br/>
-  <input type="text"
-           ngControl="carcasa"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Número de serie de la carcasa"
-           autofocus />
-  <br/>Número de serie de la columna:<br/>
-  <input type="text"
-           ngControl="columna"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Número de serie de la columna"
-           autofocus />         
-  <br/>Precio (ejemplo: 26.15):<br/>
-  <input type="text"
-           ngControl="precio"
-           [class.cliente-error]="!productoForm.valid"
-           placeholder="Precio"
-           autofocus />
-  <br>
-    <button type="submit"
-            [disabled]="!productoForm.valid">Añadir</button>
+        </div>
+        <div class="form-group">
+          <label for="caracteristicas">Caracteristicas:</label>
+          <input type="text" class="form-control" id="caracteristicas" 
+              ngControl="caracteristicas"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="almacen">Almacén de ubicación:</label>
+          <input type="text" class="form-control" id="almacen" 
+              ngControl="almacen"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="vendido">¿Está vendido?:</label>
+          <select name="vendido" id="vendido" class="form-control"
+               ngControl="vendido"
+               placeholder="¿Está vendido?"
+               [class.cliente-error]="!productoForm.valid">
+               <option value="false">No</option>   
+               <option value="true">Si</option>
+              </select>
+        </div>
+        <label>Compuesto por:</label>
+        <div class="form-group">
+          <label for="carcasa">Número de serie de la carcasa:</label>
+          <input type="text" class="form-control" id="carcasa" 
+              ngControl="carcasa"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="columna">Número de serie de la columna:</label>
+          <input type="text" class="form-control" id="columna" 
+              ngControl="columna"
+              [class.cliente-error]="!proveedorForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio (ejemplo: 26.15):</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="precio" 
+                ngControl="precio"
+                [class.cliente-error]="!proveedorForm.valid"
+                autofocus />
+                <span class="input-group-addon">€</span>
+          </div>
+        </div>
 
-</form>
-
-<button (click)="gotoIndex()">Back</button>
+        <button type="submit"
+                [disabled]="!productoForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"> Guardar producto</i></button>
+      </form>
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right"><i class="fa fa-angle-left" aria-hidden="true"> Back</i></button>
+    </div>
+  </div>
+</div>

@@ -4,9 +4,9 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  
-              </div>
+            <div class="sidebar-toggle-box">
+               
+            </div>
             <!--logo start-->
             <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
             <!--logo end-->
@@ -14,8 +14,8 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a  data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
-                          Almacen   
+                        <a  data-toggle="dropdown" class="dropdown-toggle link-activo" (click)="almacen()">
+                          Almacén   
                         </a>   
                     </li>
 
@@ -40,11 +40,74 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
+                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
             	</ul>
             </div>
-        </header>
-      <!--header end-->
+      </header>
+
+            <!-- Prueba dropdown menu -->
+            <!-- <div id="MobileMenu">
+              <div class="list-group panel">
+                <a href="#almacen" (click)="almacen()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ALMACÉN</a>
+                <div class="collapse" id="almacen">
+                  <a href="#almValiryo" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almValiryo"><i class="fa fa-home"></i> Almacén Valiryo <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="almValiryo">
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Stock producto</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Stock piezas</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Piezas rotas</a>
+                  </div>
+                  <a href="#producto" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#producto"><i class="fa fa-barcode"></i> Producto <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="producto">
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Producto final</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Piezas</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Modelos</a>
+                  </div>
+                  <a href="javascript:;" class="list-group-item margen-izq"><i class="fa fa-cogs"></i> Control de calidad</a>
+                  <a href="#almExternos" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almExternos"><i class="fa fa-truck"></i> Almacenes externos <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="almExternos">
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almExternos">PLASNOR</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almExternos">LANTEGI</a>
+                  </div>
+                  <a href="javascript:;" class="list-group-item margen-izq"><i class="fa fa-wrench"></i> Reparaciones</a>
+                </div>
+
+                <a href="#compras" (click)="compras()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">COMPRAS</a>
+                <div class="collapse" id="compras">
+                  <a href="javascript:;" class="list-group-item">Proveedores</a>
+                  <a href="#comprasProductos" class="list-group-item" data-toggle="collapse" data-parent="#comprasProductos">Productos <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="comprasProductos">
+                    <a href="#" class="list-group-item" data-parent="#compras">Producto final</a>
+                    <a href="#" class="list-group-item" data-parent="#compras">Piezas</a>
+                    <a href="#" class="list-group-item" data-parent="#compras">Modelos</a>
+                  </div>
+                  <a href="javascript:;" class="list-group-item">Pedido de compra</a>
+                  <a href="javascript:;" class="list-group-item">Lotes</a> 
+                </div>
+
+                <a href="#ventas" (click)="ventas()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">VENTAS</a>
+                <div class="collapse" id="ventas">
+                  <a href="javascript:;" class="list-group-item">Clientes</a>
+                  <a href="javascript:;" class="list-group-item">Pedidos</a>
+                  <a href="javascript:;" class="list-group-item">Devoluciones</a>
+                  <a href="javascript:;" class="list-group-item">Salidas por avería</a>
+                  <a href="javascript:;" class="list-group-item">Garantías</a>
+                </div>
+
+                <a href="#admin" (click)="admin()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ADMIN</a>
+                <div class="collapse" id="admin">
+                  <a href="javascript:;" class="list-group-item">Control de usuarios</a>
+                  <a href="javascript:;" class="list-group-item">Gestión de almacenes</a>
+                  <a href="javascript:;" class="list-group-item">Tipos de garantías</a>
+                </div>
+                
+                 <a (click)="logout()"  class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu"><i class="fa fa-sign-out"></i> Logout</a>
+                
+              </div>
+            </div> -->
+
+
+
+      
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
@@ -56,9 +119,10 @@
                   <li class="sub-menu">
                       <a href="javascript:;" (click)="d1=true;d2=false;d3=false">
                           <i class="fa fa-home"></i>
-                          <span>Almacen Valiryo</span>
+                          <span>Almacén Valiryo</span>
                       </a>
                       
+
                       <ul class="dropdown" *ngIf="d1==true">
 
                           <li><a  href="general.html">Stock Producto</a></li>
@@ -70,7 +134,7 @@
 
                   <li class="sub-menu">
                       <a href="javascript:;" (click)="d2=true;d1=false;d3=false;">
-                          <i class="fa fa-desktop"></i>
+                          <i class="fa fa-barcode"></i>
                           <span>Producto</span>
                       </a>
                       <ul class="dropdown" *ngIf="d2==true">
@@ -81,15 +145,15 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="d1=false;d2=false;d3=false;" >
+                      <a href="javascript:;" (click)="d1=false;d2=false;d3=false;">
                           <i class="fa fa-cogs"></i>
                           <span>Control de calidad</span>
                       </a>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" (click)="d3=true;d1=false;d2=false;">
-                          <i class="fa fa-book"></i>
-                          <span>Allmacenes externos</span>
+                          <i class="fa fa-truck"></i>
+                          <span>Almacenes externos</span>
                       </a>
                       <ul class="dropdown" *ngIf="d3==true">
                           <li><a  href="blank.html">PLASNOR</a></li>
@@ -97,8 +161,8 @@
                       </ul>
                   </li>
                    <li class="sub-menu">
-                      <a href="javascript:;" (click)="d1=false;d2=false;d3=false;" >
-                          <i class="fa fa-dashboard"></i>
+                      <a href="javascript:;" (click)="d1=false;d2=false;d3=false;">
+                          <i class="fa fa-wrench"></i>
                           <span>Reparaciones</span>
                       </a>
                   </li>
@@ -108,6 +172,7 @@
           </div>
       </aside>
       <!--sidebar end-->
+
 
   <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
@@ -121,262 +186,51 @@
                   <div class="col-lg-12 main-chart">
                   
                     <div class="row mtbox">
-                      <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                        <div class="box1">
-                  <span class="li_heart"></span>
-                  <h3>933</h3>
+                        <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                          <a href="javascript:;" (click)="d1=true;d2=false;d3=false">
+                            <div class="box1">
+                              <i class="fa fa-home fa-3x"></i> 
+                              <h3>Almacén Valiryo</h3>
+                            </div>
+                          </a>
                         </div>
-                  <p>933 People liked your page the last 24hs. Whoohoo!</p>
-                      </div>
-                      <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                  <span class="li_cloud"></span>
-                  <h3>+48</h3>
+                        <div class="col-md-2 col-sm-2 box0">
+                          <div class="box1">
+                            <i class="fa fa-barcode fa-3x"></i>
+                            <h3>Producto<br/></h3>
+                          </div>
                         </div>
-                  <p>48 New files were added in your cloud storage.</p>
-                      </div>
-                      <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                  <span class="li_stack"></span>
-                  <h3>23</h3>
+                        <div class="col-md-2 col-sm-2 box0">
+                          <a href="javascript:;" (click)="d1=false;d2=false;d3=false;">
+                            <div class="box1">
+                              <i class="fa fa-cogs fa-3x"></i>
+                              <h3>Control de Calidad</h3>
+                            </div>
+                          </a>
                         </div>
-                  <p>You have 23 unread messages in your inbox.</p>
-                      </div>
-                      <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                  <span class="li_news"></span>
-                  <h3>+10</h3>
+                        <div class="col-md-2 col-sm-2 box0">
+                          <a href="javascript:;" (click)="d3=true;d1=false;d2=false;">
+                            <div class="box1">
+                              <i class="fa fa-truck fa-3x"></i>
+                              <h3>Almacenes externos</h3>
+                            </div>
+                          </a>
                         </div>
-                  <p>More than 10 news were added in your reader.</p>
-                      </div>
-                      <div class="col-md-2 col-sm-2 box0">
-                        <div class="box1">
-                  <span class="li_data"></span>
-                  <h3>OK!</h3>
+                        <div class="col-md-2 col-sm-2 box0">
+                          <a href="javascript:;" (click)="d1=false;d2=false;d3=false;">
+                            <div class="box1">
+                              <i class="fa fa-wrench fa-3x"></i>
+                              <h3>Reparaciones</h3>
+                            </div>
+                          </a>
                         </div>
-                  <p>Your server is working perfectly. Relax & enjoy.</p>
-                      </div>
                     
-                    </div><!-- /row mt -->  
-                  
-                      
-                      <div class="row mt">
-                      <!-- SERVER STATUS PANELS -->
-                        <div class="col-md-4 col-sm-4 mb">
-                          <div class="white-panel pn donut-chart">
-                            <div class="white-header">
-                    <h5>SERVER LOAD</h5>
-                            </div>
-                <div class="row">
-                  <div class="col-sm-6 col-xs-6 goleft">
-                    <p><i class="fa fa-database"></i> 70%</p>
-                  </div>
-                            </div>
-                <canvas id="serverstatus01" height="120" width="120"></canvas>
-                <script>
-                  var doughnutData = [
-                      {
-                        value: 70,
-                        color:"#68dff0"
-                      },
-                      {
-                        value : 30,
-                        color : "#fdfdfd"
-                      }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-                </script>
-                          </div><! --/grey-panel -->
-                        </div><!-- /col-md-4-->
-                        
+                    </div><!-- /row mtbox -->  
 
-                        <div class="col-md-4 col-sm-4 mb">
-                          <div class="white-panel pn">
-                            <div class="white-header">
-                    <h5>TOP PRODUCT</h5>
-                            </div>
-                <div class="row">
-                  <div class="col-sm-6 col-xs-6 goleft">
-                    <p><i class="fa fa-heart"></i> 122</p>
-                  </div>
-                  <div class="col-sm-6 col-xs-6"></div>
-                            </div>
-                            <div class="centered">
-                    <img src="assets/img/product.png" width="120">
-                            </div>
-                          </div>
-                        </div><!-- /col-md-4 -->
-                        
-            <div class="col-md-4 mb">
-              <!-- WHITE PANEL - TOP USER -->
-              <div class="white-panel pn">
-                <div class="white-header">
-                  <h5>TOP USER</h5>
-                </div>
-                <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
-                <p><b>Zac Snider</b></p>
-                <div class="row">
-                  <div class="col-md-6">
-                    <p class="small mt">MEMBER SINCE</p>
-                    <p>2012</p>
-                  </div>
-                  <div class="col-md-6">
-                    <p class="small mt">TOTAL SPEND</p>
-                    <p>$ 47,60</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- /col-md-4 -->
-                        
-
-                    </div><!-- /row -->
-                    
-                            
-          <div class="row">
-            <!-- TWITTER PANEL -->
-            <div class="col-md-4 mb">
-                          <div class="darkblue-panel pn">
-                            <div class="darkblue-header">
-                    <h5>DROPBOX STATICS</h5>
-                            </div>
-                <canvas id="serverstatus02" height="120" width="120"></canvas>
-                <script>
-                  var doughnutData = [
-                      {
-                        value: 60,
-                        color:"#68dff0"
-                      },
-                      {
-                        value : 40,
-                        color : "#444c57"
-                      }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
-                </script>
-                <p>April 17, 2014</p>
-                <footer>
-                  <div class="pull-left">
-                    <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
-                  </div>
-                  <div class="pull-right">
-                    <h5>60% Used</h5>
-                  </div>
-                </footer>
-                          </div><! -- /darkblue panel -->
-            </div><!-- /col-md-4 -->
-            
-            
-            <div class="col-md-4 mb">
-              <!-- INSTAGRAM PANEL -->
-              <div class="instagram-panel pn">
-                <i class="fa fa-instagram fa-4x"></i>
-                <p>@THISISYOU<br/>
-                  5 min. ago
-                </p>
-                <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
-              </div>
-            </div><!-- /col-md-4 -->
-            
-            <div class="col-md-4 col-sm-4 mb">
-              <!-- REVENUE PANEL -->
-              <div class="darkblue-panel pn">
-                <div class="darkblue-header">
-                  <h5>REVENUE</h5>
-                </div>
-                <div class="chart mt">
-                  <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,464,655]"></div>
-                </div>
-                <p class="mt"><b>$ 17,980</b><br/>Month Income</p>
-              </div>
-            </div><!-- /col-md-4 -->
-            
-          </div><!-- /row -->
-          
-          <div class="row mt">
-                      <!--CUSTOM CHART START -->
-                      <div class="border-head">
-                          <h3>VISITS</h3>
-                      </div>
-                      <div class="custom-bar-chart">
-                          <ul class="y-axis">
-                              <li><span>10.000</span></li>
-                              <li><span>8.000</span></li>
-                              <li><span>6.000</span></li>
-                              <li><span>4.000</span></li>
-                              <li><span>2.000</span></li>
-                              <li><span>0</span></li>
-                          </ul>
-                          <div class="bar">
-                              <div class="title">JAN</div>
-                              <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">FEB</div>
-                              <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">MAR</div>
-                              <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">APR</div>
-                              <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
-                          </div>
-                          <div class="bar">
-                              <div class="title">MAY</div>
-                              <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
-                          </div>
-                          <div class="bar ">
-                              <div class="title">JUN</div>
-                              <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
-                          </div>
-                          <div class="bar">
-                              <div class="title">JUL</div>
-                              <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
-                          </div>
-                      </div>
-                      <!--custom chart end-->
-          </div><!-- /row --> 
-          
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->
-                  
-                  
-      <!-- **********************************************************************************************************************************************************
-      RIGHT SIDEBAR CONTENT
-      ***********************************************************************************************************************************************************                  
-                  
-                  <div class="col-lg-3 ds">                      
-                      
-                  </div><!-- /col-lg-3 -->--> 
-              </div><! --/row -->
+
+              </div><!--/row -->
           </section>
       </section>
-
-      <!--main content end-->      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      ESTOY EN ALMACEN
-
-      <br/>
-      <br/>
-      <!--footer start-->
-      <footer class="site-footer" style="background-color:grey;">
-          <div class="text-center" >
-              2016 - Raquel Castillo Perez
-                  <i class="fa fa-smile-o"></i>
-          </div>
-      </footer>
-      <!--footer end-->
+      <!--main content end-->
 </section>
-
-
-
-
-
-
-
-
-

@@ -1,11 +1,25 @@
-<a [routerLink]="['/CreateUsuario']">Nuevo usuario</a>
+<div class="nav-enlaces">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-md-offset-5">
+			<div class="box">
+			    <i class="fa fa-user fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateUsuario']">Nuevo usuario</a>
+		</div>
+	</div>
+</div>
+
 <div class="cliente-container">
-<h2>LIST</h2>
-    <ul class="items">
+	<div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+      		<h1 class="cliente-title">Listado de usuarios</h1>
+		    <ul class="items">
       <li *ngFor="#user of users"
         [class.selected]="isSelected(user)"
         (click)="onSelect(user)">
         <span class="badge">{{user._id}}</span> {{user.nombre}}
       </li>
     </ul>
+		</div>
+	</div>
 </div>

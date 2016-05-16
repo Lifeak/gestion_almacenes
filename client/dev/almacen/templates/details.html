@@ -1,23 +1,40 @@
 <div class="cliente-container">
-  <h1>DETAILS</h1>
-    <div *ngIf="almacen">
-    	<h3>ALMACEN:</h3>
-        <label>Nombre: </label>
-        <input [(ngModel)]="almacen.nombre" placeholder="Nombre"/><br/>
-        <label>Direccion: </label>
-        <input [(ngModel)]="almacen.direccion" placeholder="Dirección"/><br/>
-      	<label>Ciudad: </label>
-      	<input [(ngModel)]="almacen.ciudad" placeholder="Ciudad"/><br/>
-      	<label>Pais: </label>
-      	<input [(ngModel)]="almacen.pais" placeholder="País"/><br/>
-        <label>Telefono: </label>
-        <input [(ngModel)]="almacen.telefono" placeholder="Telefono"/><br/>
-        <label>Encargado: </label>
-        <input [(ngModel)]="almacen.encargado" placeholder="Nombre del encargado"/><br/>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="cliente-title">Detalles de almacén</h1>
+      <div *ngIf="almacen">
+        <form class="almacen-form" [ngFormModel]="almacenForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input [(ngModel)]="almacen.nombre" class="form-control" id="nombre"/>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input [(ngModel)]="almacen.direccion" class="form-control" id="direccion"/>
+          </div>
+          <div class="form-group">
+            <label for="ciudad">Ciudad:</label>
+            <input [(ngModel)]="almacen.ciudad" class="form-control" id="ciudad"/>
+          </div>
+          <div class="form-group">
+            <label for="pais">País:</label>
+            <input [(ngModel)]="almacen.pais" class="form-control" id="pais"/>
+          </div>
+           <div class="form-group">
+            <label for="telefono">Teléfono: </label>
+            <input [(ngModel)]="almacen.telefono" class="form-control" id="telefono"/>
+          </div>
+          <div class="form-group">
+            <label for="encargado">Encargado:</label>
+            <input [(ngModel)]="almacen.encargado" class="form-control" id="encargado"/>
+          </div>
+        </form>
+      </div>
+      <p>
+        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+        <button (click)="edit(almacen)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar almacén</i></button>
+        <button (click)="delete(almacen)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar almacén</i></button>
+      </p>
     </div>
-    <p>
-      <button (click)="gotoIndex()">Back</button>
-      <button (click)="edit(almacen)">Save</button>
-      <button (click)="delete(almacen)">Delete</button>
-    </p>
+  </div>
 </div>

@@ -1,4 +1,30 @@
-<a [routerLink]="['/CreateGarantia']">Nuevo tipo de garantía</a>
+<div class="nav-enlaces">
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-md-offset-5">
+			<div class="box">
+			    <i class="fa fa-pencil-square-o fa-2x"></i> 
+			</div>
+			<a [routerLink]="['/CreateGarantia']">Nuevo tipo de garantía</a>
+		</div>
+	</div>
+</div>
+
+<div class="cliente-container">
+	<div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+      		<h1 class="cliente-title">Listado de garantías</h1>
+		    <ul class="items">
+			      <li *ngFor="#g of garantias"
+			        [class.selected]="isSelected(g)"
+			        (click)="onSelect(g)">
+			        {{g._id}}
+			      </li>
+    		</ul>
+		</div>
+	</div>
+</div>
+
+<!-- <a [routerLink]="['/CreateGarantia']">Nuevo tipo de garantía</a>
 <div class="cliente-container">
 <h2>LIST</h2>
        <ul class="items">
@@ -8,4 +34,4 @@
         {{g._id}}
       </li>
     </ul>
-</div>
+</div> -->

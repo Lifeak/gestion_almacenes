@@ -8,34 +8,30 @@
                   
               </div>
             <!--logo start-->
-            <a href="#" class="logo"><b>Valiryo</b></a>
+            <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
-                        Almacen
-                            <i class="fa fa-tasks"></i> 
+                        Almacén
                         </a>    
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
                         	 Compras
-                            <i class="fa fa-tasks"></i>
                         </a>
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
                         Ventas
-                            <i class="fa fa-tasks"></i>
                         </a>     
                     </li>
 
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()" style="background-color: grey; color:white;">
-                        Admin
-                            <i class="fa fa-tasks"></i>     
+                        <a data-toggle="dropdown" class="dropdown-toggle link-activo" (click)="admin()">
+                        Admin 
                         </a>
                     </li>
                     <!-- settings end -->
@@ -45,8 +41,8 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()">Logout</button></a></li>
-            	</ul>
+                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
+              </ul>
             </div>
         </header>
       <!--header end-->
@@ -61,24 +57,22 @@
               
                   <li class="sub-menu">
                       <a href="/u" (click)="usuarios();">
-                          <i class="fa fa-users"></i>
+                          <i class="fa fa-user"></i>
                           <span>Control de usuarios</span>
                       </a>
                   </li>
                    <li class="sub-menu">
                       <a href="/galmacenes" (click)="almacenes();" class="active" >
-                          <i class="fa fa-desktop"></i>
-                          <span>Gestión almacenes</span>
+                          <i class="fa fa-cubes"></i>
+                          <span>Gestión de almacenes</span>
                       </a>
                   </li>
                   <li class="sub-menu">
                       <a href="/ggarantias" (click)="garantias();" >
-                          <i class="fa fa-book"></i>
+                          <i class="fa fa-pencil-square-o"></i>
                           <span>Tipos de garantías</span>
                       </a>
                   </li>
-
-                 
 
               </ul>
               <!-- sidebar menu end-->
@@ -98,36 +92,15 @@
               <div class="row">
               <!-- Si queremos meter un menu a la derecha, el siguiente div será de 9 para posibilitar uno de 3 a la derecha-->
                   <div class="col-lg-12 main-chart">
-   				 <div>
-		 		
-    			<router-outlet>
-    			</router-outlet>
-			</div>
+   				           <div>
+                  			<router-outlet>
+                  			</router-outlet>
+			               </div>
                   </div><!-- /col-lg-12 END SECTION MIDDLE -->
-                  
-                  
-  
-              </div><! --/row -->
+              </div><!--/row -->
           </section>
       </section>
-
       <!--main content end-->      
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <!--footer start-->
-      <footer class="site-footer"  style="background-color:grey;">
-          <div class="text-center">
-              2016 - Raquel Castillo Perez
-                  <i class="fa fa-smile-o"></i>
-          </div>
-      </footer>
-      <!--footer end-->
 </section>
 
 

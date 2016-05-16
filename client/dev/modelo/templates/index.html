@@ -8,41 +8,30 @@
                   
               </div>
             <!--logo start-->
-            <a href="#" class="logo"><b>Valiryo</b></a>
+            <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
-                        Almacen
-                            <i class="fa fa-tasks"></i>
-                            
+                        Almacén
                         </a>
-                        
                      </li>   
                     <li class="dropdown" >
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()" style="background-color: grey; color:white;">
+                        <a data-toggle="dropdown" class="dropdown-toggle link-activo" (click)="compras()">
                            Compras
-                            <i class="fa fa-tasks"></i>
                         </a>
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
-                        Ventas
-                            <i class="fa fa-tasks"></i>
-                            
+                        Ventas 
                         </a>
-                       
                     </li>
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()">
                         Admin
-                            <i class="fa fa-tasks"></i>
-                            
                         </a>
-                        
-                       
                     </li>
                     <!-- settings end -->
                     
@@ -51,7 +40,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-primary" (click)="logout()">Logout</button></a></li>
+                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
               </ul>
             </div>
         </header>
@@ -69,14 +58,14 @@
               <ul class="sidebar-menu" id="nav-accordion">
                   <li class="sub-menu">
                       <a href="/gproveedores" (click)="proveedores();c1=false">
-                          <i class="fa fa-home"></i>
+                          <i class="fa fa-user"></i>
                           <span>Proveedores</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
                       <a href="javascript:;" class="active" (click)="c1=true;" >
-                          <i class="fa fa-desktop"></i>
+                          <i class="fa fa-barcode"></i>
                           <span>Productos</span>
                       </a>
                       <ul class="dropdown" *ngIf="c1==true">
@@ -88,20 +77,20 @@
 
                   <li class="sub-menu">
                       <a href="javascript:;" (click)="c1=false;" >
-                          <i class="fa fa-cogs"></i>
+                          <i class="fa fa-shopping-cart"></i>
                           <span>Pedido de compra</span>
                       </a>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" (click)="c1=false;">
-                          <i class="fa fa-book"></i>
+                          <i class="fa fa-cubes"></i>
                           <span>Lotes</span>
                       </a>
                   </li>
                    <li class="sub-menu" *ngIf="false">
                       <a href="javascript:;" (click)="c1=false;" >
                           <i class="fa fa-dashboard"></i>
-                          <span>Pedido de fabricacion</span>
+                          <span>Pedido de fabricación</span>
                       </a>
                   </li>
                   <li class="sub-menu" *ngIf="false">
@@ -130,37 +119,16 @@
               <!-- Si queremos meter un menu a la derecha, el siguiente div será de 9 para posibilitar uno de 3 a la derecha-->
                   <div class="col-lg-12 main-chart">
                      <nav>
-					</nav>
-   				 <div>
-		 		
-    			<router-outlet>
-    			</router-outlet>
-			</div>
+					           </nav>
+             				 <div>
+                  			<router-outlet>
+                  			</router-outlet>
+          			     </div>
                   </div><!-- /col-lg-12 END SECTION MIDDLE -->
-                  
-                  
-  
-              </div><! --/row -->
+              </div><!--/row -->
           </section>
       </section>
-
       <!--main content end-->      
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <!--footer start-->
-      <footer class="site-footer"  style="background-color:grey;">
-          <div class="text-center">
-              2016 - Raquel Castillo Perez
-                  <i class="fa fa-smile-o"></i>
-          </div>
-      </footer>
-      <!--footer end-->
 </section>
 
 

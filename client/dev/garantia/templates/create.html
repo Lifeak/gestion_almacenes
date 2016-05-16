@@ -1,27 +1,34 @@
 <div class="cliente-container">
-  <form class="garantia-form"
-        [ngFormModel]="garantiaForm"
-        (submit)="save(garantiaForm)">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="cliente-title">Nueva garantía</h1>
+      <form class="garantia-form"
+            [ngFormModel]="garantiaForm"
+            (submit)="save(garantiaForm)">
+        
+        <div class="form-group">
+          <label for="_id">Nombre del País o tipo de garantía:</label>
+          <input type="text" 
+              class="form-control"     
+              id="_id" 
+              ngControl="_id"
+              [class.cliente-error]="!garantiaForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="tiempo">Meses:</label>
+          <input type="text" 
+              class="form-control"     
+              id="tiempo" 
+              ngControl="tiempo"
+              [class.cliente-error]="!garantiaForm.valid"
+              autofocus />
+        </div>
+       <br/><br/>
+       <button type="submit" [disabled]="!garantiaForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar garantía</i></button>
+    </form>
 
-    <h1 class="cliente-title">Nueva garantía</h1>
-
-    <br/>Nombre del País o tipo de garantía:<br/>
-    <input type="text"
-           ngControl="_id"
-           [class.cliente-error]="!garantiaForm.valid"
-           placeholder="Nombre"
-           autofocus />
-   <br/>Meses:<br/>
-   <input type="text"
-           ngControl="tiempo"
-           [class.cliente-error]="!garantiaForm.valid"
-           placeholder="Meses"
-           autofocus />
-     
-<br/><br/>
-    <button type="submit"
-            [disabled]="!garantiaForm.valid">Añadir</button>
-
-</form>
-
-<button (click)="gotoIndex()">Back</button>
+    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+    </div>
+  </div>
+</div>

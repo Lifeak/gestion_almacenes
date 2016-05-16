@@ -68,37 +68,30 @@ module.exports = class Routes {
     .get(user.sendHola);
 
   router
-  .use(isLogged)
     .route('/galmacenes')
     .get(almacen.sendCRUD);
 
   router
-  .use(isLogged)
     .route('/gclientes')
     .get(cliente.sendCRUD);
 
   router
-  .use(isLogged)
     .route('/gmodelos')
     .get(modelo.sendCRUD);
 
   router
-  .use(isLogged)
     .route('/ggarantias')
     .get(garantia.sendCRUD);
 
   router
-  .use(isLogged)
     .route('/gpiezas')
     .get(pieza.sendCRUD);
  
   router
-  .use(isLogged)
     .route('/gproductos')
     .get(producto.sendCRUD);  
 
  router
- .use(isLogged)
     .route('/gproveedores')
     .get(proveedor.sendCRUD);  
 

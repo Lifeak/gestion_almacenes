@@ -1,79 +1,99 @@
 <div class="cliente-container">
-  <h1>DETAILS</h1>
-    <div *ngIf="proveedor">
-    	<h3>Proveedor:</h3>
-        <label>Nombre: </label>
-        <input [(ngModel)]="proveedor.nombre" placeholder="Nombre"/><br/>
-        <label>Direccion: </label>
-        <input [(ngModel)]="proveedor.direccion" placeholder="Dirección"/><br/>
-        <label>Ciudad: </label>
-        <input [(ngModel)]="proveedor.ciudad" placeholder="Ciudad"/><br/>
-        <label>Pais: </label>
-        <input [(ngModel)]="proveedor.pais" placeholder="País"/><br/>
-        <label>Telefono: </label>
-        <input [(ngModel)]="proveedor.telefono" placeholder="Teléfono"/><br/>
-        <label>Valoracion: </label>
-        <input [(ngModel)]="proveedor.valoracion" placeholder="Valoración"/><br/>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="cliente-title">Detalles proveedor / material</h1>
+      <div *ngIf="proveedor">
+        <form class="proveedor-form" [ngFormModel]="proveedorForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input [(ngModel)]="proveedor.nombre" class="form-control" id="nombre"/>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input [(ngModel)]="proveedor.direccion" class="form-control" id="direccion"/>
+          </div>
+          <div class="form-group">
+            <label for="ciudad">Ciudad:</label>
+            <input [(ngModel)]="proveedor.ciudad" class="form-control" id="ciudad"/>
+          </div>
+          <div class="form-group">
+            <label for="pais">País:</label>
+            <input [(ngModel)]="proveedor.pais" class="form-control" id="pais"/>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono: </label>
+            <input [(ngModel)]="proveedor.telefono" class="form-control" id="telefono"/>
+          </div>
+          <div class="form-group">
+            <label for="valoracion">Valoración:</label>
+            <input [(ngModel)]="proveedor.valoracion" class="form-control" id="valoracion"/>
+          </div>
+    
+        <div *ngIf="mat.length>0">
+              <h5><i class="fa fa-list"></i>Materiales:</h5>
+              <table>
+                <tr>
+                  <td>
+                    <div *ngFor="#p of mat; #i=index;">
+                        
+                      Pieza: {{p.pieza}} &nbsp; Refexterna: {{p.refexterna}} &nbsp; Coste: {{p.coste1}} &nbsp;
+                      <a  (click)="editarmat(i,p.pieza,p.refexterna,p.coste1.p,coste2,p.val);a=true;">Editar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
+                      <a  (click)="minus(i);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>
+                    </div>  
+                  </td>
+                </tr>
+              </table>
+          </div>
 
+          
+          <a (click)="a=true;" class="btn btn-formulario"><i class="fa fa-plus" aria-hidden="true"> Añadir material</i></a>
+           <div *ngIf="a==true;">       
 
-      <div *ngIf="mat.length>0">
-          <h5><i class="fa fa-list"></i>Materiales:</h5>
-          <table>
-            <tr>
-              <td>
-                <div *ngFor="#p of mat; #i=index;">
-                    
-                  Pieza: {{p.pieza}} &nbsp; Refexterna: {{p.refexterna}} &nbsp; Coste: {{p.coste1}} &nbsp;
-                  <a  (click)="editarmat(i,p.pieza,p.refexterna,p.coste1.p,coste2,p.val);a=true;">Editar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
-                  <a  (click)="minus(i);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>
-                </div>  
-              </td>
-            </tr>
-          </table>
+           <div class="form-group">
+            <label for="pieza">Pieza:</label>
+            <input type="text" class="form-control" id="pieza" 
+                ngControl="pieza"
+                [class.cliente-error]="!proveedorForm.valid"
+                autofocus />
+          </div>
+          <div class="form-group">
+            <label for="refexterna">Referencia externa:</label>
+            <input type="text" class="form-control" id="refexterna" 
+                ngControl="refexterna"
+                [class.cliente-error]="!proveedorForm.valid"
+                autofocus />
+          </div>
+          <div class="form-group">
+            <label for="coste1">Coste:</label>
+            <input type="text" class="form-control" id="coste1" 
+                ngControl="coste1"
+                [class.cliente-error]="!proveedorForm.valid"
+                autofocus />
+          </div>
+          <div class="form-group">
+            <label for="coste2">Otro tipo de coste:</label>
+            <input type="text" class="form-control" id="coste2" 
+                ngControl="coste2"
+                [class.cliente-error]="!proveedorForm.valid"
+                autofocus />
+          </div>
+          <div class="form-group">
+            <label for="val">Valoración de la pieza:</label>
+            <input type="text" class="form-control" id="val" 
+                ngControl="val"
+                [class.cliente-error]="!proveedorForm.valid"
+                autofocus />
+          </div> 
+          <a (click)="plus(proveedorForm);a=false;" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"> Guardar material</i></a>
+          <a (click)="backedit();a=false;" class="btn btn-formulario"><i class="fa fa-times" aria-hidden="true"> Cancelar material</i></a>
+            </div>
+          </form>
       </div>
-
-    <form class="proveedor-form" [ngFormModel]="proveedorForm">
-    <a (click)="a=true;"><i class="fa fa-plus" aria-hidden="true">Añadir material</i></a>
-     <div *ngIf="a==true;">       
-     <br/>Pieza:<br/>
-     <input type="text"
-           ngControl="pieza"
-           [class.cliente-error]="!proveedorForm.valid"
-           placeholder="Pieza"
-           autofocus />
-           <br/>Refexterna:<br/>
-     <input type="text"
-           ngControl="refexterna"
-           [class.cliente-error]="!proveedorForm.valid"
-           placeholder="Ref externa"
-           autofocus />
-     <br/>Coste:<br/>
-     <input type="text"
-           ngControl="coste1"
-           [class.cliente-error]="!proveedorForm.valid"
-           placeholder="Coste"
-           autofocus />
-     <br/>Otro tipo de coste:<br/>
-     <input type="text"
-           ngControl="coste2"
-           [class.cliente-error]="!proveedorForm.valid"
-           placeholder="Coste"
-           autofocus />
-           <br/>Valoración de la pieza:<br/>
-     <input type="text"
-           ngControl="val"
-           [class.cliente-error]="!proveedorForm.valid"
-           placeholder="Valoración"
-           autofocus />
-           <br/> 
-           <a (click)="plus(proveedorForm);a=false;"><i class="fa fa-plus" aria-hidden="true">Guardar material</i></a>
-           <a (click)="backedit();a=false;"><i class="fa fa-plus" aria-hidden="true">Cancelar material</i></a>
-    </div></form>
-
+      <p>
+        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+        <button (click)="edit(proveedor)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar proveedor</i></button>
+        <button (click)="delete(proveedor)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar proveedor</i></button>
+      </p>
     </div>
-    <p>
-      <button (click)="gotoIndex()">Back</button>
-      <button (click)="edit(proveedor)">Save</button>
-      <button (click)="delete(proveedor)">Delete</button>
-    </p>
+  </div>
 </div>

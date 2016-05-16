@@ -1,5 +1,5 @@
 .cliente-container {
-  font-family: "Roboto";
+  /*font-family: "Roboto";*/
   position: relative;
   max-width: 900px;
   margin: 30px auto 0;
@@ -9,7 +9,7 @@
               0 2px 4px rgba(0,0,0,.24);
 }
 
-.cliente-container .cliente-title {
+/*.cliente-container .cliente-title {
   padding: 5px;
   background-color: #fff;
   position: absolute;
@@ -17,26 +17,26 @@
   top: -45px;
   left: 0;
   color: steelblue;
-}
+}*/
 
 .cliente-container .cliente-form {
   margin-top: 20px;
 }
 
-.cliente-container input {
+/*.cliente-container input {
   border: none;
   border-bottom: 2px solid #ddd;
   font-size: 17px;
   padding: 5px 3px;
   width: 90%;
   box-sizing: border-box;
-}
+}*/
 
 .cliente-container input:focus {
   outline: 0;
 }
 
-.cliente-container button {
+/*.cliente-container button {
   border-radius: 100%;
   padding: 10px 14px;
   font-weight: bold;
@@ -46,7 +46,7 @@
   border: 2px solid #ddd;
   font-size: 15px;
   transition: all .2s;
-}
+}*/
 
 .cliente-container button:focus,
 .cliente-container button:active {
