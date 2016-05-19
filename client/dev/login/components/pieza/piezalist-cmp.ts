@@ -19,15 +19,14 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
+import {LoginService} from '../../services/login-service';
+import {Pieza,PiezaService} from '../../services/pieza/pieza-service';
 
-import {Pieza,PiezaService} from '../services/pieza-service';
-
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
 @Component({
   selector: 'ListPiezas',
   templateUrl: 'client/dev/pieza/templates/list.html',
-  styleUrls: ['client/dev/pieza/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [PiezaService]
 })

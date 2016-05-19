@@ -19,13 +19,13 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {Cliente, ClienteService} from '../services/cliente-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {Cliente, ClienteService} from '../../services/cliente/cliente-service';
+import {LoginService} from '../../services/login-service';
 
 @Component({
   selector: 'ListUsuarios',
   templateUrl: 'client/dev/cliente/templates/list.html',
-  styleUrls: ['client/dev/cliente/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [ClienteService]
 })

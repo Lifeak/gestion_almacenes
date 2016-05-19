@@ -18,9 +18,9 @@ import {
   CanActivate
 } from 'angular2/router';
 
-
-import {AlmacenService, Almacen} from '../services/almacen-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {LoginService} from '../../services/login-service';
+import {AlmacenService, Almacen} from '../../services/almacen/almacen-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
 @Component({
   templateUrl: 'client/dev/almacen/templates/create.html'

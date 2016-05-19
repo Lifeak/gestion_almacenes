@@ -19,14 +19,13 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-
-import {Almacen, AlmacenService} from '../services/almacen-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {LoginService} from '../../services/login-service';
+import {Almacen, AlmacenService} from '../../services/almacen/almacen-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
 
 @Component({
   templateUrl: 'client/dev/almacen/templates/list.html',
-  styleUrls: ['client/dev/almacen/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [AlmacenService]
 })

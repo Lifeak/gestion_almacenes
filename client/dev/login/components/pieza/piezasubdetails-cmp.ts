@@ -18,16 +18,15 @@ import {
   Router
 } from 'angular2/router';
 
+import {LoginService} from '../../services/login-service';
+import {Pieza,PiezaService} from '../../services/pieza/pieza-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
-import {Pieza,PiezaService} from '../services/pieza-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-
-import {Modelo} from '../../modelo/services/modelo-service';
+import {Modelo} from '../../services/modelo/modelo-service';
 
 
 @Component({
-  templateUrl: 'client/dev/pieza/templates/detailss.html',
-  styleUrls: ['client/dev/pieza/styles/cliente.css']
+  templateUrl: 'client/dev/pieza/templates/detailss.html'
 })
 
   @CanActivate(() => isLogged())

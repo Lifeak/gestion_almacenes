@@ -19,14 +19,13 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-
-import {Garantia, GarantiaService} from '../services/garantia-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {LoginService} from '../../services/login-service';
+import {Garantia, GarantiaService} from '../../services/garantia/garantia-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
 
 @Component({
   templateUrl: 'client/dev/garantia/templates/list.html',
-  styleUrls: ['client/dev/garantia/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [GarantiaService]
 })

@@ -19,13 +19,13 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {Modelo, ModeloService} from '../services/modelo-service';
+import {LoginService} from '../../services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {Modelo, ModeloService} from '../../services/modelo/modelo-service';
 
 @Component({
   selector: 'ListModelos',
   templateUrl: 'client/dev/modelo/templates/list.html',
-  styleUrls: ['client/dev/modelo/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [ModeloService]
 })

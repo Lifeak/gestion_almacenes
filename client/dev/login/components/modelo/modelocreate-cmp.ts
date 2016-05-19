@@ -18,13 +18,13 @@ import {
   Router
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {ModeloService, Modelo} from '../services/modelo-service';
+import {LoginService} from '../../services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {ModeloService, Modelo} from '../../services/modelo/modelo-service';
 
 
 @Component({
-  templateUrl: 'client/dev/modelo/templates/create.html',
-  styleUrls: ['client/dev/modelo/styles/cliente.css']
+  templateUrl: 'client/dev/modelo/templates/create.html'
 })
 
   @CanActivate(() => isLogged())

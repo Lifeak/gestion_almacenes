@@ -18,9 +18,9 @@ import {
   Router
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {GarantiaService, Garantia} from '../services/garantia-service';
-import {LoginService} from '../../login/services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {GarantiaService, Garantia} from '../../services/garantia/garantia-service';
+import {LoginService} from '../../services/login-service';
 
 @Component({
   templateUrl: 'client/dev/garantia/templates/details.html'
