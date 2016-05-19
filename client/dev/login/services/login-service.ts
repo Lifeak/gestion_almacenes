@@ -19,7 +19,7 @@ import {
   CanActivate
 }from'angular2/router';
 
-import {User, UserService} from '../../user/services/user-service';
+import {User, UserService} from '../services/user/user-service';
 
 
 @Injectable()

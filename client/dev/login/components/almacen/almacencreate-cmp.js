@@ -14,8 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var almacen_service_1 = require('../services/almacen-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var almacen_service_1 = require('../../services/almacen/almacen-service');
+var isloggedin_1 = require('../../services/isloggedin');
 var AlmacenCreateCmp = (function () {
     function AlmacenCreateCmp(fb, _router, _routeParams, _almacenService) {
         this._router = _router;

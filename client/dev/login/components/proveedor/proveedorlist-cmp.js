@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var proveedor_service_1 = require('../services/proveedor-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var proveedor_service_1 = require('../../services/proveedor/proveedor-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var login_service_1 = require('../../services/login-service');
 var ProveedorListCmp = (function () {
-    function ProveedorListCmp(_proveedorService, _router, routeParams) {
+    function ProveedorListCmp(_proveedorService, _loginService, _router, routeParams) {
         this._proveedorService = _proveedorService;
+        this._loginService = _loginService;
         this._router = _router;
         this.proveedors = [];
         this._selectedId = routeParams.get('id');
@@ -41,12 +43,11 @@ var ProveedorListCmp = (function () {
         core_1.Component({
             selector: 'ListProveedores',
             templateUrl: 'client/dev/proveedor/templates/list.html',
-            styleUrls: ['client/dev/proveedor/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [proveedor_service_1.ProveedorService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [proveedor_service_1.ProveedorService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [proveedor_service_1.ProveedorService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], ProveedorListCmp);
     return ProveedorListCmp;
 }());

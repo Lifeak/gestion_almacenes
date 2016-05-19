@@ -14,9 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var isloggedin_1 = require('../../login/services/isloggedin');
-var cliente_service_1 = require('../services/cliente-service');
-var login_service_1 = require('../../login/services/login-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var cliente_service_1 = require('../../services/cliente/cliente-service');
+var login_service_1 = require('../../services/login-service');
 var ClienteDetailsCmp = (function () {
     function ClienteDetailsCmp(fb, _router, _routeParams, _clienteService, _loginService) {
         this._router = _router;
@@ -96,8 +96,7 @@ var ClienteDetailsCmp = (function () {
     ], ClienteDetailsCmp.prototype, "cliente", void 0);
     ClienteDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/cliente/templates/details.html',
-            styleUrls: ['client/dev/cliente/styles/cliente.css']
+            templateUrl: 'client/dev/cliente/templates/details.html'
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

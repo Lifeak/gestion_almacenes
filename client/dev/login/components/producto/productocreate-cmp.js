@@ -14,13 +14,15 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var producto_service_1 = require('../services/producto-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var producto_service_1 = require('../../services/producto/producto-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var login_service_1 = require('../../services/login-service');
 var ProductoCreateCmp = (function () {
-    function ProductoCreateCmp(fb, _router, _routeParams, _productoService) {
+    function ProductoCreateCmp(fb, _router, _routeParams, _productoService, _loginService) {
         this._router = _router;
         this._routeParams = _routeParams;
         this._productoService = _productoService;
+        this._loginService = _loginService;
         this.modelos = [];
         this.productoForm = fb.group({
             "_id": ["", common_1.Validators.required],
@@ -92,12 +94,11 @@ var ProductoCreateCmp = (function () {
     ], ProductoCreateCmp.prototype, "producto", void 0);
     ProductoCreateCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/producto/templates/create.html',
-            styleUrls: ['client/dev/producto/styles/cliente.css']
+            templateUrl: 'client/dev/producto/templates/create.html'
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, producto_service_1.ProductoService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, producto_service_1.ProductoService, login_service_1.LoginService])
     ], ProductoCreateCmp);
     return ProductoCreateCmp;
 }());

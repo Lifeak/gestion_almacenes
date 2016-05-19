@@ -14,9 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var producto_service_1 = require('../services/producto-service');
-var login_service_1 = require('../../login/services/login-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var producto_service_1 = require('../../services/producto/producto-service');
+var login_service_1 = require('../../services/login-service');
+var isloggedin_1 = require('../../services/isloggedin');
 var ProductoDetailsCmp = (function () {
     function ProductoDetailsCmp(fb, _router, _routeParams, _productoService, _loginService) {
         this._router = _router;

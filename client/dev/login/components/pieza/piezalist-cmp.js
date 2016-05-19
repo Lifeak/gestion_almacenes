@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var pieza_service_1 = require('../services/pieza-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var pieza_service_1 = require('../../services/pieza/pieza-service');
+var isloggedin_1 = require('../../services/isloggedin');
 var PiezaListCmp = (function () {
     function PiezaListCmp(_piezaService, _router, routeParams) {
         this._piezaService = _piezaService;
@@ -40,7 +40,6 @@ var PiezaListCmp = (function () {
         core_1.Component({
             selector: 'ListPiezas',
             templateUrl: 'client/dev/pieza/templates/list.html',
-            styleUrls: ['client/dev/pieza/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [pieza_service_1.PiezaService]
         }),

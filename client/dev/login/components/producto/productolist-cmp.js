@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var isloggedin_1 = require('../../login/services/isloggedin');
-var producto_service_1 = require('../services/producto-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var login_service_1 = require('../../services/login-service');
+var producto_service_1 = require('../../services/producto/producto-service');
 var ProductoListCmp = (function () {
-    function ProductoListCmp(_productoService, _router, routeParams) {
+    function ProductoListCmp(_productoService, _loginService, _router, routeParams) {
         this._productoService = _productoService;
+        this._loginService = _loginService;
         this._router = _router;
         this.productos = [];
         this._selectedId = routeParams.get('id');
@@ -40,12 +42,11 @@ var ProductoListCmp = (function () {
         core_1.Component({
             selector: 'ListProductos',
             templateUrl: 'client/dev/producto/templates/list.html',
-            styleUrls: ['client/dev/producto/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [producto_service_1.ProductoService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [producto_service_1.ProductoService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [producto_service_1.ProductoService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], ProductoListCmp);
     return ProductoListCmp;
 }());

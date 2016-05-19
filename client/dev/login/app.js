@@ -10,13 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+// Servicios
 var login_service_1 = require('./services/login-service');
+// Menu principal
 var login_cmp_1 = require('./components/login-cmp');
 var home_cmp_1 = require('./components/home-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
 var ventas_cmp_1 = require('./components/ventas-cmp');
 var almacen_cmp_1 = require('./components/almacen-cmp');
 var admin_cmp_1 = require('./components/admin-cmp');
+//Usuarios
+var usercreate_cmp_1 = require('./components/user/usercreate-cmp');
+var userlist_cmp_1 = require('./components/user/userlist-cmp');
+var userdetails_cmp_1 = require('./components/user/userdetails-cmp');
+var userprofile_cmp_1 = require('./components/user/userprofile-cmp');
 var App = (function () {
     function App() {
     }
@@ -33,7 +40,11 @@ var App = (function () {
             { path: '/compras', name: 'Compras', component: compras_cmp_1.ComprasCmp },
             { path: '/ventas', name: 'Ventas', component: ventas_cmp_1.VentasCmp },
             { path: '/almacen', name: 'Almacen', component: almacen_cmp_1.AlmacenCmp },
-            { path: '/admin', name: 'Admin', component: admin_cmp_1.AdminCmp } //,
+            { path: '/admin', name: 'Admin', component: admin_cmp_1.AdminCmp },
+            { path: '/ListUsuarios', name: 'ListUsuarios', component: userlist_cmp_1.UserListCmp },
+            { path: '/Create', name: 'CreateUsuario', component: usercreate_cmp_1.UserCreateCmp },
+            { path: '/Details', name: 'DetailsUsuarios', component: userdetails_cmp_1.UserDetailsCmp },
+            { path: '/Profile', name: 'Perfil', component: userprofile_cmp_1.UserProfileCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

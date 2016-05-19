@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var isloggedin_1 = require('../../login/services/isloggedin');
-var cliente_service_1 = require('../services/cliente-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var cliente_service_1 = require('../../services/cliente/cliente-service');
 var ClienteListCmp = (function () {
     function ClienteListCmp(_clienteService, _router, routeParams) {
         this._clienteService = _clienteService;
@@ -40,7 +40,6 @@ var ClienteListCmp = (function () {
         core_1.Component({
             selector: 'ListUsuarios',
             templateUrl: 'client/dev/cliente/templates/list.html',
-            styleUrls: ['client/dev/cliente/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [cliente_service_1.ClienteService]
         }),

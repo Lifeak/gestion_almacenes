@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var garantia_service_1 = require('../services/garantia-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var garantia_service_1 = require('../../services/garantia/garantia-service');
+var isloggedin_1 = require('../../services/isloggedin');
 var GarantiaListCmp = (function () {
     function GarantiaListCmp(_garantiaService, _router, routeParams) {
         this._garantiaService = _garantiaService;
@@ -39,7 +39,6 @@ var GarantiaListCmp = (function () {
     GarantiaListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/garantia/templates/list.html',
-            styleUrls: ['client/dev/garantia/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [garantia_service_1.GarantiaService]
         }),

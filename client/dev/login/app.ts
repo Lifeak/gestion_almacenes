@@ -25,7 +25,6 @@ import {VentasCmp} from './components/ventas-cmp';
 import {AlmacenCmp} from './components/almacen-cmp';
 import {AdminCmp} from './components/admin-cmp';
 //Usuarios
-import {UserCmp} from './components/user/user-cmp';
 import {UserCreateCmp} from './components/user/usercreate-cmp';
 import {UserListCmp} from './components/user/userlist-cmp';
 import {UserDetailsCmp} from './components/user/userdetails-cmp';

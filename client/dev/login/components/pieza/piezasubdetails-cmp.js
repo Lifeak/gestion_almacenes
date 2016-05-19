@@ -14,8 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var pieza_service_1 = require('../services/pieza-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var pieza_service_1 = require('../../services/pieza/pieza-service');
+var isloggedin_1 = require('../../services/isloggedin');
 var PiezaSubDetailsCmp = (function () {
     function PiezaSubDetailsCmp(fb, _router, _routeParams, _piezaService) {
         this._router = _router;
@@ -131,8 +131,7 @@ var PiezaSubDetailsCmp = (function () {
     ], PiezaSubDetailsCmp.prototype, "pieza", void 0);
     PiezaSubDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/pieza/templates/detailss.html',
-            styleUrls: ['client/dev/pieza/styles/cliente.css']
+            templateUrl: 'client/dev/pieza/templates/detailss.html'
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 

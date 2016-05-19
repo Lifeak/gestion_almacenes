@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var user_service_1 = require('../services/user-service');
-var isloggedin_1 = require('../../login/services/isloggedin');
+var user_service_1 = require('../../services/user/user-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var login_service_1 = require('../../services/login-service');
 var UserListCmp = (function () {
-    function UserListCmp(_userService, _router, routeParams) {
+    function UserListCmp(_userService, _loginService, _router, routeParams) {
         this._userService = _userService;
+        this._loginService = _loginService;
         this._router = _router;
         this.title = "Users";
         this.users = [];
@@ -41,12 +43,11 @@ var UserListCmp = (function () {
         core_1.Component({
             selector: 'ListUsuarios',
             templateUrl: 'client/dev/user/templates/list.html',
-            styleUrls: ['client/dev/user/styles/cliente.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [user_service_1.UserService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], UserListCmp);
     return UserListCmp;
 }());

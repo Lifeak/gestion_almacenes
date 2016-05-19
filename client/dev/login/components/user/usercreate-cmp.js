@@ -14,12 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
-var isloggedin_1 = require('../../login/services/isloggedin');
-var user_service_1 = require('../services/user-service');
+var login_service_1 = require('../../services/login-service');
+var isloggedin_1 = require('../../services/isloggedin');
+var user_service_1 = require('../../services/user/user-service');
 var UserCreateCmp = (function () {
-    function UserCreateCmp(fb, _router, _routeParams, _userService) {
+    function UserCreateCmp(fb, _router, _routeParams, _loginService, _userService) {
         this._router = _router;
         this._routeParams = _routeParams;
+        this._loginService = _loginService;
         this._userService = _userService;
         this.userForm = fb.group({
             "user": ["", common_1.Validators.required],
@@ -68,12 +70,11 @@ var UserCreateCmp = (function () {
     ], UserCreateCmp.prototype, "user", void 0);
     UserCreateCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/user/templates/create.html',
-            styleUrls: ['client/dev/user/styles/cliente.css']
+            templateUrl: 'client/dev/user/templates/create.html'
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, login_service_1.LoginService, user_service_1.UserService])
     ], UserCreateCmp);
     return UserCreateCmp;
 }());
