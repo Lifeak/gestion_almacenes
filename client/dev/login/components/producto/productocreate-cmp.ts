@@ -19,14 +19,14 @@ import {
 } from 'angular2/router';
 
 
-import {ProductoService,Producto} from '../services/producto-service';
-import {Modelo} from '../../modelo/services/modelo-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {ProductoService,Producto} from '../../services/producto/producto-service';
+import {Modelo} from '../../services/modelo/modelo-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {LoginService} from '../../services/login-service';
 
 
 @Component({
-  templateUrl: 'client/dev/producto/templates/create.html',
-  styleUrls: ['client/dev/producto/styles/cliente.css']
+  templateUrl: 'client/dev/producto/templates/create.html'
 })
 
 
@@ -37,7 +37,7 @@ export class ProductoCreateCmp implements OnInit{
   productoForm: ControlGroup;
   components: Array<string>;
   
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _productoService: ProductoService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, private _loginService: LoginService){
     this.productoForm = fb.group({
       "_id": ["", Validators.required],
       "nombre": ["", Validators.required],

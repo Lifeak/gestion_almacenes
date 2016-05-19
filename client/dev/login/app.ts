@@ -15,16 +15,21 @@ import {
 	RouteParams,
 	RouterOutlet
 } from 'angular2/router';
-
+// Servicios
 import {LoginService} from './services/login-service';
-
+// Menu principal
 import {LoginCmp} from './components/login-cmp';
 import {HomeCmp} from './components/home-cmp';
 import {ComprasCmp} from './components/compras-cmp';
 import {VentasCmp} from './components/ventas-cmp';
 import {AlmacenCmp} from './components/almacen-cmp';
 import {AdminCmp} from './components/admin-cmp';
-import {UserCmp} from '../user/components/user-cmp';
+//Usuarios
+import {UserCmp} from './components/user/user-cmp';
+import {UserCreateCmp} from './components/user/usercreate-cmp';
+import {UserListCmp} from './components/user/userlist-cmp';
+import {UserDetailsCmp} from './components/user/userdetails-cmp';
+import {UserProfileCmp} from './components/user/userprofile-cmp';
 
 @Component({
 	selector:'app',
@@ -40,8 +45,11 @@ import {UserCmp} from '../user/components/user-cmp';
     { path: '/compras', name: 'Compras', component: ComprasCmp },
     { path: '/ventas', name: 'Ventas', component: VentasCmp },
     { path: '/almacen', name: 'Almacen', component: AlmacenCmp },
-    { path: '/admin', name: 'Admin', component: AdminCmp }//,
-    //{ path: '/users', name: 'Usuarios', component: UserCmp}
+    { path: '/admin', name: 'Admin', component: AdminCmp },
+ 	{ path: '/ListUsuarios', name: 'ListUsuarios', component: UserListCmp },
+	{ path: '/Create', name: 'CreateUsuario', component: UserCreateCmp },
+	{ path: '/Details', name: 'DetailsUsuarios', component: UserDetailsCmp },
+	{ path: '/Profile', name: 'Perfil', component: UserProfileCmp }
 ])
 export class App {
 	constructor() { }

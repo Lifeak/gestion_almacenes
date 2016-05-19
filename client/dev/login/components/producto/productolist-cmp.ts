@@ -19,13 +19,13 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {Producto,ProductoService} from '../services/producto-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {LoginService} from '../../services/login-service';
+import {Producto,ProductoService} from '../../services/producto/producto-service';
 
 @Component({
   selector: 'ListProductos',
   templateUrl: 'client/dev/producto/templates/list.html',
-  styleUrls: ['client/dev/producto/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [ProductoService]
 })
@@ -36,7 +36,7 @@ export class ProductoListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _productoService: ProductoService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _productoService: ProductoService, private _loginService: LoginService,private _router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 

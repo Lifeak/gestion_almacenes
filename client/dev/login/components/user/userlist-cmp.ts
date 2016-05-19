@@ -20,14 +20,14 @@ import {
 } from 'angular2/router';
 
 
-import {User, UserService} from '../services/user-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {User, UserService} from '../../services/user/user-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {LoginService} from '../../services/login-service';
 
 
 @Component({
   selector: 'ListUsuarios',
   templateUrl: 'client/dev/user/templates/list.html',
-  styleUrls: ['client/dev/user/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [UserService]
 })
@@ -39,7 +39,7 @@ export class UserListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _userService: UserService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _userService: UserService, private _loginService: LoginService,public _router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 

@@ -18,12 +18,12 @@ import {
   Router
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {Proveedor, ProveedorService} from '../services/proveedor-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {LoginService} from '../../services/login-service';
+import {Proveedor, ProveedorService} from '../../services/proveedor/proveedor-service';
 
 @Component({
-  templateUrl: 'client/dev/proveedor/templates/create.html',
-  styleUrls: ['client/dev/proveedor/styles/cliente.css']
+  templateUrl: 'client/dev/proveedor/templates/create.html'
 })
 
   @CanActivate(() => isLogged())
@@ -33,7 +33,7 @@ export class ProveedorCreateCmp{
   mat: Array<Object> = [];
   cuenta: Array<string> = [];
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _loginService: LoginService, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
     this.proveedorForm = fb.group({
       "nombre": ["", Validators.required],
       "direccion": ["", Validators.required],

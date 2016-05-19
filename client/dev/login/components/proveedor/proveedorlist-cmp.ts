@@ -20,14 +20,14 @@ ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 
-import {Proveedor,ProveedorService} from '../services/proveedor-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {Proveedor,ProveedorService} from '../../services/proveedor/proveedor-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {LoginService} from '../../services/login-service';
 
 
 @Component({
   selector: 'ListProveedores',
   templateUrl: 'client/dev/proveedor/templates/list.html',
-  styleUrls: ['client/dev/proveedor/styles/cliente.css'],
   directives:[ROUTER_DIRECTIVES],
   providers: [ProveedorService]
 })
@@ -38,7 +38,7 @@ export class ProveedorListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _proveedorService: ProveedorService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _proveedorService: ProveedorService, private _loginService: LoginService, private _router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 

@@ -18,12 +18,12 @@ import {
   Router
 } from 'angular2/router';
 
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
-import {UserService, User} from '../services/user-service';
+import {LoginService} from '../../services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {UserService, User} from '../../services/user/user-service';
 
 @Component({
-  templateUrl: 'client/dev/user/templates/create.html',
-  styleUrls: ['client/dev/user/styles/cliente.css']
+  templateUrl: 'client/dev/user/templates/create.html'
 })
 
 @CanActivate(() => isLoggedinAdmin())
@@ -31,7 +31,7 @@ export class UserCreateCmp{
   @Input() user: User;
   userForm: ControlGroup;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _userService: UserService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _loginService: LoginService,private _userService: UserService){
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],

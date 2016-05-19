@@ -19,9 +19,9 @@ import {
 } from 'angular2/router';
 
 
-import {Producto,ProductoService} from '../services/producto-service';
-import {LoginService} from '../../login/services/login-service';
-import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../login/services/isloggedin';
+import {Producto,ProductoService} from '../../services/producto/producto-service';
+import {LoginService} from '../../services/login-service';
+import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
 
 @Component({
