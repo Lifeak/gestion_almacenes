@@ -1,18 +1,47 @@
-<div class="nav-enlaces">
+<div class="almacen-container">
 	<div class="row">
-		<div class="col-md-2 col-sm-2 col-md-offset-5">
-			<div class="box">
-			    <i class="fa fa-cubes fa-2x"></i> 
-			</div>
-			<a [routerLink]="['/CreateAlmacen']">Nuevo almacén</a>
+		<div class="col-md-12">
+			<h1 class="submenu-title">Gestión de almacenes</h1>
+			<a [routerLink]="['/CreateAlmacen']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo almacén</a>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col-md-12">
+    		<table class="table table-hover table-responsive">
+	    		<thead>
+	    			<tr>
+	    				<th>Identificador</th>
+	    				<th>Nombre</th>
+	    				<th>Dirección</th>
+	    				<th>Teléfono</th>
+	    				<th>Encargado/a</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr *ngFor="#almacen of almacens"
+		        [class.selected]="isSelected(almacen)"
+		        (click)="onSelect(almacen)">
+	    				<td>{{almacen._id}}</td>
+	    				<td>{{almacen.nombre}}</td>
+	    				<td>{{almacen.direccion}} ({{almacen.ciudad}}) - {{almacen.pais}}</td>
+	    				<td>{{almacen.telefono}}</td>
+	    				<td>{{almacen.encargado}}</td>
+	    			</tr>
+    			</tbody>
+    		</table>
 		</div>
 	</div>
 </div>
 
-<div class="cliente-container">
+
+
+
+
+<!-- <div class="submenu-container">
 	<div class="row">
     	<div class="col-md-8 col-md-offset-2">
-      		<h1 class="cliente-title">Listado de alamacenes</h1>
+      		<h1 class="submenu-title">Listado de alamacenes</h1>
 	       	<ul class="items">
 		      	<li *ngFor="#almacen of almacens"
 		        [class.selected]="isSelected(almacen)"
@@ -22,4 +51,4 @@
 	    	</ul>
 		</div>
 	</div>
-</div>
+</div> -->

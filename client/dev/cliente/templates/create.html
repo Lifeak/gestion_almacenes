@@ -1,7 +1,12 @@
-<div class="cliente-container">
-<div class="row">
+<div class="clientes-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Clientes > Nuevo cliente</h1>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="cliente-title">Nuevo cliente</h1>
       <form class="cliente-form"
             [ngFormModel]="clienteForm"
             (submit)="save(clienteForm)">
@@ -10,77 +15,77 @@
           <label for="_id">NIF / DNI:</label>
           <input type="text" class="form-control" id="_id" 
               ngControl="_id"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="nombre">Nombre:</label>
           <input type="text" class="form-control" id="nombre" 
               ngControl="nombre"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="direccion">Dirección:</label>
           <input type="text" class="form-control" id="direccion" 
               ngControl="direccion"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="ciudad">Ciudad:</label>
           <input type="text" class="form-control" id="ciudad" 
               ngControl="ciudad"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="pais">País:</label>
           <input type="text" class="form-control" id="pais" 
               ngControl="pais"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="telefono1">Teléfono:</label>
           <input type="text" class="form-control" id="telefono1" 
               ngControl="telefono1"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="telefono2">Teléfono 2:</label>
           <input type="text" class="form-control" id="telefono2" 
               ngControl="telefono2"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="puestoTrabajo">Puesto de trabajo:</label>
           <input type="text" class="form-control" id="puestoTrabajo" 
               ngControl="puestoTrabajo"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="text" class="form-control" id="email" 
               ngControl="email"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="detalles">Detalles:</label>
           <input type="text" class="form-control" id="detalles" 
               ngControl="detalles"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!clienteForm.valid"
               autofocus />
         </div>
         <button type="submit"
-            [disabled]="!clienteForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"> Guardar cliente</i></button>
+            [disabled]="!clienteForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar cliente</button>
       </form>
 
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
     </div>
   </div>
 </div>

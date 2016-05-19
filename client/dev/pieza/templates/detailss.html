@@ -1,4 +1,4 @@
-<div class="cliente-container">
+<div class="submenu-container">
   <h1>DETAILS</h1>
     <div *ngIf="pieza">
       <h3>Pieza: {{pieza._id}}</h3>
@@ -7,7 +7,7 @@
         <label>Modelo: </label>
         <select name="modelo"
             [(ngModel)]="pieza.modelo"
-           [class.cliente-error]="!piezaForm.valid"
+           [class.formulario-error]="!piezaForm.valid"
            placeholder="Modelo de pieza">
            <option *ngFor="#model of modelos" >{{model.nombre}}</option>
            </select><br/>
@@ -15,7 +15,7 @@
         <select name="estado"
            [(ngModel)]="pieza.estado"
            placeholder="Estado"
-           [class.cliente-error]="!piezaForm.valid">
+           [class.formulario-error]="!piezaForm.valid">
            <option value="Nuevo">Nuevo</option>
            <option value="Usado">Usado</option>
            <option value="Rota">Roto</option>
@@ -33,7 +33,7 @@
         <select name="vendido"
            [(ngModel)]="pieza.vendido"
            placeholder="¿Está vendida?"
-           [class.cliente-error]="!piezaForm.valid">
+           [class.formulario-error]="!piezaForm.valid">
            <option value="false">No</option>   
            <option value="true">Si</option>
           </select><br/><br/>

@@ -1,6 +1,76 @@
-<div class="cliente-container">
-  <h1>DETAILS</h1>
-    <div *ngIf="producto">
+<div class="producto-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Productos > Detalles de producto</h1>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div *ngIf="producto">
+        <form class="producto-form" [ngFormModel]="productoForm">
+          <div class="form-group">
+            <label for="id">Identificador:</label>
+            <input [(ngModel)]="producto._id" class="form-control" id="id"/>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input [(ngModel)]="producto.nombre" class="form-control" id="nombre"/>
+          </div>
+          <div class="form-group">
+            <label for="modelo">Modelo:</label>
+            <input [(ngModel)]="producto.modelo" class="form-control" id="modelo"/>
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado del producto:</label>
+            <select name="estado" [(ngModel)]="producto.estado" class="form-control" id="estado" [class.formulario-error]="!productoForm.valid">
+              <option value="Nuevo">Nuevo</option>
+              <option value="Usado">Usado</option>
+              <option value="Rota">Roto</option>
+              <option value="Reparando">Reparando</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="caracteristicas">Características:</label>
+            <input [(ngModel)]="producto.caracteristicas" class="form-control" id="caracteristicas"/>
+          </div>
+          <div class="form-group">
+            <label for="almacen">Almacén de ubicación:</label>
+            <input [(ngModel)]="producto.almacen" class="form-control" id="almacen"/>
+          </div>
+          <div class="form-group">
+            <label for="vendido">Vendido:</label>
+            <select name="vendido" [(ngModel)]="producto.vendido" class="form-control" id="vendido" [class.formulario-error]="!productoForm.valid">
+              <option value="false">No</option>   
+              <option value="true">Si</option>
+            </select> [(ngModel)]="producto.nombre" class="form-control" id="nombre"/>
+          </div>
+          <div class="form-group">
+            <label for="carcasa">Número de serie de la carcasa:</label>
+            <input [(ngModel)]="producto.compuestoPor[0]" class="form-control" id="carcasa"/>
+          </div>
+          <div class="form-group">
+            <label for="columna">Número de serie de la columna:</label>
+            <input [(ngModel)]="producto.compuestoPor[1]" class="form-control" id="columna"/>
+          </div>
+          <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input [(ngModel)]="producto.precio" class="form-control" id="precio"/>
+          </div>
+        </form>
+      </div>
+      <p>
+        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+        <button (click)="edit(producto)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar producto</button>
+        <button (click)="delete(producto)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar producto</button>
+      </p>
+    </div>
+  </div>
+</div>
+  
+
+
+    <!-- <div *ngIf="producto">
     	<h3>Producto: {{producto._id}}</h3>
         <label>Nombre: </label>
         <input [(ngModel)]="producto.nombre" placeholder="Nombre"/><br/>
@@ -10,7 +80,7 @@
         <select name="estado"
            [(ngModel)]="producto.estado"
            placeholder="Estado"
-           [class.cliente-error]="!productoForm.valid">
+           [class.formulario-error]="!productoForm.valid">
            <option value="Nuevo">Nuevo</option>
            <option value="Usado">Usado</option>
            <option value="Rota">Roto</option>
@@ -24,7 +94,7 @@
          <select name="vendido"
            [(ngModel)]="producto.vendido"
            placeholder="¿Está vendido?"
-           [class.cliente-error]="!productoForm.valid">
+           [class.formulario-error]="!productoForm.valid">
            <option value="false">No</option>   
            <option value="true">Si</option>
           </select><br/>
@@ -40,4 +110,4 @@
       <button (click)="edit(producto)">Save</button>
       <button (click)="delete(producto)">Delete</button>
 
-</div>
+</div> -->

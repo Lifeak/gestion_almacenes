@@ -1,7 +1,12 @@
-<div class="cliente-container">
+<div class="almacen-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Gestión de almacenes > Detalles de almacén</h1>
+    </div>
+  </div>
+  <br><br>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="cliente-title">Detalles de almacén</h1>
       <div *ngIf="almacen">
         <form class="almacen-form" [ngFormModel]="almacenForm">
           <div class="form-group">
@@ -31,9 +36,9 @@
         </form>
       </div>
       <p>
-        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
-        <button (click)="edit(almacen)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar almacén</i></button>
-        <button (click)="delete(almacen)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar almacén</i></button>
+        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+        <button (click)="edit(almacen)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar almacén</button>
+        <button (click)="delete(almacen)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar almacén</button>
       </p>
     </div>
   </div>

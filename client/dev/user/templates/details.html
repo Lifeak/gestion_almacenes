@@ -1,34 +1,40 @@
-<div class="cliente-container">
+<div class="usuario-container">
+  <div class="row">
+      <div class="col-md-12">
+        <h1 class="submenu-title">Control de usuarios > Detalles de usuario</h1>
+      </div>
+  </div>
+  <br><br>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="cliente-title">Detalles usuario</h1>
-      <form>
+      <div *ngIf="user"> 
+      <form class="user-form" [ngFormModel]="userForm">
         <div class="form-group">
             <label for="user">Usuario:</label>
-            <input [(ngModel)]="user.user" placeholder="user" class="form-control" id="user"/>
+            <input [(ngModel)]="user.user" class="form-control" id="user"/>
         </div>
         <div class="form-group">
             <label for="pass">Contraseña:</label>
-            <input [(ngModel)]="user.pass" placeholder="pass" class="form-control" id="pass"/>
+            <input [(ngModel)]="user.pass" class="form-control" id="pass"/>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input [(ngModel)]="user.nombre" placeholder="nombre" class="form-control" id="nombre"/>
+            <input [(ngModel)]="user.nombre" class="form-control" id="nombre"/>
         </div>
         <div class="form-group">
             <label for="apellido">Apellido:</label>
-            <input [(ngModel)]="user.apellido" placeholder="apellido" class="form-control" id="apellido"/>
+            <input [(ngModel)]="user.apellido" class="form-control" id="apellido"/>
         </div>
         <div class="form-group">
             <label for="tipo">Tipo:</label>
-            <input [(ngModel)]="user.tipo" placeholder="tipo" class="form-control" id="tipo"/>
+            <input [(ngModel)]="user.tipo" class="form-control" id="tipo"/>
         </div>
       </form>
     
 
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
-      <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar usuario</i></button>
-      <button (click)="delete(user)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar usuario</i></button>
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+      <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
+      <button (click)="delete(user)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar usuario</button>
     </div>
   </div>
 </div>

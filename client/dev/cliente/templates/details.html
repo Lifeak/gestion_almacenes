@@ -1,12 +1,17 @@
-<div class="cliente-container">
+<div class="clientes-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Clientes > Detalles de cliente</h1>
+    </div>
+  </div>
+  <br><br>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="cliente-title">Detalles cliente</h1>
       <div *ngIf="cliente">
-        <form>
+        <form class="cliente-form" [ngFormModel]="clienteForm">
           <div class="form-group">
-            <label for="_id">NIF / DNI:</label>
-            <input [(ngModel)]="cliente._id" class="form-control" id="_id"/>
+            <label for="id">NIF / DNI:</label>
+            <input [(ngModel)]="cliente._id" class="form-control" id="id"/>
           </div>
           <div class="form-group">
             <label for="nombre">Nombre:</label>
@@ -44,10 +49,13 @@
             <label for="detalles">Detalles: </label>
             <input [(ngModel)]="cliente.detalles" class="form-control" id="detalles"/>
           </div>
+        </form>
+      </div>
+      <p>
+        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+        <button (click)="edit(cliente)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar cliente</button>
+        <button (click)="delete(cliente)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar cliente</button>
+      </p>
     </div>
-    <p>
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
-      <button (click)="edit(cliente)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar cliente</i></button>
-      <button (click)="delete(cliente)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar cliente</i></button>
-    </p>
+  </div>
 </div>

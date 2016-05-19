@@ -1,11 +1,120 @@
-<div class="cliente-container">
-  <h1>DETAILS</h1>
-    <div *ngIf="modelo">
-    	<h3>MODELO: {{modelo.nombre}}</h3>
+<div class="submenu-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Productos > Modelos > Detalles de modelo</h1>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div *ngIf="modelo">
+        <form class="modelo-form" [ngFormModel]="modeloForm">
+           <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <select name="nombre"
+              class="form-control" 
+              id="nombre"
+              [(ngModel)]="modelo.nombre"
+              [class.formulario-error]="!modeloForm.valid"
+              placeholder="Nombre de modelo">
+              <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+          <label for="refinterna">Referencia interna:</label>
+          <input type="text" 
+              class="form-control" 
+              id="refinterna" 
+              [(ngModel)]="modelo.refinterna"/>
+        </div>
+        <label for="caracteristicas">Características:</label>
+          <input type="text" 
+              class="form-control" 
+              id="caracteristicas" 
+              [(ngModel)]="modelo.caracteristicas"/>
+        </div>
+        <div class="form-group">
+            <label for="modeloDe">Es un modelo de:</label>
+            <select name="modeloDe"
+              class="form-control" 
+              id="modeloDe"
+              [(ngModel)]="modelo.modeloDe"
+              [class.formulario-error]="!modeloForm.valid"
+              placeholder="Tipo de modelo">
+              <option value="Pieza">Pieza</option>
+              <option value="Producto">Producto</option>
+            </select>
+          </div>
+          <div *ngIf="modelo.compuestoPor.length>0">
+            <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
+            <table>
+              <tr>
+                <td>
+                  <div *ngFor="#u of uds;" >
+                     Unidades: {{u}}  &nbsp;
+                   </div>      
+                </td>
+                <td>
+                  <div *ngFor="#p of components;" >
+                    {{p}} &nbsp;
+                    <a  (click)="buscar(p);">Buscar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
+                    <a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>
+                  </div>    
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="form-group">
+            <label for="modelo">Añade más componentes al modelo:</label>
+            <select name="modelo"
+              class="form-control" 
+              id="modelo"
+              ngControl ="compuestoPor"
+              [class.formulario-error]="!modeloForm.valid"
+              (change)="a=true"
+              placeholder="Componentes del modelo">
+              <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="unidades">Unidades:</label>
+            <select name="unidades"
+                ngControl="unidades" 
+                class="form-control" 
+                id="unidades" 
+                (change)="b=true"
+                placeholder="Selecciona número de unidades"
+                [class.formulario-error]="!modeloForm.valid">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
+        </form>
+      </div>
+      <p>
+        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+        <button (click)="edit(modelo)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
+        <button (click)="delete(modelo)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar modelo</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    	<!-- <h3>MODELO: {{modelo.nombre}}</h3>
         <label>Nombre: </label>
         <select name="nombre"
             [(ngModel)]="modelo.nombre"
-           [class.cliente-error]="!modeloForm.valid"
+           [class.formulario-error]="!modeloForm.valid"
            placeholder="Nombre de modelo">
            <option *ngFor="#model of modelos" >{{model.nombre}}</option>
          </select><br/>
@@ -16,7 +125,7 @@
         <label>Es un modelo de: </label>
          <select name="modeloDe"
             [(ngModel)]="modelo.modeloDe"
-            [class.cliente-error]="!modeloForm.valid"
+            [class.formulario-error]="!modeloForm.valid"
              placeholder="Es">
              <option value="Pieza">Pieza</option>
              <option value="Producto">Producto</option>
@@ -46,7 +155,7 @@
       <label>
       <select name="modelo"
            ngControl ="compuestoPor"
-           [class.cliente-error]="!modeloForm.valid"
+           [class.formulario-error]="!modeloForm.valid"
            (change)="a=true"
            placeholder="Modelo">
            <option *ngFor="#model of modelos" >{{model.nombre}}</option>
@@ -57,7 +166,7 @@
                 name="unidades"
                 ngControl="unidades"
                 (change)="b=true"
-                [class.cliente-error]="!modeloForm.valid">
+                [class.formulario-error]="!modeloForm.valid">
 
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -76,4 +185,4 @@
       <button (click)="edit(proveedor)">Save</button>
       <button (click)="delete(proveedor)">Delete</button>
  </div>
-</div>
+</div> -->

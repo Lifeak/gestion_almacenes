@@ -1,64 +1,55 @@
-<section id="container" >
+<section id="container">
      <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
       <!--header start-->
-      <header class="header black-bg">
-      
-
-      <!-- PARTE NUEVA -->
-<!--         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">VALIRYO <img src="assets/img/find_user.png" class="user-image img-responsive"/></a> 
-            </div>
-            <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a>           </div>
-        </nav>   
-           
-                <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-                    <li>
-                        <a class="active-menu"  href="index.html"><i class="fa fa-home fa-3x"></i> Almacén</a>
-                    </li>
-                     <li>
-                        <a  href="ui.html"><i class="fa fa-barcode fa-3x"></i> Compras</a>
-                    </li>
-                    <li>
-                        <a  href="tab-panel.html"><i class="fa fa-cogs fa-3x"></i> Ventas</a>
-                    </li>
-                    <li  >
-                        <a   href="chart.html"><i class="fa fa-industry fa-3x"></i> Admin</a>
-                    </li> 
-                </ul>
-               
-            </div>
-            
-        </nav>  --> 
+      <header>
         
+        <!--MENÚ DE NAVEGACIÓN-->
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container-fluid">
+            <!-- Para Móvil -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".MobileMenu">
+                <span class="sr-only">Menú</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- <a class="navbar-brand" href="#">VALIRYO</a> -->
+              <a href="#" class="pull-left logo"><img src="/client/dev/login/templates/img/logo2.png"></a>
+            </div>
+            <!-- Dispositivos grandes -->
+            <div class="collapse navbar-collapse"> <!-- navbar1 -->
+              <ul class="nav navbar-nav">
+                <li><a (click)="almacen()">Almacén</a></li>
+                <li><a (click)="compras()" class="link-activo">Compras</a></li>
+                <li><a (click)="ventas()">Ventas</a></li>
+                <li><a (click)="admin()">Admin</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
+                </li>
+              </ul>
+            </div> 
+          </div>
+        </nav>
 
 
 
 
 
-              <div class="sidebar-toggle-box">
+             <!--  <div class="sidebar-toggle-box">
                   
-              </div>
+              </div> -->
             <!--logo start-->
-            <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
+            <!-- <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a> -->
             <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <ul class="nav top-menu">
+            <!-- <div class="nav notify-row" id="top_menu">
+                <ul class="nav top-menu"> -->
                     <!-- settings start -->
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a  data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
                         Almacén  
                         </a>   
@@ -77,24 +68,268 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()">
                         Admin
                         </a>   
-                    </li>
+                    </li> -->
                     <!-- settings end -->  
-                </ul>
+                <!-- </ul> -->
                 <!--  notification end -->
-            </div>
+            <!-- </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
                     <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
               </ul>
-            </div>
+            </div> -->
         </header>
+
+        <!-- OTRA PRUEBA PARA MENU -->
+             <div class="collapse navbar-collapse MobileMenu hidden-sm hidden-md hidden-lg hidden-xl" id="nav-movil">
+                <ul class="nav navbar-nav">
+                    <!-- ALMACÉN -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ALMACÉN <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <!-- Almacén Valiryo -->
+                            <li class="dropdown">
+                              <a href="#">
+                                <i class="fa fa-home"></i>
+                                <span>Almacén Valiryo</span>
+                              </a>
+                              <ul>
+                                <li><a href="#">Stock Producto</a></li>
+                                <li><a href="#">Stock Piezas</a></li>
+                                <li><a href="#">Piezas rotas</a></li>
+                              </ul>    
+                            </li>
+                            <!-- Producto -->
+                            <li class="dropdown">
+                              <a href="#">
+                                <i class="fa fa-barcode"></i>
+                                <span>Producto</span>
+                              </a>
+                              <ul>
+                                <li><a href="#">Producto final</a></li>
+                                <li><a href="#">Piezas</a></li>
+                                <li><a href="#">Modelos</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Control de calidad -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-cogs"></i>
+                                <span>Control de calidad</span>
+                              </a>
+                            </li>
+                            <!-- Almacenes externos -->
+                            <li class="dropdown-submenu">
+                              <a href="#">
+                                <i class="fa fa-truck"></i>
+                                <span>Almacenes externos</span>
+                              </a>
+                              <ul>
+                                <li><a href="#">PLASNOR</a></li>
+                                <li><a href="#">LANTEGI</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Reparaciones -->
+                            <li>
+                              <a href="#/almacen">
+                                <i class="fa fa-wrench"></i>
+                                <span>Reparaciones</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- COMPRAS -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">COMPRAS <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Proveedores -->
+                            <li>
+                              <a href="/gproveedores" >
+                                <i class="fa fa-user"></i>
+                                <span>Proveedores</span>
+                              </a>
+                            </li>
+                            <!-- Productos -->
+                            <li class="dropdown">
+                              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <i class="fa fa-barcode"></i>
+                                <span>Productos</span>
+                              </a>
+                              <ul>
+                                <li><a href="/gproductos">Producto final</a></li>
+                                <li><a href="/gpiezas">Piezas</a></li>
+                                <li><a href="/gmodelos">Modelos</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Pedido de compra-->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Pedido de compra</span>
+                              </a>
+                            </li>
+                            <!-- Lotes -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-cubes"></i>
+                                <span>Lotes</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- VENTAS -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ventas <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Clientes -->
+                            <li>
+                              <a href="/gclientes">
+                                <i class="fa fa-user"></i>
+                                <span>Clientes</span>
+                              </a>
+                            </li>
+                            <!-- Pedidos -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Pedidos</span>
+                              </a>
+                            </li>
+                            <!-- Devoluciones -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-refresh"></i>
+                                <span>Devoluciones</span>
+                              </a>
+                            </li>
+                            <!-- Salidas por avería -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                <span>Salidas por avería</span>
+                              </a>
+                            </li>
+                            <!-- Garantía -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Garantías</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- ADMIN -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Control de usuarios -->
+                            <li>
+                              <a href="/u" (click)="usuarios();">
+                                <i class="fa fa-user"></i>
+                                <span>Control de usuarios</span>
+                              </a>
+                            </li>
+                            <!-- Gestión de almacenes -->
+                            <li>
+                              <a href="/galmacenes" (click)="almacenes();">
+                                <i class="fa fa-cubes"></i>
+                                <span>Gestión almacenes</span>
+                              </a>
+                            </li>
+                            <!-- Tipos de garantías -->
+                            <li>
+                              <a href="/ggarantias" (click)="garantias();">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Tipos de garantías</span>
+                              </a>
+                            </li> 
+                            
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> LOGOUT</button>
+                    </li>
+                </ul>
+            </div>
+
+        <!-- Prueba dropdown menu -->
+            <!-- <div id="MobileMenu" class="MobileMenu hidden-lg hidden-md hidden-sm visible-xs">
+              <div class="list-group">
+                <a href="#almacen" (click)="almacen()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ALMACÉN</a>
+                <div class="collapse" id="almacen">
+                  <a href="#almValiryo" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almValiryo"><i class="fa fa-home"></i> Almacén Valiryo <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="almValiryo">
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Stock producto</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Stock piezas</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Piezas rotas</a>
+                  </div>
+                  <a href="#producto" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#producto"><i class="fa fa-barcode"></i> Producto <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="producto">
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Producto final</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Piezas</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Modelos</a>
+                  </div>
+                  <a href="javascript:;" class="list-group-item margen-izq"><i class="fa fa-cogs"></i> Control de calidad</a>
+                  <a href="#almExternos" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almExternos"><i class="fa fa-truck"></i> Almacenes externos <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="almExternos">
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almExternos">PLASNOR</a>
+                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almExternos">LANTEGI</a>
+                  </div>
+                  <a href="javascript:;" class="list-group-item margen-izq"><i class="fa fa-wrench"></i> Reparaciones</a>
+                </div>
+
+                <a href="#compras" (click)="compras()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">COMPRAS</a>
+                <div class="collapse" id="compras">
+                  <a href="javascript:;" class="list-group-item">Proveedores</a>
+                  <a href="#comprasProductos" class="list-group-item" data-toggle="collapse" data-parent="#comprasProductos">Productos <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse list-group-submenu" id="comprasProductos">
+                    <a href="#" class="list-group-item" data-parent="#compras">Producto final</a>
+                    <a href="#" class="list-group-item" data-parent="#compras">Piezas</a>
+                    <a href="#" class="list-group-item" data-parent="#compras">Modelos</a>
+                  </div>
+                  <a href="javascript:;" class="list-group-item">Pedido de compra</a>
+                  <a href="javascript:;" class="list-group-item">Lotes</a> 
+                </div>
+
+                <a href="#ventas" (click)="ventas()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">VENTAS</a>
+                <div class="collapse" id="ventas">
+                  <a href="javascript:;" class="list-group-item">Clientes</a>
+                  <a href="javascript:;" class="list-group-item">Pedidos</a>
+                  <a href="javascript:;" class="list-group-item">Devoluciones</a>
+                  <a href="javascript:;" class="list-group-item">Salidas por avería</a>
+                  <a href="javascript:;" class="list-group-item">Garantías</a>
+                </div>
+
+                <a href="#admin" (click)="admin()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ADMIN</a>
+                <div class="collapse" id="admin">
+                  <a href="javascript:;" class="list-group-item">Control de usuarios</a>
+                  <a href="javascript:;" class="list-group-item">Gestión de almacenes</a>
+                  <a href="javascript:;" class="list-group-item">Tipos de garantías</a>
+                </div>
+                
+                 <a (click)="logout()"  class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu"><i class="fa fa-sign-out"></i> Logout</a>
+                
+              </div>
+            </div> -->
+
+
+
+
+
+
+
+
+
+
+
       <!--header end-->
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
       <!--sidebar start-->
       <aside>
-          <div id="sidebar"  class="nav-collapse ">
+          <div id="sidebar"  class="nav-collapse visible-lg visible-md visible-sm hidden-xs">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                   <li class="sub-menu">
@@ -159,7 +394,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                   <div class="col-lg-12 main-chart">
                   
                     <div class="row mtbox">
-                      <div class="col-md-2 col-sm-2 col-md-offset-1 box0"> 
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 box0"> 
                         <a href="/gproveedores" (click)="proveedores();c1=false">
                           <div class="box1">
                             <i class="fa fa-user fa-3x"></i> 
@@ -168,14 +403,14 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         </a>
                         <!-- <p>933 People liked your page the last 24hs. Whoohoo!</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                         <div class="box1">
                           <i class="fa fa-barcode fa-3x"></i> 
                           <h3>Productos</h3>
                         </div>
                         <!-- <p>48 New files were added in your cloud storage.</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                         <a href="javascript:;" (click)="c1=false;" >
                           <div class="box1">
                             <i class="fa fa-shopping-cart fa-3x"></i> 
@@ -184,7 +419,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                         </a>
                         <!-- <p>You have 23 unread messages in your inbox.</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-0 col-md-offset-1 box0">
                         <a href="javascript:;" (click)="c1=false;">
                           <div class="box1">
                             <i class="fa fa-cubes fa-3x"></i> 
@@ -214,12 +449,3 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
       <!--main content end-->
 
 </section>
-
-
-
-
-
-
-
-
-

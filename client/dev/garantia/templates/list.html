@@ -1,18 +1,37 @@
-<div class="nav-enlaces">
+<div class="garantia-container">
 	<div class="row">
-		<div class="col-md-2 col-sm-2 col-md-offset-5">
-			<div class="box">
-			    <i class="fa fa-pencil-square-o fa-2x"></i> 
-			</div>
-			<a [routerLink]="['/CreateGarantia']">Nuevo tipo de garantía</a>
+		<div class="col-md-12">
+			<h1 class="submenu-title">Tipos de garantías</h1>
+			<a [routerLink]="['/CreateGarantia']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo tipo de garantía</a>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+    	<div class="col-md-12">
+    		<table class="table table-hover table-responsive">
+	    		<thead>
+	    			<tr>
+	    				<th>Nombre del País o tipo de garantía</th>
+	    				<th>Meses</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr *ngFor="#g of garantias"
+			        [class.selected]="isSelected(g)"
+			        (click)="onSelect(g)">
+	    				<td>{{g._id}}</td>
+	    				<td>{{g.tiempo}}</td>
+	    			</tr>
+    			</tbody>
+    		</table>
 		</div>
 	</div>
 </div>
 
-<div class="cliente-container">
+<!-- <div class="submenu-container">
 	<div class="row">
     	<div class="col-md-8 col-md-offset-2">
-      		<h1 class="cliente-title">Listado de garantías</h1>
+      		<h1 class="submenu-title">Listado de garantías</h1>
 		    <ul class="items">
 			      <li *ngFor="#g of garantias"
 			        [class.selected]="isSelected(g)"
@@ -22,16 +41,4 @@
     		</ul>
 		</div>
 	</div>
-</div>
-
-<!-- <a [routerLink]="['/CreateGarantia']">Nuevo tipo de garantía</a>
-<div class="cliente-container">
-<h2>LIST</h2>
-       <ul class="items">
-      <li *ngFor="#g of garantias"
-        [class.selected]="isSelected(g)"
-        (click)="onSelect(g)">
-        {{g._id}}
-      </li>
-    </ul>
 </div> -->

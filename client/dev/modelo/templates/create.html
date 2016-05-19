@@ -1,90 +1,192 @@
-<div class="cliente-container">
-  <form class="modelo-form"
-        [ngFormModel]="modeloForm"
-        (submit)="save(modeloForm)">
-
-    <h1 class="cliente-title">Nuevo modelo</h1>
-
-    <br/>Nombre:<br/>
-    <input type="text"
-           ngControl="nombre"
-           [class.cliente-error]="!modeloForm.valid"
-           placeholder="Nombre de modelo"
-           autofocus />
-   <br/>Referencia interna:<br/>
-   <input type="text"
-           ngControl="refinterna"
-           [class.cliente-error]="!modeloForm.valid"
-           placeholder="Referencia interna"
-           autofocus />
-  <br/>Caracteristicas:<br/>
-  <input type="text"
-           ngControl="caracteristicas"
-           [class.cliente-error]="!modeloForm.valid"
-           placeholder="Caracteristicas"
-           autofocus />
-  <br/>¿Qué tipo de modelo es?:<br/>Recuerda que se considera Producto al Valiryo completo, lo demás son piezas.<br/>
-  <select name="modeloDe"
-           ngControl="modeloDe"
-           placeholder="Selecciona el tipo.."
-           [class.cliente-error]="!modeloForm.valid">
-           <option value="Pieza">Pieza</option>
-           <option value="Producto">Producto</option>
-          </select>
-   <br/>Selecciona los componentes del modelo:<br/>
-   <label>
-    <select name="modelo"
-           ngControl ="compuestoPor"
-           [class.cliente-error]="!modeloForm.valid"
-           (change)="a=true"
-           placeholder="Modelo">
-           <option *ngFor="#model of modelos" >{{model.nombre}}</option>
-           </select>
-        </label>
-        <label>Unidades:  </label>
-        <select 
-                name="unidades"
-                ngControl="unidades"
-                (change)="b=true"
-                [class.cliente-error]="!modeloForm.valid">
-
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-             </select>   &nbsp;
-            <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a> 
- 
-<div *ngIf="components.length>0">
-  <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
-  <table>
-  <tr>
-   <td><div *ngFor="#u of uds;" >
-        
-         Unidades: {{u}}  &nbsp;</div>
-        
-    </td>
-    <td><div *ngFor="#p of components;" >
-        
-          {{p}}  &nbsp;<a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a></div>
-        
-    </td>
-
-    
-  </tr>
-
-  </table>
+<div class="modelo-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Productos > Modelos > Nuevo modelo</h1>
+    </div>
   </div>
-<br/><br/>
-    <button type="submit"
-            [disabled]="!modeloForm.valid">Añadir</button>
+  <br><br>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <form class="modelo-form"
+            [ngFormModel]="modeloForm"
+            (submit)="save(modeloForm)">
+        
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" 
+              class="form-control" 
+              id="nombre" 
+              ngControl="nombre"
+              [class.formulario-error]="!modeloForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="refinterna">Referencia interna:</label>
+          <input type="text" 
+              class="form-control" 
+              id="refinterna" 
+              ngControl="refinterna"
+              [class.formulario-error]="!modeloForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="caracteristicas">Características:</label>
+          <input type="text" 
+              class="form-control" 
+              id="caracteristicas" 
+              ngControl="caracteristicas"
+              [class.formulario-error]="!modeloForm.valid"
+              autofocus />
+        </div>
+        <div class="form-group">
+          <label for="modeloDe">¿Qué tipo de modelo es?:<br/>Recuerda que se considera Producto al Valiryo completo, lo demás son piezas.</label>
+          <select name="modeloDe"
+              ngControl="modeloDe" 
+              class="form-control" 
+              id="modeloDe" 
+              placeholder="Selecciona el tipo de modelo"
+              [class.formulario-error]="!modeloForm.valid">
+            <option value="Pieza">Pieza</option>
+            <option value="Producto">Producto</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="compuestoPor">Selecciona los componentes del modelo:</label>
+          <select name="modelo"
+              ngControl="compuestoPor" 
+              class="form-control" 
+              id="compuestoPor" 
+              placeholder="Selecciona los componenetes"
+              [class.formulario-error]="!modeloForm.valid">
+            <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="unidades">Unidades:</label>
+          <select name="unidades"
+              ngControl="unidades" 
+              class="form-control" 
+              id="unidades" 
+              (change)="b=true"
+              placeholder="Selecciona número de unidades"
+              [class.formulario-error]="!modeloForm.valid">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
 
-</form>
+        <div *ngIf="components.length>0">
+          <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
+          <table>
+            <tr>
+              <td><div *ngFor="#u of uds;" >
+                Unidades: {{u}}  &nbsp;</div>
+              </td>
+              <td><div *ngFor="#p of components;" >
+              {{p}}  &nbsp;<a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <br/><br/>
+        <button type="submit" [disabled]="!modeloForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
 
-<button (click)="gotoIndex()">Back</button>
+      </form>
+
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+    </div>
+  </div>
+</div>
+
+        <!-- <br/>Nombre:<br/>
+        <input type="text"
+               ngControl="nombre"
+               [class.formulario-error]="!modeloForm.valid"
+               placeholder="Nombre de modelo"
+               autofocus />
+       <br/>Referencia interna:<br/>
+       <input type="text"
+               ngControl="refinterna"
+               [class.formulario-error]="!modeloForm.valid"
+               placeholder="Referencia interna"
+               autofocus /> 
+      <br/>Caracteristicas:<br/>
+      <input type="text"
+               ngControl="caracteristicas"
+               [class.formulario-error]="!modeloForm.valid"
+               placeholder="Caracteristicas"
+               autofocus />
+      <br/>¿Qué tipo de modelo es?:<br/>Recuerda que se considera Producto al Valiryo completo, lo demás son piezas.<br/>
+      <select name="modeloDe"
+               ngControl="modeloDe"
+               placeholder="Selecciona el tipo.."
+               [class.formulario-error]="!modeloForm.valid">
+               <option value="Pieza">Pieza</option>
+               <option value="Producto">Producto</option>
+              </select> 
+       <br/>Selecciona los componentes del modelo:<br/>
+       <label>
+        <select name="modelo"
+               ngControl ="compuestoPor"
+               [class.formulario-error]="!modeloForm.valid"
+               (change)="a=true"
+               placeholder="Modelo">
+               <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+               </select>
+            </label>
+            <label>Unidades:  </label>
+            <select 
+                    name="unidades"
+                    ngControl="unidades"
+                    (change)="b=true"
+                    [class.formulario-error]="!modeloForm.valid">
+
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                 </select>   &nbsp;
+                <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
+     
+    <div *ngIf="components.length>0">
+      <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
+      <table>
+      <tr>
+       <td><div *ngFor="#u of uds;" >
+            
+             Unidades: {{u}}  &nbsp;</div>
+            
+        </td>
+        <td><div *ngFor="#p of components;" >
+            
+              {{p}}  &nbsp;<a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a></div>
+            
+        </td>
+
+        
+      </tr>
+
+      </table>
+      </div>  
+    <br/><br/>
+        <button type="submit"
+                [disabled]="!modeloForm.valid">Añadir</button>
+
+    </form>
+
+<button (click)="gotoIndex()">Back</button>-->

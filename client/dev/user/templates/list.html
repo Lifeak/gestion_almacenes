@@ -1,18 +1,43 @@
-<div class="nav-enlaces">
+<div class="usuario-container">
 	<div class="row">
-		<div class="col-md-2 col-sm-2 col-md-offset-5">
-			<div class="box">
-			    <i class="fa fa-user fa-2x"></i> 
-			</div>
-			<a [routerLink]="['/CreateUsuario']">Nuevo usuario</a>
+		<div class="col-md-12">
+			<h1 class="submenu-title">Control de usuarios</h1>
+			<a [routerLink]="['/CreateUsuario']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo usuario</a>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+    	<div class="col-md-12">
+    		<table class="table table-hover table-responsive">
+	    		<thead>
+	    			<tr>
+	    				<th>Usuario</th>
+	    				<th>Contraseña</th>
+	    				<th>Nombre</th>
+	    				<th>Apellido</th>
+	    				<th>Tipo de usuario</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr *ngFor="#user of users"
+        				[class.selected]="isSelected(user)"
+        				(click)="onSelect(user)">
+	    				<td>{{user.user}}</td>
+	    				<td>{{user.pass}}</td>
+	    				<td>{{user.nombre}}</td>
+	    				<td>{{user.apellido}}</td>
+	    				<td>{{user.tipo}}</td>
+	    			</tr>
+    			</tbody>
+    		</table>
 		</div>
 	</div>
 </div>
 
-<div class="cliente-container">
+<!-- <div class="submenu-container">
 	<div class="row">
     	<div class="col-md-8 col-md-offset-2">
-      		<h1 class="cliente-title">Listado de usuarios</h1>
+      		<h1 class="submenu-title">Listado de usuarios</h1>
 		    <ul class="items">
       <li *ngFor="#user of users"
         [class.selected]="isSelected(user)"
@@ -22,4 +47,4 @@
     </ul>
 		</div>
 	</div>
-</div>
+</div> -->

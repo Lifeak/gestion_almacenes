@@ -4,14 +4,22 @@
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  
-              </div>
-            <!--logo start-->
-            <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <ul class="nav top-menu">
+         <!--  <div class="sidebar-toggle-box pull-right visible-xs hidden-sm hidden-md hidden-lg">
+              <div class="fa fa-bars tooltips" data-placement="bottom" data-original-title="Menú principal" ></div>
+          </div> -->
+          <!-- Para Móvil -->
+
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".MobileMenu" style="background: white;">
+                <span class="sr-only">Menú</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+          <!--logo start-->
+          <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
+          <!--logo end-->
+          <div class="nav notify-row" id="top_menu">
+              <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
@@ -35,24 +43,24 @@
                     </li>
                     <!-- settings end -->
                     
-                </ul>
-                <!--  notification end -->
-            </div>
-            <div class="top-menu">
+              </ul>
+              <!--  notification end -->
+          </div>
+          <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                     <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
               </ul>
-            </div>
-        </header>
+          </div>
+      </header>
       <!--header end-->
       <!--FIN MENU SUPERIOR-->
 
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
+      <!--sidebar dispositivos GRANDES start-->
       <aside>
-          <div id="sidebar"  class="nav-collapse ">
+          <div id="sidebar"  class="hidden-xs visible-sm visible-md visible-lg visible-xl">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
@@ -77,7 +85,7 @@
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-tasks"></i>
+                          <i class="fa fa-exclamation-triangle"></i>
                           <span>Salidas por avería</span>
                       </a>
                   </li>
@@ -87,6 +95,183 @@
                           <span>Garantías</span>
                       </a>
                   </li>
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+      <!--sidebar dispositivos PEQUEÑOS start-->
+      <aside>
+          <div id="sidebar"  class="MobileMenu nav-collapse visible-xs hidden-sm hidden-md hidden-lg hidden-xl">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              <!-- Almacén -->
+                  <li>
+                    <a href="#">ALMACÉN</a>
+                    <ul>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span>Almacén Valiryo</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="javascript:;" >
+                          <i class="fa fa-barcode"></i>
+                          <span>Producto</span>
+                        </a>
+                        <ul class="sub">
+                          <li><a href="#">Producto final</a></li>
+                          <li><a href="#">Piezas</a></li>
+                          <li><a href="#">Modelos</a></li>
+                        </ul>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Control de calidad</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="javascript:;" >
+                          <i class="fa fa-truck"></i>
+                          <span>Almacenes externos</span>
+                        </a>
+                        <ul class="sub">
+                          <li><a href="#">Plasnor</a></li>
+                          <li><a href="#">Lantegi</a></li>
+                        </ul>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-wrench"></i>
+                            <span>Reparaciones</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+              <!-- Fin almacén -->
+              <!-- Almacén -->
+                  <li>
+                    <a href="#">COMPRAS</a>
+                    <ul>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-user"></i>
+                            <span>Proveedores</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="javascript:;" >
+                          <i class="fa fa-barcode"></i>
+                          <span>Productos</span>
+                        </a>
+                        <ul class="sub">
+                          <li><a href="#">Producto final</a></li>
+                          <li><a href="#">Piezas</a></li>
+                          <li><a href="#">Modelos</a></li>
+                        </ul>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Pedido de compra</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cubes"></i>
+                            <span>Lotes</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+              <!-- Fín Compras -->
+              <!-- Ventas -->
+                  <li>
+                    <a href="#">VENTAS</a>
+                    <ul>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-user"></i>
+                            <span>Clientes</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Pedidos</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-refresh"></i>
+                            <span>Devoluciones</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <span>Salidas por avería</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cubes"></i>
+                            <span>Lotes</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+              <!-- Fín ventas -->
+              <!-- Admin -->
+                  <li>
+                    <a href="#">ADMIN</a>
+                    <ul>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-user"></i>
+                            <span>Control de usuarios</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-cubes"></i>
+                            <span>Gestión de almacenes</span>
+                        </a>
+                      </li>
+                    <!--  -->
+                      <li class="sub-menu">
+                        <a href="#">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <span>Tipos de garantías</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+              <!-- Fín Admin -->
+              <!-- Logout -->
+                  <li>
+                    <a href="#">LOGOUT</a>
+                  </li>
+              <!-- Fín Logout -->
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -106,7 +291,7 @@
                   <div class="col-lg-12 main-chart">
                   
                     <div class="row mtbox">
-                      <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 box0">
                         <a href="/gclientes" (click)="clientes();" >
                           <div class="box1">
                             <i class="fa fa-user fa-3x"></i> 
@@ -115,7 +300,7 @@
                         </a>
                         <!-- <p>933 People liked your page the last 24hs. Whoohoo!</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                         <a href="javascript:;" >
                           <div class="box1">
                             <i class="fa fa-shopping-cart fa-3x"></i> 
@@ -124,7 +309,7 @@
                         </a>
                         <!-- <p>48 New files were added in your cloud storage.</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                         <a href="javascript:;" >
                           <div class="box1">
                             <i class="fa fa-refresh fa-3x"></i> 
@@ -133,16 +318,16 @@
                         </a>
                         <!-- <p>You have 23 unread messages in your inbox.</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-md-offset-1 col-lg-offset-0 box0">
                         <a href="javascript:;" >
                           <div class="box1">
-                            <i class="fa fa-cubes fa-3x"></i> 
+                            <i class="fa fa-exclamation-triangle fa-3x"></i> 
                             <h3>Salidas por avería</h3>
                           </div>
                         </a>
                         <!-- <p>More than 10 news were added in your reader.</p> -->
                       </div>
-                      <div class="col-md-2 col-sm-2 box0">
+                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                         <a href="javascript:;" >
                           <div class="box1">
                             <i class="fa fa-pencil-square-o fa-3x"></i> 
@@ -172,12 +357,3 @@
       <!--main content end-->      
 
 </section>
-
-
-
-
-
-
-
-
-

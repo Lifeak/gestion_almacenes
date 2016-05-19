@@ -1,18 +1,8 @@
-<div class="nav-enlaces">
-	<div class="row">
-		<div class="col-md-2 col-sm-2 col-md-offset-5">
-			<div class="box">
-			    <i class="fa fa-user fa-2x"></i> 
-			</div>
-			<a [routerLink]="['/CreateProveedor']">Nuevo proveedor</a>
-		</div>
-	</div>
-</div>
 
-<div class="cliente-container">
+<!-- <div class="proveedores-container">
 	<div class="row">
     	<div class="col-md-8 col-md-offset-2">
-      		<h1 class="cliente-title">Listado de proveedores</h1>
+      		<h1 class="submenu-title">Listado de proveedores</h1>
 		    <ul class="items">
 		      <li *ngFor="#p of proveedors"
 		        [class.selected]="isSelected(p)"
@@ -20,6 +10,42 @@
 		        <span class="badge">{{p.nombre}}</span> {{p.direccion}}
 		      </li>
 		    </ul>
+		</div>
+	</div>
+</div> -->
+
+<div class="proveedores-container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="submenu-title">Proveedores</h1>
+			<a [routerLink]="['/CreateProveedor']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo proveedor</a>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+    	<div class="col-md-12">
+    		<table class="table table-hover table-responsive">
+	    		<thead>
+	    			<tr>
+	    				<th>Nombre</th>
+	    				<th>Dirección</th>
+	    				<th>Teléfono</th>
+	    				<th>Pieza</th>
+	    				<th>Referencia externa</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr *ngFor="#p of proveedors"
+			        [class.selected]="isSelected(p)"
+			        (click)="onSelect(p)">
+	    				<td>{{p.nombre}}</td>
+	    				<td>{{p.direccion}} ({{p.ciudad}}) - {{p.pais}}</td>
+	    				<td>{{p.telefono}}</td>
+	    				<td>{{p.pieza}}</td>
+	    				<td>{{p.refexterna}}</td>
+	    			</tr>
+    			</tbody>
+    		</table>
 		</div>
 	</div>
 </div>

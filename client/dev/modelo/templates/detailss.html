@@ -1,4 +1,4 @@
-<div class="cliente-container">
+<div class="submenu-container">
   <h1>DETAILSSSSS</h1>
     <div *ngIf="modelo">
       <div *ngFor="#item of modelo; #i=index;">
@@ -6,7 +6,7 @@
     <label>Nombre: </label>
         <select name="nombre"
             [(ngModel)]="item.nombre"
-           [class.cliente-error]="!modeloForm.valid"
+           [class.formulario-error]="!modeloForm.valid"
            placeholder="Nombre de modelo">
            <option *ngFor="#model of modelos" >{{model.nombre}}</option>
          </select><br/>
@@ -17,7 +17,7 @@
         <label>Es un modelo de: </label>
          <select name="modeloDe"
             [(ngModel)]="item.modeloDe"
-            [class.cliente-error]="!modeloForm.valid"
+            [class.formulario-error]="!modeloForm.valid"
              placeholder="Es">
              <option value="Pieza">Pieza</option>
              <option value="Producto">Producto</option>

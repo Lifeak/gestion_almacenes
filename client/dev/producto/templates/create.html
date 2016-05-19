@@ -1,7 +1,12 @@
-<div class="cliente-container">
+<div class="producto-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Productos > Nuevo producto</h1>
+    </div>
+  </div>
+  <br><br>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="producto-title">Nuevo producto</h1>
       <form class="producto-form"
             [ngFormModel]="productoForm"
             (submit)="save(productoForm)">
@@ -10,21 +15,21 @@
           <label for="idproducto">Identificador de producto:</label>
           <input type="text" class="form-control" id="idproducto" 
               ngControl="_id"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!productoForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="nombre">Nombre:</label>
           <input type="text" class="form-control" id="nombre" 
               ngControl="nombre"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!productoForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="modelo">Modelo de producto:</label>
           <select name="modelo" id="modelo" class="form-control"
                ngControl ="modelo"
-               [class.cliente-error]="!productoForm.valid">
+               [class.formulario-error]="!productoForm.valid">
                <option *ngFor="#model of modelos" >{{model.nombre}}</option>
           </select>
         </div>
@@ -33,7 +38,7 @@
           <select name="estado" id="estado" class="form-control"
                ngControl="estado"
                placeholder="Selecciona el estado.."
-               [class.cliente-error]="!productoForm.valid">
+               [class.formulario-error]="!productoForm.valid">
                <option value="Nuevo">Nuevo</option>
                <option value="Usado">Usado</option>
                <option value="Rota">Roto</option>
@@ -44,14 +49,14 @@
           <label for="caracteristicas">Caracteristicas:</label>
           <input type="text" class="form-control" id="caracteristicas" 
               ngControl="caracteristicas"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!productoForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="almacen">Almacén de ubicación:</label>
           <input type="text" class="form-control" id="almacen" 
               ngControl="almacen"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!productoForm.valid"
               autofocus />
         </div>
         <div class="form-group">
@@ -59,7 +64,7 @@
           <select name="vendido" id="vendido" class="form-control"
                ngControl="vendido"
                placeholder="¿Está vendido?"
-               [class.cliente-error]="!productoForm.valid">
+               [class.formulario-error]="!productoForm.valid">
                <option value="false">No</option>   
                <option value="true">Si</option>
               </select>
@@ -69,14 +74,14 @@
           <label for="carcasa">Número de serie de la carcasa:</label>
           <input type="text" class="form-control" id="carcasa" 
               ngControl="carcasa"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!productoForm.valid"
               autofocus />
         </div>
         <div class="form-group">
           <label for="columna">Número de serie de la columna:</label>
           <input type="text" class="form-control" id="columna" 
               ngControl="columna"
-              [class.cliente-error]="!proveedorForm.valid"
+              [class.formulario-error]="!productoForm.valid"
               autofocus />
         </div>
         <div class="form-group">
@@ -84,16 +89,16 @@
           <div class="input-group">
             <input type="text" class="form-control" id="precio" 
                 ngControl="precio"
-                [class.cliente-error]="!proveedorForm.valid"
+                [class.formulario-error]="!productoForm.valid"
                 autofocus />
                 <span class="input-group-addon">€</span>
           </div>
         </div>
 
         <button type="submit"
-                [disabled]="!productoForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"> Guardar producto</i></button>
+                [disabled]="!productoForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar producto</button>
       </form>
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right"><i class="fa fa-angle-left" aria-hidden="true"> Back</i></button>
+      <button (click)="gotoIndex()" class="btn btn-formulario pull-right"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</button>
     </div>
   </div>
 </div>

@@ -1,18 +1,40 @@
-<div class="nav-enlaces">
+<div class="producto-container">
 	<div class="row">
-		<div class="col-md-2 col-sm-2 col-md-offset-5">
-			<div class="box">
-			    <i class="fa fa-barcode fa-2x"></i> 
-			</div>
-			<a [routerLink]="['/CreateProducto']">Nuevo producto</a>
+		<div class="col-md-12">
+			<h1 class="submenu-title">Productos</h1>
+			<a [routerLink]="['/CreateProducto']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo producto</a>
 		</div>
 	</div>
-</div>
-
-<div class="cliente-container">
+	<br><br>
 	<div class="row">
-    	<div class="col-md-8 col-md-offset-2">
-      		<h1 class="cliente-title">Listado de productos</h1>
+		<div class="col-md-12">
+    		<table class="table table-hover table-responsive">
+	    		<thead>
+	    			<tr>
+	    				<th>Identificador</th>
+	    				<th>Nombre</th>
+	    				<th>Modelo</th>
+	    				<th>Estado</th>
+	    				<th>Ubicación</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr *ngFor="#producto of productos"
+		        [class.selected]="isSelected(producto)"
+		        (click)="onSelect(producto)">
+	    				<td>{{producto._id}}</td>
+	    				<td>{{producto.nombre}}</td>
+	    				<td>{{producto.modelo}}</td>
+	    				<td>{{producto.estado}}</td>
+	    				<td>{{producto.almacen}}</td>
+	    			</tr>
+    			</tbody>
+    		</table>
+		</div>
+
+
+    	<!-- <div class="col-md-8 col-md-offset-2">
+      		<h1 class="submenu-title">Listado de productos</h1>
 		    <ul class="items">
 		      <li *ngFor="#producto of productos"
 		        [class.selected]="isSelected(producto)"
@@ -20,6 +42,6 @@
 		        <span class="badge">{{producto._id}}</span>{{producto.modelo}}
 		      </li>
 		    </ul>
-		</div>
+		</div> -->
 	</div>
 </div>

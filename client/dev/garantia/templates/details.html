@@ -1,9 +1,12 @@
-<div class="cliente-container">
+<div class="submenu-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="submenu-title">Tipos de garantía > Detalles de garantía</h1>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h1 class="cliente-title">Detalles de garantía</h1>
-      <div *ngIf="garantia">
-      
+      <div *ngIf="garantia">  
       <div class="form-group">
           <label for="_id">Tipo o zona de influencia:</label>
           <input [(ngModel)]="garantia._id" 
@@ -20,8 +23,8 @@
       </div>
     </div>
     <p>
-       <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
-        <button (click)="edit(garantia)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"> Guardar garantía</i></button>
-        <button (click)="delete(garantia)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"> Eliminar garantía</i></button>
+       <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+        <button (click)="edit(garantia)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar garantía</button>
+        <button (click)="delete(garantia)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar garantía</button>
     </p>
 </div>

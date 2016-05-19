@@ -5,7 +5,7 @@
       <!--header start-->
       <header class="header black-bg">
             <div class="sidebar-toggle-box">
-               
+               <div class="fa fa-bars tooltips pull-right" data-placement="right" data-original-title="Toggle Navigation"><a href="#MobileMenu"></a></div>
             </div>
             <!--logo start-->
             <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
@@ -46,8 +46,8 @@
       </header>
 
             <!-- Prueba dropdown menu -->
-            <!-- <div id="MobileMenu">
-              <div class="list-group panel">
+            <div id="MobileMenu">
+              <div class="list-group">
                 <a href="#almacen" (click)="almacen()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ALMACÉN</a>
                 <div class="collapse" id="almacen">
                   <a href="#almValiryo" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almValiryo"><i class="fa fa-home"></i> Almacén Valiryo <i class="fa fa-caret-down"></i></a>
@@ -103,7 +103,7 @@
                  <a (click)="logout()"  class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu"><i class="fa fa-sign-out"></i> Logout</a>
                 
               </div>
-            </div> -->
+            </div>
 
 
 
@@ -186,7 +186,7 @@
                   <div class="col-lg-12 main-chart">
                   
                     <div class="row mtbox">
-                        <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 box0">
                           <a href="javascript:;" (click)="d1=true;d2=false;d3=false">
                             <div class="box1">
                               <i class="fa fa-home fa-3x"></i> 
@@ -194,13 +194,13 @@
                             </div>
                           </a>
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                           <div class="box1">
                             <i class="fa fa-barcode fa-3x"></i>
                             <h3>Producto<br/></h3>
                           </div>
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                           <a href="javascript:;" (click)="d1=false;d2=false;d3=false;">
                             <div class="box1">
                               <i class="fa fa-cogs fa-3x"></i>
@@ -208,7 +208,7 @@
                             </div>
                           </a>
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-md-offset-1 col-lg-offset-0 box0">
                           <a href="javascript:;" (click)="d3=true;d1=false;d2=false;">
                             <div class="box1">
                               <i class="fa fa-truck fa-3x"></i>
@@ -216,7 +216,7 @@
                             </div>
                           </a>
                         </div>
-                        <div class="col-md-2 col-sm-2 box0">
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
                           <a href="javascript:;" (click)="d1=false;d2=false;d3=false;">
                             <div class="box1">
                               <i class="fa fa-wrench fa-3x"></i>

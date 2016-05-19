@@ -1,70 +1,75 @@
-<div class="cliente-container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h1 class="cliente-title">Nuevo usuario</h1>
-      <form class="user-form"
+<div class="usuario-container">
+    <div class="row">
+        <div class="col-md-12">
+          <h1 class="submenu-title">Control de usuarios > Nuevo usuario</h1>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <form class="user-form"
             [ngFormModel]="userForm"
             (submit)="save(todoForm)">
-        <div class="form-group">
-            <label for="user">Usuario:</label>
-            <input type="text" 
-                class="form-control" 
-                id="user" 
-                ngControl="user"
-                [class.cliente-error]="!proveedorForm.valid"
-                autofocus />
+                <div class="form-group">
+                    <label for="user">Usuario:</label>
+                    <input type="text" 
+                        class="form-control" 
+                        id="user" 
+                        ngControl="user"
+                        [class.formulario-error]="!userForm.valid"
+                        autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="pass">Contraseña:</label>
+                    <input type="password" 
+                        class="form-control" 
+                        id="pass" 
+                        ngControl="pass"
+                        [class.formulario-error]="!userForm.valid"
+                        autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="passs">Confirma la contraseña:</label>
+                    <input type="password" 
+                        class="form-control" 
+                        id="passs" 
+                        ngControl="passs"
+                        [class.formulario-error]="!userForm.valid"
+                        autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" 
+                        class="form-control" 
+                        id="nombre" 
+                        ngControl="nombre"
+                        [class.formulario-error]="!userForm.valid"
+                        autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" 
+                        class="form-control" 
+                        id="apellido" 
+                        ngControl="apellido"
+                        [class.formulario-error]="!userForm.valid"
+                        autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de usuario:</label>
+                    <select name="tipo"
+                       ngControl="tipo"
+                       class="form-control" 
+                       id="tipo"
+                       [class.formulario-error]="!userForm.valid">
+                       <option value="admin" selected>Admin</option>
+                       <option value="encargado">Encargado</option>
+                      </select>
+                </div>
+                <button type="submit" class="btn btn-formulario"
+                [disabled]="!userForm.valid"><i class="fa fa-check" aria-hidden="true"></i> Guardar usuario</button>
+            </form>
+            <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
         </div>
-        <div class="form-group">
-            <label for="pass">Contraseña:</label>
-            <input type="password" 
-                class="form-control" 
-                id="pass" 
-                ngControl="pass"
-                [class.cliente-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-            <label for="passs">Confirma la contraseña:</label>
-            <input type="password" 
-                class="form-control" 
-                id="passs" 
-                ngControl="passs"
-                [class.cliente-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" 
-                class="form-control" 
-                id="nombre" 
-                ngControl="nombre"
-                [class.cliente-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" 
-                class="form-control" 
-                id="apellido" 
-                ngControl="apellido"
-                [class.cliente-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-            <label for="tipo">Tipo de usuario:</label>
-            <select name="tipo"
-               ngControl="tipo"
-               class="form-control" 
-               id="id"
-               [class.cliente-error]="!userForm.valid">
-               <option value="admin" selected>Admin</option>
-               <option value="encargado">Encargado</option>
-              </select>
-        </div>
-        <button type="submit" class="btn btn-formulario"
-                [disabled]="!userForm.valid"><i class="fa fa-check" aria-hidden="true"> Guardar usuario</i></button>
-      </form>
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"> Volver</i></button>
     </div>
-  </div>
 </div>

@@ -286,7 +286,8 @@ ul.sidebar-menu , ul.sidebar-menu li ul.sub{
 }
 
 ul.sidebar-menu {
-    margin-top: 95px;
+    margin-top: 75px;
+    /*margin-top: 20px;*/
 }
 
 #sidebar > ul > li > ul.sub {
@@ -844,13 +845,13 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 /* LINE ICONS CONFIGURATION */
 
 .mtbox {
-	margin-top: 80px;
+	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
 .box1 {
     height: 12em;
-	padding: 15px;
+	padding-top: 15px;
 	text-align: center;
 	color: #989898;
 	border-bottom: 1px solid #989898;
@@ -2256,8 +2257,17 @@ label {
 }
 
 /***************GENERAL****************/
-h1 {font-family: "Roboto", Segoe UI, sans-serif; margin-bottom: 1.5em;}
+h1 {
+    font-family: "Roboto", Segoe UI, sans-serif; 
+    font-size: 1.5em;    
+    margin-bottom: 1em; 
+    color: #464646;
+    text-align: left;
+}
 
+a:hover {
+    cursor: pointer !important;
+}
 
 /*********** LOGIN PAGE **************/
 /*div#login-page{
@@ -2276,96 +2286,76 @@ h1 {font-family: "Roboto", Segoe UI, sans-serif; margin-bottom: 1.5em;}
     margin:10%;
 
 }
-/*********** MENÚ SUPERIOR *****************/
-.logo img{width:11%;}
+/*********** HEADER & MENÚ SUPERIOR *****************/
+/*.logo img{width:11%;}*/
 .btn-logout {
     background-color: #464646; 
     color: #b6b6b6; 
-    font-size: 16px    
-} /*color: #c9aa5f;*/
+    font-size: 16px;
+    margin-top:15px;    
+} 
+
 .btn-logout:hover {
     color: white;
 }
 
-/*********** COLOR LINK ACTIVO *****************/
 .link-activo { color: #c9aa5f!important;}
 
-/*********** CONTROLES FORMULARIO (COMPRAS > PROVEEDORES)*****************/
-label {
-    font-size: 16px;
-    font-family: 'Ruda', sans-serif;
-    font-weight: bold;
-}
-input {
-    border: 1px solid #989898; 
-    margin-bottom: 1.5em;
-    width: 100%;
-}
 
-/*.cliente-container {
-    border-bottom-color: white !important;
+/****** Header & Menú ******/
+header{
+    padding: 0 !important;
+}
+.navbar-inverse {
+    background: #333 !important;
+    border-bottom: 1px solid #c9aa5f;
+}
+.navbar {
+    margin-bottom: 0 !important;
+}
+nav img {
+    max-width: 210px;
+    width: 60%;
+    height: auto;
+}
+/*nav .logo {
+    text-align: center;
 }*/
 
-.btn-formulario {
-    margin-top: 2em;
-    margin-bottom: 3em;
-    background-color:  #464646;
-    color: white; 
+nav ul {
+    height: 70px;
+    padding-top: 12px;
+}
+nav li {
+    height: 30px !important;
     font-size: 16px;
-    font-family:  "Roboto" !important, Segoe UI, sans-serif;
+    padding: 0 30px;
+    border-right: 1px solid;
+    /*margin-top: 12px;*/
+    /*line-height:16px;
+    display: inline-block;*/
 }
-.btn-formulario:hover { color: #c9aa5f; }
-.btn-formulario i {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-.margen-izda {
-    margin-left: 1em;
-}
-/*.btn-atras {
-    margin-top: 1em;
-    margin-bottom: 3em;
-    margin-left: 1em !important;
-    background-color:  #464646;
-    color: white; 
-    font-size: 16px;
-    font-family: "Roboto" !important, Segoe UI, sans-serif;
-}*/
 
-.box {
-    padding: 15px;
-    text-align: center;
-    color: #989898;
-    border-bottom: 1px solid #989898;
+nav li a {
+    color: white !important;
 }
-.nav-enlaces, .nav-enlaces a{
-    font-family: "Rudo" !important, Segoe UI, sans-serif;
-    font-size: 16px;
-    text-align: center;
-    color:#989898;
+nav li:hover a{
+    color: #b6b6b6!important;
 }
-.nav-enlaces a:hover { color:#333; }
-.cliente-container ul {
-    font-family: "Rudo" !important, Segoe UI, sans-serif;
-    padding-left: 0px !important;
+.navbar .collapse-navbar {
+    display: block;
 }
-.badge  {
-    font-family: "Rudo" !important, Segoe UI, sans-serif;
-    font-size: 16px;
-    color:#989898;
-    line-height: 1.7;
-    font-weight: normal;
-    text-align: left;
-    background: none;
+.navbar-toggle {
+    margin-top: 15px !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important; 
 }
-.badge:hover {
-    color: #333;
-}
+
+
 
 /*Estilos nav MobileMenu*/
 #MobileMenu {
     position: relative;
-    top: 70px;
     z-index: 1;
     background: #464646!important;
 
@@ -2379,6 +2369,16 @@ input {
     text-align: left;
     text-decoration: none;
 }
+#MobileMenu a:hover{
+    color: white;
+    background: #68dff0!important;
+    transition: all 0.3s ease;
+    -webkit-webkit-transition: all 0.3s ease;
+    -moz-webkit-transition: all 0.3s ease;
+    -ms-webkit-transition: all 0.3s ease;
+    -o-webkit-transition: all 0.3s ease;
+    webkit-transition: all 0.3s ease;
+}
 #MobileMenu .margen-izq{
     padding-left: 3em;
 }
@@ -2389,3 +2389,163 @@ input {
     border: none;
     background-color: #464646;
 }
+#MobileMenu .list-group-item:hover {
+    background-color: #464646; 
+}
+
+::selection {
+    #background: #68dff0;
+    #color: white;
+}
+
+
+
+
+/*********** CONTROLES FORMULARIO (create.html & details.html)*****************/
+label {
+    font-size: 16px;
+    font-family: 'Ruda', sans-serif;
+    font-weight: bold;
+}
+
+input {
+    border: 1px solid #989898; 
+    margin-bottom: 1.5em;
+    width: 100%;
+}
+
+.btn-formulario {
+    margin-top: 2em;
+    margin-bottom: 3em;
+    background-color:  #464646;
+    color: white; 
+    font-size: 16px;
+    font-family:  "Roboto" !important, Segoe UI, sans-serif;
+}
+
+.btn-formulario:hover { color: #c9aa5f; }
+
+.btn-formulario i {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.margen-izda {
+    margin-left: 1em;
+}
+
+.btn-nuevo {
+    border: 1px solid #c9aa5f;
+    font-size: 1em;
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    /*font-size: 16px;*/
+    color:#333;
+    font-weight: bold;
+}
+.btn-nuevo:hover { color:#c9aa5f; }
+
+/**/
+
+.box {
+    padding: 15px;
+    text-align: center;
+    color: #989898;
+    border-bottom: 1px solid #989898;
+}
+/*.nav-enlaces, .nav-enlaces a{
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    font-size: 16px;
+    color:#989898;
+}
+.nav-enlaces a:hover { color:#333; }
+.cliente-container ul {
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    padding-left: 0px !important;
+}*/
+.badge  {
+    font-family: "Rudo" !important, Segoe UI, sans-serif;
+    font-size: 16px;
+    color:#989898;
+    line-height: 1.7;
+    font-weight: normal;
+    text-align: left;
+    background: none;
+}
+.badge:hover {
+    color: #333;
+}
+
+
+
+/**/
+
+/*.submenu-container {
+  position: relative;
+  max-width: 900px;
+  margin: 30px auto 0;
+  padding: 20px 10px 10px 10px;
+  box-shadow: 0 -1px 0 #e5e5e5,
+              0 0 2px rgba(0,0,0,.12),
+              0 2px 4px rgba(0,0,0,.24);
+}*/
+/*.submenu-container .cliente-form {
+  margin-top: 20px;
+}
+.submenu-container input:focus {
+  outline: 0;
+}*/
+.submenu-container button:focus,
+.submenu-container button:active {
+  outline: none;
+}
+.submenu-container .formulario-error {
+  border-bottom-color: #E22323;
+}
+
+.submenu-container .formulario-item {
+  padding: 3px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.submenu-container .cliente-item:hover {
+  background-color: #f1f2f3;
+}
+
+.submenu-container li{
+  color:steelblue;
+}
+
+.submenu-container li:hover{
+  color:steelblue;
+  text-decoration: underline;
+
+}
+
+
+
+/************ TABLAS (list.html) **************/
+table th {
+   /* background: #464646;*/
+    color: #333;
+    font-size: 16px;
+    font-family: 'Ruda', sans-serif;
+    font-weight: bold;
+}
+
+table td {
+    font-size: 16px;
+}
+
+/********* Menú dispositivos pequeños **********/
+#nav-movil {
+    background-color: #464646;
+}
+ #nav-movil li, #nav-movil a {
+    color: #aeb2b7;
+    font-size: 16px;
+ }
+ #nav-movil span {
+    margin-left: 5px;
+ }
+
