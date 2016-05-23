@@ -38,7 +38,6 @@ var ClienteListCmp = (function () {
     };
     ClienteListCmp = __decorate([
         core_1.Component({
-            selector: 'ListUsuarios',
             templateUrl: 'client/dev/cliente/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [cliente_service_1.ClienteService]

@@ -24,7 +24,6 @@ import {Cliente, ClienteService} from '../../services/cliente/cliente-service';
 import {LoginService} from '../../services/login-service';
 
 @Component({
-  selector: 'ListUsuarios',
   templateUrl: 'client/dev/cliente/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
   providers: [ClienteService]
