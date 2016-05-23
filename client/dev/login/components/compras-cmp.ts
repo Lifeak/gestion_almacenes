@@ -43,7 +43,6 @@ export class ComprasCmp {
   }
 
   logout(){
-    alert("logoutt");
     this._loginService.logout();
     this.router.navigate(['/Login']);
     this.logadmin = false;

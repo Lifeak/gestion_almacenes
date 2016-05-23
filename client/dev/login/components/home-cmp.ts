@@ -31,10 +31,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../services/islogg
 import {ComprasCmp} from './compras-cmp';
 
 @Component({
-  //selector: 'home-cmp',
-  //directives: [RouterOutlet],
   templateUrl: 'client/dev/login/templates/welcome.html',
-  styleUrls: ['client/dev/cliente/styles/cliente.css'],
   providers: [LoginService/*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
 })
 
@@ -51,7 +48,6 @@ export class HomeCmp {
   }
 
   logout(){
-    alert("logoutt");
     this._loginService.logout();
     this.router.navigate(['/Login']);
     this.logadmin = false;

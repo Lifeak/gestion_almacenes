@@ -22,28 +22,22 @@ var VentasCmp = (function () {
         this.title = "Ventas";
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
-        //alert("logadmin es  " + this.logadmin);
     }
     VentasCmp.prototype.logout = function () {
-        alert("logoutt");
         this._loginService.logout();
         this.router.navigate(['/Login']);
         this.logadmin = false;
     };
     VentasCmp.prototype.compras = function () {
-        //alert("compras");
         this.router.navigate(['/Compras']);
     };
     VentasCmp.prototype.ventas = function () {
-        //alert("ventas");
         this.router.navigate(['/Ventas']);
     };
     VentasCmp.prototype.almacen = function () {
-        // alert("almacen");
         this.router.navigate(['/Almacen']);
     };
     VentasCmp.prototype.admin = function () {
-        // alert("admin");
         this.router.navigate(['/Admin']);
     };
     VentasCmp = __decorate([

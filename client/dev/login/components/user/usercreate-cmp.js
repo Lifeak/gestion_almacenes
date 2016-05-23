@@ -64,6 +64,31 @@ var UserCreateCmp = (function () {
             alert("Error, pass no valid. Try again.");
         }
     };
+    UserCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    UserCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    UserCreateCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    UserCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    UserCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    UserCreateCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserCreateCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    UserCreateCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)

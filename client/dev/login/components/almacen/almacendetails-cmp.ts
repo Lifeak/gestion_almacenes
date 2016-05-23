@@ -31,7 +31,7 @@ export class AlmacenDetailsCmp implements OnInit {
   @Input() almacen: Almacen;
   almacenForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _almacenService: AlmacenService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _almacenService: AlmacenService, @Inject(LoginService) private _loginService: LoginService) {
     this.almacenForm = fb.group({
       "nombre": ["", Validators.required],
       "direcion": ["", Validators.required],
@@ -54,7 +54,7 @@ export class AlmacenDetailsCmp implements OnInit {
 
   gotoIndex(){
     let userId = this.almacen ? this.almacen._id : null;
-    this._router.navigate(['/ListAlmacenes']);
+    this.router.navigate(['/ListAlmacenes']);
   }
   private _getAll():void {
     this._almacenService
@@ -95,6 +95,39 @@ export class AlmacenDetailsCmp implements OnInit {
       });
     this.gotoIndex();
 
+  }
+
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  goalmacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  logout() {
+      this._loginService.logout();
+      this.router.navigate(['/Login']);
+  }
+
+  almacenes() {
+      this.router.navigate(['/ListAlmacenes']);
+  }
+
+  garantias() {
+      this.router.navigate(['/ListGarantias']);
+  }
+
+  usuarios() {
+    this.router.navigate(['/ListUsuarios']);
   }
 
 }

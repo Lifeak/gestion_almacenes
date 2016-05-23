@@ -24,7 +24,6 @@ var ComprasCmp = (function () {
         this.logadmin = isloggedin_1.isLoggedinAdmin();
     }
     ComprasCmp.prototype.logout = function () {
-        alert("logoutt");
         this._loginService.logout();
         this.router.navigate(['/Login']);
         this.logadmin = false;

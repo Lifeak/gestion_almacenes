@@ -18,8 +18,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var garantia_service_1 = require('../../services/garantia/garantia-service');
 var login_service_1 = require('../../services/login-service');
 var GarantiaDetailsCmp = (function () {
-    function GarantiaDetailsCmp(fb, _router, _routeParams, _garantiaService, _loginService) {
-        this._router = _router;
+    function GarantiaDetailsCmp(fb, router, _routeParams, _garantiaService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._garantiaService = _garantiaService;
         this._loginService = _loginService;
@@ -39,7 +39,7 @@ var GarantiaDetailsCmp = (function () {
     };
     GarantiaDetailsCmp.prototype.gotoIndex = function () {
         var userId = this.garantia ? this.garantia._id : null;
-        this._router.navigate(['/ListGarantias']);
+        this.router.navigate(['/ListGarantias']);
     };
     GarantiaDetailsCmp.prototype._getAll = function () {
         var _this = this;
@@ -74,6 +74,28 @@ var GarantiaDetailsCmp = (function () {
             return _this.garantia;
         });
         this.gotoIndex();
+    };
+    GarantiaDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    GarantiaDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    GarantiaDetailsCmp.prototype.goalmacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    GarantiaDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    GarantiaDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    GarantiaDetailsCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    GarantiaDetailsCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
     };
     __decorate([
         core_1.Input(), 

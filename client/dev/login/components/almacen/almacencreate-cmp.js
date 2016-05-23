@@ -14,12 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var almacen_service_1 = require('../../services/almacen/almacen-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var AlmacenCreateCmp = (function () {
-    function AlmacenCreateCmp(fb, _router, _routeParams, _almacenService) {
-        this._router = _router;
+    function AlmacenCreateCmp(fb, router, _routeParams, _loginService, _almacenService) {
+        this.router = router;
         this._routeParams = _routeParams;
+        this._loginService = _loginService;
         this._almacenService = _almacenService;
         this.almacenForm = fb.group({
             "nombre": ["", common_1.Validators.required],
@@ -32,10 +34,7 @@ var AlmacenCreateCmp = (function () {
     }
     AlmacenCreateCmp.prototype.gotoIndex = function () {
         var userId = this.almacen ? this.almacen._id : null;
-        this._router.navigate(['/ListAlmacen']);
-    };
-    AlmacenCreateCmp.prototype.goBack = function () {
-        window.history.back();
+        this.router.navigate(['/ListAlmacenes']);
     };
     AlmacenCreateCmp.prototype.save = function (datos) {
         var _this = this;
@@ -57,6 +56,31 @@ var AlmacenCreateCmp = (function () {
         });
         this.gotoIndex();
     };
+    AlmacenCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    AlmacenCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    AlmacenCreateCmp.prototype.goalmacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    AlmacenCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    AlmacenCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    AlmacenCreateCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    AlmacenCreateCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    AlmacenCreateCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', almacen_service_1.Almacen)
@@ -67,7 +91,7 @@ var AlmacenCreateCmp = (function () {
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, almacen_service_1.AlmacenService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, login_service_1.LoginService, almacen_service_1.AlmacenService])
     ], AlmacenCreateCmp);
     return AlmacenCreateCmp;
 }());

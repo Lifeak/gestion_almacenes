@@ -25,7 +25,6 @@ var HomeCmp = (function () {
         alert("logadmin es  " + this.logadmin);
     }
     HomeCmp.prototype.logout = function () {
-        alert("logoutt");
         this._loginService.logout();
         this.router.navigate(['/Login']);
         this.logadmin = false;
@@ -48,10 +47,7 @@ var HomeCmp = (function () {
     };
     HomeCmp = __decorate([
         core_1.Component({
-            //selector: 'home-cmp',
-            //directives: [RouterOutlet],
             templateUrl: 'client/dev/login/templates/welcome.html',
-            styleUrls: ['client/dev/cliente/styles/cliente.css'],
             providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS, provide(AuthHttp, { useFactory: (http) => { return new AuthHttp(new AuthConfig(), http); }, deps: [Http] })*/]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),

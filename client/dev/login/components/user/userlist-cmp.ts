@@ -84,4 +84,17 @@ export class UserListCmp implements OnInit {
       this._loginService.logout();
       this.router.navigate(['/Login']);
   }
+
+  almacenes(){
+      this.router.navigate(['/ListAlmacenes']);
+  }
+
+  garantias(){
+      this.router.navigate(['/ListGarantias']);
+  }
+
+  usuarios(){
+    this.router.navigate(['/ListUsuarios']);
+  }
+  
 }

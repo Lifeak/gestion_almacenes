@@ -36,7 +36,7 @@ export class AlmacenListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _almacenService: AlmacenService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _almacenService: AlmacenService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -56,6 +56,40 @@ export class AlmacenListCmp implements OnInit {
     return almacen._id === this._selectedId;
   }
   onSelect(almacen:Almacen){
-    this._router.navigate(['DetailsAlmacen',{id: almacen._id}]);
+    this.router.navigate(['DetailsAlmacen',{id: almacen._id}]);
+  }
+
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  goalmacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+
+  logout() {
+      this._loginService.logout();
+      this.router.navigate(['/Login']);
+  }
+
+  almacenes() {
+      this.router.navigate(['/ListAlmacenes']);
+  }
+
+  garantias() {
+      this.router.navigate(['/ListGarantias']);
+  }
+
+  usuarios() {
+    this.router.navigate(['/ListUsuarios']);
   }
 }

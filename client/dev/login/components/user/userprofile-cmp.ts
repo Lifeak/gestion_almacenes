@@ -75,4 +75,31 @@ export class UserProfileCmp implements OnInit {
       });
   }
 
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  logout() {
+      this._loginService.logout();
+      this.router.navigate(['/Login']);
+  }
+
+  almacenes() {
+      this.router.navigate(['/ListAlmacenes']);
+  }
+
+  garantias() {
+      this.router.navigate(['/ListGarantias']);
+  }
 }

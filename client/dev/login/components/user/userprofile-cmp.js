@@ -59,6 +59,28 @@ var UserProfileCmp = (function () {
             return _this.user;
         });
     };
+    UserProfileCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    UserProfileCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    UserProfileCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    UserProfileCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    UserProfileCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    UserProfileCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserProfileCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)

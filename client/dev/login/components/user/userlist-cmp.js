@@ -60,6 +60,15 @@ var UserListCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
+    UserListCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserListCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    UserListCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
     UserListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/user/templates/list.html',

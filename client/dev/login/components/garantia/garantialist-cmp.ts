@@ -36,7 +36,7 @@ export class GarantiaListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _garantiaService: GarantiaService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _garantiaService: GarantiaService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -56,6 +56,35 @@ export class GarantiaListCmp implements OnInit {
     return garantia._id === this._selectedId;
   }
   onSelect(garantia: Garantia) {
-    this._router.navigate(['DetailsGarantia', { id: garantia._id }]);
+    this.router.navigate(['DetailsGarantia', { id: garantia._id }]);
+  }
+
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  logout() {
+      this._loginService.logout();
+      this.router.navigate(['/Login']);
+  }
+
+  almacenes() {
+      this.router.navigate(['/ListAlmacenes']);
+  }
+
+  usuarios() {
+    this.router.navigate(['/ListUsuarios']);
   }
 }

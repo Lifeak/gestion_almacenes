@@ -1,44 +1,289 @@
-<div class="garantia-container">
-	<div class="row">
-		<div class="col-md-12">
-			<h1 class="submenu-title">Tipos de garantías</h1>
-			<a [routerLink]="['/CreateGarantia']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo tipo de garantía</a>
-		</div>
-	</div>
-	<br><br>
-	<div class="row">
-    	<div class="col-md-12">
-    		<table class="table table-hover table-responsive">
-	    		<thead>
-	    			<tr>
-	    				<th>Nombre del País o tipo de garantía</th>
-	    				<th>Meses</th>
-	    			</tr>
-	    		</thead>
-	    		<tbody>
-	    			<tr *ngFor="#g of garantias"
-			        [class.selected]="isSelected(g)"
-			        (click)="onSelect(g)">
-	    				<td>{{g._id}}</td>
-	    				<td>{{g.tiempo}}</td>
-	    			</tr>
-    			</tbody>
-    		</table>
-		</div>
-	</div>
-</div>
+<section id="container">
+     <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      
+        <header>
+        
+        <!--MENÚ DE NAVEGACIÓN-->
+        <nav class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+          <div class="container-fluid">
+            <!-- Para Móvil -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".MobileMenu">
+                <span class="sr-only">Menú</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- <a class="navbar-brand" href="#">VALIRYO</a> -->
+              <a href="#" class="pull-left logo"><img src="/client/dev/login/templates/img/logo2.png"></a>
+            </div>
+            <!-- Dispositivos grandes -->
+            <div class="collapse navbar-collapse"> <!-- navbar1 -->
+              <ul class="nav navbar-nav">
+                <li><a (click)="goalmacen()">Almacén</a></li>
+                <li><a (click)="compras()">Compras</a></li>
+                <li><a (click)="ventas()">Ventas</a></li>
+                <li><a (click)="admin()"  class="link-activo">Admin</a></li>
+              </ul>
+              <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
+            </div> 
+          </div>
+        </nav>
 
-<!-- <div class="submenu-container">
-	<div class="row">
-    	<div class="col-md-8 col-md-offset-2">
-      		<h1 class="submenu-title">Listado de garantías</h1>
-		    <ul class="items">
-			      <li *ngFor="#g of garantias"
-			        [class.selected]="isSelected(g)"
-			        (click)="onSelect(g)">
-			        {{g._id}}
-			      </li>
-    		</ul>
-		</div>
-	</div>
-</div> -->
+        </header>
+
+        <!-- MENÚ dispositivos pequeños -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg hidden-xl">
+             <div class="collapse navbar-collapse MobileMenu" id="nav-movil">
+                <ul class="nav navbar-nav">
+                    <!-- ALMACÉN -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ALMACÉN <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <!-- Almacén Valiryo -->
+                            <li class="dropdown">
+                              <a href="#">
+                                <i class="fa fa-home"></i>
+                                <span>Almacén Valiryo</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="#">Stock Producto</a></li>
+                                <li><a href="#">Stock Piezas</a></li>
+                                <li><a href="#">Piezas rotas</a></li>
+                              </ul>    
+                            </li>
+                            <!-- Producto -->
+                            <li class="dropdown">
+                              <a href="#">
+                                <i class="fa fa-barcode"></i>
+                                <span>Producto</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="#">Producto final</a></li>
+                                <li><a href="#">Piezas</a></li>
+                                <li><a href="#">Modelos</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Control de calidad -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-cogs"></i>
+                                <span>Control de calidad</span>
+                              </a>
+                            </li>
+                            <!-- Almacenes externos -->
+                            <li class="dropdown-submenu">
+                              <a href="#">
+                                <i class="fa fa-truck"></i>
+                                <span>Almacenes externos</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="#">PLASNOR</a></li>
+                                <li><a href="#">LANTEGI</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Reparaciones -->
+                            <li>
+                              <a href="#/almacen">
+                                <i class="fa fa-wrench"></i>
+                                <span>Reparaciones</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- COMPRAS -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">COMPRAS <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Proveedores -->
+                            <li>
+                              <a href="/gproveedores" >
+                                <i class="fa fa-user"></i>
+                                <span>Proveedores</span>
+                              </a>
+                            </li>
+                            <!-- Productos -->
+                            <li class="dropdown">
+                              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <i class="fa fa-barcode"></i>
+                                <span>Productos</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="/gproductos">Producto final</a></li>
+                                <li><a href="/gpiezas">Piezas</a></li>
+                                <li><a href="/gmodelos">Modelos</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Pedido de compra-->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Pedido de compra</span>
+                              </a>
+                            </li>
+                            <!-- Lotes -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-cubes"></i>
+                                <span>Lotes</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- VENTAS -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">VENTAS <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Clientes -->
+                            <li>
+                              <a href="/gclientes">
+                                <i class="fa fa-user"></i>
+                                <span>Clientes</span>
+                              </a>
+                            </li>
+                            <!-- Pedidos -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Pedidos</span>
+                              </a>
+                            </li>
+                            <!-- Devoluciones -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-refresh"></i>
+                                <span>Devoluciones</span>
+                              </a>
+                            </li>
+                            <!-- Salidas por avería -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                <span>Salidas por avería</span>
+                              </a>
+                            </li>
+                            <!-- Garantía -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Garantías</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- ADMIN -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ADMIN <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Control de usuarios -->
+                            <li>
+                              <a (click)="usuarios();">
+                                <i class="fa fa-user"></i>
+                                <span>Control de usuarios</span>
+                              </a>
+                            </li>
+                            <!-- Gestión de almacenes -->
+                            <li>
+                              <a (click)="almacenes();" >
+                                <i class="fa fa-cubes"></i>
+                                <span>Gestión almacenes</span>
+                              </a>
+                            </li>
+                            <!-- Tipos de garantías -->
+                            <li>
+                              <a class="active">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Tipos de garantías</span>
+                              </a>
+                            </li> 
+                            
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> LOGOUT</button>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        
+      <!--header end-->
+       <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse visible-lg visible-md visible-sm hidden-xs">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                  <li class="sub-menu">
+                       <a (click)="usuarios();">
+                              <i class="fa fa-user"></i>
+                              <span>Control de usuarios</span>
+                        </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a (click)="almacenes();" >
+                                <i class="fa fa-cubes"></i>
+                                <span>Gestión almacenes</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a class="active">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Tipos de garantías</span>
+                              </a>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">  
+				<div class="garantia-container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="submenu-title">Tipos de garantías</h1>
+							<a [routerLink]="['/CreateGarantia']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo tipo de garantía</a>
+						</div>
+					</div>
+					<br><br>
+					<div class="row">
+				    	<div class="col-md-12">
+				    		<table class="table table-hover table-responsive">
+					    		<thead>
+					    			<tr>
+					    				<th>Nombre del País o tipo de garantía</th>
+					    				<th>Meses</th>
+					    			</tr>
+					    		</thead>
+					    		<tbody>
+					    			<tr *ngFor="#g of garantias"
+							        [class.selected]="isSelected(g)"
+							        (click)="onSelect(g)">
+					    				<td>{{g._id}}</td>
+					    				<td>{{g.tiempo}}</td>
+					    			</tr>
+				    			</tbody>
+				    		</table>
+						</div>
+					</div>
+				</div>
+          </section>
+      </section>
+
+      <!--main content end-->
+
+</section>

@@ -31,7 +31,7 @@ export class GarantiaDetailsCmp implements OnInit {
   @Input() garantia: Garantia;
   garantiaForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _garantiaService: GarantiaService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _garantiaService: GarantiaService, @Inject(LoginService) private _loginService: LoginService) {
     this.garantiaForm = fb.group({
       "_id": ["", Validators.required],
       "tiempo": ["", Validators.required]
@@ -50,7 +50,7 @@ export class GarantiaDetailsCmp implements OnInit {
 
   gotoIndex(){
     let userId = this.garantia ? this.garantia._id : null;
-    this._router.navigate(['/ListGarantias']);
+    this.router.navigate(['/ListGarantias']);
   }
   private _getAll():void {
     this._garantiaService
@@ -90,6 +90,35 @@ export class GarantiaDetailsCmp implements OnInit {
       });
     this.gotoIndex();
 
+  }
+
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  goalmacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  logout() {
+      this._loginService.logout();
+      this.router.navigate(['/Login']);
+  }
+
+  almacenes() {
+      this.router.navigate(['/ListAlmacenes']);
+  }
+
+  usuarios() {
+    this.router.navigate(['/ListUsuarios']);
   }
 
 }

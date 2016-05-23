@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var almacen_service_1 = require('../../services/almacen/almacen-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var AlmacenListCmp = (function () {
-    function AlmacenListCmp(_almacenService, _router, routeParams) {
+    function AlmacenListCmp(_almacenService, _loginService, router, routeParams) {
         this._almacenService = _almacenService;
-        this._router = _router;
+        this._loginService = _loginService;
+        this.router = router;
         this.almacens = [];
         this._selectedId = routeParams.get('id');
     }
@@ -34,7 +36,32 @@ var AlmacenListCmp = (function () {
         return almacen._id === this._selectedId;
     };
     AlmacenListCmp.prototype.onSelect = function (almacen) {
-        this._router.navigate(['DetailsAlmacen', { id: almacen._id }]);
+        this.router.navigate(['DetailsAlmacen', { id: almacen._id }]);
+    };
+    AlmacenListCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    AlmacenListCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    AlmacenListCmp.prototype.goalmacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    AlmacenListCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    AlmacenListCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    AlmacenListCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    AlmacenListCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    AlmacenListCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
     };
     AlmacenListCmp = __decorate([
         core_1.Component({
@@ -43,7 +70,7 @@ var AlmacenListCmp = (function () {
             providers: [almacen_service_1.AlmacenService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [almacen_service_1.AlmacenService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [almacen_service_1.AlmacenService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], AlmacenListCmp);
     return AlmacenListCmp;
 }());

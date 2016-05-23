@@ -81,6 +81,31 @@ var UserDetailsCmp = (function () {
         });
         this.gotoIndex();
     };
+    UserDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    UserDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    UserDetailsCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    UserDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    UserDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    UserDetailsCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserDetailsCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    UserDetailsCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)
