@@ -3,7 +3,8 @@
       TOP BAR CONTENT & NOTIFICATIONS
       *********************************************************************************************************************************************************** -->
       <!--header start-->
-      <header>
+      
+        <header>
         
         <!--MENÚ DE NAVEGACIÓN-->
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -27,61 +28,16 @@
                 <li><a (click)="ventas()">Ventas</a></li>
                 <li><a (click)="admin()">Admin</a></li>
               </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
-                </li>
-              </ul>
+              <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
             </div> 
           </div>
         </nav>
 
-
-
-
-
-             <!--  <div class="sidebar-toggle-box">
-                  
-              </div> -->
-            <!--logo start-->
-            <!-- <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a> -->
-            <!--logo end-->
-            <!-- <div class="nav notify-row" id="top_menu">
-                <ul class="nav top-menu"> -->
-                    <!-- settings start -->
-                    <!-- <li class="dropdown">
-                        <a  data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
-                        Almacén  
-                        </a>   
-                    </li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle link-activo" (click)="compras()">
-                           Compras
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
-                        Ventas
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="admin()">
-                        Admin
-                        </a>   
-                    </li> -->
-                    <!-- settings end -->  
-                <!-- </ul> -->
-                <!--  notification end -->
-            <!-- </div>
-            <div class="top-menu">
-              <ul class="nav pull-right top-menu">
-                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
-              </ul>
-            </div> -->
         </header>
 
-        <!-- OTRA PRUEBA PARA MENU -->
-             <div class="collapse navbar-collapse MobileMenu hidden-sm hidden-md hidden-lg hidden-xl" id="nav-movil" *ngIf="false">
+        <!-- MENÚ dispositivos pequeños -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg hidden-xl">
+             <div class="collapse navbar-collapse MobileMenu" id="nav-movil">
                 <ul class="nav navbar-nav">
                     <!-- ALMACÉN -->
                     <li class="dropdown">
@@ -93,7 +49,7 @@
                                 <i class="fa fa-home"></i>
                                 <span>Almacén Valiryo</span>
                               </a>
-                              <ul>
+                              <ul class="menu-nivel-3">
                                 <li><a href="#">Stock Producto</a></li>
                                 <li><a href="#">Stock Piezas</a></li>
                                 <li><a href="#">Piezas rotas</a></li>
@@ -105,7 +61,7 @@
                                 <i class="fa fa-barcode"></i>
                                 <span>Producto</span>
                               </a>
-                              <ul>
+                              <ul class="menu-nivel-3">
                                 <li><a href="#">Producto final</a></li>
                                 <li><a href="#">Piezas</a></li>
                                 <li><a href="#">Modelos</a></li>
@@ -124,7 +80,7 @@
                                 <i class="fa fa-truck"></i>
                                 <span>Almacenes externos</span>
                               </a>
-                              <ul>
+                              <ul class="menu-nivel-3">
                                 <li><a href="#">PLASNOR</a></li>
                                 <li><a href="#">LANTEGI</a></li>
                               </ul> 
@@ -155,7 +111,7 @@
                                 <i class="fa fa-barcode"></i>
                                 <span>Productos</span>
                               </a>
-                              <ul>
+                              <ul class="menu-nivel-3">
                                 <li><a href="/gproductos">Producto final</a></li>
                                 <li><a href="/gpiezas">Piezas</a></li>
                                 <li><a href="/gmodelos">Modelos</a></li>
@@ -179,7 +135,7 @@
                     </li>
                     <!-- VENTAS -->
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ventas <b class="caret"></b></a>
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">VENTAS <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                             <!-- Clientes -->
                             <li>
@@ -220,7 +176,7 @@
                     </li>
                     <!-- ADMIN -->
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ADMIN <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                             <!-- Control de usuarios -->
                             <li>
@@ -252,77 +208,8 @@
                     </li>
                 </ul>
             </div>
-
-        <!-- Prueba dropdown menu -->
-            <!-- <div id="MobileMenu" class="MobileMenu hidden-lg hidden-md hidden-sm visible-xs">
-              <div class="list-group">
-                <a href="#almacen" (click)="almacen()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ALMACÉN</a>
-                <div class="collapse" id="almacen">
-                  <a href="#almValiryo" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almValiryo"><i class="fa fa-home"></i> Almacén Valiryo <i class="fa fa-caret-down"></i></a>
-                  <div class="collapse list-group-submenu" id="almValiryo">
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Stock producto</a>
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Stock piezas</a>
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almValiryo">Piezas rotas</a>
-                  </div>
-                  <a href="#producto" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#producto"><i class="fa fa-barcode"></i> Producto <i class="fa fa-caret-down"></i></a>
-                  <div class="collapse list-group-submenu" id="producto">
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Producto final</a>
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Piezas</a>
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#producto">Modelos</a>
-                  </div>
-                  <a href="javascript:;" class="list-group-item margen-izq"><i class="fa fa-cogs"></i> Control de calidad</a>
-                  <a href="#almExternos" class="list-group-item margen-izq" data-toggle="collapse" data-parent="#almExternos"><i class="fa fa-truck"></i> Almacenes externos <i class="fa fa-caret-down"></i></a>
-                  <div class="collapse list-group-submenu" id="almExternos">
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almExternos">PLASNOR</a>
-                    <a href="#" class="list-group-item dbl-margen-izq" data-parent="#almExternos">LANTEGI</a>
-                  </div>
-                  <a href="javascript:;" class="list-group-item margen-izq"><i class="fa fa-wrench"></i> Reparaciones</a>
-                </div>
-
-                <a href="#compras" (click)="compras()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">COMPRAS</a>
-                <div class="collapse" id="compras">
-                  <a href="javascript:;" class="list-group-item">Proveedores</a>
-                  <a href="#comprasProductos" class="list-group-item" data-toggle="collapse" data-parent="#comprasProductos">Productos <i class="fa fa-caret-down"></i></a>
-                  <div class="collapse list-group-submenu" id="comprasProductos">
-                    <a href="#" class="list-group-item" data-parent="#compras">Producto final</a>
-                    <a href="#" class="list-group-item" data-parent="#compras">Piezas</a>
-                    <a href="#" class="list-group-item" data-parent="#compras">Modelos</a>
-                  </div>
-                  <a href="javascript:;" class="list-group-item">Pedido de compra</a>
-                  <a href="javascript:;" class="list-group-item">Lotes</a> 
-                </div>
-
-                <a href="#ventas" (click)="ventas()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">VENTAS</a>
-                <div class="collapse" id="ventas">
-                  <a href="javascript:;" class="list-group-item">Clientes</a>
-                  <a href="javascript:;" class="list-group-item">Pedidos</a>
-                  <a href="javascript:;" class="list-group-item">Devoluciones</a>
-                  <a href="javascript:;" class="list-group-item">Salidas por avería</a>
-                  <a href="javascript:;" class="list-group-item">Garantías</a>
-                </div>
-
-                <a href="#admin" (click)="admin()" class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu">ADMIN</a>
-                <div class="collapse" id="admin">
-                  <a href="javascript:;" class="list-group-item">Control de usuarios</a>
-                  <a href="javascript:;" class="list-group-item">Gestión de almacenes</a>
-                  <a href="javascript:;" class="list-group-item">Tipos de garantías</a>
-                </div>
-                
-                 <a (click)="logout()"  class="list-group-item" data-toggle="collapse" data-parent="#MobileMenu"><i class="fa fa-sign-out"></i> Logout</a>
-                
-              </div>
-            </div> -->
-
-
-
-
-
-
-
-
-
-
-
+            </div>
+        
       <!--header end-->
        <!-- **********************************************************************************************************************************************************
       MAIN SIDEBAR MENU

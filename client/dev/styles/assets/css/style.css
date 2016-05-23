@@ -402,6 +402,7 @@ ul.sidebar-menu li a.active i {
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
     margin-left: 210px;
+    margin-top: -30px;
 }
 
 .header, .footer {
@@ -2331,7 +2332,7 @@ nav li {
     font-size: 16px;
     padding: 0 30px;
     border-right: 1px solid;
-    /*margin-top: 12px;*/
+    margin-top: 10px;
     /*line-height:16px;
     display: inline-block;*/
 }
@@ -2546,6 +2547,50 @@ table td {
     font-size: 16px;
  }
  #nav-movil span {
-    margin-left: 5px;
+    margin-left: 10px;
  }
 
+ #nav-movil a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    margin: 0 10px;
+ }
+ #nav-movil a:hover {
+    color: #222;
+ }
+
+.menu-nivel-3 li {
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.menu-nivel-3 a{
+    margin-left: 25px !important;
+}
+
+.menu-nivel-3 li a:hover{
+    color: white !important;
+}
+
+/****** Classes visible & hidden ******/
+
+/*@media (min-width: 34em) {
+    #nav-movil { display: none !important; }
+}
+
+@media (max-width: 33.9em) { 
+    #nav-movil { display: block !important; }
+ }*/
+
+
+/* #nav-movil .hidden-sm, #nav-movil .hidden-md, #nav-movil .hidden-lg, #nav-movil .hidden-xl {
+    .responsive-visibility();
+}
+
+#nav-movil .visible-xs {
+     @media (max-width: @screen-tablet) {
+    .responsive-visibility();
+  }
+} */
