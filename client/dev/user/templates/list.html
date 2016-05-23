@@ -1,38 +1,139 @@
-<div class="usuario-container">
-	<div class="row">
-		<div class="col-md-12">
-			<h1 class="submenu-title">Control de usuarios</h1>
-			<a [routerLink]="['/CreateUsuario']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo usuario</a>
-		</div>
-	</div>
-	<br><br>
-	<div class="row">
-    	<div class="col-md-12">
-    		<table class="table table-hover table-responsive">
-	    		<thead>
-	    			<tr>
-	    				<th>Usuario</th>
-	    				<th>Contraseña</th>
-	    				<th>Nombre</th>
-	    				<th>Apellido</th>
-	    				<th>Tipo de usuario</th>
-	    			</tr>
-	    		</thead>
-	    		<tbody>
-	    			<tr *ngFor="#user of users"
-        				[class.selected]="isSelected(user)"
-        				(click)="onSelect(user)">
-	    				<td>{{user.user}}</td>
-	    				<td>{{user.pass}}</td>
-	    				<td>{{user.nombre}}</td>
-	    				<td>{{user.apellido}}</td>
-	    				<td>{{user.tipo}}</td>
-	    			</tr>
-    			</tbody>
-    		</table>
-		</div>
-	</div>
-</div>
+
+<section id="container" >
+     <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  
+              </div>
+            <!--logo start-->
+            <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
+                        Almacén
+                        </a>    
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
+                        	 Compras
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
+                        Ventas
+                        </a>     
+                    </li>
+
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle link-activo" (click)="admin()">
+                        Admin   
+                        </a>
+                    </li>
+                    <!-- settings end -->
+                    
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
+              </ul>
+            </div>
+        </header>
+      <!--header end-->
+       <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+                  <li class="sub-menu">
+                      <a (click)="usuarios();">
+                          <i class="fa fa-user"></i>
+                          <span>Control de usuarios</span>
+                      </a>
+                  </li>
+                   <li class="sub-menu">
+                      <a (click)="almacenes();" >
+                          <i class="fa fa-cubes"></i>
+                          <span>Gestión almacenes</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a (click)="garantias();" >
+                          <i class="fa fa-pencil-square-o"></i>
+                          <span>Tipos de garantías</span>
+                      </a>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      
+
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+
+          <section class="wrapper">
+              
+          		<div class="usuario-container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="submenu-title">Control de usuarios</h1>
+						<a [routerLink]="['/CreateUsuario']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo usuario</a>
+					</div>
+				</div>
+				<br><br>
+				<div class="row">
+			    	<div class="col-md-12">
+			    		<table class="table table-hover table-responsive">
+				    		<thead>
+				    			<tr>
+				    				<th>Usuario</th>
+				    				<th>Contraseña</th>
+				    				<th>Nombre</th>
+				    				<th>Apellido</th>
+				    				<th>Tipo de usuario</th>
+				    			</tr>
+				    		</thead>
+				    		<tbody>
+				    			<tr *ngFor="#user of users"
+			        				[class.selected]="isSelected(user)"
+			        				(click)="onSelect(user)">
+				    				<td>{{user.user}}</td>
+				    				<td>{{user.pass}}</td>
+				    				<td>{{user.nombre}}</td>
+				    				<td>{{user.apellido}}</td>
+				    				<td>{{user.tipo}}</td>
+				    			</tr>
+			    			</tbody>
+			    		</table>
+					</div>
+				</div>
+			</div>                           
+          </section>
+      </section>
+    
+</section>
+
+
+
+
 
 <!-- <div class="submenu-container">
 	<div class="row">

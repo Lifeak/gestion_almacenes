@@ -14,11 +14,10 @@ var user_service_1 = require('../../services/user/user-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var login_service_1 = require('../../services/login-service');
 var UserListCmp = (function () {
-    function UserListCmp(_userService, _loginService, _router, routeParams) {
+    function UserListCmp(_userService, _loginService, router, routeParams) {
         this._userService = _userService;
         this._loginService = _loginService;
-        this._router = _router;
-        this.title = "Users";
+        this.router = router;
         this.users = [];
         this._selectedId = routeParams.get('id');
     }
@@ -37,11 +36,32 @@ var UserListCmp = (function () {
         return user._id === this._selectedId;
     };
     UserListCmp.prototype.onSelect = function (user) {
-        this._router.navigate(['DetailsUsuarios', { id: user._id }]);
+        alert("selecciono el usuario " + user.nombre);
+        this.router.navigate(['/DetailsUsuario', { id: user._id }]);
+        alert("deberia estar dentro....");
+    };
+    UserListCmp.prototype.nuevousuario = function () {
+        alert("entro en crear usuario");
+        this.router.navigate(['/CreateUsuario']);
+    };
+    UserListCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    UserListCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    UserListCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    UserListCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    UserListCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
     };
     UserListCmp = __decorate([
         core_1.Component({
-            selector: 'ListUsuarios',
             templateUrl: 'client/dev/user/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [user_service_1.UserService]

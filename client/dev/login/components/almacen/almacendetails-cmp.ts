@@ -54,7 +54,7 @@ export class AlmacenDetailsCmp implements OnInit {
 
   gotoIndex(){
     let userId = this.almacen ? this.almacen._id : null;
-    this._router.navigate(['/ListAlmacen']);
+    this._router.navigate(['/ListAlmacenes']);
   }
   private _getAll():void {
     this._almacenService

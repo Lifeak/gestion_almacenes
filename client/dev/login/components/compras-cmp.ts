@@ -40,7 +40,6 @@ export class ComprasCmp {
 
   constructor( @Inject(LoginService) private _loginService: LoginService, private router: Router) {
       this.logadmin = isLoggedinAdmin();
-      //alert("logadmin es  " + this.logadmin);
   }
 
   logout(){
@@ -51,22 +50,18 @@ export class ComprasCmp {
   }
   
   compras(){
-    //alert("compras");
     this.router.navigate(['/Compras']);
   }
 
    ventas(){
-    //alert("ventas");
     this.router.navigate(['/Ventas']);
   }
 
    almacen(){
-   // alert("almacen");
     this.router.navigate(['/Almacen']);
   }
 
    admin(){
-   // alert("admin");
     this.router.navigate(['/Admin']);
   }
 }

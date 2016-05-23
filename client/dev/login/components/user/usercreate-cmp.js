@@ -18,8 +18,8 @@ var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var user_service_1 = require('../../services/user/user-service');
 var UserCreateCmp = (function () {
-    function UserCreateCmp(fb, _router, _routeParams, _loginService, _userService) {
-        this._router = _router;
+    function UserCreateCmp(fb, router, _routeParams, _loginService, _userService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._loginService = _loginService;
         this._userService = _userService;
@@ -34,7 +34,7 @@ var UserCreateCmp = (function () {
     }
     UserCreateCmp.prototype.gotoIndex = function () {
         var userId = this.user ? this.user._id : null;
-        this._router.navigate(['/ListUsuarios']);
+        this.router.navigate(['/ListUsuarios']);
     };
     UserCreateCmp.prototype.goBack = function () {
         window.history.back();

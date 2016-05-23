@@ -23,7 +23,6 @@ var AdminCmp = (function () {
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
         this.router = router;
-        // alert("logadmin es  " + this.logadmin);
     }
     AdminCmp.prototype.logout = function () {
         alert("logoutt");
@@ -32,20 +31,25 @@ var AdminCmp = (function () {
         this.logadmin = false;
     };
     AdminCmp.prototype.compras = function () {
-        //alert("compras");
         this.router.navigate(['/Compras']);
     };
     AdminCmp.prototype.ventas = function () {
-        //alert("ventas");
         this.router.navigate(['/Ventas']);
     };
     AdminCmp.prototype.almacen = function () {
-        // alert("almacen");
         this.router.navigate(['/Almacen']);
     };
     AdminCmp.prototype.admin = function () {
-        //alert("admin");
         this.router.navigate(['/Admin']);
+    };
+    AdminCmp.prototype.usuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    AdminCmp.prototype.garantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    AdminCmp.prototype.almacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
     };
     AdminCmp = __decorate([
         core_1.Component({

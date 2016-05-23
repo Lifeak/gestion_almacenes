@@ -65,8 +65,7 @@ var ProductoSubDetailsCmp = (function () {
     ], ProductoSubDetailsCmp.prototype, "producto", void 0);
     ProductoSubDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/producto/templates/detailss.html',
-            styleUrls: ['client/dev/producto/styles/cliente.css']
+            templateUrl: 'client/dev/producto/templates/detailss.html'
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

@@ -45,7 +45,6 @@ export class AdminCmp {
   constructor( @Inject(LoginService) private _loginService: LoginService, public router: Router) {
     this.logadmin = isLoggedinAdmin();
     this.router = router;
-    // alert("logadmin es  " + this.logadmin);
   }
 
   logout() {
@@ -56,23 +55,31 @@ export class AdminCmp {
   }
 
   compras() {
-    //alert("compras");
     this.router.navigate(['/Compras']);
   }
 
   ventas() {
-    //alert("ventas");
     this.router.navigate(['/Ventas']);
   }
 
   almacen() {
-    // alert("almacen");
     this.router.navigate(['/Almacen']);
   }
 
   admin() {
-    //alert("admin");
     this.router.navigate(['/Admin']);
+  }
+
+  usuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+
+  garantias(){
+    this.router.navigate(['/ListGarantias']);
+  }
+
+  almacenes() {
+    this.router.navigate(['/ListAlmacenes']);
   }
 
 }

@@ -24,8 +24,7 @@ import {LoginService} from '../../services/login-service';
 
 
 @Component({
-  templateUrl: 'client/dev/user/templates/details.html',
-  styleUrls: ['client/dev/user/styles/cliente.css']
+  templateUrl: 'client/dev/user/templates/details.html'
 })
 
 @CanActivate(() => isLogged())
@@ -33,7 +32,7 @@ export class UserDetailsCmp implements OnInit {
   @Input() user: User;
   userForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _userService: UserService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _userService: UserService, @Inject(LoginService) private _loginService: LoginService) {
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],
@@ -56,7 +55,7 @@ export class UserDetailsCmp implements OnInit {
 
   gotoIndex(){
     let userId = this.user ? this.user._id : null;
-    this._router.navigate(['/ListUsuarios']);
+    this.router.navigate(['/ListUsuarios']);
   }
   private _getAll():void {
     this._userService

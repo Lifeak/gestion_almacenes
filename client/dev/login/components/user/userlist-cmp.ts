@@ -26,7 +26,6 @@ import {LoginService} from '../../services/login-service';
 
 
 @Component({
-  selector: 'ListUsuarios',
   templateUrl: 'client/dev/user/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
   providers: [UserService]
@@ -34,12 +33,11 @@ import {LoginService} from '../../services/login-service';
 
 @CanActivate(() => isLoggedinAdmin())
 export class UserListCmp implements OnInit {
-  title: string = "Users";
   users: User[] = [];
   private _selectedId: string;
 
 
-  constructor(private _userService: UserService, private _loginService: LoginService,public _router: Router, routeParams: RouteParams) {
+  constructor(private _userService: UserService, private _loginService: LoginService,public router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -58,6 +56,32 @@ export class UserListCmp implements OnInit {
     return user._id === this._selectedId;
   }
   onSelect(user:User){
-    this._router.navigate(['DetailsUsuarios',{id: user._id}]);
+    alert("selecciono el usuario " + user.nombre);
+    this.router.navigate(['/DetailsUsuario',{id: user._id}]);
+    alert("deberia estar dentro....");
+  }
+
+  nuevousuario() {
+    alert("entro en crear usuario");
+    this.router.navigate(['/CreateUsuario']);
+  }
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  logout() {
+      this._loginService.logout();
+      this.router.navigate(['/Login']);
   }
 }

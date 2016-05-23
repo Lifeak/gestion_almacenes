@@ -25,8 +25,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 
 
 @Component({
-  templateUrl: 'client/dev/producto/templates/details.html',
-  styleUrls: ['client/dev/producto/styles/cliente.css']
+  templateUrl: 'client/dev/producto/templates/details.html'
 })
 
 @CanActivate(() => isLogged())

@@ -22,28 +22,22 @@ var AlmacenCmp = (function () {
         this.title = "Almacen";
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
-        //alert("logadmin es  " + this.logadmin);
     }
     AlmacenCmp.prototype.logout = function () {
-        alert("logoutt");
         this._loginService.logout();
         this.router.navigate(['/Login']);
         this.logadmin = false;
     };
     AlmacenCmp.prototype.compras = function () {
-        //alert("compras");
         this.router.navigate(['/Compras']);
     };
     AlmacenCmp.prototype.ventas = function () {
-        // alert("ventas");
         this.router.navigate(['/Ventas']);
     };
     AlmacenCmp.prototype.almacen = function () {
-        //alert("almacen");
         this.router.navigate(['/Almacen']);
     };
     AlmacenCmp.prototype.admin = function () {
-        //alert("admin");
         this.router.navigate(['/Admin']);
     };
     AlmacenCmp = __decorate([

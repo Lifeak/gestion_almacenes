@@ -31,7 +31,7 @@ export class UserCreateCmp{
   @Input() user: User;
   userForm: ControlGroup;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _loginService: LoginService,private _userService: UserService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _loginService: LoginService,private _userService: UserService){
     this.userForm = fb.group({
       "user": ["", Validators.required],
       "pass": ["", Validators.required],
@@ -44,7 +44,7 @@ export class UserCreateCmp{
   
   gotoIndex(){
     let userId = this.user ? this.user._id : null;
-    this._router.navigate(['/ListUsuarios']);
+    this.router.navigate(['/ListUsuarios']);
 
   }
 

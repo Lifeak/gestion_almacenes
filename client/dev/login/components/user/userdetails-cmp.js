@@ -18,8 +18,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var user_service_1 = require('../../services/user/user-service');
 var login_service_1 = require('../../services/login-service');
 var UserDetailsCmp = (function () {
-    function UserDetailsCmp(fb, _router, _routeParams, _userService, _loginService) {
-        this._router = _router;
+    function UserDetailsCmp(fb, router, _routeParams, _userService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._userService = _userService;
         this._loginService = _loginService;
@@ -43,7 +43,7 @@ var UserDetailsCmp = (function () {
     };
     UserDetailsCmp.prototype.gotoIndex = function () {
         var userId = this.user ? this.user._id : null;
-        this._router.navigate(['/ListUsuarios']);
+        this.router.navigate(['/ListUsuarios']);
     };
     UserDetailsCmp.prototype._getAll = function () {
         var _this = this;
@@ -87,8 +87,7 @@ var UserDetailsCmp = (function () {
     ], UserDetailsCmp.prototype, "user", void 0);
     UserDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/user/templates/details.html',
-            styleUrls: ['client/dev/user/styles/cliente.css']
+            templateUrl: 'client/dev/user/templates/details.html'
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

@@ -19,7 +19,6 @@ var LoginCmp = (function () {
     function LoginCmp(fb, _loginService, router) {
         this._loginService = _loginService;
         this.router = router;
-        this.title = "Login";
         this.error = false;
         this.loginForm = fb.group({
             "user": ["", common_1.Validators.required],
@@ -54,7 +53,7 @@ var LoginCmp = (function () {
     LoginCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/login.html',
-            providers: [login_service_1.LoginService /*, ROUTER_PROVIDERS*/]
+            providers: [login_service_1.LoginService]
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(login_service_1.LoginService)), 

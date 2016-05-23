@@ -31,12 +31,11 @@ import {HomeCmp} from './home-cmp';
 
 @Component({
   templateUrl: 'client/dev/login/templates/login.html',
-  providers: [LoginService/*, ROUTER_PROVIDERS*/]
+  providers: [LoginService]
 })
 
 
 export class LoginCmp {
-  title: string = "Login";
   loginForm: ControlGroup;
   error: boolean = false;
 

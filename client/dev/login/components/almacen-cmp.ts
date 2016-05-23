@@ -40,33 +40,27 @@ export class AlmacenCmp {
 
   constructor( @Inject(LoginService) private _loginService: LoginService, private router: Router) {
       this.logadmin = isLoggedinAdmin();
-      //alert("logadmin es  " + this.logadmin);
   }
 
   logout(){
-    alert("logoutt");
     this._loginService.logout();
     this.router.navigate(['/Login']);
     this.logadmin = false;
   }
   
   compras(){
-    //alert("compras");
     this.router.navigate(['/Compras']);
   }
 
    ventas(){
-   // alert("ventas");
     this.router.navigate(['/Ventas']);
   }
 
    almacen(){
-    //alert("almacen");
     this.router.navigate(['/Almacen']);
   }
 
    admin(){
-    //alert("admin");
     this.router.navigate(['/Admin']);
   }
 }

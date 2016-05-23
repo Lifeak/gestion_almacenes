@@ -22,7 +22,6 @@ var ComprasCmp = (function () {
         this.title = "Compras";
         this.logadmin = false;
         this.logadmin = isloggedin_1.isLoggedinAdmin();
-        //alert("logadmin es  " + this.logadmin);
     }
     ComprasCmp.prototype.logout = function () {
         alert("logoutt");
@@ -31,19 +30,15 @@ var ComprasCmp = (function () {
         this.logadmin = false;
     };
     ComprasCmp.prototype.compras = function () {
-        //alert("compras");
         this.router.navigate(['/Compras']);
     };
     ComprasCmp.prototype.ventas = function () {
-        //alert("ventas");
         this.router.navigate(['/Ventas']);
     };
     ComprasCmp.prototype.almacen = function () {
-        // alert("almacen");
         this.router.navigate(['/Almacen']);
     };
     ComprasCmp.prototype.admin = function () {
-        // alert("admin");
         this.router.navigate(['/Admin']);
     };
     ComprasCmp = __decorate([

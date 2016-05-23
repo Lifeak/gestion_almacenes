@@ -1,40 +1,142 @@
-<div class="usuario-container">
-  <div class="row">
-      <div class="col-md-12">
-        <h1 class="submenu-title">Control de usuarios > Detalles de usuario</h1>
-      </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div *ngIf="user"> 
-      <form class="user-form" [ngFormModel]="userForm">
-        <div class="form-group">
-            <label for="user">Usuario:</label>
-            <input [(ngModel)]="user.user" class="form-control" id="user"/>
-        </div>
-        <div class="form-group">
-            <label for="pass">Contraseña:</label>
-            <input [(ngModel)]="user.pass" class="form-control" id="pass"/>
-        </div>
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input [(ngModel)]="user.nombre" class="form-control" id="nombre"/>
-        </div>
-        <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input [(ngModel)]="user.apellido" class="form-control" id="apellido"/>
-        </div>
-        <div class="form-group">
-            <label for="tipo">Tipo:</label>
-            <input [(ngModel)]="user.tipo" class="form-control" id="tipo"/>
-        </div>
-      </form>
-    
 
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-      <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
-      <button (click)="delete(user)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar usuario</button>
-    </div>
-  </div>
-</div>
+<section id="container" >
+     <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  
+              </div>
+            <!--logo start-->
+            <a href="#" class="logo"><img src="/client/dev/login/templates/img/logo2.png" /></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="almacen()">
+                        Almacén
+                        </a>    
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="compras()">
+                           Compras
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" (click)="ventas()">
+                        Ventas
+                        </a>     
+                    </li>
+
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle link-activo" (click)="admin()">
+                        Admin   
+                        </a>
+                    </li>
+                    <!-- settings end -->
+                    
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+              <ul class="nav pull-right top-menu">
+                    <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><button class="btn btn-lg btn-logout navbar-btn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button></a></li>
+              </ul>
+            </div>
+        </header>
+      <!--header end-->
+       <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+                  <li class="sub-menu">
+                      <a (click)="usuarios();">
+                          <i class="fa fa-user"></i>
+                          <span>Control de usuarios</span>
+                      </a>
+                  </li>
+                   <li class="sub-menu">
+                      <a (click)="almacenes();" >
+                          <i class="fa fa-cubes"></i>
+                          <span>Gestión almacenes</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a (click)="garantias();" >
+                          <i class="fa fa-pencil-square-o"></i>
+                          <span>Tipos de garantías</span>
+                      </a>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      
+
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+
+          <section class="wrapper">
+            <div class="usuario-container">
+                <div class="row">
+                    <div class="col-md-12">
+                      <h1 class="submenu-title">Control de usuarios > Detalles de usuario</h1>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div *ngIf="user"> 
+                    <form class="user-form" [ngFormModel]="userForm">
+                      <div class="form-group">
+                          <label for="user">Usuario:</label>
+                          <input [(ngModel)]="user.user" class="form-control" id="user"/>
+                      </div>
+                      <div class="form-group">
+                          <label for="pass">Contraseña:</label>
+                          <input [(ngModel)]="user.pass" class="form-control" id="pass"/>
+                      </div>
+                      <div class="form-group">
+                          <label for="nombre">Nombre:</label>
+                          <input [(ngModel)]="user.nombre" class="form-control" id="nombre"/>
+                      </div>
+                      <div class="form-group">
+                          <label for="apellido">Apellido:</label>
+                          <input [(ngModel)]="user.apellido" class="form-control" id="apellido"/>
+                      </div>
+                      <div class="form-group">
+                          <label for="tipo">Tipo:</label>
+                          <input [(ngModel)]="user.tipo" class="form-control" id="tipo"/>
+                      </div>
+                    </form>
+                  
+
+                    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                    <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
+                    <button (click)="delete(user)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar usuario</button>
+                  </div>
+                </div>
+                </div>
+            </div>
+                                 
+          </section>
+      </section>
+    
+</section>
+
+
+
+

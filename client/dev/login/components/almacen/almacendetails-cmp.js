@@ -43,7 +43,7 @@ var AlmacenDetailsCmp = (function () {
     };
     AlmacenDetailsCmp.prototype.gotoIndex = function () {
         var userId = this.almacen ? this.almacen._id : null;
-        this._router.navigate(['/ListAlmacen']);
+        this._router.navigate(['/ListAlmacenes']);
     };
     AlmacenDetailsCmp.prototype._getAll = function () {
         var _this = this;
