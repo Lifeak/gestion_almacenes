@@ -18,8 +18,8 @@ var producto_service_1 = require('../../services/producto/producto-service');
 var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var ProductoSubDetailsCmp = (function () {
-    function ProductoSubDetailsCmp(fb, _router, _routeParams, _productoService, _loginService) {
-        this._router = _router;
+    function ProductoSubDetailsCmp(fb, router, _routeParams, _productoService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._productoService = _productoService;
         this._loginService = _loginService;
@@ -57,7 +57,47 @@ var ProductoSubDetailsCmp = (function () {
     };
     ProductoSubDetailsCmp.prototype.buscar = function (nombre) {
         //alert("buscamos este nombre "+nombre);
-        this._router.navigate(['DetailsSubProducto', { nombre: nombre }]);
+        this.router.navigate(['DetailsSubProducto', { nombre: nombre }]);
+    };
+    ProductoSubDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ProductoSubDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ProductoSubDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ProductoSubDetailsCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ProductoSubDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ProductoSubDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ProductoSubDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ProductoSubDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ProductoSubDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ProductoSubDetailsCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ProductoSubDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProductoSubDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProductoSubDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

@@ -37,7 +37,7 @@ var AdminCmp = (function () {
     AdminCmp.prototype.ventas = function () {
         this.router.navigate(['/Ventas']);
     };
-    AdminCmp.prototype.almacen = function () {
+    AdminCmp.prototype.goalmacen = function () {
         this.router.navigate(['/Almacen']);
     };
     AdminCmp.prototype.admin = function () {
@@ -67,8 +67,29 @@ var AdminCmp = (function () {
     AdminCmp.prototype.garantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
-    AdminCmp.prototype.almacenes = function () {
+    AdminCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    AdminCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    AdminCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    AdminCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    AdminCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    AdminCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    AdminCmp.prototype.galmacenes = function () {
         this.router.navigate(['/ListAlmacenes']);
+    };
+    AdminCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     AdminCmp = __decorate([
         core_1.Component({

@@ -18,8 +18,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var modelo_service_1 = require('../../services/modelo/modelo-service');
 var login_service_1 = require('../../services/login-service');
 var ModeloDetailsCmp = (function () {
-    function ModeloDetailsCmp(fb, _router, _routeParams, _modeloService, _loginService) {
-        this._router = _router;
+    function ModeloDetailsCmp(fb, router, _routeParams, _modeloService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._modeloService = _modeloService;
         this._loginService = _loginService;
@@ -37,6 +37,7 @@ var ModeloDetailsCmp = (function () {
     }
     ModeloDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
+        alert("ya estoy en los detalless");
         var id = this._routeParams.get('id');
         this._modeloService
             .getModeloId(id)
@@ -52,7 +53,7 @@ var ModeloDetailsCmp = (function () {
         });
     };
     ModeloDetailsCmp.prototype.gotoIndex = function () {
-        this._router.navigate(['/ListModelos']);
+        this.router.navigate(['/ListModelos']);
     };
     ModeloDetailsCmp.prototype._getAll = function () {
         var _this = this;
@@ -63,8 +64,8 @@ var ModeloDetailsCmp = (function () {
         });
     };
     ModeloDetailsCmp.prototype.buscar = function (nombre) {
-        //alert("buscamos este nombre "+nombre);
-        this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+        alert("buscamos este nombre " + nombre);
+        this.router.navigate(['/DetailsSubModelo', { nombre: nombre }]);
     };
     ModeloDetailsCmp.prototype.edit = function (modelo) {
         var _this = this;
@@ -110,6 +111,46 @@ var ModeloDetailsCmp = (function () {
     ModeloDetailsCmp.prototype.minus = function (nombre) {
         this.components.splice(this.components.indexOf(nombre), 1);
         this.uds.splice(this.components.indexOf(nombre), 1);
+    };
+    ModeloDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ModeloDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ModeloDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ModeloDetailsCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ModeloDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ModeloDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ModeloDetailsCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ModeloDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ModeloDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ModeloDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

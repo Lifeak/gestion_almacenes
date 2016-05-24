@@ -40,6 +40,30 @@ var AlmacenCmp = (function () {
     AlmacenCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
+    AlmacenCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    AlmacenCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    AlmacenCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    AlmacenCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    AlmacenCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    AlmacenCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    AlmacenCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    AlmacenCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     AlmacenCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/almacen.html',

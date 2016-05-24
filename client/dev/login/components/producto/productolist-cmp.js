@@ -14,10 +14,10 @@ var isloggedin_1 = require('../../services/isloggedin');
 var login_service_1 = require('../../services/login-service');
 var producto_service_1 = require('../../services/producto/producto-service');
 var ProductoListCmp = (function () {
-    function ProductoListCmp(_productoService, _loginService, _router, routeParams) {
+    function ProductoListCmp(_productoService, _loginService, router, routeParams) {
         this._productoService = _productoService;
         this._loginService = _loginService;
-        this._router = _router;
+        this.router = router;
         this.productos = [];
         this._selectedId = routeParams.get('id');
     }
@@ -36,7 +36,47 @@ var ProductoListCmp = (function () {
         return producto._id === this._selectedId;
     };
     ProductoListCmp.prototype.onSelect = function (producto) {
-        this._router.navigate(['DetailsProducto', { id: producto._id }]);
+        this.router.navigate(['DetailsProducto', { id: producto._id }]);
+    };
+    ProductoListCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ProductoListCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ProductoListCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ProductoListCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ProductoListCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ProductoListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ProductoListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ProductoListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ProductoListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ProductoListCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ProductoListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProductoListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProductoListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     ProductoListCmp = __decorate([
         core_1.Component({

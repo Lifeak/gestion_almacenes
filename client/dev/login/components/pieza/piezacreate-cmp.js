@@ -14,13 +14,15 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var pieza_service_1 = require('../../services/pieza/pieza-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var PiezaCreateCmp = (function () {
-    function PiezaCreateCmp(fb, _router, _routeParams, _piezaService) {
-        this._router = _router;
+    function PiezaCreateCmp(fb, router, _routeParams, _piezaService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._piezaService = _piezaService;
+        this._loginService = _loginService;
         this.modelos = [];
         this.piezaForm = fb.group({
             "_id": ["", common_1.Validators.required],
@@ -45,7 +47,7 @@ var PiezaCreateCmp = (function () {
         });
     };
     PiezaCreateCmp.prototype.gotoIndex = function () {
-        this._router.navigate(['/ListPiezas']);
+        this.router.navigate(['/ListPiezas']);
     };
     PiezaCreateCmp.prototype.goBack = function () {
         window.history.back();
@@ -85,6 +87,46 @@ var PiezaCreateCmp = (function () {
     PiezaCreateCmp.prototype.minus = function (nombre) {
         this.components.splice(this.components.indexOf(nombre), 1);
     };
+    PiezaCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    PiezaCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    PiezaCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    PiezaCreateCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    PiezaCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    PiezaCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    PiezaCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    PiezaCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    PiezaCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    PiezaCreateCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    PiezaCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    PiezaCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    PiezaCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', pieza_service_1.Pieza)
@@ -95,7 +137,7 @@ var PiezaCreateCmp = (function () {
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, pieza_service_1.PiezaService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, pieza_service_1.PiezaService, login_service_1.LoginService])
     ], PiezaCreateCmp);
     return PiezaCreateCmp;
 }());

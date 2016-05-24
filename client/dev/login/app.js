@@ -40,14 +40,17 @@ var almacendetails_cmp_1 = require('./components/almacen/almacendetails-cmp');
 var piezacreate_cmp_1 = require('./components/pieza/piezacreate-cmp');
 var piezalist_cmp_1 = require('./components/pieza/piezalist-cmp');
 var piezadetails_cmp_1 = require('./components/pieza/piezadetails-cmp');
+var piezasubdetails_cmp_1 = require('./components/pieza/piezasubdetails-cmp');
 //Producto
 var productocreate_cmp_1 = require('./components/producto/productocreate-cmp');
 var productolist_cmp_1 = require('./components/producto/productolist-cmp');
 var productodetails_cmp_1 = require('./components/producto/productodetails-cmp');
+var productosubdetails_cmp_1 = require('./components/producto/productosubdetails-cmp');
 //Modelo
 var modelocreate_cmp_1 = require('./components/modelo/modelocreate-cmp');
 var modelolist_cmp_1 = require('./components/modelo/modelolist-cmp');
 var modelodetails_cmp_1 = require('./components/modelo/modelodetails-cmp');
+var modelosubdetails_cmp_1 = require('./components/modelo/modelosubdetails-cmp');
 //Proveedor
 var proveedorcreate_cmp_1 = require('./components/proveedor/proveedorcreate-cmp');
 var proveedorlist_cmp_1 = require('./components/proveedor/proveedorlist-cmp');
@@ -96,14 +99,17 @@ var App = (function () {
             { path: '/ListPiezas', name: 'ListPiezas', component: piezalist_cmp_1.PiezaListCmp },
             { path: '/CreatePieza', name: 'CreatePieza', component: piezacreate_cmp_1.PiezaCreateCmp },
             { path: '/DetailsPieza', name: 'DetailsPieza', component: piezadetails_cmp_1.PiezaDetailsCmp },
+            { path: '/DetailsSubPieza', name: 'DetailsSubPieza', component: piezasubdetails_cmp_1.PiezaSubDetailsCmp },
             //productos
             { path: '/ListProductos', name: 'ListProductos', component: productolist_cmp_1.ProductoListCmp },
             { path: '/CreateProducto', name: 'CreateProducto', component: productocreate_cmp_1.ProductoCreateCmp },
             { path: '/DetailsProducto', name: 'DetailsProducto', component: productodetails_cmp_1.ProductoDetailsCmp },
+            { path: '/DetailsSubProducto', name: 'DetailsSubProducto', component: productosubdetails_cmp_1.ProductoSubDetailsCmp },
             //modelos
             { path: '/ListModelos', name: 'ListModelos', component: modelolist_cmp_1.ModeloListCmp },
             { path: '/CreateModelo', name: 'CreateModelo', component: modelocreate_cmp_1.ModeloCreateCmp },
             { path: '/DetailsModelo', name: 'DetailsModelo', component: modelodetails_cmp_1.ModeloDetailsCmp },
+            { path: '/DetailsSubModelo', name: 'DetailsSubModelo', component: modelosubdetails_cmp_1.ModeloSubDetailsCmp },
             //proveedor
             { path: '/ListProveedores', name: 'ListProveedores', component: proveedorlist_cmp_1.ProveedorListCmp },
             { path: '/CreateProveedor', name: 'CreateProveedor', component: proveedorcreate_cmp_1.ProveedorCreateCmp },

@@ -18,8 +18,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var modelo_service_1 = require('../../services/modelo/modelo-service');
 var login_service_1 = require('../../services/login-service');
 var ModeloSubDetailsCmp = (function () {
-    function ModeloSubDetailsCmp(fb, _router, _routeParams, _modeloService, _loginService) {
-        this._router = _router;
+    function ModeloSubDetailsCmp(fb, router, _routeParams, _modeloService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._modeloService = _modeloService;
         this._loginService = _loginService;
@@ -45,7 +45,6 @@ var ModeloSubDetailsCmp = (function () {
             _this.modelo = modelo;
             _this.components = _this.modelo[0].compuestoPor;
             _this.uds = _this.modelo[0].unidades;
-            //alert("los componentes son: "+this.components.toString()+" y las unidades "+this.uds.toString());
         });
         this._modeloService
             .getAll()
@@ -66,7 +65,7 @@ var ModeloSubDetailsCmp = (function () {
     };
     ModeloSubDetailsCmp.prototype.buscar = function (nombre) {
         //alert("buscamos este nombre "+nombre);
-        this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+        this.router.navigate(['DetailsSubModelo', { nombre: nombre }]);
     };
     ModeloSubDetailsCmp.prototype.edit = function (modelo) {
         var _this = this;
@@ -102,6 +101,46 @@ var ModeloSubDetailsCmp = (function () {
     ModeloSubDetailsCmp.prototype.minus = function (nombre) {
         this.components.splice(this.components.indexOf(nombre), 1);
         this.uds.splice(this.components.indexOf(nombre), 1);
+    };
+    ModeloSubDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ModeloSubDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ModeloSubDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ModeloSubDetailsCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ModeloSubDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ModeloSubDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloSubDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloSubDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloSubDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ModeloSubDetailsCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ModeloSubDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ModeloSubDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ModeloSubDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

@@ -33,7 +33,7 @@ export class ProductoDetailsCmp implements OnInit {
   @Input() producto: Producto;
   productoForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, @Inject(LoginService) private _loginService: LoginService) {
     this.productoForm = fb.group({
       "_id": ["", Validators.required],
       "nombre": ["", Validators.required],
@@ -62,7 +62,7 @@ export class ProductoDetailsCmp implements OnInit {
 
   gotoIndex(){
     let productoId = this.producto ? this.producto._id : null;
-    this._router.navigate(['/ListProductos']);
+    this.router.navigate(['/ListProductos']);
   }
 
   private _getAll():void {
@@ -74,8 +74,7 @@ export class ProductoDetailsCmp implements OnInit {
   }
 
   buscar(nombre:string){
-      //alert("buscamos este nombre "+nombre);
-      this._router.navigate(['DetailsSubPieza', { nombre: nombre }]);
+      this.router.navigate(['DetailsSubPieza', { nombre: nombre }]);
   }
 
   edit(producto: Producto){
@@ -120,6 +119,52 @@ export class ProductoDetailsCmp implements OnInit {
       });
     this.gotoIndex();
 
+  }
+
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 
 }

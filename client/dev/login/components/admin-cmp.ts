@@ -63,7 +63,7 @@ export class AdminCmp {
     this.router.navigate(['/Ventas']);
   }
 
-  almacen() {
+  goalmacen() {
     this.router.navigate(['/Almacen']);
   }
 
@@ -96,8 +96,29 @@ export class AdminCmp {
     this.router.navigate(['/ListGarantias']);
   }
 
-  almacenes() {
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
     this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 
 }

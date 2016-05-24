@@ -40,6 +40,30 @@ var ComprasCmp = (function () {
     ComprasCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
+    ComprasCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ComprasCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ComprasCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ComprasCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ComprasCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ComprasCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ComprasCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ComprasCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     ComprasCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/compras.html',

@@ -14,12 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var modelo_service_1 = require('../../services/modelo/modelo-service');
 var ModeloCreateCmp = (function () {
-    function ModeloCreateCmp(fb, _router, _routeParams, _modeloService) {
-        this._router = _router;
+    function ModeloCreateCmp(fb, router, _routeParams, _loginService, _modeloService) {
+        this.router = router;
         this._routeParams = _routeParams;
+        this._loginService = _loginService;
         this._modeloService = _modeloService;
         this.modelos = [];
         this.components = [];
@@ -42,7 +44,7 @@ var ModeloCreateCmp = (function () {
         });
     };
     ModeloCreateCmp.prototype.gotoIndex = function () {
-        this._router.navigate(['/ListModelos']);
+        this.router.navigate(['/ListModelos']);
     };
     ModeloCreateCmp.prototype.goBack = function () {
         window.history.back();
@@ -79,6 +81,46 @@ var ModeloCreateCmp = (function () {
         });
         this.gotoIndex();
     };
+    ModeloCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ModeloCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ModeloCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ModeloCreateCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ModeloCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ModeloCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ModeloCreateCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ModeloCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ModeloCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ModeloCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', modelo_service_1.Modelo)
@@ -89,7 +131,7 @@ var ModeloCreateCmp = (function () {
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, modelo_service_1.ModeloService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, login_service_1.LoginService, modelo_service_1.ModeloService])
     ], ModeloCreateCmp);
     return ModeloCreateCmp;
 }());

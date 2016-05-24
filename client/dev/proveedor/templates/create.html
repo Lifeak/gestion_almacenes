@@ -1,116 +1,407 @@
-<div class="proveedor-container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="submenu-title">Proveedores > Nuevo proveedor</h1>
-    </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <form class="proveedor-form"
-            [ngFormModel]="proveedorForm"
-            (submit)="save(proveedorForm)">
-        
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" 
-              ngControl="nombre"
-              [class.formulario-error]="!proveedorForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="direccion">Dirección:</label>
-          <input type="text" class="form-control" id="direccion" 
-              ngControl="direccion"
-              [class.formulario-error]="!proveedorForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="ciudad">Ciudad:</label>
-          <input type="text" class="form-control" id="ciudad" 
-              ngControl="ciudad"
-              [class.formulario-error]="!proveedorForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="pais">País:</label>
-          <input type="text" class="form-control" id="pais" 
-              ngControl="pais"
-              [class.formulario-error]="!proveedorForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" 
-              ngControl="telefono"
-              [class.formulario-error]="!proveedorForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="valoracion">Valoración:</label>
-          <input type="text" class="form-control" id="valoracion" 
-              ngControl="valoracion"
-              [class.formulario-error]="!proveedorForm.valid"
-              autofocus />
-        </div>
+<section id="container">
+     <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
       
-        <a (click)="a=true;" class="btn btn-formulario"><i class="fa fa-plus" aria-hidden="true"></i> Añadir material</a>
+        <header>
+        
+        <!--MENC DE NAVEGACICN-->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container-fluid">
+            <!-- Para MC3vil -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".MobileMenu">
+                <span class="sr-only">MenC:</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- <a class="navbar-brand" href="#">VALIRYO</a> -->
+              <a href="#" class="pull-left logo"><img src="/client/dev/login/templates/img/logo2.png"></a>
+            </div>
+            <!-- Dispositivos grandes -->
+            <div class="collapse navbar-collapse"> <!-- navbar1 -->
+              <ul class="nav navbar-nav">
+                <li><a (click)="almacen()">Almacén</a></li>
+                <li><a (click)="compras()" class="link-activo">Compras</a></li>
+                <li><a (click)="ventas()">Ventas</a></li>
+                <li><a (click)="admin()">Admin</a></li>
+              </ul>
+              <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
+            </div> 
+          </div>
+        </nav>
 
-        <div *ngIf="a==true;">       
-        <div class="form-group">
-          <label for="pieza">Pieza:</label>
-          <input type="text" class="form-control" id="pieza"
-                ngControl="pieza"
-                [class.formulario-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-          <label for="refexterna">Referencia externa:</label>
-          <input type="text" class="form-control" id="refexterna" ngControl="refexterna"
-                [class.formulario-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-          <label for="coste1">Coste:</label>
-          <input type="text" class="form-control" id="coste1" 
-                ngControl="coste1"
-                [class.formulario-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-          <label for="coste2">Otro tipo de coste:</label>
-          <input type="text" class="form-control" id="coste2" 
-                ngControl="coste2"
-                [class.formulario-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <div class="form-group">
-          <label for="val">Valoración de la pieza:</label>
-          <input type="text" class="form-control" id="val" 
-                ngControl="val"
-                [class.formulario-error]="!proveedorForm.valid"
-                autofocus />
-        </div>
-        <a (click)="plus(proveedorForm);a=false;" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar material</a>
-      </div>
+        </header>
 
-        <div *ngIf="mat.length>0">
-          <h5><i class="fa fa-list"></i>Materiales añadidos:</h5>
-          <table>
-            <tr>
-              <td>
-                <div *ngFor="#m of cuenta; #i=index" >
-                  Material: {{m}}  &nbsp;<a (click)="minus(i);" class="btn btn-formulario"><i class="fa fa-minus" aria-hidden="true"></i> Eliminar</a>
+        <!-- MENC dispositivos pequeC1os -->
+        <div class="visible-xs hidden-sm hidden-md hidden-lg hidden-xl">
+             <div class="collapse navbar-collapse MobileMenu" id="nav-movil">
+                <ul class="nav navbar-nav">
+                    <!-- ALMACC N -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ALMACÉN <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <!-- AlmacC)n Valiryo -->
+                            <li class="dropdown">
+                              <a href="#">
+                                <i class="fa fa-home"></i>
+                                <span>Almacén Valiryo</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="#">Stock Producto</a></li>
+                                <li><a href="#">Stock Piezas</a></li>
+                                <li><a href="#">Piezas rotas</a></li>
+                              </ul>    
+                            </li>
+                            <!-- Producto -->
+                            <li class="dropdown">
+                              <a href="#">
+                                <i class="fa fa-barcode"></i>
+                                <span>Producto</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="#">Producto final</a></li>
+                                <li><a href="#">Piezas</a></li>
+                                <li><a href="#">Modelos</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Control de calidad -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-cogs"></i>
+                                <span>Control de calidad</span>
+                              </a>
+                            </li>
+                            <!-- Almacenes externos -->
+                            <li class="dropdown-submenu">
+                              <a href="#">
+                                <i class="fa fa-truck"></i>
+                                <span>Almacenes externos</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a href="#">PLASNOR</a></li>
+                                <li><a href="#">LANTEGI</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Reparaciones -->
+                            <li>
+                              <a href="#/almacen">
+                                <i class="fa fa-wrench"></i>
+                                <span>Reparaciones</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- COMPRAS -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">COMPRAS <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Proveedores -->
+                            <li>
+                              <a (click)="gproveedores();" >
+                                <i class="fa fa-user"></i>
+                                <span>Proveedores</span>
+                              </a>
+                            </li>
+                            <!-- Productos -->
+                            <li class="dropdown">
+                              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <i class="fa fa-barcode"></i>
+                                <span>Productos</span>
+                              </a>
+                              <ul class="menu-nivel-3">
+                                <li><a (click)="gproductos();">Producto final</a></li>
+                                <li><a (click)="gpiezas();">Piezas</a></li>
+                                <li><a (click)="gmodelos();">Modelos</a></li>
+                              </ul> 
+                            </li>
+                            <!-- Pedido de compra-->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Pedido de compra</span>
+                              </a>
+                            </li>
+                            <!-- Lotes -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-cubes"></i>
+                                <span>Lotes</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- VENTAS -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">VENTAS <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Clientes -->
+                            <li>
+                              <a (click)="gclientes();">
+                                <i class="fa fa-user"></i>
+                                <span>Clientes</span>
+                              </a>
+                            </li>
+                            <!-- Pedidos -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Pedidos</span>
+                              </a>
+                            </li>
+                            <!-- Devoluciones -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-refresh"></i>
+                                <span>Devoluciones</span>
+                              </a>
+                            </li>
+                            <!-- Salidas por averC-a -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                <span>Salidas por avería</span>
+                              </a>
+                            </li>
+                            <!-- GarantC-a -->
+                            <li>
+                              <a href="#">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Garantías</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- ADMIN -->
+                    <li class="dropdown">
+                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ADMIN <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                            <!-- Control de usuarios -->
+                            <li>
+                              <a (click)="gusuarios();">
+                                <i class="fa fa-user"></i>
+                                <span>Control de usuarios</span>
+                              </a>
+                            </li>
+                            <!-- GestiC3n de almacenes -->
+                            <li>
+                              <a  (click)="galmacenes();">
+                                <i class="fa fa-cubes"></i>
+                                <span>GestiC3n almacenes</span>
+                              </a>
+                            </li>
+                            <!-- Tipos de garantC-as -->
+                            <li>
+                              <a (click)="ggarantias();">
+                                <i class="fa fa-pencil-square-o"></i>
+                                <span>Tipos de garantías</span>
+                              </a>
+                            </li> 
+                            
+                        </ul>
+                    </li>
+                    <!-- <li class="divider"></li> -->
+                    <li class="salir">
+                      <button class="btn btn-lg btn-logout navbar-btn pull-left" (click)="logout()"><i class="fa fa-sign-out"></i> LOGOUT</button>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        
+      <!--header end-->
+       <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse visible-lg visible-md visible-sm hidden-xs">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                  <li class="sub-menu">
+                      <a (click)="gproveedores();c1=false">
+                          <i class="fa fa-user"></i>
+                          <span>Proveedores</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" (click)="c1=true;">
+                          <i class="fa fa-barcode"></i>
+                          <span>Productos</span>
+                      </a>
+                      <ul class="dropdown" *ngIf="c1==true">
+                          <li><a  (click)="gproductos();">Producto final</a></li>
+                          <li><a  (click)="gpiezas();">Piezas</a></li>
+                          <li><a  (click)="gmodelos();">Modelos</a></li>
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" (click)="c1=false;" >
+                          <i class="fa fa-shopping-cart"></i>
+                          <span>Pedido de compra</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" (click)="c1=false;">
+                          <i class="fa fa-cubes"></i>
+                          <span>Lotes</span>
+                      </a>
+                  </li>
+                   <li class="sub-menu" *ngIf="false">
+                      <a href="javascript:;" (click)="c1=false;" >
+                          <i class="fa fa-dashboard"></i>
+                          <span>Pedido de fabricaciC3n</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu" *ngIf="false">
+                      <a href="javascript:;" (click)="c1=false;" >
+                          <i class="fa fa-dashboard"></i>
+                          <span>Devoluciones</span>
+                      </a>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+
+              <div class="row">
+              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
+                <div class="col-lg-12 main-chart">                                                             
+                <div class="proveedor-container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h1 class="submenu-title">Proveedores > Nuevo proveedor</h1>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                      <form class="proveedor-form"
+                            [ngFormModel]="proveedorForm"
+                            (submit)="save(proveedorForm)">
+                        
+                        <div class="form-group">
+                          <label for="nombre">Nombre:</label>
+                          <input type="text" class="form-control" id="nombre" 
+                              ngControl="nombre"
+                              [class.formulario-error]="!proveedorForm.valid"
+                              autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="direccion">Dirección:</label>
+                          <input type="text" class="form-control" id="direccion" 
+                              ngControl="direccion"
+                              [class.formulario-error]="!proveedorForm.valid"
+                              autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="ciudad">Ciudad:</label>
+                          <input type="text" class="form-control" id="ciudad" 
+                              ngControl="ciudad"
+                              [class.formulario-error]="!proveedorForm.valid"
+                              autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="pais">País:</label>
+                          <input type="text" class="form-control" id="pais" 
+                              ngControl="pais"
+                              [class.formulario-error]="!proveedorForm.valid"
+                              autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="telefono">Teléfono:</label>
+                          <input type="text" class="form-control" id="telefono" 
+                              ngControl="telefono"
+                              [class.formulario-error]="!proveedorForm.valid"
+                              autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="valoracion">Valoración:</label>
+                          <input type="text" class="form-control" id="valoracion" 
+                              ngControl="valoracion"
+                              [class.formulario-error]="!proveedorForm.valid"
+                              autofocus />
+                        </div>
+                      
+                        <a (click)="a=true;" class="btn btn-formulario"><i class="fa fa-plus" aria-hidden="true"></i> Añadir material</a>
+
+                        <div *ngIf="a==true;">       
+                        <div class="form-group">
+                          <label for="pieza">Pieza:</label>
+                          <input type="text" class="form-control" id="pieza"
+                                ngControl="pieza"
+                                [class.formulario-error]="!proveedorForm.valid"
+                                autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="refexterna">Referencia externa:</label>
+                          <input type="text" class="form-control" id="refexterna" ngControl="refexterna"
+                                [class.formulario-error]="!proveedorForm.valid"
+                                autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="coste1">Coste:</label>
+                          <input type="text" class="form-control" id="coste1" 
+                                ngControl="coste1"
+                                [class.formulario-error]="!proveedorForm.valid"
+                                autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="coste2">Otro tipo de coste:</label>
+                          <input type="text" class="form-control" id="coste2" 
+                                ngControl="coste2"
+                                [class.formulario-error]="!proveedorForm.valid"
+                                autofocus />
+                        </div>
+                        <div class="form-group">
+                          <label for="val">Valoración de la pieza:</label>
+                          <input type="text" class="form-control" id="val" 
+                                ngControl="val"
+                                [class.formulario-error]="!proveedorForm.valid"
+                                autofocus />
+                        </div>
+                        <a (click)="plus(proveedorForm);a=false;" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar material</a>
+                      </div>
+
+                        <div *ngIf="mat.length>0">
+                          <h5><i class="fa fa-list"></i>Materiales añadidos:</h5>
+                          <table>
+                            <tr>
+                              <td>
+                                <div *ngFor="#m of cuenta; #i=index" >
+                                  Material: {{m}}  &nbsp;<a (click)="minus(i);" class="btn btn-formulario"><i class="fa fa-minus" aria-hidden="true"></i> Eliminar</a>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                        <br/><br/>
+                        <button type="submit" [disabled]="!proveedorForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar proveedor</button>
+                      </form>
+
+                      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                    </div>
+                  </div>
                 </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <br/><br/>
-        <button type="submit" [disabled]="!proveedorForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar proveedor</button>
-      </form>
+              </div><!--/row -->                  
+           </div><!-- /col-lg-12 END SECTION MIDDLE -->
+          </section>
+      </section>
 
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-    </div>
-  </div>
-</div>
+      <!--main content end-->
+
+</section>
+
+

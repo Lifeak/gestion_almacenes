@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var pieza_service_1 = require('../../services/pieza/pieza-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var PiezaListCmp = (function () {
-    function PiezaListCmp(_piezaService, _router, routeParams) {
+    function PiezaListCmp(_piezaService, _loginService, router, routeParams) {
         this._piezaService = _piezaService;
-        this._router = _router;
+        this._loginService = _loginService;
+        this.router = router;
         this.piezas = [];
         this._selectedId = routeParams.get('id');
     }
@@ -34,7 +36,47 @@ var PiezaListCmp = (function () {
         return pieza._id === this._selectedId;
     };
     PiezaListCmp.prototype.onSelect = function (pieza) {
-        this._router.navigate(['DetailsPieza', { id: pieza._id }]);
+        this.router.navigate(['DetailsPieza', { id: pieza._id }]);
+    };
+    PiezaListCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    PiezaListCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    PiezaListCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    PiezaListCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    PiezaListCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    PiezaListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    PiezaListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    PiezaListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    PiezaListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    PiezaListCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    PiezaListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    PiezaListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    PiezaListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     PiezaListCmp = __decorate([
         core_1.Component({
@@ -44,7 +86,7 @@ var PiezaListCmp = (function () {
             providers: [pieza_service_1.PiezaService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [pieza_service_1.PiezaService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [pieza_service_1.PiezaService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], PiezaListCmp);
     return PiezaListCmp;
 }());

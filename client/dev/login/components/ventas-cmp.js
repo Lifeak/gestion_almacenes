@@ -40,6 +40,30 @@ var VentasCmp = (function () {
     VentasCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
+    VentasCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    VentasCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    VentasCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    VentasCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    VentasCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    VentasCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    VentasCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    VentasCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     VentasCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/ventas.html',

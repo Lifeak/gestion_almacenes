@@ -18,8 +18,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var cliente_service_1 = require('../../services/cliente/cliente-service');
 var login_service_1 = require('../../services/login-service');
 var ClienteDetailsCmp = (function () {
-    function ClienteDetailsCmp(fb, _router, _routeParams, _clienteService, _loginService) {
-        this._router = _router;
+    function ClienteDetailsCmp(fb, router, _routeParams, _clienteService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._clienteService = _clienteService;
         this._loginService = _loginService;
@@ -48,7 +48,7 @@ var ClienteDetailsCmp = (function () {
     };
     ClienteDetailsCmp.prototype.gotoIndex = function () {
         var clienteId = this.cliente ? this.cliente._id : null;
-        this._router.navigate(['/ListClientes']);
+        this.router.navigate(['/ListClientes']);
     };
     ClienteDetailsCmp.prototype._getAll = function () {
         var _this = this;
@@ -89,6 +89,46 @@ var ClienteDetailsCmp = (function () {
             return _this.cliente;
         });
         this.gotoIndex();
+    };
+    ClienteDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ClienteDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ClienteDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ClienteDetailsCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ClienteDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ClienteDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ClienteDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ClienteDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ClienteDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ClienteDetailsCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ClienteDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ClienteDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ClienteDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

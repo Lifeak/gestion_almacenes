@@ -18,8 +18,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var login_service_1 = require('../../services/login-service');
 var proveedor_service_1 = require('../../services/proveedor/proveedor-service');
 var ProveedorCreateCmp = (function () {
-    function ProveedorCreateCmp(fb, _router, _loginService, _routeParams, _proveedorService) {
-        this._router = _router;
+    function ProveedorCreateCmp(fb, router, _loginService, _routeParams, _proveedorService) {
+        this.router = router;
         this._loginService = _loginService;
         this._routeParams = _routeParams;
         this._proveedorService = _proveedorService;
@@ -40,7 +40,7 @@ var ProveedorCreateCmp = (function () {
         });
     }
     ProveedorCreateCmp.prototype.gotoIndex = function () {
-        this._router.navigate(['/ListProveedores']);
+        this.router.navigate(['/ListProveedores']);
     };
     ProveedorCreateCmp.prototype.goBack = function () {
         window.history.back();
@@ -100,6 +100,46 @@ var ProveedorCreateCmp = (function () {
             _this.proveedorForm.controls['coste1'].updateValue("");
         });
         this.gotoIndex();
+    };
+    ProveedorCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ProveedorCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ProveedorCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ProveedorCreateCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ProveedorCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ProveedorCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ProveedorCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ProveedorCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ProveedorCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ProveedorCreateCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ProveedorCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProveedorCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProveedorCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

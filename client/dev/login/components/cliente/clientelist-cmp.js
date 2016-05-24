@@ -12,10 +12,12 @@ var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var cliente_service_1 = require('../../services/cliente/cliente-service');
+var login_service_1 = require('../../services/login-service');
 var ClienteListCmp = (function () {
-    function ClienteListCmp(_clienteService, _router, routeParams) {
+    function ClienteListCmp(_clienteService, _loginService, router, routeParams) {
         this._clienteService = _clienteService;
-        this._router = _router;
+        this._loginService = _loginService;
+        this.router = router;
         this.clientes = [];
         this._selectedId = routeParams.get('id');
     }
@@ -34,16 +36,56 @@ var ClienteListCmp = (function () {
         return cliente._id === this._selectedId;
     };
     ClienteListCmp.prototype.onSelect = function (cliente) {
-        this._router.navigate(['DetailsCliente', { id: cliente._id }]);
+        this.router.navigate(['DetailsCliente', { id: cliente._id }]);
+    };
+    ClienteListCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ClienteListCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ClienteListCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ClienteListCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ClienteListCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ClienteListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ClienteListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ClienteListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ClienteListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ClienteListCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ClienteListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ClienteListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ClienteListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     ClienteListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/cliente/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [cliente_service_1.ClienteService]
+            providers: [cliente_service_1.ClienteService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [cliente_service_1.ClienteService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [cliente_service_1.ClienteService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], ClienteListCmp);
     return ClienteListCmp;
 }());

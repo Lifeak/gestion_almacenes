@@ -35,7 +35,7 @@ export class ModeloSubDetailsCmp implements OnInit {
   components = [];
   uds: Array<number> = [];
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _modeloService: ModeloService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _modeloService: ModeloService, @Inject(LoginService) private _loginService: LoginService) {
     this.modeloForm = fb.group({
       "nombre": ["", Validators.required],
       "refinterna": ["", Validators.required],
@@ -57,7 +57,6 @@ export class ModeloSubDetailsCmp implements OnInit {
     this.modelo = modelo;
     this.components = this.modelo[0].compuestoPor;
     this.uds = this.modelo[0].unidades;
-    //alert("los componentes son: "+this.components.toString()+" y las unidades "+this.uds.toString());
     });
 
     this._modeloService
@@ -81,7 +80,7 @@ export class ModeloSubDetailsCmp implements OnInit {
 
   buscar(nombre){
       //alert("buscamos este nombre "+nombre);
-      this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+      this.router.navigate(['DetailsSubModelo', { nombre: nombre }]);
   }
   edit(modelo: Modelo) {
     let id = this._routeParams.get('nombre');
@@ -127,5 +126,53 @@ export class ModeloSubDetailsCmp implements OnInit {
       this.components.splice(this.components.indexOf(nombre), 1);
       this.uds.splice(this.components.indexOf(nombre), 1);
   }
+
+
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
+
 
 }

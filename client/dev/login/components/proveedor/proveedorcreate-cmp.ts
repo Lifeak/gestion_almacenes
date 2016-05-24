@@ -33,7 +33,7 @@ export class ProveedorCreateCmp{
   mat: Array<Object> = [];
   cuenta: Array<string> = [];
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _loginService: LoginService, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _loginService: LoginService, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
     this.proveedorForm = fb.group({
       "nombre": ["", Validators.required],
       "direccion": ["", Validators.required],
@@ -50,7 +50,7 @@ export class ProveedorCreateCmp{
   }
   
   gotoIndex(){
-    this._router.navigate(['/ListProveedores']);
+    this.router.navigate(['/ListProveedores']);
 
   }
 
@@ -118,7 +118,51 @@ export class ProveedorCreateCmp{
               });
 
           this.gotoIndex();
+  }
 
 
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 }

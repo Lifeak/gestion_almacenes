@@ -38,7 +38,7 @@ export class ProveedorListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _proveedorService: ProveedorService, private _loginService: LoginService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _proveedorService: ProveedorService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -58,6 +58,50 @@ export class ProveedorListCmp implements OnInit {
     return proveedor._id === this._selectedId;
   }
   onSelect(proveedor:Proveedor){
-    this._router.navigate(['DetailsProveedor',{id: proveedor._id}]);
+    this.router.navigate(['DetailsProveedor',{id: proveedor._id}]);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
   }
 }

@@ -35,7 +35,7 @@ export class ModeloDetailsCmp implements OnInit {
   components = [];
   uds: Array<number> = [];
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _modeloService: ModeloService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _modeloService: ModeloService, @Inject(LoginService) private _loginService: LoginService) {
     this.modeloForm = fb.group({
       "nombre": ["", Validators.required],
       "refinterna": ["", Validators.required],
@@ -48,6 +48,7 @@ export class ModeloDetailsCmp implements OnInit {
   
 
   ngOnInit() {
+    alert("ya estoy en los detalless");
     let id = this._routeParams.get('id');
     this._modeloService
     .getModeloId(id)
@@ -67,7 +68,7 @@ export class ModeloDetailsCmp implements OnInit {
   }
 
   gotoIndex(){
-    this._router.navigate(['/ListModelos']);
+    this.router.navigate(['/ListModelos']);
   }
 
   private _getAll():void {
@@ -79,8 +80,8 @@ export class ModeloDetailsCmp implements OnInit {
   }
 
   buscar(nombre){
-      //alert("buscamos este nombre "+nombre);
-      this._router.navigate(['DetailsSubModelo', { nombre: nombre }]);
+      alert("buscamos este nombre "+nombre);
+      this.router.navigate(['/DetailsSubModelo', { nombre: nombre }]);
   }
 
   edit(modelo: Modelo){
@@ -138,4 +139,51 @@ export class ModeloDetailsCmp implements OnInit {
       this.components.splice(this.components.indexOf(nombre), 1);
       this.uds.splice(this.components.indexOf(nombre), 1);
   }
+
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
+
 }

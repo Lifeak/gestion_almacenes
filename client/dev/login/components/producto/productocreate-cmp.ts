@@ -37,7 +37,7 @@ export class ProductoCreateCmp implements OnInit{
   productoForm: ControlGroup;
   components: Array<string>;
   
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, private _loginService: LoginService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, private _loginService: LoginService){
     this.productoForm = fb.group({
       "_id": ["", Validators.required],
       "nombre": ["", Validators.required],
@@ -64,7 +64,7 @@ export class ProductoCreateCmp implements OnInit{
   }
   
   gotoIndex(){
-    this._router.navigate(['/ListProductos']);
+    this.router.navigate(['/ListProductos']);
 
   }
 
@@ -107,18 +107,54 @@ export class ProductoCreateCmp implements OnInit{
 
 
       this.gotoIndex();
-      }
-
-      
+      }   
 
   }
 
-  /*comprobar():boolean{
-    //let precioaux = precio.toString(); 
-    var precio: string = this.productoForm.controls['precio'].value;
-    if (precio.indexOf(',') != -1 || precio == "")
-      return true;
-    else return false;
-  }*/
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
 
 }

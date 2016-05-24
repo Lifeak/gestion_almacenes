@@ -45,14 +45,17 @@ import {AlmacenDetailsCmp} from './components/almacen/almacendetails-cmp';
 import {PiezaCreateCmp} from './components/pieza/piezacreate-cmp';
 import {PiezaListCmp} from './components/pieza/piezalist-cmp';
 import {PiezaDetailsCmp} from './components/pieza/piezadetails-cmp';
+import {PiezaSubDetailsCmp} from './components/pieza/piezasubdetails-cmp';
 //Producto
 import {ProductoCreateCmp} from './components/producto/productocreate-cmp';
 import {ProductoListCmp} from './components/producto/productolist-cmp';
 import {ProductoDetailsCmp} from './components/producto/productodetails-cmp';
+import {ProductoSubDetailsCmp} from './components/producto/productosubdetails-cmp';
 //Modelo
 import {ModeloCreateCmp} from './components/modelo/modelocreate-cmp';
 import {ModeloListCmp} from './components/modelo/modelolist-cmp';
 import {ModeloDetailsCmp} from './components/modelo/modelodetails-cmp';
+import {ModeloSubDetailsCmp} from './components/modelo/modelosubdetails-cmp';
 //Proveedor
 import {ProveedorCreateCmp} from './components/proveedor/proveedorcreate-cmp';
 import {ProveedorListCmp} from './components/proveedor/proveedorlist-cmp';
@@ -100,14 +103,17 @@ import {GarantiaDetailsCmp} from './components/garantia/garantiadetails-cmp';
 	{ path: '/ListPiezas', name: 'ListPiezas', component: PiezaListCmp },
 	{ path: '/CreatePieza', name: 'CreatePieza', component: PiezaCreateCmp },
 	{ path: '/DetailsPieza', name: 'DetailsPieza', component: PiezaDetailsCmp },
+	{ path: '/DetailsSubPieza', name: 'DetailsSubPieza', component: PiezaSubDetailsCmp },
 	//productos
 	{ path: '/ListProductos', name: 'ListProductos', component: ProductoListCmp },
 	{ path: '/CreateProducto', name: 'CreateProducto', component: ProductoCreateCmp },
 	{ path: '/DetailsProducto', name: 'DetailsProducto', component: ProductoDetailsCmp },
+	{ path: '/DetailsSubProducto', name: 'DetailsSubProducto', component: ProductoSubDetailsCmp },
 	//modelos
 	{ path: '/ListModelos', name: 'ListModelos', component: ModeloListCmp },
 	{ path: '/CreateModelo', name: 'CreateModelo', component: ModeloCreateCmp },
 	{ path: '/DetailsModelo', name: 'DetailsModelo', component: ModeloDetailsCmp },
+	{ path: '/DetailsSubModelo', name: 'DetailsSubModelo', component: ModeloSubDetailsCmp },
 	//proveedor
 	{ path: '/ListProveedores', name: 'ListProveedores', component: ProveedorListCmp },
 	{ path: '/CreateProveedor', name: 'CreateProveedor', component: ProveedorCreateCmp },

@@ -14,12 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var pieza_service_1 = require('../../services/pieza/pieza-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var PiezaDetailsCmp = (function () {
-    function PiezaDetailsCmp(fb, _router, _routeParams, _piezaService) {
-        this._router = _router;
+    function PiezaDetailsCmp(fb, router, _routeParams, _loginService, _piezaService) {
+        this.router = router;
         this._routeParams = _routeParams;
+        this._loginService = _loginService;
         this._piezaService = _piezaService;
         this.modelos = [];
         this.piezaForm = fb.group({
@@ -53,7 +55,7 @@ var PiezaDetailsCmp = (function () {
     };
     PiezaDetailsCmp.prototype.gotoIndex = function () {
         var piezaId = this.pieza ? this.pieza._id : null;
-        this._router.navigate(['/ListPiezas']);
+        this.router.navigate(['/ListPiezas']);
     };
     PiezaDetailsCmp.prototype._getAll = function () {
         var _this = this;
@@ -65,7 +67,7 @@ var PiezaDetailsCmp = (function () {
     };
     PiezaDetailsCmp.prototype.buscar = function (numserie) {
         alert("buscamos esta pieza " + numserie);
-        this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
+        this.router.navigate(['/DetailsSubPieza', { _id: numserie }]);
     };
     PiezaDetailsCmp.prototype.edit = function (pieza) {
         var _this = this;
@@ -136,6 +138,46 @@ var PiezaDetailsCmp = (function () {
     PiezaDetailsCmp.prototype.minus = function (nombre) {
         this.components.splice(this.components.indexOf(nombre), 1);
     };
+    PiezaDetailsCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    PiezaDetailsCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    PiezaDetailsCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    PiezaDetailsCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    PiezaDetailsCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    PiezaDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    PiezaDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    PiezaDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    PiezaDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    PiezaDetailsCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    PiezaDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    PiezaDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    PiezaDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', pieza_service_1.Pieza)
@@ -146,7 +188,7 @@ var PiezaDetailsCmp = (function () {
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, pieza_service_1.PiezaService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, login_service_1.LoginService, pieza_service_1.PiezaService])
     ], PiezaDetailsCmp);
     return PiezaDetailsCmp;
 }());

@@ -320,9 +320,10 @@
                                    <option value="encargado">Encargado</option>
                                   </select>
                             </div>
-                            <button type="submit" class="btn btn-formulario"
-                            [disabled]="!userForm.valid"><i class="fa fa-check" aria-hidden="true"></i> Guardar usuario</button>
-                        </form>
+                            <button type="submit"
+                                  [disabled]="!userForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
+
+                          </form>
                         <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
                     </div>
                 </div>

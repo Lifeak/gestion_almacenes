@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var modelo_service_1 = require('../../services/modelo/modelo-service');
 var ModeloListCmp = (function () {
-    function ModeloListCmp(_modeloService, _router, routeParams) {
+    function ModeloListCmp(_modeloService, _loginService, router, routeParams) {
         this._modeloService = _modeloService;
-        this._router = _router;
+        this._loginService = _loginService;
+        this.router = router;
         this.modelos = [];
         this._selectedId = routeParams.get('id');
     }
@@ -34,17 +36,57 @@ var ModeloListCmp = (function () {
         return modelo._id === this._selectedId;
     };
     ModeloListCmp.prototype.onSelect = function (modelo) {
-        this._router.navigate(['DetailsModelo', { id: modelo._id }]);
+        alert("vamos a bucar el modelo" + modelo._id + modelo.nombre);
+        this.router.navigate(['/DetailsModelo', { id: modelo._id }]);
+    };
+    ModeloListCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ModeloListCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ModeloListCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ModeloListCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ModeloListCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ModeloListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ModeloListCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ModeloListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ModeloListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ModeloListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     ModeloListCmp = __decorate([
         core_1.Component({
-            selector: 'ListModelos',
             templateUrl: 'client/dev/modelo/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [modelo_service_1.ModeloService]
+            providers: [modelo_service_1.ModeloService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [modelo_service_1.ModeloService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [modelo_service_1.ModeloService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], ModeloListCmp);
     return ModeloListCmp;
 }());

@@ -34,7 +34,7 @@ export class ProveedorDetailsCmp implements OnInit {
   index: number = null;
   indexpieza: string = "";
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _proveedorService: ProveedorService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _proveedorService: ProveedorService, @Inject(LoginService) private _loginService: LoginService) {
     this.proveedorForm = fb.group({
       "nombre": ["", Validators.required],
       "direccion": ["", Validators.required],
@@ -59,15 +59,14 @@ export class ProveedorDetailsCmp implements OnInit {
       this.proveedor = proveedor;
       alert("details "+JSON.stringify(this.proveedor));
       this.mat = this.proveedor.materiales;
-
-
     });
 
   }
 
   gotoIndex(){
-    this._router.navigate(['/ListProveedores']);
+    this.router.navigate(['/ListProveedores']);
   }
+  
   private _getAll():void {
     this._proveedorService
         .getAll()
@@ -166,6 +165,51 @@ export class ProveedorDetailsCmp implements OnInit {
       });
     this.gotoIndex();
 
+  }
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 
 }

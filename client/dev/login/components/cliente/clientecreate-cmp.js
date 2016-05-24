@@ -14,13 +14,15 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
+var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var cliente_service_1 = require('../../services/cliente/cliente-service');
 var ClienteCreateCmp = (function () {
-    function ClienteCreateCmp(fb, _router, _routeParams, _clienteService) {
-        this._router = _router;
+    function ClienteCreateCmp(fb, router, _routeParams, _clienteService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._clienteService = _clienteService;
+        this._loginService = _loginService;
         this.clienteForm = fb.group({
             "_id": ["", common_1.Validators.required],
             "nombre": ["", common_1.Validators.required],
@@ -36,7 +38,7 @@ var ClienteCreateCmp = (function () {
     }
     ClienteCreateCmp.prototype.gotoIndex = function () {
         var clienteId = this.cliente ? this.cliente._id : null;
-        this._router.navigate(['/ListClientes']);
+        this.router.navigate(['/ListClientes']);
     };
     ClienteCreateCmp.prototype.goBack = function () {
         window.history.back();
@@ -69,6 +71,46 @@ var ClienteCreateCmp = (function () {
         });
         this.gotoIndex();
     };
+    ClienteCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ClienteCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ClienteCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ClienteCreateCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ClienteCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ClienteCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ClienteCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ClienteCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ClienteCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ClienteCreateCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ClienteCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ClienteCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ClienteCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', cliente_service_1.Cliente)
@@ -79,7 +121,7 @@ var ClienteCreateCmp = (function () {
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, cliente_service_1.ClienteService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, cliente_service_1.ClienteService, login_service_1.LoginService])
     ], ClienteCreateCmp);
     return ClienteCreateCmp;
 }());

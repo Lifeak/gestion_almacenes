@@ -36,7 +36,7 @@ export class PiezaSubDetailsCmp implements OnInit {
   modelos: Modelo[] = [];
   components: Array<string>;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private _router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService, private _loginService: LoginService) {
     this.piezaForm = fb.group({
       "_id": ["", Validators.required],
       "modelo": ["", Validators.required],
@@ -70,7 +70,7 @@ export class PiezaSubDetailsCmp implements OnInit {
   }
 
   gotoIndex(){
-    this._router.navigate(['/ListPiezas']);
+    this.router.navigate(['/ListPiezas']);
   }
 
   goBack(){
@@ -86,7 +86,7 @@ export class PiezaSubDetailsCmp implements OnInit {
   }
 
   buscar(numserie: string) {
-      this._router.navigate(['DetailsSubPieza', { _id: numserie }]);
+      this.router.navigate(['DetailsSubPieza', { _id: numserie }]);
   }
 
   edit(pieza: Pieza) {
@@ -153,6 +153,51 @@ export class PiezaSubDetailsCmp implements OnInit {
 
   minus(nombre: string): void {
       this.components.splice(this.components.indexOf(nombre), 1);
+  }
+
+  logout() {
+     this._loginService.logout();
+     this.router.navigate(['/Login']);
+   }
+  
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 
 }

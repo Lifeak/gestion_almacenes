@@ -26,7 +26,7 @@ import {LoginService} from '../../services/login-service';
 @Component({
   templateUrl: 'client/dev/cliente/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [ClienteService]
+  providers: [ClienteService, LoginService]
 })
 
   @CanActivate(() => isLogged())
@@ -35,7 +35,7 @@ export class ClienteListCmp implements OnInit {
   private _selectedId: string;
 
 
-  constructor(private _clienteService: ClienteService, private _router: Router, routeParams: RouteParams) {
+  constructor(private _clienteService: ClienteService, private _loginService: LoginService,private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -54,6 +54,53 @@ export class ClienteListCmp implements OnInit {
     return cliente._id === this._selectedId;
   }
   onSelect(cliente:Cliente){
-    this._router.navigate(['DetailsCliente',{id: cliente._id}]);
+    this.router.navigate(['DetailsCliente',{id: cliente._id}]);
+  }
+
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 }

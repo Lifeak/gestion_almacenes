@@ -32,7 +32,7 @@ export class ClienteCreateCmp{
   @Input() cliente: Cliente;
   clienteForm: ControlGroup;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private _router: Router, private _routeParams: RouteParams, private _clienteService: ClienteService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _clienteService: ClienteService, private _loginService: LoginService){
     this.clienteForm = fb.group({
       "_id": ["", Validators.required],
       "nombre": ["", Validators.required],
@@ -49,7 +49,7 @@ export class ClienteCreateCmp{
   
   gotoIndex(){
     let clienteId = this.cliente ? this.cliente._id : null;
-    this._router.navigate(['/ListClientes']);
+    this.router.navigate(['/ListClientes']);
 
   }
 
@@ -89,6 +89,50 @@ export class ClienteCreateCmp{
 
   }
 
-  
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  compras() {
+    this.router.navigate(['/Compras']);
+  }
+
+  ventas() {
+    this.router.navigate(['/Ventas']);
+  }
+
+  almacen() {
+    this.router.navigate(['/Almacen']);
+  }
+
+  admin() {
+    this.router.navigate(['/Admin']);
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gusuarios() {
+    this.router.navigate(['/ListUsuarios']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
 
 }

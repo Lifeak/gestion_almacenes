@@ -18,8 +18,8 @@ var producto_service_1 = require('../../services/producto/producto-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var login_service_1 = require('../../services/login-service');
 var ProductoCreateCmp = (function () {
-    function ProductoCreateCmp(fb, _router, _routeParams, _productoService, _loginService) {
-        this._router = _router;
+    function ProductoCreateCmp(fb, router, _routeParams, _productoService, _loginService) {
+        this.router = router;
         this._routeParams = _routeParams;
         this._productoService = _productoService;
         this._loginService = _loginService;
@@ -47,7 +47,7 @@ var ProductoCreateCmp = (function () {
         });
     };
     ProductoCreateCmp.prototype.gotoIndex = function () {
-        this._router.navigate(['/ListProductos']);
+        this.router.navigate(['/ListProductos']);
     };
     ProductoCreateCmp.prototype.goBack = function () {
         window.history.back();
@@ -87,6 +87,46 @@ var ProductoCreateCmp = (function () {
             });
             this.gotoIndex();
         }
+    };
+    ProductoCreateCmp.prototype.logout = function () {
+        this._loginService.logout();
+        this.router.navigate(['/Login']);
+    };
+    ProductoCreateCmp.prototype.compras = function () {
+        this.router.navigate(['/Compras']);
+    };
+    ProductoCreateCmp.prototype.ventas = function () {
+        this.router.navigate(['/Ventas']);
+    };
+    ProductoCreateCmp.prototype.almacen = function () {
+        this.router.navigate(['/Almacen']);
+    };
+    ProductoCreateCmp.prototype.admin = function () {
+        this.router.navigate(['/Admin']);
+    };
+    ProductoCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ProductoCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ProductoCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ProductoCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    ProductoCreateCmp.prototype.gusuarios = function () {
+        this.router.navigate(['/ListUsuarios']);
+    };
+    ProductoCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProductoCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProductoCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 
