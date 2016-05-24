@@ -92,8 +92,6 @@ a, a:hover, a:focus {
 
 .btn-theme {
   color: #fff;
-  /*background-color: #68dff0;
-  border-color: #48bcb4;*/
   background-color: #333;
   border-color:#333;
 }
@@ -215,18 +213,6 @@ hr {
 	background-color: #68dff0;
 }
 
-ul.top-menu > li > .logout {
-	color: #f2f2f2;
-	font-size: 12px;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border: 1px solid #64c3c2 !important;
-	padding: 5px 15px;
-	margin-right: 15px;
-	background: #68dff0;
-	margin-top: 15px;
-}
-
 
 /*sidebar navigation*/
 
@@ -234,14 +220,8 @@ ul.top-menu > li > .logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    /*background: #424a5d;*/
     background:#464646;
     margin-top: 10px;
-}
-
-#sidebar h5 {
-	color: #f2f2f2;
-	font-weight: 700;
 }
 
 #sidebar ul li {
@@ -255,6 +235,8 @@ ul.top-menu > li > .logout {
 #sidebar .sub-menu > .sub li:last-child {
     padding-bottom: 10px;
 }
+
+.dropdown { margin-top: 5px; }
 
 /*LEFT NAVIGATION ICON*/
 .dcjq-icon {
@@ -284,6 +266,10 @@ ul.top-menu > li > .logout {
 ul.sidebar-menu , ul.sidebar-menu li ul.sub{
     margin: -2px 0 0;
     padding: 0;
+}
+
+ul.sidebar-menu li ul.sub {
+    margin-top: 5px;
 }
 
 ul.sidebar-menu {
@@ -330,7 +316,7 @@ ul.sidebar-menu li ul.sub li a:hover {
 }
 
 ul.sidebar-menu li ul.sub li.active a {
-    color: #68dff0;
+    color: #c9aa5f;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -369,7 +355,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: #68dff0;
+    background: #c9aa5f;
     color: #fff;
     display: block;
 
@@ -403,7 +389,6 @@ ul.sidebar-menu li a.active i {
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
     margin-left: 210px;
-    margin-top: -0px;
 }
 
 .header, .footer {
@@ -453,7 +438,7 @@ a.logo:hover, a.logo:focus {
 }
 
 a.logo span {
-    color: #68dff0;
+    color: #eee;
 }
 
 a.logo img{width:60%;}
@@ -469,29 +454,12 @@ ul.top-menu > li:last-child{
     border-right:none;
 }
 
-
-.notify-row {
-    float: left;
-    margin-top: 1%
-    /*margin-top: 15px;*/
-    /*margin-left: 92px;*/
-}
-
-.notify-row .notification span.label {
-    display: inline-block;
-    height: 18px;
-    width: 20px;
-    padding: 5px;
-}
-
 ul.top-menu > li > a {
     color: white;
     font-size: 16px;
     padding: 6px 46px;
     /*border-right: 1px solid;*/
 }
-
-
 
 ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     /*border:1px solid #b6b6b6 !important;*/
@@ -501,13 +469,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     /*border-radius: 4px;*/
     -webkit-border-radius: 4px;
     color: #b6b6b6 !important;
-}
-
-.notify-row .badge {
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    z-index: 100;
 }
 
 .dropdown-menu.extended {
@@ -539,7 +500,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .dropdown-menu.extended li p.green {
-    background-color: #68dff0;
+    background-color: #c9aa5f;
     color: #fff;
 }
 
@@ -718,36 +679,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     right: 20px;
     top: -10px;
 }
-
-/*----*/
-
-.notify-arrow {
-    border-style: solid;
-    border-width: 0 9px 9px;
-    height: 0;
-    margin-top: 0;
-    opacity: 0;
-    position: absolute;
-    left: 7px;
-    top: -18px;
-    transition: all 0.25s ease 0s;
-    width: 0;
-    z-index: 10;
-    margin-top: 10px;
-    opacity: 1;
-}
-
-.notify-arrow-yellow {
-    border-color: transparent transparent #FCB322;
-    border-bottom-color: #FCB322 !important;
-    border-top-color: #FCB322 !important;
-}
-.notify-arrow-green {
-    border-color: transparent transparent #68dff0;
-    border-bottom-color: #68dff0 !important;
-    border-top-color: #68dff0 !important;
-}
-
 
 
 /*--sidebar toggle---*/
@@ -2239,7 +2170,6 @@ label {
     padding: 10px 0;
 }
 
-
 .go-top {
     margin-right: 1%;
     float: right;
@@ -2289,7 +2219,6 @@ a:hover {
 
 }
 /*********** HEADER & MENÚ SUPERIOR *****************/
-/*.logo img{width:11%;}*/
 .btn-logout {
     background-color: #464646; 
     color: #b6b6b6; 
@@ -2312,47 +2241,127 @@ header{
     background: #333 !important;
     border-bottom: 1px solid #c9aa5f;
 }
+
 .navbar {
     margin-bottom: 0 !important;
 }
+
 nav img {
     max-width: 210px;
     width: 60%;
     height: auto;
 }
-/*nav .logo {
-    text-align: center;
-}*/
 
 nav ul {
     height: 70px;
     padding-top: 12px;
 }
+
 nav li {
     height: 30px !important;
     font-size: 16px;
     padding: 0 30px;
     border-right: 1px solid;
     margin-top: 10px;
-    /*line-height:16px;
-    display: inline-block;*/
+}
+
+nav ul li:first-child {padding-left: 0 !important;}
+
+@media (min-width: 767px) and (max-width: 850px) {
+    nav li { padding: 0 9px; float: right;}
+}
+
+@media (min-width: 851px) and (max-width: 931px)  {
+    nav li { padding: 0 20px; float: right; }
 }
 
 nav li a {
     color: white !important;
 }
+
 nav li:hover a{
     color: #b6b6b6!important;
 }
+
 .navbar .collapse-navbar {
     display: block;
 }
+
 .navbar-toggle {
     margin-top: 15px !important;
     background-color: transparent !important;
     border: 1px solid transparent !important; 
 }
 
+/********* Menú dispositivos pequeños **********/
+#nav-movil {
+    background-color: #464646;
+    margin-top: 70px;
+}
+
+#nav-movil li, #nav-movil a {
+    color: #aeb2b7;
+    font-size: 16px;
+}
+#nav-movil span {
+    margin-left: 10px;
+}
+
+#nav-movil a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    margin: 0 10px;
+}
+#nav-movil > li > a {
+    margin-bottom: 0!important;
+}
+
+#nav-movil a:hover {
+    color: #555;
+}
+
+.menu-nivel-3 li {
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.menu-nivel-3 a{
+    margin-left: 25px !important;
+}
+
+.menu-nivel-3 li a:hover{
+    color: white !important;
+}
+
+#nav-movil .btn-logout {
+    margin-left: 10px;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+    border: none;
+}
+
+#nav-movil .btn-logout:hover, #nav-movil .btn-logout:active, #nav-movil .btn-logout:focus {
+    color: #c9aa5f; 
+    border: none;
+    background:#eee;
+}
+#nav-movil .btn-logout:hover li.salir {
+    background-color: #eee !important;
+}
+
+.salir {
+    border-top: 1px solid #c9aa5f;
+}
+
+#nav-movil ul li:nth-child(4) {
+    padding-bottom: 5px;
+}
+
+#nav-movil ul li:last-child {
+    padding-top: 5px;
+}
 
 
 /*Estilos nav MobileMenu*/
@@ -2360,8 +2369,8 @@ nav li:hover a{
     position: relative;
     z-index: 1;
     background: #464646!important;
-
 }
+
 #MobileMenu a{
     font-family: "Rudo" !important, Segoe UI, sans-serif;
     font-size: 16px;
@@ -2371,6 +2380,7 @@ nav li:hover a{
     text-align: left;
     text-decoration: none;
 }
+
 #MobileMenu a:hover{
     color: white;
     background: #68dff0!important;
@@ -2381,16 +2391,20 @@ nav li:hover a{
     -o-webkit-transition: all 0.3s ease;
     webkit-transition: all 0.3s ease;
 }
+
 #MobileMenu .margen-izq{
     padding-left: 3em;
 }
+
 #MobileMenu .dbl-margen-izq{
     padding-left: 6em;
 }
+
 #MobileMenu .list-group-item {
     border: none;
     background-color: #464646;
 }
+
 #MobileMenu .list-group-item:hover {
     background-color: #464646; 
 }
@@ -2399,8 +2413,6 @@ nav li:hover a{
     #background: #68dff0;
     #color: white;
 }
-
-
 
 
 /*********** CONTROLES FORMULARIO (create.html & details.html)*****************/
@@ -2444,6 +2456,7 @@ input {
     color:#333;
     font-weight: bold;
 }
+
 .btn-nuevo:hover { color:#c9aa5f; }
 
 /**/
@@ -2454,17 +2467,8 @@ input {
     color: #989898;
     border-bottom: 1px solid #989898;
 }
-/*.nav-enlaces, .nav-enlaces a{
-    font-family: "Rudo" !important, Segoe UI, sans-serif;
-    font-size: 16px;
-    color:#989898;
-}
-.nav-enlaces a:hover { color:#333; }
-.cliente-container ul {
-    font-family: "Rudo" !important, Segoe UI, sans-serif;
-    padding-left: 0px !important;
-}*/
-.badge  {
+
+/*.badge  {
     font-family: "Rudo" !important, Segoe UI, sans-serif;
     font-size: 16px;
     color:#989898;
@@ -2473,33 +2477,20 @@ input {
     text-align: left;
     background: none;
 }
+
 .badge:hover {
     color: #333;
-}
+}*/
 
 
 
 /**/
 
-/*.submenu-container {
-  position: relative;
-  max-width: 900px;
-  margin: 30px auto 0;
-  padding: 20px 10px 10px 10px;
-  box-shadow: 0 -1px 0 #e5e5e5,
-              0 0 2px rgba(0,0,0,.12),
-              0 2px 4px rgba(0,0,0,.24);
-}*/
-/*.submenu-container .cliente-form {
-  margin-top: 20px;
-}
-.submenu-container input:focus {
-  outline: 0;
-}*/
 .submenu-container button:focus,
 .submenu-container button:active {
   outline: none;
 }
+
 .submenu-container .formulario-error {
   border-bottom-color: #E22323;
 }
@@ -2515,21 +2506,19 @@ input {
 }
 
 .submenu-container li{
-  color:steelblue;
+  color:#eee;
 }
 
 .submenu-container li:hover{
-  color:steelblue;
+  color: #eee;
   text-decoration: underline;
 
 }
 
-
-
 /************ TABLAS (list.html) **************/
 table th {
    /* background: #464646;*/
-    color: #333;
+    color: #555;
     font-size: 16px;
     font-family: 'Ruda', sans-serif;
     font-weight: bold;
@@ -2539,59 +2528,8 @@ table td {
     font-size: 16px;
 }
 
-/********* Menú dispositivos pequeños **********/
-#nav-movil {
-    background-color: #464646;
+
+/**/
+#ascrail2000 div {
+    background-color: #c9aa5f;
 }
- #nav-movil li, #nav-movil a {
-    color: #aeb2b7;
-    font-size: 16px;
- }
- #nav-movil span {
-    margin-left: 10px;
- }
-
- #nav-movil a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 20px;
-    margin: 0 10px;
- }
- #nav-movil a:hover {
-    color: #222;
- }
-
-.menu-nivel-3 li {
-    margin-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.menu-nivel-3 a{
-    margin-left: 25px !important;
-}
-
-.menu-nivel-3 li a:hover{
-    color: white !important;
-}
-
-/****** Classes visible & hidden ******/
-
-/*@media (min-width: 34em) {
-    #nav-movil { display: none !important; }
-}
-
-@media (max-width: 33.9em) { 
-    #nav-movil { display: block !important; }
- }*/
-
-
-/* #nav-movil .hidden-sm, #nav-movil .hidden-md, #nav-movil .hidden-lg, #nav-movil .hidden-xl {
-    .responsive-visibility();
-}
-
-#nav-movil .visible-xs {
-     @media (max-width: @screen-tablet) {
-    .responsive-visibility();
-  }
-} */
