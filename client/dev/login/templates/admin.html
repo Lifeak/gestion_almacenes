@@ -204,7 +204,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <button class="btn btn-lg btn-logout navbar-btn pull-right" (click)="logout()"><i class="fa fa-sign-out"></i> LOGOUT</button>
+                      <button class="btn btn-lg btn-logout navbar-btn pull-left" (click)="logout()"><i class="fa fa-sign-out"></i> LOGOUT</button>
                     </li>
                 </ul>
             </div>
@@ -254,7 +254,11 @@
 
           <section class="wrapper">
               <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div será de 9 para posibilitar uno de 3 a la derecha-->
+                <div class="visible-xs hidden-sm hidden-md hidden-lg hidden-xl">
+                  <h2>Administración</h2>
+                </div>
+              </div>
+              <div class="row">
                   <div class="col-lg-12 main-chart">
                   
                     <div class="row mtbox">

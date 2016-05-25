@@ -69,8 +69,6 @@ a, a:hover, a:focus {
 	text-decoration: none;
 }	
 
-
-
 /*Theme Backgrounds*/
 
 .bg-theme {
@@ -2293,6 +2291,8 @@ nav li:hover a{
     border: 1px solid transparent !important; 
 }
 
+.navbar-nav > li > a { padding-bottom: 0px !important }
+
 /********* Menú dispositivos pequeños **********/
 #nav-movil {
     background-color: #464646;
@@ -2410,7 +2410,7 @@ nav li:hover a{
 }
 
 ::selection {
-    #background: #68dff0;
+    #background: #c9aa5f;
     #color: white;
 }
 
@@ -2458,6 +2458,11 @@ input {
 }
 
 .btn-nuevo:hover { color:#c9aa5f; }
+
+.form-group > .col-* {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
 
 /**/
 
@@ -2529,7 +2534,8 @@ table td {
 }
 
 
-/**/
-#ascrail2000 div {
-    background-color: #c9aa5f;
+/********* ÁREA CONTENIDO PRINCIPAL **********/
+.section-container {
+    padding-left: 5%;
+    padding-right: 5%;
 }

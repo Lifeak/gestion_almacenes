@@ -279,7 +279,7 @@
               <div class="row">
               <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
                 <div class="col-lg-12 main-chart">                                                             
-                    <div class="modelo-container">
+                    <div class="section-container">
                       <div class="row">
                         <div class="col-md-12">
                           <h1 class="submenu-title">Productos > Modelos > Nuevo modelo</h1>
@@ -331,37 +331,41 @@
                                 <option value="Producto">Producto</option>
                               </select>
                             </div>
-                            <div class="form-group">
-                              <label for="compuestoPor">Selecciona los componentes del modelo:</label>
-                              <select name="modelo"
-                                  ngControl="compuestoPor" 
-                                  class="form-control" 
-                                  id="compuestoPor" 
-                                  placeholder="Selecciona los componenetes"
-                                  [class.formulario-error]="!modeloForm.valid">
-                                <option *ngFor="#model of modelos" >{{model.nombre}}</option>
-                              </select>
-                            </div>
-                            <div class="form-group">
-                              <label for="unidades">Unidades:</label>
-                              <select name="unidades"
-                                  ngControl="unidades" 
-                                  class="form-control" 
-                                  id="unidades" 
-                                  (change)="b=true"
-                                  placeholder="Selecciona número de unidades"
-                                  [class.formulario-error]="!modeloForm.valid">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                              </select>
+                            <div class="form-group no-margin">
+                              <label>Selecciona cada componente del modelo y sus unidades:</label>
+                              <br>
+                              <div class="col-md-7">
+                                <label for="compuestoPor">Componente:</label>
+                                <select name="modelo"
+                                    ngControl="compuestoPor" 
+                                    class="form-control" 
+                                    id="compuestoPor" 
+                                    placeholder="Selecciona los componenetes"
+                                    [class.formulario-error]="!modeloForm.valid">
+                                  <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+                                </select>
+                              </div>
+                              <div class="col-md-5">
+                                <label for="unidades">Unidades:</label>
+                                <select name="unidades"
+                                    ngControl="unidades" 
+                                    class="form-control" 
+                                    id="unidades" 
+                                    (change)="b=true"
+                                    placeholder="Selecciona número de unidades"
+                                    [class.formulario-error]="!modeloForm.valid">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                  <option value="9">9</option>
+                                  <option value="10">10</option>
+                                </select>
+                              </div>
                             </div>
                             <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
 

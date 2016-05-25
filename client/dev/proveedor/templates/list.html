@@ -6,7 +6,7 @@
       
         <header>
         
-        <!--MENC DE NAVEGACICN-->
+        <!--MENCÜ DE NAVEGACIÓN-->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container-fluid">
             <!-- Para MC3vil -->
@@ -35,15 +35,15 @@
 
         </header>
 
-        <!-- MENC dispositivos pequeC1os -->
+        <!-- MENCÚ dispositivos pequeños -->
         <div class="visible-xs hidden-sm hidden-md hidden-lg hidden-xl">
              <div class="collapse navbar-collapse MobileMenu" id="nav-movil">
                 <ul class="nav navbar-nav">
-                    <!-- ALMACC N -->
+                    <!-- ALMACÉN -->
                     <li class="dropdown">
                       <a href="#" data-toggle="dropdown" class="dropdown-toggle">ALMACÉN <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <!-- AlmacC)n Valiryo -->
+                            <!-- Almacén Valiryo -->
                             <li class="dropdown">
                               <a href="#">
                                 <i class="fa fa-home"></i>
@@ -275,47 +275,43 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                <div class="col-lg-12 main-chart">                                                             
-				<div class="proveedores-container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="submenu-title">Proveedores</h1>
-							<a [routerLink]="['/CreateProveedor']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo proveedor</a>
-						</div>
-					</div>
-					<br><br>
-					<div class="row">
-				    	<div class="col-md-12">
-				    		<table class="table table-hover table-responsive">
-					    		<thead>
-					    			<tr>
-					    				<th>Nombre</th>
-					    				<th>Dirección</th>
-					    				<th>Teléfono</th>
-					    				<th>Pieza</th>
-					    				<th>Referencia externa</th>
-					    			</tr>
-					    		</thead>
-					    		<tbody>
-					    			<tr *ngFor="#p of proveedors"
-							        [class.selected]="isSelected(p)"
-							        (click)="onSelect(p)">
-					    				<td>{{p.nombre}}</td>
-					    				<td>{{p.direccion}} ({{p.ciudad}}) - {{p.pais}}</td>
-					    				<td>{{p.telefono}}</td>
-					    				<td>{{p.pieza}}</td>
-					    				<td>{{p.refexterna}}</td>
-					    			</tr>
-				    			</tbody>
-				    		</table>
-						</div>
-					</div>
-				</div>
+            <div class="row">
+              <div class="col-lg-12 main-chart">                           
+        				<div class="section-container">
+        					<div class="row">
+        						<div class="col-md-12">
+        							<h1 class="submenu-title">Proveedores</h1>
+        							<a [routerLink]="['/CreateProveedor']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo proveedor</a>
+        						</div>
+        					</div>
+        					<br><br>
+        					<div class="row">
+        				    	<div class="col-md-12">
+        				    		<table class="table table-hover table-responsive">
+        					    		<thead>
+        					    			<tr>
+        					    				<th>Nombre</th>
+        					    				<th>Dirección</th>
+        					    				<th>Teléfono</th>
+        					    				<th>Valoración</th>
+        					    			</tr>
+        					    		</thead>
+        					    		<tbody>
+        					    			<tr *ngFor="#p of proveedors"
+        							        [class.selected]="isSelected(p)"
+        							        (click)="onSelect(p)">
+        					    				<td>{{p.nombre}}</td>
+        					    				<td>{{p.direccion}} ({{p.ciudad}}) - {{p.pais}}</td>
+        					    				<td>{{p.telefono}}</td>
+        					    				<td>{{p.valoracion}}</td>
+        					    			</tr>
+        				    			</tbody>
+        				    		</table>
+        						</div>
+        					</div>
+        				</div>
               </div><!--/row -->                  
-           </div><!-- /col-lg-12 END SECTION MIDDLE -->
+            </div><!-- /col-lg-12 END SECTION MIDDLE -->
           </section>
       </section>
 
