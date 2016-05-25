@@ -74,7 +74,7 @@ export class ProductoDetailsCmp implements OnInit {
   }
 
   buscar(nombre:string){
-      this.router.navigate(['DetailsSubPieza', { nombre: nombre }]);
+      this.router.navigate(['DetailsSubPieza', { _id: nombre }]);
   }
 
   edit(producto: Producto){

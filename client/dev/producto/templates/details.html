@@ -328,10 +328,12 @@
                           <div class="form-group">
                             <label for="carcasa">Número de serie de la carcasa:</label>
                             <input [(ngModel)]="producto.compuestoPor[0]" class="form-control" id="carcasa"/>
+                            <a (click)="buscar(producto.compuestoPor[0])"><i class="fa fa-search" aria-hidden="true"></i>Detalles de la carcasa</a>
                           </div>
                           <div class="form-group">
                             <label for="columna">Número de serie de la columna:</label>
                             <input [(ngModel)]="producto.compuestoPor[1]" class="form-control" id="columna"/>
+                            <a (click)="buscar(producto.compuestoPor[1])"><i class="fa fa-search" aria-hidden="true"></i>Detalles de la columna</a>
                           </div>
                           <div class="form-group">
                             <label for="precio">Precio:</label>
