@@ -292,16 +292,17 @@
                           <form class="pieza-form"
                                 [ngFormModel]="piezaForm"
                                 (submit)="save(piezaForm)">
-
+                            
+                            <p>(*)  Significa que es un campo obligatorio de rellenar</p>
                             <div class="form-group">
-                              <label for="id">Identificador de pieza:</label>
+                              <label for="id">Identificador de pieza (*):</label>
                               <input type="text" class="form-control" id="id" 
                                   ngControl="_id"
                                   [class.formulario-error]="!piezaForm.valid"
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="modelo">Modelo:</label>
+                              <label for="modelo">Modelo (*):</label>
                               <select name="modelo" class="form-control" id="modelo" 
                                   ngControl="modelo"
                                   [class.formulario-error]="!piezaForm.valid">
@@ -309,7 +310,7 @@
                               </select>
                             </div>
                             <div class="form-group">
-                              <label for="estado">Estado:</label>
+                              <label for="estado">Estado (*):</label>
                               <select name="estado" class="form-control" id="estado" 
                                   ngControl="estado"
                                   [class.formulario-error]="!piezaForm.valid" placeholder="Selecciona el estado...">
@@ -320,7 +321,7 @@
                               </select>
                             </div>
                             <div class="form-group">
-                              <label for="lote">Lote:</label>
+                              <label for="lote">Lote (*):</label>
                               <input type="text" class="form-control" id="lote" 
                                   ngControl="lote"
                                   [class.formulario-error]="!piezaForm.valid"
@@ -334,21 +335,21 @@
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="almacen">Almacén de ubicación:</label>
+                              <label for="almacen">Almacén de ubicación (*):</label>
                               <input type="text" class="form-control" id="almacen" 
                                   ngControl="almacen"
                                   [class.formulario-error]="!piezaForm.valid"
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="almacenOrigen">Almacén de procedencia:</label>
+                              <label for="almacenOrigen">Almacén de procedencia (*):</label>
                               <input type="text" class="form-control" id="almacenOrigen" 
                                   ngControl="almacenOrigen"
                                   [class.formulario-error]="!piezaForm.valid"
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="vendido">¿Está vendida?:</label>
+                              <label for="vendido">¿Está vendida? (*):</label>
                               <select name="vendido" class="form-control" id="vendido" 
                                   ngControl="vendido"
                                   [class.formulario-error]="!piezaForm.valid" placeholder="¿Está vendida?">
@@ -363,30 +364,41 @@
                                   [class.formulario-error]="!piezaForm.valid"
                                   autofocus />
                             </div>
+
                             <div class="form-group">
+                            <div class="col-md-8" style="padding-left: 0">
                               <label for="compuestoPor">Componentes de la pieza para añadir:</label>
                               <input type="text" class="form-control" id="compuestoPor" 
                                   ngControl="compuestoPor"
                                   [class.formulario-error]="!piezaForm.valid"
                                   autofocus />
-                              <a (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i></a> 
                             </div>
+                            <div class="col-md-4">
+                            <label style="padding-bottom: 45px;"></label>
+                              <a style="font-size: 14px" (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Añadir componente</a> 
+                            </div>
+                            </div>
+
                             <div *ngIf="components.length>0">
                               <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
 
                               <div *ngFor="#p of components;" >
-                                {{p}} <button class="btn btn-danger btn-xs" (click)="minus(p);"><i class="fa fa-trash-o "></i></button><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+                                {{p}} &nbsp;<a style="font-size: 14px" (click)="minus(p);">Eliminar<i class="fa fa-trash-o "></i></a><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
                               </div>
                             </div>
-                            <br><br>
-                            <button type="submit" [disabled]="!piezaForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar pieza</button>
                           </form>
+                        </div>
+                      </div>
+                      <br><br>
+                      <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
                           <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                          <button type="submit" [disabled]="!piezaForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar pieza</button>
                         </div>
                       </div>
                     </div>
               </div><!--/row -->                  
-           </div><!-- /col-lg-12 END SECTION MIDDLE -->
+           </div>
           </section>
       </section>
 

@@ -292,7 +292,8 @@
 					    		<table class="table table-hover table-responsive">
 						    		<thead>
 						    			<tr>
-						    				<th>Modelo</th>
+						    				<th>Identificador</th>
+                        <th>Modelo</th>
 						    				<th>Estado</th>
 						    				<th>Lote</th>
 						    				<th>Características</th>
@@ -306,7 +307,8 @@
 						    			<tr *ngFor="#pieza of piezas"
 							        [class.selected]="isSelected(pieza)"
 							        (click)="onSelect(pieza)">
-						    				<td>{{pieza.modelo}}</td>
+						    				<td>{{pieza._id}}</td>
+                        <td>{{pieza.modelo}}</td>
 						    				<td>{{pieza.estado}}</td>
 						    				<td>{{pieza.lote}}</td>
 						    				<td>{{pieza.caracteristicas}}</td>
