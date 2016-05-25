@@ -290,24 +290,25 @@
                         <div class="col-md-8 col-md-offset-2">
                           <div *ngIf="proveedor">
                             <form class="proveedor-form" [ngFormModel]="proveedorForm">
+                            <p>(*)  Significa que es un campo obligatorio de rellenar</p>
                               <div class="form-group">
-                                <label for="nombre">Nombre:</label>
+                                <label for="nombre">Nombre (*):</label>
                                 <input [(ngModel)]="proveedor.nombre" class="form-control" id="nombre"/>
                               </div>
                               <div class="form-group">
-                                <label for="direccion">Dirección:</label>
+                                <label for="direccion">Dirección (*):</label>
                                 <input [(ngModel)]="proveedor.direccion" class="form-control" id="direccion"/>
                               </div>
                               <div class="form-group">
-                                <label for="ciudad">Ciudad:</label>
+                                <label for="ciudad">Ciudad (*):</label>
                                 <input [(ngModel)]="proveedor.ciudad" class="form-control" id="ciudad"/>
                               </div>
                               <div class="form-group">
-                                <label for="pais">País:</label>
+                                <label for="pais">País (*):</label>
                                 <input [(ngModel)]="proveedor.pais" class="form-control" id="pais"/>
                               </div>
                               <div class="form-group">
-                                <label for="telefono">Teléfono: </label>
+                                <label for="telefono">Teléfono (*): </label>
                                 <input [(ngModel)]="proveedor.telefono" class="form-control" id="telefono"/>
                               </div>
                               <div class="form-group">
@@ -322,8 +323,9 @@
                                       <td>
                                         <div *ngFor="#p of mat; #i=index;">
                                             
-                                          Pieza: {{p.pieza}} &nbsp; Refexterna: {{p.refexterna}} &nbsp; Coste: {{p.coste1}} &nbsp;
-                                          <a  (click)="editarmat(i,p.pieza,p.refexterna,p.coste1.p,coste2,p.val);a=true;">Editar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
+                                          Pieza: {{p.pieza}} &nbsp; Refexterna: {{p.refexterna}} &nbsp; Coste: {{p.coste1}} &nbsp; 
+                                           Otro coste: {{p.coste2}} &nbsp; Valoración: {{p.val}} &nbsp;
+                                          <a  (click)="editarmat(i,p.pieza,p.refexterna,p.coste1,p.coste2,p.val);a=true;">Editar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
                                           <a  (click)="minus(i);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>
                                         </div>  
                                       </td>
@@ -336,29 +338,29 @@
                                <div *ngIf="a==true;">       
 
                                <div class="form-group">
-                                <label for="pieza">Pieza:</label>
+                                <label for="pieza">Pieza (*):</label>
                                 <input type="text" class="form-control" id="pieza" 
                                     ngControl="pieza"
                                     [class.formulario-error]="!proveedorForm.valid"
                                     autofocus />
                               </div>
                               <div class="form-group">
-                                <label for="refexterna">Referencia externa:</label>
+                                <label for="refexterna">Referencia externa (*):</label>
                                 <input type="text" class="form-control" id="refexterna" 
                                     ngControl="refexterna"
                                     [class.formulario-error]="!proveedorForm.valid"
                                     autofocus />
                               </div>
                               <div class="form-group">
-                                <label for="coste1">Coste:</label>
-                                <input type="text" class="form-control" id="coste1" 
+                                <label for="coste1">Coste (*):</label>
+                                <input type="number" class="form-control" id="coste1" min="0"
                                     ngControl="coste1"
                                     [class.formulario-error]="!proveedorForm.valid"
                                     autofocus />
                               </div>
                               <div class="form-group">
                                 <label for="coste2">Otro tipo de coste:</label>
-                                <input type="text" class="form-control" id="coste2" 
+                                <input type="number" class="form-control" id="coste2" min="0"
                                     ngControl="coste2"
                                     [class.formulario-error]="!proveedorForm.valid"
                                     autofocus />

@@ -64,6 +64,7 @@ export class ProveedorCreateCmp{
     var coste1: number = this.proveedorForm.controls['coste1'].value;
     var coste2: number = this.proveedorForm.controls['coste2'].value;
     var val: string = this.proveedorForm.controls['val'].value;
+    
     if (pieza == "" || refexterna == "" || coste1.toString() == "") {
       alert("Debes rellenar todos los campos sobre la pieza a añadir");
     } else {
