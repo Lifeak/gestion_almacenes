@@ -20,6 +20,7 @@ ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 import {LoginService} from '../../services/login-service';
+import {UserService} from '../../services/user/user-service';
 import {Garantia, GarantiaService} from '../../services/garantia/garantia-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
@@ -27,16 +28,18 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 @Component({
   templateUrl: 'client/dev/garantia/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [GarantiaService]
+  providers: [GarantiaService, UserService]
 })
 
   @CanActivate(() => isLogged())
 export class GarantiaListCmp implements OnInit {
   garantias: Garantia[] = [];
   private _selectedId: string;
+  token: string;
+  public profile: string;
 
 
-  constructor(private _garantiaService: GarantiaService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
+  constructor(private _garantiaService: GarantiaService, private _userService:UserService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -85,6 +88,25 @@ export class GarantiaListCmp implements OnInit {
   }
 
   usuarios() {
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      alert("1en u tenemos " + u);
+      if (u == "undefined"){
+        let u = localStorage.key(0);
+        alert("2en u tenemos " + u);
+      }
+      this.getProfile(u);
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
   }
 }

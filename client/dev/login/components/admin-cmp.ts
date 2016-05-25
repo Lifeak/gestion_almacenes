@@ -73,12 +73,17 @@ export class AdminCmp {
 
   usuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
-      //alert("soy un encargadillo");
       let u = localStorage.key(1);
-      //alert("en u tenemos " + u);
-      this.getProfile(u);
-
-    } else{          
+      alert("1en u tenemos " + u);
+      if (u == "undefined") {
+        let e = localStorage.key(0);
+        alert("2en u tenemos " + u);
+        this.getProfile(e);
+      }else{
+        this.getProfile(u);
+      }
+      
+    } else {
           this.router.navigate(['/ListUsuarios']);
     }
   }

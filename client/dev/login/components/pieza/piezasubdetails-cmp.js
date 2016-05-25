@@ -121,8 +121,13 @@ var PiezaSubDetailsCmp = (function () {
     };
     PiezaSubDetailsCmp.prototype.plus = function (data) {
         var nombre = this.piezaForm.controls['compuestoPor'].value;
-        this.components.push(nombre);
-        this.piezaForm.controls['compuestoPor'].updateValue("");
+        if (nombre == "") {
+            alert("Debes rellenar el campo.");
+        }
+        else {
+            this.components.push(nombre);
+            this.piezaForm.controls['compuestoPor'].updateValue("");
+        }
     };
     PiezaSubDetailsCmp.prototype.minus = function (nombre) {
         this.components.splice(this.components.indexOf(nombre), 1);

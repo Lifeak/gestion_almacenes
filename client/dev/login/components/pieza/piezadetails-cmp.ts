@@ -156,8 +156,12 @@ export class PiezaDetailsCmp implements OnInit {
 
   plus(data: FormData): void {
       var nombre: string = this.piezaForm.controls['compuestoPor'].value;
-      this.components.push(nombre);
-      (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+      if (nombre == "") { 
+        alert("Debes rellenar el campo.");
+      } else {
+        this.components.push(nombre);
+        (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+    }
 
   }
 
