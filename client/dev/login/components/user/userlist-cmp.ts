@@ -56,13 +56,10 @@ export class UserListCmp implements OnInit {
     return user._id === this._selectedId;
   }
   onSelect(user:User){
-    alert("selecciono el usuario " + user.nombre);
     this.router.navigate(['/DetailsUsuario',{id: user._id}]);
-    alert("deberia estar dentro....");
   }
 
   nuevousuario() {
-    alert("entro en crear usuario");
     this.router.navigate(['/CreateUsuario']);
   }
   compras() {

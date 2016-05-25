@@ -102,8 +102,12 @@ export class PiezaCreateCmp implements OnInit{
 
   plus(data: FormData): void {
       var nombre: string = this.piezaForm.controls['compuestoPor'].value; 
-      this.components.push(nombre);
-      (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+      if(nombre==""){
+          alert("El número de serie de la pieza no puede ser vacío.");
+      }else{
+        this.components.push(nombre);
+        (<Control>this.piezaForm.controls['compuestoPor']).updateValue("");
+      }
 
   }
 

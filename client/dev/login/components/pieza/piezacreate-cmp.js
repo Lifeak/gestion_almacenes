@@ -81,8 +81,13 @@ var PiezaCreateCmp = (function () {
     };
     PiezaCreateCmp.prototype.plus = function (data) {
         var nombre = this.piezaForm.controls['compuestoPor'].value;
-        this.components.push(nombre);
-        this.piezaForm.controls['compuestoPor'].updateValue("");
+        if (nombre == "") {
+            alert("El número de serie de la pieza no puede ser vacío.");
+        }
+        else {
+            this.components.push(nombre);
+            this.piezaForm.controls['compuestoPor'].updateValue("");
+        }
     };
     PiezaCreateCmp.prototype.minus = function (nombre) {
         this.components.splice(this.components.indexOf(nombre), 1);

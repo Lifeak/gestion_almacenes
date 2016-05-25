@@ -341,17 +341,18 @@
                                     class="form-control" 
                                     id="compuestoPor" 
                                     placeholder="Selecciona los componenetes"
-                                    [class.formulario-error]="!modeloForm.valid">
+                                    [class.formulario-error]="!modeloForm.valid"
+                                    (change)="a=true">
                                   <option *ngFor="#model of modelos" >{{model.nombre}}</option>
                                 </select>
                               </div>
-                              <div class="col-md-5">
+                              <div class="col-md-3">
                                 <label for="unidades">Unidades:</label>
                                 <select name="unidades"
                                     ngControl="unidades" 
                                     class="form-control" 
                                     id="unidades" 
-                                    (change)="b=true"
+                                    (change)="b=true;"
                                     placeholder="Selecciona número de unidades"
                                     [class.formulario-error]="!modeloForm.valid">
                                   <option value="1">1</option>
@@ -367,7 +368,11 @@
                                 </select>
                               </div>
                             </div>
-                            <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
+                             <div class="col-md-2">
+                                  <label style="padding-bottom:20px;">  </label>                               
+                                  <a  (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">  Añadir componente</i></a>
+                              </div>
+                            </form><br/><br/><br/><br/>
 
                             <div *ngIf="components.length>0">
                               <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
@@ -385,7 +390,6 @@
                             <br/><br/>
                             <button type="submit" [disabled]="!modeloForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
 
-                          </form>
 
                           <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
                         </div>

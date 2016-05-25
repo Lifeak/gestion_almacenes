@@ -50,7 +50,7 @@ export class ModeloSubDetailsCmp implements OnInit {
   ngOnInit() {
     let name = this._routeParams.get('nombre');
     
-    alert("estamos en subdetails");
+    //alert("estamos en subdetails");
     this._modeloService
     .getModeloName(name)
     .subscribe((modelo) => {
@@ -113,7 +113,7 @@ export class ModeloSubDetailsCmp implements OnInit {
   plus(data: FormData): void {
 
       var nombre: string = this.modeloForm.controls['compuestoPor'].value;
-      alert("entramos a plus con nombre " + nombre);
+      //alert("entramos a plus con nombre " + nombre);
       this.components.push(nombre);
       (<Control>this.modeloForm.controls['compuestoPor']).updateValue("");
       var unidades: number = this.modeloForm.controls['unidades'].value;

@@ -70,7 +70,6 @@ export class ProductoSubDetailsCmp implements OnInit {
   }
 
   buscar(nombre){
-      //alert("buscamos este nombre "+nombre);
       this.router.navigate(['DetailsSubProducto', { nombre: nombre }]);
   }
 
