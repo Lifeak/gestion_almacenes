@@ -45,7 +45,6 @@ export class UserDetailsCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    alert(id);
     this._userService
     .getUserId(id)
     .subscribe((user) => {

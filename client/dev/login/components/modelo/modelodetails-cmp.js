@@ -37,7 +37,7 @@ var ModeloDetailsCmp = (function () {
     }
     ModeloDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
-        alert("ya estoy en los detalless");
+        //alert("ya estoy en los detalless");
         var id = this._routeParams.get('id');
         this._modeloService
             .getModeloId(id)
@@ -64,7 +64,7 @@ var ModeloDetailsCmp = (function () {
         });
     };
     ModeloDetailsCmp.prototype.buscar = function (nombre) {
-        alert("buscamos este nombre " + nombre);
+        //alert("buscamos este nombre "+nombre);
         this.router.navigate(['/DetailsSubModelo', { nombre: nombre }]);
     };
     ModeloDetailsCmp.prototype.edit = function (modelo) {
@@ -101,7 +101,7 @@ var ModeloDetailsCmp = (function () {
     };
     ModeloDetailsCmp.prototype.plus = function (data) {
         var nombre = this.modeloForm.controls['compuestoPor'].value;
-        alert("entramos a plus con nombre " + nombre);
+        // alert("entramos a plus con nombre " + nombre);
         this.components.push(nombre);
         this.modeloForm.controls['compuestoPor'].updateValue("");
         var unidades = this.modeloForm.controls['unidades'].value;

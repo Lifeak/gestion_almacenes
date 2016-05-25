@@ -56,7 +56,6 @@ var ProductoSubDetailsCmp = (function () {
         });
     };
     ProductoSubDetailsCmp.prototype.buscar = function (nombre) {
-        //alert("buscamos este nombre "+nombre);
         this.router.navigate(['DetailsSubProducto', { nombre: nombre }]);
     };
     ProductoSubDetailsCmp.prototype.logout = function () {

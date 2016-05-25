@@ -36,12 +36,9 @@ var UserListCmp = (function () {
         return user._id === this._selectedId;
     };
     UserListCmp.prototype.onSelect = function (user) {
-        alert("selecciono el usuario " + user.nombre);
         this.router.navigate(['/DetailsUsuario', { id: user._id }]);
-        alert("deberia estar dentro....");
     };
     UserListCmp.prototype.nuevousuario = function () {
-        alert("entro en crear usuario");
         this.router.navigate(['/CreateUsuario']);
     };
     UserListCmp.prototype.compras = function () {

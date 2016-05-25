@@ -294,7 +294,7 @@
                             id="nombre"
                             [(ngModel)]="item.nombre"
                             [class.formulario-error]="!modeloForm.valid"
-                            placeholder="Nombre de modelo">
+                            placeholder="Nombre de modelo" disabled="true">
                             <option *ngFor="#model of modelos" >{{model.nombre}}</option>
                           </select>
                         </div>
@@ -303,14 +303,14 @@
                           <input type="text" 
                             class="form-control" 
                             id="refinterna" 
-                            [(ngModel)]="item.refinterna"/>
+                            [(ngModel)]="item.refinterna" disabled="true" />
                         </div>
                         <div class="form-group">
                           <label for="caracteristicas">Características:</label>
                           <input type="text" 
                             class="form-control" 
                             id="caracteristicas" 
-                            [(ngModel)]="item.caracteristicas"/>
+                            [(ngModel)]="item.caracteristicas" disabled="true" />
                         </div>
                         <div class="form-group">
                           <label for="modeloDe">Es un modelo de:</label>
@@ -318,7 +318,7 @@
                             class="form-control" 
                             id="modeloDe"
                             [(ngModel)]="item.modeloDe"
-                            [class.formulario-error]="!modeloForm.valid">
+                            [class.formulario-error]="!modeloForm.valid" disabled="true">
                             <option value="Pieza">Pieza</option>
                             <option value="Producto">Producto</option>
                           </select>
@@ -343,10 +343,10 @@
                               </tr>
                             </table>
                         </div>
-<!--    --> </div>
-                          
+<!--    -->           </div>
+                     </div>     
                         <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-
+                  </div>
                   </div> <!-- end section-container -->
               </div><!--/row -->                  
           </section>

@@ -50,7 +50,6 @@ export class ClienteDetailsCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    alert(id);
     this._clienteService
     .getClienteId(id)
     .subscribe((cliente) => {

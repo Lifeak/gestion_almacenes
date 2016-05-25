@@ -342,8 +342,9 @@
                                     </td>
                                   </tr>
                                 </table>
-                              </div>
-                              <div class="form-group">
+                              </div><br/><br/>
+                              <div class="form-group no-margin">
+                               <div class="col-md-7">
                                 <label for="modelo">Añade más componentes al modelo:</label>
                                 <select name="modelo"
                                   class="form-control" 
@@ -355,7 +356,9 @@
                                   <option *ngFor="#model of modelos" >{{model.nombre}}</option>
                                 </select>
                               </div>
-                              <div class="form-group">
+                              
+                              <div class="col-md-3">
+                              
                                 <label for="unidades">Unidades:</label>
                                 <select name="unidades"
                                     ngControl="unidades" 
@@ -376,14 +379,20 @@
                                   <option value="10">10</option>
                                 </select>
                               </div>
-                              <a (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
+                              </div>
+                              <div class="col-md-1">
+                                  <label style="padding-bottom:20px;">  </label>                               
+                                  <a  (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">Componente</i></a>
+                              </div>
                             </form>
                           </div>
-                          <p>
-                            <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                            <button (click)="edit(modelo)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
-                            <button (click)="delete(modelo)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar modelo</button>
-                          </p>
+                          <div class="row">
+                            <div class="col-md-12 ">
+                              <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                             <button (click)="edit(modelo)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
+                             <button (click)="delete(modelo)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar modelo</button>
+                            </div>
+                          </div>
                         </div>
                       </div>
               </div><!--/row -->                  

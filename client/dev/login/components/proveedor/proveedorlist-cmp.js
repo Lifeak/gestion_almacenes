@@ -30,7 +30,6 @@ var ProveedorListCmp = (function () {
             .getAll()
             .subscribe(function (proveedores) {
             _this.proveedors = proveedores;
-            //alert("proveedores son"+this.proveedors[1].nombre);
         });
     };
     ProveedorListCmp.prototype.isSelected = function (proveedor) {

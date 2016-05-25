@@ -39,7 +39,6 @@ var ClienteDetailsCmp = (function () {
     ClienteDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var id = this._routeParams.get('id');
-        alert(id);
         this._clienteService
             .getClienteId(id)
             .subscribe(function (cliente) {

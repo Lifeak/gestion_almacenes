@@ -48,7 +48,7 @@ export class ModeloDetailsCmp implements OnInit {
   
 
   ngOnInit() {
-    alert("ya estoy en los detalless");
+    //alert("ya estoy en los detalless");
     let id = this._routeParams.get('id');
     this._modeloService
     .getModeloId(id)
@@ -80,7 +80,7 @@ export class ModeloDetailsCmp implements OnInit {
   }
 
   buscar(nombre){
-      alert("buscamos este nombre "+nombre);
+      //alert("buscamos este nombre "+nombre);
       this.router.navigate(['/DetailsSubModelo', { nombre: nombre }]);
   }
 
@@ -126,7 +126,7 @@ export class ModeloDetailsCmp implements OnInit {
   plus(data: FormData): void {
 
       var nombre: string = this.modeloForm.controls['compuestoPor'].value;
-      alert("entramos a plus con nombre " + nombre);
+     // alert("entramos a plus con nombre " + nombre);
       this.components.push(nombre);
       (<Control>this.modeloForm.controls['compuestoPor']).updateValue("");
       var unidades: number = this.modeloForm.controls['unidades'].value;

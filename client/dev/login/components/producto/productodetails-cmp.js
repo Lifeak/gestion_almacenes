@@ -58,7 +58,7 @@ var ProductoDetailsCmp = (function () {
         });
     };
     ProductoDetailsCmp.prototype.buscar = function (nombre) {
-        this.router.navigate(['DetailsSubPieza', { nombre: nombre }]);
+        this.router.navigate(['DetailsSubPieza', { _id: nombre }]);
     };
     ProductoDetailsCmp.prototype.edit = function (producto) {
         var _this = this;

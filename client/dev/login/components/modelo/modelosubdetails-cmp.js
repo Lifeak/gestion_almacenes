@@ -38,7 +38,7 @@ var ModeloSubDetailsCmp = (function () {
     ModeloSubDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var name = this._routeParams.get('nombre');
-        alert("estamos en subdetails");
+        //alert("estamos en subdetails");
         this._modeloService
             .getModeloName(name)
             .subscribe(function (modelo) {
@@ -91,7 +91,7 @@ var ModeloSubDetailsCmp = (function () {
     };
     ModeloSubDetailsCmp.prototype.plus = function (data) {
         var nombre = this.modeloForm.controls['compuestoPor'].value;
-        alert("entramos a plus con nombre " + nombre);
+        //alert("entramos a plus con nombre " + nombre);
         this.components.push(nombre);
         this.modeloForm.controls['compuestoPor'].updateValue("");
         var unidades = this.modeloForm.controls['unidades'].value;
