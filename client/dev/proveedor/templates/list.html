@@ -294,6 +294,7 @@
         					    				<th>Dirección</th>
         					    				<th>Teléfono</th>
         					    				<th>Valoración</th>
+                              <th>Piezas</th>
         					    			</tr>
         					    		</thead>
         					    		<tbody>
@@ -304,6 +305,9 @@
         					    				<td>{{p.direccion}} ({{p.ciudad}}) - {{p.pais}}</td>
         					    				<td>{{p.telefono}}</td>
         					    				<td>{{p.valoracion}}</td>
+                              <td><div *ngFor="#m of p.materiales">
+                                {{m.pieza}}
+                              </div></td>
         					    			</tr>
         				    			</tbody>
         				    		</table>
