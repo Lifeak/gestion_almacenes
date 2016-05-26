@@ -111,22 +111,18 @@ var GarantiaDetailsCmp = (function () {
     GarantiaDetailsCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
-    GarantiaDetailsCmp.prototype.usuarios = function () {
+    GarantiaDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
-            else {
+            else
                 this.getProfile(u);
-            }
         }
-        else {
+        else
             this.router.navigate(['/ListUsuarios']);
-        }
     };
     GarantiaDetailsCmp.prototype.getProfile = function (name) {
         var _this = this;

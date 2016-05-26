@@ -27,7 +27,7 @@ import {UserService} from '../../services/user/user-service';
 
 @Component({
   templateUrl: 'client/dev/producto/templates/detailss.html',
-  providers:[LoginService, UserService, ProductoService, Producto]
+  providers:[LoginService, UserService, ProductoService]
 })
 
 @CanActivate(() => isLogged())
@@ -114,15 +114,12 @@ export class ProductoSubDetailsCmp implements OnInit {
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);
-      // alert("1en u tenemos " + u);
       if (u == "undefined") {
-        let e = localStorage.key(0);
-        //alert("2en u tenemos " + u);
-        this.getProfile(e);
+        let o = localStorage.key(0);
+        this.getProfile(o);
       } else {
         this.getProfile(u);
       }
-
     } else {
           this.router.navigate(['/ListUsuarios']);
     }

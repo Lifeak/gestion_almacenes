@@ -15,7 +15,6 @@ var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var producto_service_1 = require('../../services/producto/producto-service');
-var modelo_service_1 = require('../../services/modelo/modelo-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var login_service_1 = require('../../services/login-service');
 var user_service_1 = require('../../services/user/user-service');
@@ -122,11 +121,9 @@ var ProductoCreateCmp = (function () {
     ProductoCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -162,7 +159,7 @@ var ProductoCreateCmp = (function () {
     ProductoCreateCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/producto/templates/create.html',
-            providers: [user_service_1.UserService, login_service_1.LoginService, modelo_service_1.Modelo, producto_service_1.ProductoService, producto_service_1.Producto]
+            providers: [user_service_1.UserService, login_service_1.LoginService, producto_service_1.ProductoService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 

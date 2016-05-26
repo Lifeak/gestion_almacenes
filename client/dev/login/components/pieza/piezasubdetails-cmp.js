@@ -18,7 +18,6 @@ var login_service_1 = require('../../services/login-service');
 var pieza_service_1 = require('../../services/pieza/pieza-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var user_service_1 = require('../../services/user/user-service');
-var modelo_service_1 = require('../../services/modelo/modelo-service');
 var PiezaSubDetailsCmp = (function () {
     function PiezaSubDetailsCmp(fb, router, _routeParams, _userService, _piezaService, _loginService) {
         this.router = router;
@@ -166,11 +165,9 @@ var PiezaSubDetailsCmp = (function () {
     PiezaSubDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -206,7 +203,7 @@ var PiezaSubDetailsCmp = (function () {
     PiezaSubDetailsCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/pieza/templates/detailss.html',
-            providers: [login_service_1.LoginService, user_service_1.UserService, pieza_service_1.PiezaService, modelo_service_1.Modelo]
+            providers: [login_service_1.LoginService, user_service_1.UserService, pieza_service_1.PiezaService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 

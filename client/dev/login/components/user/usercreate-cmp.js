@@ -86,14 +86,12 @@ var UserCreateCmp = (function () {
     UserCreateCmp.prototype.garantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
-    UserCreateCmp.prototype.usuarios = function () {
+    UserCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -140,7 +138,7 @@ var UserCreateCmp = (function () {
     UserCreateCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/user/templates/create.html',
-            providers: [login_service_1.LoginService, user_service_1.UserService, user_service_1.User]
+            providers: [login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 

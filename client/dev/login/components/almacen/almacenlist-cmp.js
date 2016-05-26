@@ -15,8 +15,9 @@ var user_service_1 = require('../../services/user/user-service');
 var almacen_service_1 = require('../../services/almacen/almacen-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var AlmacenListCmp = (function () {
-    function AlmacenListCmp(_almacenService, _loginService, router, routeParams) {
+    function AlmacenListCmp(_almacenService, _userService, _loginService, router, routeParams) {
         this._almacenService = _almacenService;
+        this._userService = _userService;
         this._loginService = _loginService;
         this.router = router;
         this.almacens = [];
@@ -61,14 +62,12 @@ var AlmacenListCmp = (function () {
     AlmacenListCmp.prototype.garantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
-    AlmacenListCmp.prototype.usuarios = function () {
+    AlmacenListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -95,7 +94,7 @@ var AlmacenListCmp = (function () {
             providers: [almacen_service_1.AlmacenService, login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [almacen_service_1.AlmacenService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [almacen_service_1.AlmacenService, user_service_1.UserService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], AlmacenListCmp);
     return AlmacenListCmp;
 }());

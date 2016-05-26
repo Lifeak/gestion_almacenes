@@ -71,11 +71,9 @@ var PiezaListCmp = (function () {
     PiezaListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -106,7 +104,6 @@ var PiezaListCmp = (function () {
     };
     PiezaListCmp = __decorate([
         core_1.Component({
-            selector: 'ListPiezas',
             templateUrl: 'client/dev/pieza/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [pieza_service_1.PiezaService, login_service_1.LoginService, user_service_1.UserService]

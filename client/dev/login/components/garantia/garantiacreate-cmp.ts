@@ -35,7 +35,7 @@ export class GarantiaCreateCmp{
   public token: string;
   public profile: string;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _garantiaService: GarantiaService, private _loginService: LoginService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _userService: UserService, private _garantiaService: GarantiaService, private _loginService: LoginService){
     this.garantiaForm = fb.group({
       "_id": ["", Validators.required],
       "tiempo": ["", Validators.required]
@@ -89,9 +89,6 @@ export class GarantiaCreateCmp{
   almacenes() {
       this.router.navigate(['/ListAlmacenes']);
   }
-  usuarios() {
-    this.router.navigate(['/ListUsuarios']);
-  }
   gproductos() {
     this.router.navigate(['/ListProductos']);
   }
@@ -113,18 +110,13 @@ export class GarantiaCreateCmp{
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);
-      // alert("1en u tenemos " + u);
       if (u == "undefined") {
-        let e = localStorage.key(0);
-        //alert("2en u tenemos " + u);
-        this.getProfile(e);
-      } else {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      } else
         this.getProfile(u);
-      }
-
-    } else {
-          this.router.navigate(['/ListUsuarios']);
-    }
+    } else
+      this.router.navigate(['/ListUsuarios']);
   }
   public getProfile(name: string) {
     this._userService

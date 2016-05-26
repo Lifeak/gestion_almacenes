@@ -19,9 +19,10 @@ var isloggedin_1 = require('../../services/isloggedin');
 var garantia_service_1 = require('../../services/garantia/garantia-service');
 var user_service_1 = require('../../services/user/user-service');
 var GarantiaCreateCmp = (function () {
-    function GarantiaCreateCmp(fb, router, _routeParams, _garantiaService, _loginService) {
+    function GarantiaCreateCmp(fb, router, _routeParams, _userService, _garantiaService, _loginService) {
         this.router = router;
         this._routeParams = _routeParams;
+        this._userService = _userService;
         this._garantiaService = _garantiaService;
         this._loginService = _loginService;
         this.garantiaForm = fb.group({
@@ -67,9 +68,6 @@ var GarantiaCreateCmp = (function () {
     GarantiaCreateCmp.prototype.almacenes = function () {
         this.router.navigate(['/ListAlmacenes']);
     };
-    GarantiaCreateCmp.prototype.usuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
-    };
     GarantiaCreateCmp.prototype.gproductos = function () {
         this.router.navigate(['/ListProductos']);
     };
@@ -91,19 +89,15 @@ var GarantiaCreateCmp = (function () {
     GarantiaCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
-            else {
+            else
                 this.getProfile(u);
-            }
         }
-        else {
+        else
             this.router.navigate(['/ListUsuarios']);
-        }
     };
     GarantiaCreateCmp.prototype.getProfile = function (name) {
         var _this = this;
@@ -126,7 +120,7 @@ var GarantiaCreateCmp = (function () {
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, garantia_service_1.GarantiaService, login_service_1.LoginService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService, garantia_service_1.GarantiaService, login_service_1.LoginService])
     ], GarantiaCreateCmp);
     return GarantiaCreateCmp;
 }());

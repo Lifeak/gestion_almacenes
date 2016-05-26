@@ -84,11 +84,9 @@ var UserProfileCmp = (function () {
     UserProfileCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -136,7 +134,7 @@ var UserProfileCmp = (function () {
     UserProfileCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/user/templates/profile.html',
-            providers: [user_service_1.User, user_service_1.UserService, login_service_1.LoginService]
+            providers: [user_service_1.UserService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

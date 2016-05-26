@@ -177,11 +177,9 @@ var ProveedorDetailsCmp = (function () {
     ProveedorDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -217,7 +215,7 @@ var ProveedorDetailsCmp = (function () {
     ProveedorDetailsCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/proveedor/templates/details.html',
-            providers: [login_service_1.LoginService, user_service_1.UserService, proveedor_service_1.Proveedor, proveedor_service_1.ProveedorService]
+            providers: [login_service_1.LoginService, user_service_1.UserService, proveedor_service_1.ProveedorService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

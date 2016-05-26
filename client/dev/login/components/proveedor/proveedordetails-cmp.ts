@@ -25,7 +25,7 @@ import {UserService} from '../../services/user/user-service';
 
 @Component({
   templateUrl: 'client/dev/proveedor/templates/details.html',
-  providers: [LoginService, UserService, Proveedor, ProveedorService]
+  providers: [LoginService, UserService, ProveedorService]
 })
 
   @CanActivate(() => isLogged())
@@ -206,15 +206,12 @@ export class ProveedorDetailsCmp implements OnInit {
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);
-      // alert("1en u tenemos " + u);
       if (u == "undefined") {
-        let e = localStorage.key(0);
-        //alert("2en u tenemos " + u);
-        this.getProfile(e);
+        let o = localStorage.key(0);
+        this.getProfile(o);
       } else {
         this.getProfile(u);
       }
-
     } else {
           this.router.navigate(['/ListUsuarios']);
     }

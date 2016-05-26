@@ -16,7 +16,6 @@ var common_1 = require('angular2/common');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../../services/login-service');
 var pieza_service_1 = require('../../services/pieza/pieza-service');
-var modelo_service_1 = require('../../services/modelo/modelo-service');
 var user_service_1 = require('../../services/user/user-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var PiezaCreateCmp = (function () {
@@ -126,11 +125,9 @@ var PiezaCreateCmp = (function () {
     PiezaCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
-                this.getProfile(e);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
             else {
                 this.getProfile(u);
@@ -166,7 +163,7 @@ var PiezaCreateCmp = (function () {
     PiezaCreateCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/pieza/templates/create.html',
-            providers: [login_service_1.LoginService, user_service_1.UserService, modelo_service_1.Modelo, pieza_service_1.PiezaService]
+            providers: [login_service_1.LoginService, user_service_1.UserService, pieza_service_1.PiezaService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 

@@ -59,15 +59,16 @@ var GarantiaListCmp = (function () {
     GarantiaListCmp.prototype.almacenes = function () {
         this.router.navigate(['/ListAlmacenes']);
     };
-    GarantiaListCmp.prototype.usuarios = function () {
+    GarantiaListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            alert("1en u tenemos " + u);
             if (u == "undefined") {
-                var u_1 = localStorage.key(0);
-                alert("2en u tenemos " + u_1);
+                var o = localStorage.key(0);
+                this.getProfile(o);
             }
-            this.getProfile(u);
+            else {
+                this.getProfile(u);
+            }
         }
         else {
             this.router.navigate(['/ListUsuarios']);
@@ -75,12 +76,12 @@ var GarantiaListCmp = (function () {
     };
     GarantiaListCmp.prototype.getProfile = function (name) {
         var _this = this;
+        alert("get profile de  " + name);
         this._userService
             .getProfile(name)
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     GarantiaListCmp.prototype.gproductos = function () {
