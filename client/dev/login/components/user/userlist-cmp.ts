@@ -28,14 +28,15 @@ import {LoginService} from '../../services/login-service';
 @Component({
   templateUrl: 'client/dev/user/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [UserService]
+  providers: [UserService, LoginService]
 })
 
 @CanActivate(() => isLoggedinAdmin())
 export class UserListCmp implements OnInit {
   users: User[] = [];
   private _selectedId: string;
-
+  public token: string;
+  public profile: string;
 
   constructor(private _userService: UserService, private _loginService: LoginService,public router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
@@ -90,8 +91,52 @@ export class UserListCmp implements OnInit {
       this.router.navigate(['/ListGarantias']);
   }
 
-  usuarios(){
-    this.router.navigate(['/ListUsuarios']);
+  usuarios() {
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      // alert("1en u tenemos " + u);
+      if (u == "undefined") {
+        let e = localStorage.key(0);
+        //alert("2en u tenemos " + u);
+        this.getProfile(e);
+      } else {
+        this.getProfile(u);
+      }
+
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
   
 }

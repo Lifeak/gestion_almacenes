@@ -28,6 +28,7 @@ var AdminCmp = (function () {
     }
     AdminCmp.prototype.logout = function () {
         this._loginService.logout();
+        localStorage.clear();
         this.router.navigate(['/Login']);
         this.logadmin = false;
     };
@@ -43,13 +44,13 @@ var AdminCmp = (function () {
     AdminCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
-    AdminCmp.prototype.usuarios = function () {
+    AdminCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            alert("1en u tenemos " + u);
+            // alert("1en u tenemos " + u);
             if (u == "undefined") {
                 var e = localStorage.key(0);
-                alert("2en u tenemos " + u);
+                //alert("2en u tenemos " + u);
                 this.getProfile(e);
             }
             else {
@@ -84,9 +85,6 @@ var AdminCmp = (function () {
     };
     AdminCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
-    };
-    AdminCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
     };
     AdminCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);

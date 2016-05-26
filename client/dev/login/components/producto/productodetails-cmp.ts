@@ -22,18 +22,22 @@ import {
 import {Producto,ProductoService} from '../../services/producto/producto-service';
 import {LoginService} from '../../services/login-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
+import {UserService} from '../../services/user/user-service';
 
 
 @Component({
-  templateUrl: 'client/dev/producto/templates/details.html'
+  templateUrl: 'client/dev/producto/templates/details.html',
+  providers: [UserService, LoginService,ProductoService, Producto]
 })
 
 @CanActivate(() => isLogged())
 export class ProductoDetailsCmp implements OnInit {
   @Input() producto: Producto;
   productoForm: ControlGroup;
+  public token: string;
+  public profile: string;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _userService: UserService, private _productoService: ProductoService, @Inject(LoginService) private _loginService: LoginService) {
     this.productoForm = fb.group({
       "_id": ["", Validators.required],
       "nombre": ["", Validators.required],
@@ -56,8 +60,6 @@ export class ProductoDetailsCmp implements OnInit {
     .subscribe((producto) => {
     this.producto = producto;
     });
-
-
   }
 
   gotoIndex(){
@@ -115,10 +117,8 @@ export class ProductoDetailsCmp implements OnInit {
       .remove(id)
       .subscribe(() => {
       return this.producto;
-
       });
     this.gotoIndex();
-
   }
 
 
@@ -155,7 +155,29 @@ export class ProductoDetailsCmp implements OnInit {
     this.router.navigate(['/ListProveedores']);
   }
   gusuarios() {
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      // alert("1en u tenemos " + u);
+      if (u == "undefined") {
+        let e = localStorage.key(0);
+        //alert("2en u tenemos " + u);
+        this.getProfile(e);
+      } else {
+        this.getProfile(u);
+      }
+
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
   }
   ggarantias() {
     this.router.navigate(['/ListGarantias']);

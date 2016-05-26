@@ -27,7 +27,6 @@ import {ClienteService} from './services/cliente/cliente-service';
 import {GarantiaService} from './services/garantia/garantia-service';
 // Menu principal
 import {LoginCmp} from './components/login-cmp';
-import {HomeCmp} from './components/home-cmp';
 import {ComprasCmp} from './components/compras-cmp';
 import {VentasCmp} from './components/ventas-cmp';
 import {AlmacenCmp} from './components/almacen-cmp';
@@ -88,7 +87,6 @@ import {GarantiaDetailsCmp} from './components/garantia/garantiadetails-cmp';
 
 @RouteConfig([
 	//Menu principal
-	{ path: '/home', name: 'Home', component: HomeCmp},
     { path: '/', name: 'Login', component: LoginCmp},
     { path: '/compras', name: 'Compras', component: ComprasCmp },
     { path: '/ventas', name: 'Ventas', component: VentasCmp },

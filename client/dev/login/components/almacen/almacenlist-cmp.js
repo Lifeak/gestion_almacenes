@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../../services/login-service');
+var user_service_1 = require('../../services/user/user-service');
 var almacen_service_1 = require('../../services/almacen/almacen-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var AlmacenListCmp = (function () {
@@ -61,13 +62,37 @@ var AlmacenListCmp = (function () {
         this.router.navigate(['/ListGarantias']);
     };
     AlmacenListCmp.prototype.usuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    AlmacenListCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     AlmacenListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/almacen/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [almacen_service_1.AlmacenService]
+            providers: [almacen_service_1.AlmacenService, login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
         __metadata('design:paramtypes', [almacen_service_1.AlmacenService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])

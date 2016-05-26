@@ -23,10 +23,12 @@ import {ProductoService,Producto} from '../../services/producto/producto-service
 import {Modelo} from '../../services/modelo/modelo-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 import {LoginService} from '../../services/login-service';
+import {UserService} from '../../services/user/user-service';
 
 
 @Component({
-  templateUrl: 'client/dev/producto/templates/create.html'
+  templateUrl: 'client/dev/producto/templates/create.html',
+  providers:[UserService, LoginService, Modelo, ProductoService, Producto]
 })
 
 
@@ -36,8 +38,10 @@ export class ProductoCreateCmp implements OnInit{
   modelos: Modelo[]=[];
   productoForm: ControlGroup;
   components: Array<string>;
+  public token: string;
+  public profile: string;
   
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _productoService: ProductoService, private _loginService: LoginService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _userService: UserService, private _productoService: ProductoService, private _loginService: LoginService){
     this.productoForm = fb.group({
       "_id": ["", Validators.required],
       "nombre": ["", Validators.required],
@@ -104,11 +108,8 @@ export class ProductoCreateCmp implements OnInit{
         (<Control>this.productoForm.controls['columna']).updateValue("");
         (<Control>this.productoForm.controls['precio']).updateValue("");
           });
-
-
       this.gotoIndex();
       }   
-
   }
 
 
@@ -145,7 +146,29 @@ export class ProductoCreateCmp implements OnInit{
     this.router.navigate(['/ListProveedores']);
   }
   gusuarios() {
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      // alert("1en u tenemos " + u);
+      if (u == "undefined") {
+        let e = localStorage.key(0);
+        //alert("2en u tenemos " + u);
+        this.getProfile(e);
+      } else {
+        this.getProfile(u);
+      }
+
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
   }
   ggarantias() {
     this.router.navigate(['/ListGarantias']);

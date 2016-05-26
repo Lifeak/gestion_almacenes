@@ -64,13 +64,58 @@ var UserListCmp = (function () {
         this.router.navigate(['/ListGarantias']);
     };
     UserListCmp.prototype.usuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    UserListCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
+    };
+    UserListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    UserListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    UserListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    UserListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    UserListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    UserListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     UserListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/user/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [user_service_1.UserService]
+            providers: [user_service_1.UserService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }), 
         __metadata('design:paramtypes', [user_service_1.UserService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])

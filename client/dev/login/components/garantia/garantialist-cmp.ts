@@ -28,7 +28,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 @Component({
   templateUrl: 'client/dev/garantia/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [GarantiaService, UserService]
+  providers: [GarantiaService, UserService, LoginService]
 })
 
   @CanActivate(() => isLogged())
@@ -108,5 +108,24 @@ export class GarantiaListCmp implements OnInit {
         this.router.navigate(['Perfil', { id: this.profile }]);
         //alert("en el get, el id es " +this.profile);
       });
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 }

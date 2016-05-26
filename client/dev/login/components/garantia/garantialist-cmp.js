@@ -83,11 +83,29 @@ var GarantiaListCmp = (function () {
             //alert("en el get, el id es " +this.profile);
         });
     };
+    GarantiaListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    GarantiaListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    GarantiaListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    GarantiaListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    GarantiaListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    GarantiaListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     GarantiaListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/garantia/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [garantia_service_1.GarantiaService, user_service_1.UserService]
+            providers: [garantia_service_1.GarantiaService, user_service_1.UserService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
         __metadata('design:paramtypes', [garantia_service_1.GarantiaService, user_service_1.UserService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])

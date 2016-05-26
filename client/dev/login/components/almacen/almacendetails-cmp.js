@@ -17,12 +17,14 @@ var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var almacen_service_1 = require('../../services/almacen/almacen-service');
 var login_service_1 = require('../../services/login-service');
+var user_service_1 = require('../../services/user/user-service');
 var AlmacenDetailsCmp = (function () {
-    function AlmacenDetailsCmp(fb, router, _routeParams, _almacenService, _loginService) {
+    function AlmacenDetailsCmp(fb, router, _routeParams, _almacenService, _loginService, _userService) {
         this.router = router;
         this._routeParams = _routeParams;
         this._almacenService = _almacenService;
         this._loginService = _loginService;
+        this._userService = _userService;
         this.almacenForm = fb.group({
             "nombre": ["", common_1.Validators.required],
             "direcion": ["", common_1.Validators.required],
@@ -96,6 +98,7 @@ var AlmacenDetailsCmp = (function () {
     };
     AlmacenDetailsCmp.prototype.logout = function () {
         this._loginService.logout();
+        localStorage.clear();
         this.router.navigate(['/Login']);
     };
     AlmacenDetailsCmp.prototype.almacenes = function () {
@@ -105,7 +108,31 @@ var AlmacenDetailsCmp = (function () {
         this.router.navigate(['/ListGarantias']);
     };
     AlmacenDetailsCmp.prototype.usuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    AlmacenDetailsCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     __decorate([
         core_1.Input(), 
@@ -113,12 +140,13 @@ var AlmacenDetailsCmp = (function () {
     ], AlmacenDetailsCmp.prototype, "almacen", void 0);
     AlmacenDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/almacen/templates/details.html'
+            templateUrl: 'client/dev/almacen/templates/details.html',
+            providers: [user_service_1.UserService, almacen_service_1.AlmacenService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLoggedinAdmin(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(4, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, almacen_service_1.AlmacenService, login_service_1.LoginService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, almacen_service_1.AlmacenService, login_service_1.LoginService, user_service_1.UserService])
     ], AlmacenDetailsCmp);
     return AlmacenDetailsCmp;
 }());

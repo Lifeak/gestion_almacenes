@@ -17,10 +17,12 @@ var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var proveedor_service_1 = require('../../services/proveedor/proveedor-service');
 var login_service_1 = require('../../services/login-service');
+var user_service_1 = require('../../services/user/user-service');
 var ProveedorDetailsCmp = (function () {
-    function ProveedorDetailsCmp(fb, router, _routeParams, _proveedorService, _loginService) {
+    function ProveedorDetailsCmp(fb, router, _routeParams, _userService, _proveedorService, _loginService) {
         this.router = router;
         this._routeParams = _routeParams;
+        this._userService = _userService;
         this._proveedorService = _proveedorService;
         this._loginService = _loginService;
         this.mat = [];
@@ -173,7 +175,31 @@ var ProveedorDetailsCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     ProveedorDetailsCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ProveedorDetailsCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     ProveedorDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -190,12 +216,13 @@ var ProveedorDetailsCmp = (function () {
     ], ProveedorDetailsCmp.prototype, "proveedor", void 0);
     ProveedorDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/proveedor/templates/details.html'
+            templateUrl: 'client/dev/proveedor/templates/details.html',
+            providers: [login_service_1.LoginService, user_service_1.UserService, proveedor_service_1.Proveedor, proveedor_service_1.ProveedorService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(4, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, proveedor_service_1.ProveedorService, login_service_1.LoginService])
+        __param(5, core_1.Inject(login_service_1.LoginService)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService, proveedor_service_1.ProveedorService, login_service_1.LoginService])
     ], ProveedorDetailsCmp);
     return ProveedorDetailsCmp;
 }());

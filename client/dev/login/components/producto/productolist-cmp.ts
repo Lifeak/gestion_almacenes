@@ -22,21 +22,22 @@ ROUTER_DIRECTIVES
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 import {LoginService} from '../../services/login-service';
 import {Producto,ProductoService} from '../../services/producto/producto-service';
+import {UserService} from '../../services/user/user-service';
 
 @Component({
-  selector: 'ListProductos',
   templateUrl: 'client/dev/producto/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [ProductoService]
+  providers: [ProductoService, LoginService, UserService]
 })
 
   @CanActivate(() => isLogged())
 export class ProductoListCmp implements OnInit {
   productos: Producto[] = [];
   private _selectedId: string;
+  public token: string;
+  public profile: string;
 
-
-  constructor(private _productoService: ProductoService, private _loginService: LoginService,private router: Router, routeParams: RouteParams) {
+  constructor(private _productoService: ProductoService, private _loginService: LoginService, private _userService: UserService,private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -93,7 +94,29 @@ export class ProductoListCmp implements OnInit {
     this.router.navigate(['/ListProveedores']);
   }
   gusuarios() {
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      // alert("1en u tenemos " + u);
+      if (u == "undefined") {
+        let e = localStorage.key(0);
+        //alert("2en u tenemos " + u);
+        this.getProfile(e);
+      } else {
+        this.getProfile(u);
+      }
+
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
   }
   ggarantias() {
     this.router.navigate(['/ListGarantias']);

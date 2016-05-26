@@ -24,6 +24,7 @@ var LoginCmp = (function () {
             "user": ["", common_1.Validators.required],
             "pass": ["", common_1.Validators.required]
         });
+        localStorage.clear();
     }
     // La función login, recibe un formulario del cual extraemos usuario y contraseña, se lo mandamos al service, el cual hace sus comprobaciones
     // y en función del tipo de usuario que seas, podrás acceder a un sitio u otro.

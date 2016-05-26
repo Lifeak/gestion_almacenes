@@ -39,6 +39,7 @@ export class LoginService {
   login(user:string,pass:string):Observable<any>{
     let datos = JSON.stringify({ user, pass });
     let headers = new Headers();
+    localStorage.clear();
     headers.append('Content-Type', 'application/json');
       return this._http
         .post(LoginService.ENDPOINT, datos, { headers })
@@ -85,5 +86,7 @@ export class LoginService {
     //alert("localStorage.getItem(this.token) " + localStorage.getItem(this.token));
     return [this.loggedIn, localStorage.getItem(this.token)];
   }
+
+  
 }
 

@@ -17,10 +17,12 @@ var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var modelo_service_1 = require('../../services/modelo/modelo-service');
 var login_service_1 = require('../../services/login-service');
+var user_service_1 = require('../../services/user/user-service');
 var ModeloSubDetailsCmp = (function () {
-    function ModeloSubDetailsCmp(fb, router, _routeParams, _modeloService, _loginService) {
+    function ModeloSubDetailsCmp(fb, router, _routeParams, _userService, _modeloService, _loginService) {
         this.router = router;
         this._routeParams = _routeParams;
+        this._userService = _userService;
         this._modeloService = _modeloService;
         this._loginService = _loginService;
         this.modelos = [];
@@ -131,7 +133,31 @@ var ModeloSubDetailsCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     ModeloSubDetailsCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ModeloSubDetailsCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     ModeloSubDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -148,12 +174,13 @@ var ModeloSubDetailsCmp = (function () {
     ], ModeloSubDetailsCmp.prototype, "modelo", void 0);
     ModeloSubDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/modelo/templates/detailss.html'
+            templateUrl: 'client/dev/modelo/templates/detailss.html',
+            providers: [login_service_1.LoginService, user_service_1.UserService, modelo_service_1.ModeloService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(4, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, modelo_service_1.ModeloService, login_service_1.LoginService])
+        __param(5, core_1.Inject(login_service_1.LoginService)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService, modelo_service_1.ModeloService, login_service_1.LoginService])
     ], ModeloSubDetailsCmp);
     return ModeloSubDetailsCmp;
 }());

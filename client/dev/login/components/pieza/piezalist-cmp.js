@@ -12,11 +12,13 @@ var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../../services/login-service');
 var pieza_service_1 = require('../../services/pieza/pieza-service');
+var user_service_1 = require('../../services/user/user-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var PiezaListCmp = (function () {
-    function PiezaListCmp(_piezaService, _loginService, router, routeParams) {
+    function PiezaListCmp(_piezaService, _loginService, _userService, router, routeParams) {
         this._piezaService = _piezaService;
         this._loginService = _loginService;
+        this._userService = _userService;
         this.router = router;
         this.piezas = [];
         this._selectedId = routeParams.get('id');
@@ -67,7 +69,31 @@ var PiezaListCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     PiezaListCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    PiezaListCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     PiezaListCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -83,10 +109,10 @@ var PiezaListCmp = (function () {
             selector: 'ListPiezas',
             templateUrl: 'client/dev/pieza/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [pieza_service_1.PiezaService]
+            providers: [pieza_service_1.PiezaService, login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [pieza_service_1.PiezaService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [pieza_service_1.PiezaService, login_service_1.LoginService, user_service_1.UserService, router_1.Router, router_1.RouteParams])
     ], PiezaListCmp);
     return PiezaListCmp;
 }());

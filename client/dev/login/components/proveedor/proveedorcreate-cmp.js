@@ -17,10 +17,12 @@ var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var login_service_1 = require('../../services/login-service');
 var proveedor_service_1 = require('../../services/proveedor/proveedor-service');
+var user_service_1 = require('../../services/user/user-service');
 var ProveedorCreateCmp = (function () {
-    function ProveedorCreateCmp(fb, router, _loginService, _routeParams, _proveedorService) {
+    function ProveedorCreateCmp(fb, router, _loginService, _userService, _routeParams, _proveedorService) {
         this.router = router;
         this._loginService = _loginService;
+        this._userService = _userService;
         this._routeParams = _routeParams;
         this._proveedorService = _proveedorService;
         this.mat = [];
@@ -130,7 +132,30 @@ var ProveedorCreateCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     ProveedorCreateCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ProveedorCreateCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+        });
     };
     ProveedorCreateCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -147,11 +172,12 @@ var ProveedorCreateCmp = (function () {
     ], ProveedorCreateCmp.prototype, "proveedor", void 0);
     ProveedorCreateCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/proveedor/templates/create.html'
+            templateUrl: 'client/dev/proveedor/templates/create.html',
+            providers: [login_service_1.LoginService, user_service_1.UserService, proveedor_service_1.ProveedorService, proveedor_service_1.Proveedor]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, login_service_1.LoginService, router_1.RouteParams, proveedor_service_1.ProveedorService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, login_service_1.LoginService, user_service_1.UserService, router_1.RouteParams, proveedor_service_1.ProveedorService])
     ], ProveedorCreateCmp);
     return ProveedorCreateCmp;
 }());

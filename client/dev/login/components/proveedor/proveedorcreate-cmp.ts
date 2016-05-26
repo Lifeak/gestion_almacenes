@@ -21,9 +21,11 @@ import {
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 import {LoginService} from '../../services/login-service';
 import {Proveedor, ProveedorService} from '../../services/proveedor/proveedor-service';
+import {UserService} from '../../services/user/user-service';
 
 @Component({
-  templateUrl: 'client/dev/proveedor/templates/create.html'
+  templateUrl: 'client/dev/proveedor/templates/create.html',
+  providers:[LoginService, UserService, ProveedorService, Proveedor]
 })
 
   @CanActivate(() => isLogged())
@@ -32,8 +34,10 @@ export class ProveedorCreateCmp{
   proveedorForm: ControlGroup;
   mat: Array<Object> = [];
   cuenta: Array<string> = [];
+  public token: string;
+  public profile: string;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _loginService: LoginService, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _loginService: LoginService, private _userService: UserService, private _routeParams: RouteParams, private _proveedorService: ProveedorService){
     this.proveedorForm = fb.group({
       "nombre": ["", Validators.required],
       "direccion": ["", Validators.required],
@@ -115,9 +119,7 @@ export class ProveedorCreateCmp{
           (<Control>this.proveedorForm.controls['pieza']).updateValue("");
           (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
           (<Control>this.proveedorForm.controls['coste1']).updateValue("");
-          
-              });
-
+          });
           this.gotoIndex();
   }
 
@@ -155,7 +157,27 @@ export class ProveedorCreateCmp{
     this.router.navigate(['/ListProveedores']);
   }
   gusuarios() {
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      // alert("1en u tenemos " + u);
+      if (u == "undefined") {
+        let e = localStorage.key(0);
+        //alert("2en u tenemos " + u);
+        this.getProfile(e);
+      } else {
+        this.getProfile(u);
+      }
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+      });
   }
   ggarantias() {
     this.router.navigate(['/ListGarantias']);

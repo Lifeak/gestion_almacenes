@@ -27,7 +27,6 @@ import {
 
 import {LoginService} from '../services/login-service';
 import {App} from '../app';
-import {HomeCmp} from './home-cmp';
 
 @Component({
   templateUrl: 'client/dev/login/templates/login.html',
@@ -45,6 +44,7 @@ export class LoginCmp {
       "user": ["", Validators.required],
       "pass": ["", Validators.required]
     });
+    localStorage.clear();
   }
 
 // La función login, recibe un formulario del cual extraemos usuario y contraseña, se lo mandamos al service, el cual hace sus comprobaciones

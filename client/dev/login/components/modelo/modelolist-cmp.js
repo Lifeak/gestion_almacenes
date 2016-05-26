@@ -13,10 +13,12 @@ var router_1 = require('angular2/router');
 var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
 var modelo_service_1 = require('../../services/modelo/modelo-service');
+var user_service_1 = require('../../services/user/user-service');
 var ModeloListCmp = (function () {
-    function ModeloListCmp(_modeloService, _loginService, router, routeParams) {
+    function ModeloListCmp(_modeloService, _loginService, _userService, router, routeParams) {
         this._modeloService = _modeloService;
         this._loginService = _loginService;
+        this._userService = _userService;
         this.router = router;
         this.modelos = [];
         this._selectedId = routeParams.get('id');
@@ -68,7 +70,31 @@ var ModeloListCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     ModeloListCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ModeloListCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     ModeloListCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -83,10 +109,10 @@ var ModeloListCmp = (function () {
         core_1.Component({
             templateUrl: 'client/dev/modelo/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [modelo_service_1.ModeloService, login_service_1.LoginService]
+            providers: [modelo_service_1.ModeloService, login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [modelo_service_1.ModeloService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [modelo_service_1.ModeloService, login_service_1.LoginService, user_service_1.UserService, router_1.Router, router_1.RouteParams])
     ], ModeloListCmp);
     return ModeloListCmp;
 }());

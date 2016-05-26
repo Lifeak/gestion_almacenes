@@ -22,7 +22,6 @@ var cliente_service_1 = require('./services/cliente/cliente-service');
 var garantia_service_1 = require('./services/garantia/garantia-service');
 // Menu principal
 var login_cmp_1 = require('./components/login-cmp');
-var home_cmp_1 = require('./components/home-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
 var ventas_cmp_1 = require('./components/ventas-cmp');
 var almacen_cmp_1 = require('./components/almacen-cmp');
@@ -84,7 +83,6 @@ var App = (function () {
         }),
         router_1.RouteConfig([
             //Menu principal
-            { path: '/home', name: 'Home', component: home_cmp_1.HomeCmp },
             { path: '/', name: 'Login', component: login_cmp_1.LoginCmp },
             { path: '/compras', name: 'Compras', component: compras_cmp_1.ComprasCmp },
             { path: '/ventas', name: 'Ventas', component: ventas_cmp_1.VentasCmp },
