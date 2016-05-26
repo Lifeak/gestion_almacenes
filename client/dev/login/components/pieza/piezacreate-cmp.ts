@@ -21,11 +21,13 @@ import {
 import {LoginService} from '../../services/login-service';
 import {Pieza,PiezaService} from '../../services/pieza/pieza-service';
 import {Modelo} from '../../services/modelo/modelo-service';
+import {UserService} from '../../services/user/user-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
 
 @Component({
-  templateUrl: 'client/dev/pieza/templates/create.html'
+  templateUrl: 'client/dev/pieza/templates/create.html',
+  providers:[LoginService, UserService, PiezaService]
 })
 
   @CanActivate(() => isLogged())
@@ -34,8 +36,10 @@ export class PiezaCreateCmp implements OnInit{
   modelos: Modelo[]=[];
   piezaForm: ControlGroup;
   components: Array<string>;
+  public token: string;
+  public profile: string;
   
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _piezaService: PiezaService, private _loginService: LoginService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _userService: UserService, private _piezaService: PiezaService, private _loginService: LoginService){
     this.piezaForm = fb.group({
       "_id": ["", Validators.required],
       "modelo": ["", Validators.required],
@@ -148,7 +152,26 @@ export class PiezaCreateCmp implements OnInit{
     this.router.navigate(['/ListProveedores']);
   }
   gusuarios() {
-    this.router.navigate(['/ListUsuarios']);
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      if (u == "undefined") {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      } else {
+        this.getProfile(u);
+      }
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
   }
   ggarantias() {
     this.router.navigate(['/ListGarantias']);

@@ -24,6 +24,7 @@ var LoginService = (function () {
         var _this = this;
         var datos = JSON.stringify({ user: user, pass: pass });
         var headers = new http_1.Headers();
+        localStorage.clear();
         headers.append('Content-Type', 'application/json');
         return this._http
             .post(LoginService.ENDPOINT, datos, { headers: headers })

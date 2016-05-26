@@ -13,9 +13,11 @@ var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var cliente_service_1 = require('../../services/cliente/cliente-service');
 var login_service_1 = require('../../services/login-service');
+var user_service_1 = require('../../services/user/user-service');
 var ClienteListCmp = (function () {
-    function ClienteListCmp(_clienteService, _loginService, router, routeParams) {
+    function ClienteListCmp(_clienteService, _userService, _loginService, router, routeParams) {
         this._clienteService = _clienteService;
+        this._userService = _userService;
         this._loginService = _loginService;
         this.router = router;
         this.clientes = [];
@@ -67,7 +69,29 @@ var ClienteListCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     ClienteListCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            if (u == "undefined") {
+                var o = localStorage.key(0);
+                this.getProfile(o);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ClienteListCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     ClienteListCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -82,10 +106,10 @@ var ClienteListCmp = (function () {
         core_1.Component({
             templateUrl: 'client/dev/cliente/templates/list.html',
             directives: [router_1.ROUTER_DIRECTIVES],
-            providers: [cliente_service_1.ClienteService, login_service_1.LoginService]
+            providers: [cliente_service_1.ClienteService, login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 
-        __metadata('design:paramtypes', [cliente_service_1.ClienteService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
+        __metadata('design:paramtypes', [cliente_service_1.ClienteService, user_service_1.UserService, login_service_1.LoginService, router_1.Router, router_1.RouteParams])
     ], ClienteListCmp);
     return ClienteListCmp;
 }());

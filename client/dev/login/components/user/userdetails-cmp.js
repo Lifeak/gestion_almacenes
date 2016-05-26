@@ -102,8 +102,51 @@ var UserDetailsCmp = (function () {
     UserDetailsCmp.prototype.garantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
-    UserDetailsCmp.prototype.usuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+    UserDetailsCmp.prototype.gusuarios = function () {
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            if (u == "undefined") {
+                var o = localStorage.key(0);
+                this.getProfile(o);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    UserDetailsCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
+    };
+    UserDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    UserDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    UserDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    UserDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    UserDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    UserDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 
@@ -111,7 +154,8 @@ var UserDetailsCmp = (function () {
     ], UserDetailsCmp.prototype, "user", void 0);
     UserDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/user/templates/details.html'
+            templateUrl: 'client/dev/user/templates/details.html',
+            providers: [login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

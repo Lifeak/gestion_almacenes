@@ -17,11 +17,13 @@ var router_1 = require('angular2/router');
 var isloggedin_1 = require('../../services/isloggedin');
 var cliente_service_1 = require('../../services/cliente/cliente-service');
 var login_service_1 = require('../../services/login-service');
+var user_service_1 = require('../../services/user/user-service');
 var ClienteDetailsCmp = (function () {
-    function ClienteDetailsCmp(fb, router, _routeParams, _clienteService, _loginService) {
+    function ClienteDetailsCmp(fb, router, _routeParams, _clienteService, _userService, _loginService) {
         this.router = router;
         this._routeParams = _routeParams;
         this._clienteService = _clienteService;
+        this._userService = _userService;
         this._loginService = _loginService;
         this.clienteForm = fb.group({
             "_id": ["", common_1.Validators.required],
@@ -117,9 +119,6 @@ var ClienteDetailsCmp = (function () {
     ClienteDetailsCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
-    ClienteDetailsCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
-    };
     ClienteDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -129,18 +128,44 @@ var ClienteDetailsCmp = (function () {
     ClienteDetailsCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    ClienteDetailsCmp.prototype.gusuarios = function () {
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            if (u == "undefined") {
+                var o = localStorage.key(0);
+                this.getProfile(o);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ClienteDetailsCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', cliente_service_1.Cliente)
     ], ClienteDetailsCmp.prototype, "cliente", void 0);
     ClienteDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/cliente/templates/details.html'
+            templateUrl: 'client/dev/cliente/templates/details.html',
+            providers: [user_service_1.UserService, login_service_1.LoginService, cliente_service_1.ClienteService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(4, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, cliente_service_1.ClienteService, login_service_1.LoginService])
+        __param(5, core_1.Inject(login_service_1.LoginService)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, cliente_service_1.ClienteService, user_service_1.UserService, login_service_1.LoginService])
     ], ClienteDetailsCmp);
     return ClienteDetailsCmp;
 }());

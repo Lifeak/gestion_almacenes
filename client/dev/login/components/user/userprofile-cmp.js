@@ -81,13 +81,60 @@ var UserProfileCmp = (function () {
     UserProfileCmp.prototype.garantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
+    UserProfileCmp.prototype.gusuarios = function () {
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            if (u == "undefined") {
+                var o = localStorage.key(0);
+                this.getProfile(o);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    UserProfileCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
+    };
+    UserProfileCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    UserProfileCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    UserProfileCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    UserProfileCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    UserProfileCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    UserProfileCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    UserProfileCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)
     ], UserProfileCmp.prototype, "user", void 0);
     UserProfileCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/user/templates/profile.html'
+            templateUrl: 'client/dev/user/templates/profile.html',
+            providers: [user_service_1.UserService, login_service_1.LoginService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),

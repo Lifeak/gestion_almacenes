@@ -20,6 +20,7 @@ ROUTER_DIRECTIVES
 } from 'angular2/router';
 
 import {LoginService} from '../../services/login-service';
+import {UserService} from '../../services/user/user-service';
 import {Almacen, AlmacenService} from '../../services/almacen/almacen-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 
@@ -27,16 +28,18 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 @Component({
   templateUrl: 'client/dev/almacen/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [AlmacenService]
+  providers: [AlmacenService, LoginService, UserService]
 })
 
 @CanActivate(() => isLogged())
 export class AlmacenListCmp implements OnInit {
   almacens: Almacen[] = [];
   private _selectedId: string;
+  public token: string;
+  public profile: string;
 
 
-  constructor(private _almacenService: AlmacenService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
+  constructor(private _almacenService: AlmacenService, private _userService: UserService, private _loginService: LoginService, private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
 
@@ -89,7 +92,27 @@ export class AlmacenListCmp implements OnInit {
       this.router.navigate(['/ListGarantias']);
   }
 
-  usuarios() {
-    this.router.navigate(['/ListUsuarios']);
+  gusuarios() {
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      if (u == "undefined") {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      } else {
+        this.getProfile(u);
+      }
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
   }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
+  }
+
 }

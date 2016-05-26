@@ -21,17 +21,21 @@ import {
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 import {AlmacenService, Almacen} from '../../services/almacen/almacen-service';
 import {LoginService} from '../../services/login-service';
+import {UserService} from '../../services/user/user-service';
 
 @Component({
-  templateUrl: 'client/dev/almacen/templates/details.html'
+  templateUrl: 'client/dev/almacen/templates/details.html',
+  providers:[UserService, AlmacenService, LoginService]
 })
 
   @CanActivate(() => isLoggedinAdmin())
 export class AlmacenDetailsCmp implements OnInit {
   @Input() almacen: Almacen;
   almacenForm: ControlGroup;
+  token: string;
+  public profile: string;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _almacenService: AlmacenService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _almacenService: AlmacenService, @Inject(LoginService) private _loginService: LoginService, private _userService: UserService) {
     this.almacenForm = fb.group({
       "nombre": ["", Validators.required],
       "direcion": ["", Validators.required],
@@ -115,6 +119,7 @@ export class AlmacenDetailsCmp implements OnInit {
   }
   logout() {
       this._loginService.logout();
+      localStorage.clear();
       this.router.navigate(['/Login']);
   }
 
@@ -126,8 +131,28 @@ export class AlmacenDetailsCmp implements OnInit {
       this.router.navigate(['/ListGarantias']);
   }
 
-  usuarios() {
-    this.router.navigate(['/ListUsuarios']);
+  gusuarios() {
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      if (u == "undefined") {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      } else {
+        this.getProfile(u);
+      }
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
   }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
+  }
+
 
 }

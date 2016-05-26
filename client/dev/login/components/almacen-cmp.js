@@ -14,10 +14,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var login_service_1 = require('../services/login-service');
+var user_service_1 = require('../services/user/user-service');
 var isloggedin_1 = require('../services/isloggedin');
 var AlmacenCmp = (function () {
-    function AlmacenCmp(_loginService, router) {
+    function AlmacenCmp(_loginService, _userService, router) {
         this._loginService = _loginService;
+        this._userService = _userService;
         this.router = router;
         this.title = "Almacen";
         this.logadmin = false;
@@ -52,9 +54,6 @@ var AlmacenCmp = (function () {
     AlmacenCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
-    AlmacenCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
-    };
     AlmacenCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -64,14 +63,41 @@ var AlmacenCmp = (function () {
     AlmacenCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    AlmacenCmp.prototype.gusuarios = function () {
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            // alert("1en u tenemos " + u);
+            if (u == "undefined") {
+                var e = localStorage.key(0);
+                //alert("2en u tenemos " + u);
+                this.getProfile(e);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    AlmacenCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
+    };
     AlmacenCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/almacen.html',
-            providers: [login_service_1.LoginService]
+            providers: [login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
+        __metadata('design:paramtypes', [login_service_1.LoginService, user_service_1.UserService, router_1.Router])
     ], AlmacenCmp);
     return AlmacenCmp;
 }());

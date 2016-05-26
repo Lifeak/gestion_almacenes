@@ -21,17 +21,21 @@ import {
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 import {GarantiaService, Garantia} from '../../services/garantia/garantia-service';
 import {LoginService} from '../../services/login-service';
+import {UserService} from '../../services/user/user-service';
 
 @Component({
-  templateUrl: 'client/dev/garantia/templates/details.html'
+  templateUrl: 'client/dev/garantia/templates/details.html',
+  providers:[GarantiaService, LoginService, UserService]
 })
 
   @CanActivate(() => isLogged())
 export class GarantiaDetailsCmp implements OnInit {
   @Input() garantia: Garantia;
   garantiaForm: ControlGroup;
+  public token: string;
+  public profile: string;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _garantiaService: GarantiaService, @Inject(LoginService) private _loginService: LoginService) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _userService: UserService, private _garantiaService: GarantiaService, @Inject(LoginService) private _loginService: LoginService) {
     this.garantiaForm = fb.group({
       "_id": ["", Validators.required],
       "tiempo": ["", Validators.required]
@@ -116,9 +120,45 @@ export class GarantiaDetailsCmp implements OnInit {
   almacenes() {
       this.router.navigate(['/ListAlmacenes']);
   }
-
-  usuarios() {
-    this.router.navigate(['/ListUsuarios']);
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
   }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
+
+
+  gusuarios() {
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      if (u == "undefined") {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      }else 
+        this.getProfile(u);
+    }else 
+      this.router.navigate(['/ListUsuarios']);
+  }
+
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
+  }
+
 
 }

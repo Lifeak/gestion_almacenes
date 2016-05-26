@@ -22,15 +22,17 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 import {UserService, User} from '../../services/user/user-service';
 import {LoginService} from '../../services/login-service';
 
-
 @Component({
-  templateUrl: 'client/dev/user/templates/profile.html'
+  templateUrl: 'client/dev/user/templates/profile.html',
+  providers:[UserService, LoginService]
 })
 
 @CanActivate(() => isLogged())
 export class UserProfileCmp implements OnInit {
   @Input() user: User;
   userForm: ControlGroup;
+  public token: string;
+  public profile: string;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private router: Router, private _routeParams: RouteParams, private _userService: UserService, @Inject(LoginService) private _loginService: LoginService) {
     this.userForm = fb.group({
@@ -101,5 +103,49 @@ export class UserProfileCmp implements OnInit {
 
   garantias() {
       this.router.navigate(['/ListGarantias']);
+  }
+  gusuarios() {
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      if (u == "undefined") {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      } else {
+        this.getProfile(u);
+      }
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+        //alert("en el get, el id es " +this.profile);
+      });
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 }

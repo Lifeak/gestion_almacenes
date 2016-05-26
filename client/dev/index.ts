@@ -50,7 +50,6 @@ import {AlmacenDetailsCmp} from './login/components/almacen/almacendetails-cmp';
 import {AlmacenListCmp} from './login/components/almacen/almacenlist-cmp';
 
 import {LoginCmp} from './login/components/login-cmp';
-import {HomeCmp} from './login/components/home-cmp';
 import {App} from './login/app';
 
 bootstrap(ProveedorCreateCmp, [HTTP_PROVIDERS]);
@@ -82,5 +81,4 @@ bootstrap(AlmacenCreateCmp, [HTTP_PROVIDERS]);
 bootstrap(AlmacenDetailsCmp, [HTTP_PROVIDERS]);
 bootstrap(AlmacenListCmp, [HTTP_PROVIDERS]);
 bootstrap(LoginCmp, [HTTP_PROVIDERS]);
-bootstrap(HomeCmp, [HTTP_PROVIDERS]);
 bootstrap(App, [HTTP_PROVIDERS]);

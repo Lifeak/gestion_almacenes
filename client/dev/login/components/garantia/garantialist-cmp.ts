@@ -28,7 +28,7 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 @Component({
   templateUrl: 'client/dev/garantia/templates/list.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [GarantiaService, UserService]
+  providers: [GarantiaService, UserService, LoginService]
 })
 
   @CanActivate(() => isLogged())
@@ -87,26 +87,45 @@ export class GarantiaListCmp implements OnInit {
       this.router.navigate(['/ListAlmacenes']);
   }
 
-  usuarios() {
+  gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);
-      alert("1en u tenemos " + u);
       if (u == "undefined"){
-        let u = localStorage.key(0);
-        alert("2en u tenemos " + u);
-      }
-      this.getProfile(u);
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      }else{
+         this.getProfile(u);
+      }     
     } else {
           this.router.navigate(['/ListUsuarios']);
     }
   }
   public getProfile(name: string) {
+    alert("get profile de  " + name);
     this._userService
       .getProfile(name)
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 }

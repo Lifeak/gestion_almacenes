@@ -31,7 +31,6 @@ var almacencreate_cmp_1 = require('./login/components/almacen/almacencreate-cmp'
 var almacendetails_cmp_1 = require('./login/components/almacen/almacendetails-cmp');
 var almacenlist_cmp_1 = require('./login/components/almacen/almacenlist-cmp');
 var login_cmp_1 = require('./login/components/login-cmp');
-var home_cmp_1 = require('./login/components/home-cmp');
 var app_1 = require('./login/app');
 browser_1.bootstrap(proveedorcreate_cmp_1.ProveedorCreateCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(proveedorlist_cmp_1.ProveedorListCmp, [http_1.HTTP_PROVIDERS]);
@@ -62,5 +61,4 @@ browser_1.bootstrap(almacencreate_cmp_1.AlmacenCreateCmp, [http_1.HTTP_PROVIDERS
 browser_1.bootstrap(almacendetails_cmp_1.AlmacenDetailsCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(almacenlist_cmp_1.AlmacenListCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(login_cmp_1.LoginCmp, [http_1.HTTP_PROVIDERS]);
-browser_1.bootstrap(home_cmp_1.HomeCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(app_1.App, [http_1.HTTP_PROVIDERS]);

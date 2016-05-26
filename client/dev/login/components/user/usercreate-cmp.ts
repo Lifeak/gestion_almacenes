@@ -23,13 +23,16 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 import {UserService, User} from '../../services/user/user-service';
 
 @Component({
-  templateUrl: 'client/dev/user/templates/create.html'
+  templateUrl: 'client/dev/user/templates/create.html',
+  providers: [LoginService, UserService]
 })
 
 @CanActivate(() => isLoggedinAdmin())
 export class UserCreateCmp{
   @Input() user: User;
   userForm: ControlGroup;
+  public token: string;
+  public profile: string;
 
   constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _loginService: LoginService,private _userService: UserService){
     this.userForm = fb.group({
@@ -107,8 +110,48 @@ export class UserCreateCmp{
       this.router.navigate(['/ListGarantias']);
   }
 
-  usuarios() {
-    this.router.navigate(['/ListUsuarios']);
+  gusuarios() {
+    if (localStorage.getItem(this.token) == "encargado") {
+      let u = localStorage.key(1);
+      if (u == "undefined") {
+        let o = localStorage.key(0);
+        this.getProfile(o);
+      } else {
+        this.getProfile(u);
+      }
+    } else {
+          this.router.navigate(['/ListUsuarios']);
+    }
+  }
+  public getProfile(name: string) {
+    this._userService
+      .getProfile(name)
+      .subscribe((user) => {
+        this.profile = user[0]._id;
+        this.router.navigate(['Perfil', { id: this.profile }]);
+      });
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  ggarantias() {
+    this.router.navigate(['/ListGarantias']);
+  }
+  galmacenes() {
+    this.router.navigate(['/ListAlmacenes']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
   
 

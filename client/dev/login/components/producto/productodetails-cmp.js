@@ -17,10 +17,12 @@ var router_1 = require('angular2/router');
 var producto_service_1 = require('../../services/producto/producto-service');
 var login_service_1 = require('../../services/login-service');
 var isloggedin_1 = require('../../services/isloggedin');
+var user_service_1 = require('../../services/user/user-service');
 var ProductoDetailsCmp = (function () {
-    function ProductoDetailsCmp(fb, router, _routeParams, _productoService, _loginService) {
+    function ProductoDetailsCmp(fb, router, _routeParams, _userService, _productoService, _loginService) {
         this.router = router;
         this._routeParams = _routeParams;
+        this._userService = _userService;
         this._productoService = _productoService;
         this._loginService = _loginService;
         this.productoForm = fb.group({
@@ -128,7 +130,29 @@ var ProductoDetailsCmp = (function () {
         this.router.navigate(['/ListProveedores']);
     };
     ProductoDetailsCmp.prototype.gusuarios = function () {
-        this.router.navigate(['/ListUsuarios']);
+        if (localStorage.getItem(this.token) == "encargado") {
+            var u = localStorage.key(1);
+            if (u == "undefined") {
+                var o = localStorage.key(0);
+                this.getProfile(o);
+            }
+            else {
+                this.getProfile(u);
+            }
+        }
+        else {
+            this.router.navigate(['/ListUsuarios']);
+        }
+    };
+    ProductoDetailsCmp.prototype.getProfile = function (name) {
+        var _this = this;
+        this._userService
+            .getProfile(name)
+            .subscribe(function (user) {
+            _this.profile = user[0]._id;
+            _this.router.navigate(['Perfil', { id: _this.profile }]);
+            //alert("en el get, el id es " +this.profile);
+        });
     };
     ProductoDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
@@ -145,12 +169,13 @@ var ProductoDetailsCmp = (function () {
     ], ProductoDetailsCmp.prototype, "producto", void 0);
     ProductoDetailsCmp = __decorate([
         core_1.Component({
-            templateUrl: 'client/dev/producto/templates/details.html'
+            templateUrl: 'client/dev/producto/templates/details.html',
+            providers: [user_service_1.UserService, login_service_1.LoginService, producto_service_1.ProductoService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
-        __param(4, core_1.Inject(login_service_1.LoginService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, producto_service_1.ProductoService, login_service_1.LoginService])
+        __param(5, core_1.Inject(login_service_1.LoginService)), 
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, router_1.RouteParams, user_service_1.UserService, producto_service_1.ProductoService, login_service_1.LoginService])
     ], ProductoDetailsCmp);
     return ProductoDetailsCmp;
 }());

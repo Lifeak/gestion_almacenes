@@ -24,21 +24,24 @@ import {
 } from 'angular2/http';
 
 import {LoginService} from '../services/login-service';
+import {UserService} from '../services/user/user-service';
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../services/isloggedin';
 
 
 @Component({
   templateUrl: 'client/dev/login/templates/ventas.html',
-  providers: [LoginService]
+  providers: [LoginService, UserService]
 })
 
 @CanActivate(() => isLogged())
 export class VentasCmp {
   title: string = "Ventas";
   logadmin: boolean = false;
+  token: string;
+  public profile: string;
 
 
-  constructor( @Inject(LoginService) private _loginService: LoginService, private router: Router) {
+  constructor( @Inject(LoginService) private _loginService: LoginService, private _userService: UserService,private router: Router) {
       this.logadmin = isLoggedinAdmin();
   }
 
@@ -76,9 +79,7 @@ export class VentasCmp {
    gproveedores() {
      this.router.navigate(['/ListProveedores']);
    }
-   gusuarios() {
-     this.router.navigate(['/ListUsuarios']);
-   }
+
    ggarantias() {
      this.router.navigate(['/ListGarantias']);
    }
@@ -88,4 +89,31 @@ export class VentasCmp {
    gclientes() {
      this.router.navigate(['/ListClientes']);
    }
+
+   gusuarios() {
+     if (localStorage.getItem(this.token) == "encargado") {
+       let u = localStorage.key(1);
+       // alert("1en u tenemos " + u);
+       if (u == "undefined") {
+         let e = localStorage.key(0);
+         //alert("2en u tenemos " + u);
+         this.getProfile(e);
+       } else {
+         this.getProfile(u);
+       }
+
+     } else {
+       this.router.navigate(['/ListUsuarios']);
+     }
+   }
+   public getProfile(name: string) {
+     this._userService
+       .getProfile(name)
+       .subscribe((user) => {
+         this.profile = user[0]._id;
+         this.router.navigate(['Perfil', { id: this.profile }]);
+         //alert("en el get, el id es " +this.profile);
+       });
+   }
+
 }

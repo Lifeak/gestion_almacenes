@@ -51,6 +51,7 @@ export class AdminCmp {
 
   logout() {
     this._loginService.logout();
+    localStorage.clear();
     this.router.navigate(['/Login']);
     this.logadmin = false;
   }
@@ -71,13 +72,13 @@ export class AdminCmp {
     this.router.navigate(['/Admin']);
   }
 
-  usuarios() {
+  gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);
-      alert("1en u tenemos " + u);
+     // alert("1en u tenemos " + u);
       if (u == "undefined") {
         let e = localStorage.key(0);
-        alert("2en u tenemos " + u);
+        //alert("2en u tenemos " + u);
         this.getProfile(e);
       }else{
         this.getProfile(u);
@@ -112,9 +113,6 @@ export class AdminCmp {
   }
   gproveedores() {
     this.router.navigate(['/ListProveedores']);
-  }
-  gusuarios() {
-    this.router.navigate(['/ListUsuarios']);
   }
   ggarantias() {
     this.router.navigate(['/ListGarantias']);
