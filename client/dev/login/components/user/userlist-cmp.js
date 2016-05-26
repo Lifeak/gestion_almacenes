@@ -57,12 +57,6 @@ var UserListCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    UserListCmp.prototype.almacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    UserListCmp.prototype.garantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
     UserListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

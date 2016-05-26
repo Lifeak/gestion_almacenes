@@ -40,7 +40,6 @@ var ModeloSubDetailsCmp = (function () {
     ModeloSubDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
         var name = this._routeParams.get('nombre');
-        //alert("estamos en subdetails");
         this._modeloService
             .getModeloName(name)
             .subscribe(function (modelo) {
@@ -66,7 +65,6 @@ var ModeloSubDetailsCmp = (function () {
         });
     };
     ModeloSubDetailsCmp.prototype.buscar = function (nombre) {
-        //alert("buscamos este nombre "+nombre);
         this.router.navigate(['DetailsSubModelo', { nombre: nombre }]);
     };
     ModeloSubDetailsCmp.prototype.edit = function (modelo) {

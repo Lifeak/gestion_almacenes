@@ -83,7 +83,7 @@ var GarantiaDetailsCmp = (function () {
     GarantiaDetailsCmp.prototype.ventas = function () {
         this.router.navigate(['/Ventas']);
     };
-    GarantiaDetailsCmp.prototype.goalmacen = function () {
+    GarantiaDetailsCmp.prototype.almacen = function () {
         this.router.navigate(['/Almacen']);
     };
     GarantiaDetailsCmp.prototype.admin = function () {
@@ -93,7 +93,7 @@ var GarantiaDetailsCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    GarantiaDetailsCmp.prototype.almacenes = function () {
+    GarantiaDetailsCmp.prototype.galmacenes = function () {
         this.router.navigate(['/ListAlmacenes']);
     };
     GarantiaDetailsCmp.prototype.gproductos = function () {
@@ -131,8 +131,10 @@ var GarantiaDetailsCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
+    };
+    GarantiaDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
     };
     __decorate([
         core_1.Input(), 

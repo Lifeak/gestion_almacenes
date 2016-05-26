@@ -141,7 +141,6 @@ export class PiezaSubDetailsCmp implements OnInit {
           (<Control>this.piezaForm.controls['precio']).updateValue("");
 
         });
-      //this.gotoIndex();
     }
   }
 

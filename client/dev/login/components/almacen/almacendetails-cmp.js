@@ -101,10 +101,10 @@ var AlmacenDetailsCmp = (function () {
         localStorage.clear();
         this.router.navigate(['/Login']);
     };
-    AlmacenDetailsCmp.prototype.almacenes = function () {
+    AlmacenDetailsCmp.prototype.galmacenes = function () {
         this.router.navigate(['/ListAlmacenes']);
     };
-    AlmacenDetailsCmp.prototype.garantias = function () {
+    AlmacenDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
     AlmacenDetailsCmp.prototype.gusuarios = function () {
@@ -131,6 +131,21 @@ var AlmacenDetailsCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
             //alert("en el get, el id es " +this.profile);
         });
+    };
+    AlmacenDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    AlmacenDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    AlmacenDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    AlmacenDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    AlmacenDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

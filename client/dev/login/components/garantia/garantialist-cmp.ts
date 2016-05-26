@@ -83,10 +83,9 @@ export class GarantiaListCmp implements OnInit {
       this.router.navigate(['/Login']);
   }
 
-  almacenes() {
-      this.router.navigate(['/ListAlmacenes']);
+  ggarantias(){
+    this.router.navigate(['/ListGarantias']);
   }
-
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);

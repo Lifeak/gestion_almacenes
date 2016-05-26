@@ -39,7 +39,6 @@ var ModeloDetailsCmp = (function () {
     }
     ModeloDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
-        //alert("ya estoy en los detalless");
         var id = this._routeParams.get('id');
         this._modeloService
             .getModeloId(id)
@@ -66,7 +65,6 @@ var ModeloDetailsCmp = (function () {
         });
     };
     ModeloDetailsCmp.prototype.buscar = function (nombre) {
-        //alert("buscamos este nombre "+nombre);
         this.router.navigate(['/DetailsSubModelo', { nombre: nombre }]);
     };
     ModeloDetailsCmp.prototype.edit = function (modelo) {

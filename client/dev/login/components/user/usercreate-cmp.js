@@ -80,12 +80,6 @@ var UserCreateCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    UserCreateCmp.prototype.almacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    UserCreateCmp.prototype.garantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
     UserCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

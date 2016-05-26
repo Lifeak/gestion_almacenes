@@ -38,7 +38,6 @@ var ModeloListCmp = (function () {
         return modelo._id === this._selectedId;
     };
     ModeloListCmp.prototype.onSelect = function (modelo) {
-        // alert("vamos a bucar el modelo"+modelo._id + modelo.nombre);
         this.router.navigate(['/DetailsModelo', { id: modelo._id }]);
     };
     ModeloListCmp.prototype.logout = function () {

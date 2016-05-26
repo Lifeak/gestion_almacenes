@@ -56,10 +56,10 @@ var AlmacenListCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    AlmacenListCmp.prototype.almacenes = function () {
+    AlmacenListCmp.prototype.galmacenes = function () {
         this.router.navigate(['/ListAlmacenes']);
     };
-    AlmacenListCmp.prototype.garantias = function () {
+    AlmacenListCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
     AlmacenListCmp.prototype.gusuarios = function () {
@@ -86,6 +86,21 @@ var AlmacenListCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
             //alert("en el get, el id es " +this.profile);
         });
+    };
+    AlmacenListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    AlmacenListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    AlmacenListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    AlmacenListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
+    AlmacenListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
     };
     AlmacenListCmp = __decorate([
         core_1.Component({

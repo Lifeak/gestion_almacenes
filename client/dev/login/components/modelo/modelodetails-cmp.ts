@@ -52,7 +52,6 @@ export class ModeloDetailsCmp implements OnInit {
   
 
   ngOnInit() {
-    //alert("ya estoy en los detalless");
     let id = this._routeParams.get('id');
     this._modeloService
     .getModeloId(id)
@@ -82,7 +81,6 @@ export class ModeloDetailsCmp implements OnInit {
   }
 
   buscar(nombre){
-      //alert("buscamos este nombre "+nombre);
       this.router.navigate(['/DetailsSubModelo', { nombre: nombre }]);
   }
 
