@@ -66,7 +66,6 @@ export class PiezaCreateCmp implements OnInit{
   
   gotoIndex(){
     this.router.navigate(['/ListPiezas']);
-
   }
 
   goBack(){

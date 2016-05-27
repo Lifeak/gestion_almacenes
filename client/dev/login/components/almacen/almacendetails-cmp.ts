@@ -123,11 +123,11 @@ export class AlmacenDetailsCmp implements OnInit {
       this.router.navigate(['/Login']);
   }
 
-  almacenes() {
+  galmacenes() {
       this.router.navigate(['/ListAlmacenes']);
   }
 
-  garantias() {
+  ggarantias() {
       this.router.navigate(['/ListGarantias']);
   }
 
@@ -152,6 +152,22 @@ export class AlmacenDetailsCmp implements OnInit {
         this.router.navigate(['Perfil', { id: this.profile }]);
         //alert("en el get, el id es " +this.profile);
       });
+  }
+
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
   }
 
 

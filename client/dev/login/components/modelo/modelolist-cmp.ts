@@ -57,7 +57,6 @@ export class ModeloListCmp implements OnInit {
     return modelo._id === this._selectedId;
   }
   onSelect(modelo:Modelo){
-   // alert("vamos a bucar el modelo"+modelo._id + modelo.nombre);
     this.router.navigate(['/DetailsModelo',{id: modelo._id}]);
 
   }

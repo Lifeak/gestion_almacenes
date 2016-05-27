@@ -252,6 +252,8 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
+            <div class="row">
+              <div class="col-lg-12 main-chart">
                 <div class="section-container">
                     <div class="row">
                       <div class="col-md-12">
@@ -264,9 +266,9 @@
                         <form class="almacen-form"
                               [ngFormModel]="almacenForm"
                               (submit)="save(almacenForm)">
-                          
+                          <p class="normas">(*)  Campo obligatorio</p>
                           <div class="form-group">
-                            <label for="nombre">Nombre:</label>
+                            <label for="nombre">Nombre (*):</label>
                             <input type="text" 
                                 class="form-control" 
                                 id="nombre" 
@@ -275,7 +277,7 @@
                                 autofocus />
                           </div>
                           <div class="form-group">
-                            <label for="direccion">Dirección:</label>
+                            <label for="direccion">Dirección (*):</label>
                             <input type="text" 
                                 class="form-control" 
                                 id="direccion" 
@@ -284,7 +286,7 @@
                                 autofocus />
                           </div>
                           <div class="form-group">
-                            <label for="ciudad">Ciudad:</label>
+                            <label for="ciudad">Ciudad (*):</label>
                             <input type="text" 
                                 class="form-control" 
                                 id="ciudad" 
@@ -293,7 +295,7 @@
                                 autofocus />
                           </div>
                           <div class="form-group">
-                            <label for="pais">País:</label>
+                            <label for="pais">País (*):</label>
                             <input type="text" 
                                 class="form-control" 
                                 id="pais" 
@@ -302,7 +304,7 @@
                                 autofocus />
                           </div>
                           <div class="form-group">
-                            <label for="telefono">Teléfono:</label>
+                            <label for="telefono">Teléfono (*):</label>
                             <input type="text" 
                                 class="form-control" 
                                 id="telefono" 
@@ -311,7 +313,7 @@
                                 autofocus />
                           </div>
                           <div class="form-group">
-                            <label for="encargado">Encargado:</label>
+                            <label for="encargado">Encargado (*):</label>
                             <input type="text" 
                                 class="form-control" 
                                 id="encargado" 
@@ -325,15 +327,14 @@
 
                           </form>
                         <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                      </div>
-                    </div>
-                  </div>
-             
+                      </div> <!-- end col-md-8 -->
+                    </div> <!-- end row -->
+                  </div> <!-- end section-container -->
+                </div> <!-- end col-md-12 -->
+             </div> <!-- end row -->
           </section>
       </section>
-
       <!--main content end-->
-
 </section>
 
 

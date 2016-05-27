@@ -83,14 +83,6 @@ export class UserListCmp implements OnInit {
       this.router.navigate(['/Login']);
   }
 
-  almacenes(){
-      this.router.navigate(['/ListAlmacenes']);
-  }
-
-  garantias(){
-      this.router.navigate(['/ListGarantias']);
-  }
-
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);

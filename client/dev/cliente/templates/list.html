@@ -263,54 +263,49 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                  <div class="col-lg-12 main-chart">
-					<div class="section-container">
-						<div class="row">
-							<div class="col-md-12">
-								<h1 class="submenu-title">Clientes</h1>
-								<a [routerLink]="['/CreateCliente']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo cliente</a>
-							</div>
-						</div>
-						<br><br>
-						<div class="row">
-							<div class="col-md-12">
-					    		<table class="table table-hover table-responsive">
-						    		<thead>
-						    			<tr>
-						    				<th>NIF / DNI</th>
-						    				<th>Nombre</th>
-						    				<th>Dirección</th>
-						    				<th>Teléfono</th>
-						    				<th>Puesto de trabajo</th>
-						    				<th>Email</th>
-						    			</tr>
-						    		</thead>
-						    		<tbody>
-						    			<tr *ngFor="#cliente of clientes"
-							        [class.selected]="isSelected(cliente)"
-							        (click)="onSelect(cliente)">
-						    				<td>{{cliente._id}}</td>
-						    				<td>{{cliente.nombre}}</td>
-						    				<td>{{cliente.direccion}} ({{cliente.ciudad}}) - {{cliente.pais}}</td>
-						    				<td>{{cliente.telefono1}}</td>
-						    				<td>{{cliente.puestoTrabajo}}</td>
-						    				<td>{{cliente.email}}</td>
-						    			</tr>
-					    			</tbody>
-					    		</table>
-							</div>
-						</div>
-					</div>
-
-
-                      
-                  </div><!-- /col-lg-12 END SECTION MIDDLE -->
-              </div><!--/row -->
-          </section>
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">
+    					<div class="section-container">
+    						<div class="row">
+    							<div class="col-md-12">
+    								<h1 class="submenu-title">Clientes</h1>
+    								<a [routerLink]="['/CreateCliente']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo cliente</a>
+    							</div>
+    						</div>
+    						<br><br>
+    						<div class="row">
+    							<div class="col-md-12">
+    					    		<table class="table table-hover table-responsive">
+    						    		<thead>
+    						    			<tr>
+    						    				<th>NIF / DNI</th>
+    						    				<th>Nombre</th>
+    						    				<th>Dirección</th>
+    						    				<th>Teléfono</th>
+    						    				<th>Puesto de trabajo</th>
+    						    				<th>Email</th>
+    						    			</tr>
+    						    		</thead>
+    						    		<tbody>
+    						    			<tr *ngFor="#cliente of clientes"
+    							        [class.selected]="isSelected(cliente)"
+    							        (click)="onSelect(cliente)">
+    						    				<td>{{cliente._id}}</td>
+    						    				<td>{{cliente.nombre}}</td>
+    						    				<td>{{cliente.direccion}} ({{cliente.ciudad}}) - {{cliente.pais}}</td>
+    						    				<td>{{cliente.telefono1}}</td>
+    						    				<td>{{cliente.puestoTrabajo}}</td>
+    						    				<td>{{cliente.email}}</td>
+    						    			</tr>
+    					    			</tbody>
+    					    		</table>
+    							</div>
+    						</div>
+					    </div> 
+            </div><!-- end col-lg-12 main-chart -->
+          </div><!--end row -->
+        </section>
       </section>
 
       <!--main content end-->

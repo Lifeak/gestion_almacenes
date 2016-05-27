@@ -251,35 +251,47 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">
               <div class="section-container">
-                <h1>PERFIL</h1>
-                  <div *ngIf="user">
-                      <label>User: </label>
-                      <input [(ngModel)]="user.user" placeholder="user"/><br/>
-                      <label>Pass: </label>
-                      <input [(ngModel)]="user.pass" placeholder="pass"/><br/>
-                      <label>Nombre: </label>
-                      <input [(ngModel)]="user.nombre" placeholder="nombre"/><br/>
-                      <label>Apellido: </label>
-                      <input [(ngModel)]="user.apellido" placeholder="apellido"/><br/>
+                <div class="row">
+                    <div class="col-md-12">
+                      <h1 class="submenu-title">Control de usuarios > Perfil de usuario</h1>
+                    </div>
                   </div>
-                  <p>
-
-                    <button (click)="edit(user)">Save changes</button>
-
-                  </p>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                      <div *ngIf="user">
+                        <p class="normas">(*)  Campo obligatorio</p>
+                        <div class="form-group">
+                          <label for="user">User (*): </label>
+                          <input type="text" [(ngModel)]="user.user" id="user" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                          <label for="pass">Pass (*): </label>
+                          <input type="password" [(ngModel)]="user.pass" id="pass" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                          <label for="nombre">Nombre (*): </label>
+                          <input type="text" [(ngModel)]="user.nombre" id="nombre" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                          <label for="apellido">Apellido (*): </label>
+                          <input type="text" [(ngModel)]="user.apellido" id="apellido" class="form-control" />
+                        </div>
+                      </div>
+                      <p>
+                        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                        <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-         
-             
+            </div>
           </section>
+        </section>
+        <!--main content end-->
       </section>
-
-      <!--main content end-->
-
-</section>
-
-
-
-
-

@@ -274,58 +274,55 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                <div class="col-lg-12 main-chart">                                                             
-					<div class="section-container">
-						<div class="row">
-							<div class="col-md-12">
-								<h1 class="submenu-title">Productos > Piezas</h1>
-								<a [routerLink]="['/CreatePieza']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nueva pieza</a>
-							</div>
-						</div>
-						<br><br>
-						<div class="row">
-					    	<div class="col-md-12">
-					    		<table class="table table-hover table-responsive">
-						    		<thead>
-						    			<tr>
-						    				<th>Identificador</th>
-                        <th>Modelo</th>
-						    				<th>Estado</th>
-						    				<th>Lote</th>
-						    				<th>Características</th>
-						    				<th>Ubicación</th>
-						    				<th>Procedencia</th>
-						    				<th>Vendida</th>
-						    				<th>Precio</th>
-						    			</tr>
-						    		</thead>
-						    		<tbody>
-						    			<tr *ngFor="#pieza of piezas"
-							        [class.selected]="isSelected(pieza)"
-							        (click)="onSelect(pieza)">
-						    				<td>{{pieza._id}}</td>
-                        <td>{{pieza.modelo}}</td>
-						    				<td>{{pieza.estado}}</td>
-						    				<td>{{pieza.lote}}</td>
-						    				<td>{{pieza.caracteristicas}}</td>
-						    				<td>{{pieza.almacen}}</td>
-						    				<td>{{pieza.almacenOrigen}}</td>
-						    				<td>{{pieza.vendido}}</td>
-						    				<td>{{pieza.precio}}</td>
-						    			</tr>
-					    			</tbody>
-					    		</table>
-							</div>
-						</div>
-					</div>
-
-              </div><!--/row -->                  
-           </div><!-- /col-lg-12 END SECTION MIDDLE -->
-          </section>
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">                                      
+    					<div class="section-container">
+    						<div class="row">
+    							<div class="col-md-12">
+    								<h1 class="submenu-title">Productos > Piezas</h1>
+    								<a [routerLink]="['/CreatePieza']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nueva pieza</a>
+    							</div>
+    						</div>
+    						<br><br>
+    						<div class="row">
+    					    <div class="col-md-12">
+    					    		<table class="table table-hover table-responsive">
+    						    		<thead>
+    						    			<tr>
+    						    				<th>Identificador</th>
+                            <th>Modelo</th>
+    						    				<th>Estado</th>
+    						    				<th>Lote</th>
+    						    				<th>Características</th>
+    						    				<th>Ubicación</th>
+    						    				<th>Procedencia</th>
+    						    				<th>Vendida</th>
+    						    				<th>Precio</th>
+    						    			</tr>
+    						    		</thead>
+    						    		<tbody>
+    						    			<tr *ngFor="#pieza of piezas"
+    							        [class.selected]="isSelected(pieza)"
+    							        (click)="onSelect(pieza)">
+    						    				<td>{{pieza._id}}</td>
+                            <td>{{pieza.modelo}}</td>
+    						    				<td>{{pieza.estado}}</td>
+    						    				<td>{{pieza.lote}}</td>
+    						    				<td>{{pieza.caracteristicas}}</td>
+    						    				<td>{{pieza.almacen}}</td>
+    						    				<td>{{pieza.almacenOrigen}}</td>
+    						    				<td>{{pieza.vendido}}</td>
+    						    				<td>{{pieza.precio}}</td>
+    						    			</tr>
+    					    			</tbody>
+    					    		</table>
+    							</div>
+    						</div>
+    					</div>
+            </div><!--/row -->                  
+          </div><!-- /col-lg-12 END SECTION MIDDLE -->
+        </section>
       </section>
 
       <!--main content end-->

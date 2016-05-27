@@ -56,8 +56,8 @@ var GarantiaListCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    GarantiaListCmp.prototype.almacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
+    GarantiaListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
     };
     GarantiaListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {

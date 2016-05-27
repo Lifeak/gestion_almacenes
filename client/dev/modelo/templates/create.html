@@ -274,11 +274,9 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                <div class="col-lg-12 main-chart">                                                             
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12 main-chart">                         
                     <div class="section-container">
                       <div class="row">
                         <div class="col-md-12">
@@ -291,9 +289,9 @@
                           <form class="modelo-form"
                                 [ngFormModel]="modeloForm"
                                 (submit)="save(modeloForm)">
-                            
+                            <p class="normas">(*)  Campo obligatorio</p>
                             <div class="form-group">
-                              <label for="nombre">Nombre:</label>
+                              <label for="nombre">Nombre (*):</label>
                               <input type="text" 
                                   class="form-control" 
                                   id="nombre" 
@@ -302,7 +300,7 @@
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="refinterna">Referencia interna:</label>
+                              <label for="refinterna">Referencia interna (*):</label>
                               <input type="text" 
                                   class="form-control" 
                                   id="refinterna" 
@@ -311,7 +309,7 @@
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="caracteristicas">Características:</label>
+                              <label for="caracteristicas">Características (*):</label>
                               <input type="text" 
                                   class="form-control" 
                                   id="caracteristicas" 
@@ -320,7 +318,7 @@
                                   autofocus />
                             </div>
                             <div class="form-group">
-                              <label for="modeloDe">¿Qué tipo de modelo es?:<br/>Recuerda que se considera Producto al Valiryo completo, lo demás son piezas.</label>
+                              <label for="modeloDe">¿Qué tipo de modelo es? (*):<br/>Recuerda que se considera Producto al Valiryo completo, lo demás son piezas.</label>
                               <select name="modeloDe"
                                   ngControl="modeloDe" 
                                   class="form-control" 
@@ -334,7 +332,7 @@
                             <div class="form-group no-margin">
                               <label>Selecciona cada componente del modelo y sus unidades:</label>
                               <br>
-                              <div class="col-md-7">
+                              <div class="col-md-7" style="padding-left: 0">
                                 <label for="compuestoPor">Componente:</label>
                                 <select name="modelo"
                                     ngControl="compuestoPor" 
@@ -346,7 +344,7 @@
                                   <option *ngFor="#model of modelos" >{{model.nombre}}</option>
                                 </select>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-2">
                                 <label for="unidades">Unidades:</label>
                                 <select name="unidades"
                                     ngControl="unidades" 
@@ -368,11 +366,12 @@
                                 </select>
                               </div>
                             </div>
-                             <div class="col-md-2">
-                                  <label style="padding-bottom:20px;">  </label>                               
-                                  <a  (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true">  Añadir componente</i></a>
+                            <div class="col-md-3" style="padding-left: 0; padding-right: 0">
+                                  <label style="padding-bottom:45px;">  </label>                               
+                                  <a  (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true"></i>  Añadir componente</a>
                               </div>
-                            </form><br/><br/><br/><br/>
+                            </form>
+                            <br/><br/><br/><br/>
 
                             <div *ngIf="components.length>0">
                               <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
@@ -390,15 +389,13 @@
                             <br/><br/>
                             <button type="submit" [disabled]="!modeloForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
 
-
                           <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                        </div>
+                        </div> 
                       </div>
-                    </div>
-
+                  </div>
               </div><!--/row -->                  
            </div><!-- /col-lg-12 END SECTION MIDDLE -->
-          </section>
+        </section>
       </section>
 
       <!--main content end-->

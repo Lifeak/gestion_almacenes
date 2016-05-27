@@ -275,9 +275,8 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-
-              <div class="row">
-                <div class="col-lg-12 main-chart">                                                             
+            <div class="row">
+              <div class="col-lg-12 main-chart">                                                        
                 <div class="section-container">
                   <div class="row">
                     <div class="col-md-12">
@@ -290,7 +289,7 @@
                       <form class="proveedor-form"
                             [ngFormModel]="proveedorForm"
                             (submit)="save(proveedorForm)">
-                        <p>(*)  Significa que es un campo obligatorio de rellenar</p>
+                        <p class="normas">(*)  Campo obligatorio</p>
                         <div class="form-group">
                           <label for="nombre">Nombre (*):</label>
                           <input type="text" class="form-control" id="nombre" 
@@ -333,87 +332,87 @@
                               [class.formulario-error]="!proveedorForm.valid"
                               autofocus />
                         </div>
-                      
                         <a (click)="a=true;" class="btn btn-formulario"><i class="fa fa-plus" aria-hidden="true"></i> Añadir material</a>
                         <br><br>
-
                         <div *ngIf="a==true;">       
-                        <div class="form-group">
-                          <label for="pieza">Pieza (*):</label>
-                          <input type="text" class="form-control" id="pieza"
-                                ngControl="pieza"
-                                [class.formulario-error]="!proveedorForm.valid"
-                                autofocus />
+                          <div class="form-group">
+                            <label for="pieza">Pieza (*):</label>
+                            <input type="text" class="form-control" id="pieza"
+                                  ngControl="pieza"
+                                  [class.formulario-error]="!proveedorForm.valid"
+                                  autofocus />
+                          </div>
+                          <div class="form-group">
+                            <label for="refexterna">Referencia externa (*):</label>
+                            <input type="text" class="form-control" id="refexterna" ngControl="refexterna"
+                                  [class.formulario-error]="!proveedorForm.valid"
+                                  autofocus />
+                          </div>
+                          <div class="form-group">
+                            <label for="coste1">Coste (*):</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="coste1" min="0" 
+                                  ngControl="coste1"
+                                  [class.formulario-error]="!proveedorForm.valid"
+                                  autofocus />
+                                  <span class="input-group-addon">€</span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="coste2">Otro tipo de coste:</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="coste2" min="0"
+                                  ngControl="coste2"
+                                  [class.formulario-error]="!proveedorForm.valid"
+                                  autofocus />
+                                  <span class="input-group-addon">€</span>
+                            </div>   
+                          </div>
+                          <div class="form-group">
+                            <label for="val">Valoración de la pieza:</label>
+                            <input type="text" class="form-control" id="val" 
+                                  ngControl="val"
+                                  [class.formulario-error]="!proveedorForm.valid"
+                                  autofocus />
+                          </div>
+                          <a (click)="plus(proveedorForm);a=false;" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar material</a>
                         </div>
-                        <div class="form-group">
-                          <label for="refexterna">Referencia externa (*):</label>
-                          <input type="text" class="form-control" id="refexterna" ngControl="refexterna"
-                                [class.formulario-error]="!proveedorForm.valid"
-                                autofocus />
-                        </div>
-                        <div class="form-group">
-                          <label for="coste1">Coste (*):</label>
-                          <input type="number" class="form-control" id="coste1" min="0" 
-                                ngControl="coste1"
-                                [class.formulario-error]="!proveedorForm.valid"
-                                autofocus />
-                        </div>
-                        <div class="form-group">
-                          <label for="coste2">Otro tipo de coste:</label>
-                          <input type="number" class="form-control" id="coste2" min="0"
-                                ngControl="coste2"
-                                [class.formulario-error]="!proveedorForm.valid"
-                                autofocus />
-                        </div>
-                        <div class="form-group">
-                          <label for="val">Valoración de la pieza:</label>
-                          <input type="text" class="form-control" id="val" 
-                                ngControl="val"
-                                [class.formulario-error]="!proveedorForm.valid"
-                                autofocus />
-                        </div>
-                        <a (click)="plus(proveedorForm);a=false;" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar material</a>
-                      </div>
-
-                      <div *ngIf="mat.length>0">
-                        <label><strong>Materiales añadidos:</strong></label>
-                        <br><br>
-                        <table class="table table-hover table-responsive">
-                          <thead>
-                            <tr>
-                              <th>Material</th>
-                              <th></th>
-                              <th></th>
+                        <div *ngIf="mat.length>0">
+                          <label><strong>Materiales añadidos:</strong></label>
+                          <br><br>
+                          <table class="table table-hover table-responsive">
+                            <thead>
+                              <tr>
+                                <th>Material</th>
+                                <th></th>
+                                <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="#m of cuenta; #i=index">
+                                <td>{{m}}</td>
+                                <td width="15%"><a (click)="minus(i);" ><i class="fa fa-times" aria-hidden="true"></i> Eliminar</a></td>
+                                <!-- <td>
+                                    <div *ngFor="#m of cuenta; #i=index"><strong>
+                                      Material:</strong> {{m}}  &nbsp;<a (click)="minus(i);" class="btn btn-formulario"><i class="fa fa-minus" aria-hidden="true"></i> Eliminar</a>
+                                    </div>
+                                  </td> -->
                               </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="#m of cuenta; #i=index">
-                              <td>{{m}}</td>
-                              <td width="15%"><a (click)="minus(i);" ><i class="fa fa-times" aria-hidden="true"></i> Eliminar</a></td>
-                              <!-- <td>
-                                  <div *ngFor="#m of cuenta; #i=index"><strong>
-                                    Material:</strong> {{m}}  &nbsp;<a (click)="minus(i);" class="btn btn-formulario"><i class="fa fa-minus" aria-hidden="true"></i> Eliminar</a>
-                                  </div>
-                                </td> -->
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <br/><br/>
-                      <button type="submit" [disabled]="!proveedorForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar proveedor</button>
-                    </form>
-
-                    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                            </tbody>
+                          </table>
+                        </div>
+                        <br/><br/>
+                        <button type="submit" [disabled]="!proveedorForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar proveedor</button>
+                      </form>
+                      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div><!--/row -->                  
-          </div><!-- /col-lg-12 END SECTION MIDDLE -->
-        </section>
+              </div><!-- end col-md-12 -->                  
+            </div><!-- end row -->
+          </section>
       </section>
-
       <!--main content end-->
-
 </section>
 
 

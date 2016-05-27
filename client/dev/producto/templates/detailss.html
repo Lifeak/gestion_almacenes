@@ -274,39 +274,56 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-        <div class="section-container">
-            <h1>DETAILSSSSS</h1>
-              <div *ngIf="producto">
-                <div *ngFor="#pr of producto; #i=index;">
-                <h3>Producto: {{pr.nombre}}</h3>
-                      <label>Nombre: </label>
-                      <input [(ngModel)]="pr.nombre" placeholder="Nombre"/><br/>
-                      <label>Referencia interna: </label>
-                      <input [(ngModel)]="pr.refinterna" placeholder="Referencia interna"/><br/>
-                      <label>Caracteristicas: </label>
-                      <input [(ngModel)]="item.caracteristicas" placeholder="Caracteristicas"/><br/>
-                      <label>Es: </label>
-                      <input [(ngModel)]="item.modeloDe" placeholder="Es"/><br/><br/>
-                      <div *ngIf="item.compuestoPor.length!=0">
-                      <label>Compuesto Por: </label>
-                         <td><ul *ngFor="#ite of item.compuestoPor; #i=index;" (click)="buscar(ite);"><li>{{ite}}</li>  </ul></td>
-                         <td><ul *ngFor="#it of item.unidades; #ie=indexe;">{{it}}  </ul></td>
-                     </div>
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">  
+              <div class="section-container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="submenu-title">Productos > Detalles de producto</h1>
+                  </div>
                 </div>
-                <button (click)="gotoIndex()">Back</button>
-
+                <br><br>
+                <div *ngIf="producto">
+                  <div *ngFor="#pr of producto; #i=index;">
+                    <p class="normas">(*)  Campo obligatorio</p>
+                    <div class="form-group">
+                      <label for="nombre">Nombre (*): </label>
+                      <input type="text" id="nombre" [(ngModel)]="pr.nombre" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="refinterna">Referencia interna (*): </label>
+                      <input type="text" id="refinterna" [(ngModel)]="pr.refinterna" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="caracteristicas">Caracteristicas: </label>
+                      <input type="text" id="caracteristicas" [(ngModel)]="item.caracteristicas" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="modeloDe">Es (*): </label>
+                      <input type="text" id="modeloDe" [(ngModel)]="item.modeloDe" class="form-control"/>
+                    </div>
+                    <div *ngIf="item.compuestoPor.length!=0">
+                      <label>Compuesto Por: </label>
+                      <td>
+                        <ul *ngFor="#ite of item.compuestoPor; #i=index;" (click)="buscar(ite);">
+                          <li>{{ite}}</li>  
+                        </ul>
+                      </td>
+                      <td>
+                        <ul *ngFor="#it of item.unidades; #ie=indexe;">{{it}}  
+                        </ul>
+                      </td>
+                    </div>
+                  </div>        
+                </div>
+                <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+              </div>
+            </div>
           </div>
-              </div><!--/row -->                  
-           </div><!-- /col-lg-12 END SECTION MIDDLE -->
-          </section>
+        </section>
       </section>
-
       <!--main content end-->
-
 </section>
 
 

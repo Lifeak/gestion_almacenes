@@ -263,77 +263,74 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                  <div class="col-lg-12 main-chart">
-<div class="section-container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="submenu-title">Clientes > Detalles de cliente</h1>
-    </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div *ngIf="cliente">
-        <form class="cliente-form" [ngFormModel]="clienteForm">
-          <div class="form-group">
-            <label for="id">NIF / DNI:</label>
-            <input [(ngModel)]="cliente._id" class="form-control" id="id"/>
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">
+              <div class="section-container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="submenu-title">Clientes > Detalles de cliente</h1>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div *ngIf="cliente">
+                      <form class="cliente-form" [ngFormModel]="clienteForm">
+                        <p class="normas">(*)  Campo obligatorio</p>
+                        <div class="form-group">
+                          <label for="id">NIF / DNI (*):</label>
+                          <input [(ngModel)]="cliente._id" class="form-control" id="id"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="nombre">Nombre (*):</label>
+                          <input [(ngModel)]="cliente.nombre" class="form-control" id="nombre"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="direccion">Direccion (*):</label>
+                          <input [(ngModel)]="cliente.direccion" class="form-control" id="direccion"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="ciudad">Ciudad (*):</label>
+                          <input [(ngModel)]="cliente.ciudad" class="form-control" id="ciudad"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="pais">País (*):</label>
+                          <input [(ngModel)]="cliente.pais" class="form-control" id="pais"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="telefono1">Teléfono (*): </label>
+                          <input [(ngModel)]="cliente.telefono1" class="form-control" id="telefono1"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="telefono2">Otro teléfono: </label>
+                          <input [(ngModel)]="cliente.telefono2" class="form-control" id="telefono2"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="puestoTrabajo">Puesto de trabajo (*):</label>
+                          <input [(ngModel)]="cliente.puestoTrabajo" class="form-control" id="puestoTrabajo"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email (*): </label>
+                          <input [(ngModel)]="cliente.email" class="form-control" id="email"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="detalles">Detalles: </label>
+                          <input [(ngModel)]="cliente.detalles" class="form-control" id="detalles"/>
+                        </div>
+                      </form>
+                    </div>
+                    <p>
+                      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                      <button (click)="delete(cliente)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar cliente</button>
+                      <button (click)="edit(cliente)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar cliente</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input [(ngModel)]="cliente.nombre" class="form-control" id="nombre"/>
-          </div>
-          <div class="form-group">
-            <label for="direccion">Direccion:</label>
-            <input [(ngModel)]="cliente.direccion" class="form-control" id="direccion"/>
-          </div>
-          <div class="form-group">
-            <label for="ciudad">Ciudad:</label>
-            <input [(ngModel)]="cliente.ciudad" class="form-control" id="ciudad"/>
-          </div>
-          <div class="form-group">
-            <label for="pais">País:</label>
-            <input [(ngModel)]="cliente.pais" class="form-control" id="pais"/>
-          </div>
-          <div class="form-group">
-            <label for="telefono1">Teléfono: </label>
-            <input [(ngModel)]="cliente.telefono1" class="form-control" id="telefono1"/>
-          </div>
-          <div class="form-group">
-            <label for="telefono2">Otro teléfono: </label>
-            <input [(ngModel)]="cliente.telefono2" class="form-control" id="telefono2"/>
-          </div>
-          <div class="form-group">
-            <label for="puestoTrabajo">Puesto de trabajo:</label>
-            <input [(ngModel)]="cliente.puestoTrabajo" class="form-control" id="puestoTrabajo"/>
-          </div>
-          <div class="form-group">
-            <label for="email">Email: </label>
-            <input [(ngModel)]="cliente.email" class="form-control" id="email"/>
-          </div>
-          <div class="form-group">
-            <label for="detalles">Detalles: </label>
-            <input [(ngModel)]="cliente.detalles" class="form-control" id="detalles"/>
-          </div>
-        </form>
-      </div>
-      <p>
-        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-        <button (click)="edit(cliente)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar cliente</button>
-        <button (click)="delete(cliente)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar cliente</button>
-      </p>
-    </div>
-  </div>
-</div>
-
-                      
-                  </div><!-- /col-lg-12 END SECTION MIDDLE -->
-              </div><!--/row -->
-          </section>
+        </section>
       </section>
 
       <!--main content end-->

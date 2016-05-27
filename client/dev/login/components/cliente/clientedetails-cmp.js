@@ -150,7 +150,6 @@ var ClienteDetailsCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     __decorate([

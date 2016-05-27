@@ -40,8 +40,7 @@ export class GarantiaDetailsCmp implements OnInit {
       "_id": ["", Validators.required],
       "tiempo": ["", Validators.required]
     });
-  }
-  
+  }  
 
   ngOnInit() {
     let id = this._routeParams.get('id');
@@ -105,7 +104,7 @@ export class GarantiaDetailsCmp implements OnInit {
     this.router.navigate(['/Ventas']);
   }
 
-  goalmacen() {
+  almacen() {
     this.router.navigate(['/Almacen']);
   }
 
@@ -117,7 +116,7 @@ export class GarantiaDetailsCmp implements OnInit {
       this.router.navigate(['/Login']);
   }
 
-  almacenes() {
+  galmacenes() {
       this.router.navigate(['/ListAlmacenes']);
   }
   gproductos() {
@@ -156,9 +155,10 @@ export class GarantiaDetailsCmp implements OnInit {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
-
+  ggarantias(){
+    this.router.navigate(['/ListGarantias']);
+  }
 
 }

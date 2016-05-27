@@ -251,53 +251,55 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-                <div class="section-container">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart"> 
+              <div class="section-container">
                 <div class="row">
-                    <div class="col-md-12">
-                      <h1 class="submenu-title">Control de usuarios > Detalles de usuario</h1>
-                    </div>
+                  <div class="col-md-12">
+                    <h1 class="submenu-title">Control de usuarios > Detalles de usuario</h1>
+                  </div>
                 </div>
                 <br><br>
                 <div class="row">
                   <div class="col-md-8 col-md-offset-2">
                     <div *ngIf="user"> 
-                    <form class="user-form" [ngFormModel]="userForm">
-                      <div class="form-group">
-                          <label for="user">Usuario:</label>
-                          <input [(ngModel)]="user.user" class="form-control" id="user"/>
-                      </div>
-                      <div class="form-group">
-                          <label for="pass">Contraseña:</label>
-                          <input [(ngModel)]="user.pass" class="form-control" id="pass"/>
-                      </div>
-                      <div class="form-group">
-                          <label for="nombre">Nombre:</label>
-                          <input [(ngModel)]="user.nombre" class="form-control" id="nombre"/>
-                      </div>
-                      <div class="form-group">
-                          <label for="apellido">Apellido:</label>
-                          <input [(ngModel)]="user.apellido" class="form-control" id="apellido"/>
-                      </div>
-                      <div class="form-group">
-                          <label for="tipo">Tipo:</label>
-                          <input [(ngModel)]="user.tipo" class="form-control" id="tipo"/>
-                      </div>
-                    </form>
-                  
-
-                    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                    <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
-                    <button (click)="delete(user)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar usuario</button>
+                      <form class="user-form" [ngFormModel]="userForm">
+                        <p class="normas">(*)  Campo obligatorio</p>
+                        <div class="form-group">
+                            <label for="user">Usuario (*):</label>
+                            <input [(ngModel)]="user.user" class="form-control" id="user"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Contraseña (*):</label>
+                            <input [(ngModel)]="user.pass" class="form-control" id="pass"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre (*):</label>
+                            <input [(ngModel)]="user.nombre" class="form-control" id="nombre"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido (*):</label>
+                            <input [(ngModel)]="user.apellido" class="form-control" id="apellido"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo">Tipo (*):</label>
+                            <input [(ngModel)]="user.tipo" class="form-control" id="tipo"/>
+                        </div>
+                      </form>
+                      <br><br>
+                      <p>
+                        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                        <button (click)="delete(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar usuario</button>
+                        <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
+                      </p>
+                    </div>
                   </div>
                 </div>
-                </div>
+              </div>
             </div>
-                          
-             
-          </section>
+          </div>
+        </section>
       </section>
-
       <!--main content end-->
-
 </section>

@@ -55,7 +55,7 @@ var GarantiaCreateCmp = (function () {
     GarantiaCreateCmp.prototype.ventas = function () {
         this.router.navigate(['/Ventas']);
     };
-    GarantiaCreateCmp.prototype.goalmacen = function () {
+    GarantiaCreateCmp.prototype.almacen = function () {
         this.router.navigate(['/Almacen']);
     };
     GarantiaCreateCmp.prototype.admin = function () {
@@ -65,8 +65,8 @@ var GarantiaCreateCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    GarantiaCreateCmp.prototype.almacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
+    GarantiaCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
     };
     GarantiaCreateCmp.prototype.gproductos = function () {
         this.router.navigate(['/ListProductos']);

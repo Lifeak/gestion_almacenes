@@ -52,8 +52,6 @@ export class ModeloSubDetailsCmp implements OnInit {
 
   ngOnInit() {
     let name = this._routeParams.get('nombre');
-    
-    //alert("estamos en subdetails");
     this._modeloService
     .getModeloName(name)
     .subscribe((modelo) => {
@@ -82,7 +80,6 @@ export class ModeloSubDetailsCmp implements OnInit {
   }
 
   buscar(nombre){
-      //alert("buscamos este nombre "+nombre);
       this.router.navigate(['DetailsSubModelo', { nombre: nombre }]);
   }
   edit(modelo: Modelo) {
@@ -129,7 +126,6 @@ export class ModeloSubDetailsCmp implements OnInit {
       this.components.splice(this.components.indexOf(nombre), 1);
       this.uds.splice(this.components.indexOf(nombre), 1);
   }
-
 
 
   logout() {

@@ -74,7 +74,7 @@ export class GarantiaCreateCmp{
     this.router.navigate(['/Ventas']);
   }
 
-  goalmacen() {
+  almacen() {
     this.router.navigate(['/Almacen']);
   }
 
@@ -85,9 +85,8 @@ export class GarantiaCreateCmp{
       this._loginService.logout();
       this.router.navigate(['/Login']);
   }
-
-  almacenes() {
-      this.router.navigate(['/ListAlmacenes']);
+  ggarantias(){
+    this.router.navigate(['/ListGarantias']);
   }
   gproductos() {
     this.router.navigate(['/ListProductos']);

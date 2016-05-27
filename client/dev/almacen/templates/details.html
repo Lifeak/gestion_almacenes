@@ -251,7 +251,9 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">                
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">                
               <div class="section-container">
                 <div class="row">
                   <div class="col-md-12">
@@ -263,42 +265,44 @@
                   <div class="col-md-8 col-md-offset-2">
                     <div *ngIf="almacen">
                       <form class="almacen-form" [ngFormModel]="almacenForm">
+                        <p class="normas">(*)  Campo obligatorio</p>
                         <div class="form-group">
-                          <label for="nombre">Nombre:</label>
+                          <label for="nombre">Nombre (*):</label>
                           <input [(ngModel)]="almacen.nombre" class="form-control" id="nombre"/>
                         </div>
                         <div class="form-group">
-                          <label for="direccion">Dirección:</label>
+                          <label for="direccion">Dirección (*):</label>
                           <input [(ngModel)]="almacen.direccion" class="form-control" id="direccion"/>
                         </div>
                         <div class="form-group">
-                          <label for="ciudad">Ciudad:</label>
+                          <label for="ciudad">Ciudad (*):</label>
                           <input [(ngModel)]="almacen.ciudad" class="form-control" id="ciudad"/>
                         </div>
                         <div class="form-group">
-                          <label for="pais">País:</label>
+                          <label for="pais">País (*):</label>
                           <input [(ngModel)]="almacen.pais" class="form-control" id="pais"/>
                         </div>
                          <div class="form-group">
-                          <label for="telefono">Teléfono: </label>
+                          <label for="telefono">Teléfono (*): </label>
                           <input [(ngModel)]="almacen.telefono" class="form-control" id="telefono"/>
                         </div>
                         <div class="form-group">
-                          <label for="encargado">Encargado:</label>
+                          <label for="encargado">Encargado (*):</label>
                           <input [(ngModel)]="almacen.encargado" class="form-control" id="encargado"/>
                         </div>
                       </form>
                     </div>
                     <p>
                       <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                      <button (click)="delete(almacen)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar almacén</button>
                       <button (click)="edit(almacen)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar almacén</button>
-                      <button (click)="delete(almacen)" class="btn btn-formulario pull-right"><i class="fa fa-times" aria-hidden="true"></i> Eliminar almacén</button>
                     </p>
                   </div>
                 </div>
               </div>
-
-          </section>
+            </div>
+          </div>
+        </section>
       </section>
 
       <!--main content end-->

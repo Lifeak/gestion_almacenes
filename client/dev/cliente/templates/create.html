@@ -263,113 +263,105 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">     
+              <div class="section-container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="submenu-title">Clientes > Nuevo cliente</h1>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <form class="cliente-form"
+                          [ngFormModel]="clienteForm"
+                          (submit)="save(clienteForm)">
+                      <p class="normas">(*)  Campo obligatorio</p>
+                      <div class="form-group">
+                        <label for="_id">NIF / DNI (*):</label>
+                        <input type="text" class="form-control" id="_id" 
+                            ngControl="_id"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="nombre">Nombre (*):</label>
+                        <input type="text" class="form-control" id="nombre" 
+                            ngControl="nombre"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="direccion">Dirección (*):</label>
+                        <input type="text" class="form-control" id="direccion" 
+                            ngControl="direccion"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="ciudad">Ciudad (*):</label>
+                        <input type="text" class="form-control" id="ciudad" 
+                            ngControl="ciudad"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="pais">País (*):</label>
+                        <input type="text" class="form-control" id="pais" 
+                            ngControl="pais"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="telefono1">Teléfono (*):</label>
+                        <input type="text" class="form-control" id="telefono1" 
+                            ngControl="telefono1"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="telefono2">Teléfono 2:</label>
+                        <input type="text" class="form-control" id="telefono2" 
+                            ngControl="telefono2"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="puestoTrabajo">Puesto de trabajo (*):</label>
+                        <input type="text" class="form-control" id="puestoTrabajo" 
+                            ngControl="puestoTrabajo"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email (*):</label>
+                        <input type="text" class="form-control" id="email" 
+                            ngControl="email"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <div class="form-group">
+                        <label for="detalles">Detalles:</label>
+                        <input type="text" class="form-control" id="detalles" 
+                            ngControl="detalles"
+                            [class.formulario-error]="!clienteForm.valid"
+                            autofocus />
+                      </div>
+                      <button type="submit"
+                          [disabled]="!clienteForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-check" aria-hidden="true"></i> Guardar cliente</button>
+                    </form>
 
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                  <div class="col-lg-12 main-chart">
-                  
-                   
-                  
-          <div class="section-container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="submenu-title">Clientes > Nuevo cliente</h1>
-    </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <form class="cliente-form"
-            [ngFormModel]="clienteForm"
-            (submit)="save(clienteForm)">
-        
-        <div class="form-group">
-          <label for="_id">NIF / DNI:</label>
-          <input type="text" class="form-control" id="_id" 
-              ngControl="_id"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" 
-              ngControl="nombre"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="direccion">Dirección:</label>
-          <input type="text" class="form-control" id="direccion" 
-              ngControl="direccion"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="ciudad">Ciudad:</label>
-          <input type="text" class="form-control" id="ciudad" 
-              ngControl="ciudad"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="pais">País:</label>
-          <input type="text" class="form-control" id="pais" 
-              ngControl="pais"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="telefono1">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono1" 
-              ngControl="telefono1"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="telefono2">Teléfono 2:</label>
-          <input type="text" class="form-control" id="telefono2" 
-              ngControl="telefono2"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="puestoTrabajo">Puesto de trabajo:</label>
-          <input type="text" class="form-control" id="puestoTrabajo" 
-              ngControl="puestoTrabajo"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="text" class="form-control" id="email" 
-              ngControl="email"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <div class="form-group">
-          <label for="detalles">Detalles:</label>
-          <input type="text" class="form-control" id="detalles" 
-              ngControl="detalles"
-              [class.formulario-error]="!clienteForm.valid"
-              autofocus />
-        </div>
-        <button type="submit"
-            [disabled]="!clienteForm.valid" class="btn btn-formulario"><i class="fa fa-check" aria-hidden="true"></i> Guardar cliente</button>
-      </form>
-
-      <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-    </div>
-  </div>
-</div>
-                      
-                  </div><!-- /col-lg-12 END SECTION MIDDLE -->
-              </div><!--/row -->
-          </section>
+                    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /col-lg-12 END SECTION MIDDLE -->
+          </div><!--/row -->
+        </section>
       </section>
-
       <!--main content end-->
-
 </section>
 
 

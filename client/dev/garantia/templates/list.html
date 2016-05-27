@@ -251,37 +251,41 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">  
-				<div class="section-container">
-					<div class="row">
-						<div class="col-md-12">
-							<h1 class="submenu-title">Tipos de garantías</h1>
-							<a [routerLink]="['/CreateGarantia']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo tipo de garantía</a>
-						</div>
-					</div>
-					<br><br>
-					<div class="row">
-				    	<div class="col-md-12">
-				    		<table class="table table-hover table-responsive">
-					    		<thead>
-					    			<tr>
-					    				<th>Nombre del País o tipo de garantía</th>
-					    				<th>Meses</th>
-					    			</tr>
-					    		</thead>
-					    		<tbody>
-					    			<tr *ngFor="#g of garantias"
-							        [class.selected]="isSelected(g)"
-							        (click)="onSelect(g)">
-					    				<td>{{g._id}}</td>
-					    				<td>{{g.tiempo}}</td>
-					    			</tr>
-				    			</tbody>
-				    		</table>
-						</div>
-					</div>
-				</div>
-          </section>
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">  
+    				  <div class="section-container">
+    					 <div class="row">
+      						<div class="col-md-12">
+      							<h1 class="submenu-title">Tipos de garantías</h1>
+      							<a [routerLink]="['/CreateGarantia']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo tipo de garantía</a>
+      						</div>
+      					</div>
+      					<br><br>
+      					<div class="row">
+    				    	<div class="col-md-12">
+    				    		<table class="table table-hover table-responsive">
+    					    		<thead>
+    					    			<tr>
+    					    				<th>Nombre del País o tipo de garantía</th>
+    					    				<th>Meses</th>
+    					    			</tr>
+    					    		</thead>
+    					    		<tbody>
+    					    			<tr *ngFor="#g of garantias"
+    							        [class.selected]="isSelected(g)"
+    							        (click)="onSelect(g)">
+    					    				<td>{{g._id}}</td>
+    					    				<td>{{g.tiempo}}</td>
+    					    			</tr>
+    				    			</tbody>
+    				    		</table>
+    						  </div>
+    					  </div>
+    				  </div>
+            </div>
+          </div>
+        </section>
       </section>
 
       <!--main content end-->

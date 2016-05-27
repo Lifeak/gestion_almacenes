@@ -275,11 +275,8 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-
               <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                <div class="col-lg-12 main-chart">                                                             
-       
+                <div class="col-lg-12 main-chart">         
                     <div class="section-container">
                       <div class="row">
                         <div class="col-md-12">
@@ -293,7 +290,7 @@
                                 [ngFormModel]="piezaForm"
                                 (submit)="save(piezaForm)">
                             
-                            <p>(*)  Significa que es un campo obligatorio de rellenar</p>
+                            <p class="normas">(*)  Campo obligatorio</p>
                             <div class="form-group">
                               <label for="id">Identificador de pieza (*):</label>
                               <input type="text" class="form-control" id="id" 
@@ -359,31 +356,35 @@
                             </div>
                             <div class="form-group">
                               <label for="precio">Precio:</label>
-                              <input type="text" class="form-control" id="precio" 
+                              <div class="input-group">
+                                <input type="number" min="0" class="form-control" id="precio" 
                                   ngControl="precio"
                                   [class.formulario-error]="!piezaForm.valid"
                                   autofocus />
+                                <span class="input-group-addon">€</span>
+                              </div>
                             </div>
-
                             <div class="form-group">
-                            <div class="col-md-8" style="padding-left: 0">
-                              <label for="compuestoPor">Componentes de la pieza para añadir:</label>
-                              <input type="text" class="form-control" id="compuestoPor" 
-                                  ngControl="compuestoPor"
-                                  [class.formulario-error]="!piezaForm.valid"
-                                  autofocus />
+                              <div class="col-md-8" style="padding-left: 0">
+                                <label for="compuestoPor">Componentes de la pieza para añadir:</label>
+                                <input type="text" class="form-control" id="compuestoPor" 
+                                    ngControl="compuestoPor"
+                                    [class.formulario-error]="!piezaForm.valid"
+                                    autofocus />
+                              </div>
+                              <div class="col-md-4">
+                                <label style="padding-bottom: 45px;"></label>
+                                <a style="font-size: 14px" (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Añadir componente</a> 
+                              </div>
                             </div>
-                            <div class="col-md-4">
-                            <label style="padding-bottom: 45px;"></label>
-                              <a style="font-size: 14px" (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Añadir componente</a> 
-                            </div>
-                            </div>
-
-                            <div *ngIf="components.length>0">
-                              <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
-
-                              <div *ngFor="#p of components;" >
-                                {{p}} &nbsp;<a style="font-size: 14px" (click)="minus(p);">Eliminar<i class="fa fa-trash-o "></i></a><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div *ngIf="components.length>0">
+                                  <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
+                                  <div *ngFor="#p of components;" >
+                                    {{p}} &nbsp;<a style="font-size: 14px" (click)="minus(p);">Eliminar<i class="fa fa-trash-o "></i></a><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </form>
@@ -397,8 +398,8 @@
                         </div>
                       </div>
                     </div>
-              </div><!--/row -->                  
-           </div>
+                </div><!--/row -->                  
+              </div>
           </section>
       </section>
 

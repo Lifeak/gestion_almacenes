@@ -95,11 +95,11 @@ export class AlmacenCreateCmp{
       this.router.navigate(['/Login']);
   }
 
-  almacenes() {
+  galmacenes() {
       this.router.navigate(['/ListAlmacenes']);
   }
 
-  garantias() {
+  ggarantias() {
       this.router.navigate(['/ListGarantias']);
   }
 
@@ -126,7 +126,20 @@ export class AlmacenCreateCmp{
       });
   }
 
-
-  
+  gproductos() {
+    this.router.navigate(['/ListProductos']);
+  }
+  gpiezas() {
+    this.router.navigate(['/ListPiezas']);
+  }
+  gmodelos() {
+    this.router.navigate(['/ListModelos']);
+  }
+  gproveedores() {
+    this.router.navigate(['/ListProveedores']);
+  }
+  gclientes() {
+    this.router.navigate(['/ListClientes']);
+  }
 
 }

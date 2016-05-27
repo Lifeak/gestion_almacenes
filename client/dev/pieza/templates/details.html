@@ -349,11 +349,13 @@
                       </div>
                       <div class="form-group">
                         <label for="precio">Precio: </label>
-                        <input [(ngModel)]="pieza.precio" 
-                        id="precio" 
-                        class="form-control"/>
+                        <div class="input-group">
+                          <input type="number" min="0" [(ngModel)]="pieza.precio" 
+                          id="precio" 
+                          class="form-control"/>
+                          <span class="input-group-addon">€</span>
+                        </div>
                       </div>
-                  
                       <div *ngIf="components.length>0">
                         <h5><i class="fa fa-list"></i><strong> Componentes de la pieza:</strong></h5>
 
@@ -362,39 +364,39 @@
                         </div>
                       </div>
                       <br/><br/>
+                    </div>
                   </div>
                 </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-md-offset-2">
-                  <form class="pieza-form"
+                <div class="row">
+                  <div class="col-md-6 col-md-offset-2">
+                    <form class="pieza-form"
                         [ngFormModel]="piezaForm">
-                    <div class="form-group">
-                      <label for="compuestoPor">Componentes de la pieza para añadir:</label>
-                      <input type="text"
-                           ngControl="compuestoPor"
-                           id="compuestoPor"
-                           class="form-control" 
-                           autofocus />   
-                    </div>
-                  </form> 
-              </div>
-              <div class="col-md-2">
-                <label style="padding-bottom:45px;"></label>
-                <a style="font-size: 14px;" (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i> Añadir componente</a>
-              </div>
-            </div>
-            <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                  <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                  <button (click)="edit(pieza)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar pieza</button>
-            </div>
-            </div>
+                      <div class="form-group">
+                        <label for="compuestoPor">Componentes de la pieza para añadir:</label>
+                        <input type="text"
+                             ngControl="compuestoPor"
+                             id="compuestoPor"
+                             class="form-control" 
+                             autofocus />   
+                      </div>
+                    </form> 
+                  </div>
+                  <div class="col-md-2">
+                    <label style="padding-bottom:45px;"></label>
+                    <a style="font-size: 14px;" (click)="plus(piezaForm);"><i class="fa fa-plus" aria-hidden="true"></i> Añadir componente</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                    <button (click)="edit(pieza)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar pieza</button>
+                  </div>
+                </div>
               </div><!--/row -->                  
             </div><!-- /col-lg-12 END SECTION MIDDLE -->
-           </div>
-          </section>
+          </div>
         </section>
+      </section>
 
       <!--main content end-->
 
