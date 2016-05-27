@@ -71,9 +71,6 @@ var AdminCmp = (function () {
             //alert("en el get, el id es " +this.profile);
         });
     };
-    AdminCmp.prototype.garantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
     AdminCmp.prototype.gproductos = function () {
         this.router.navigate(['/ListProductos']);
     };

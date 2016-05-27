@@ -77,12 +77,12 @@ export class ClienteDetailsCmp implements OnInit {
       .remove(cliente._id)
       .subscribe(() => {
         return this.cliente;
-
       });
     
     this._clienteService
       .add(cliente._id,cliente.nombre,cliente.direccion,cliente.ciudad,cliente.pais,cliente.telefono1,cliente.telefono2,cliente.puestoTrabajo, cliente.email,cliente.detalles)
       .subscribe((m) => {
+          //this.cliente = this.cliente + m;
           (<Control>this.clienteForm.controls['_id']).updateValue("");
           (<Control>this.clienteForm.controls['nombre']).updateValue("");
           (<Control>this.clienteForm.controls['direccion']).updateValue("");

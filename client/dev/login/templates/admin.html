@@ -100,7 +100,7 @@
                       <ul class="dropdown-menu">
                             <!-- Proveedores -->
                             <li>
-                              <a href="/gproveedores" >
+                              <a (click)="gproveedores();" >
                                 <i class="fa fa-user"></i>
                                 <span>Proveedores</span>
                               </a>
@@ -112,9 +112,9 @@
                                 <span>Productos</span>
                               </a>
                               <ul class="menu-nivel-3">
-                                <li><a href="/gproductos">Producto final</a></li>
-                                <li><a href="/gpiezas">Piezas</a></li>
-                                <li><a href="/gmodelos">Modelos</a></li>
+                                <li><a (click)="gproductos();">Producto final</a></li>
+                                <li><a (click)="gpiezas();">Piezas</a></li>
+                                <li><a (click)="gmodelos();">Modelos</a></li>
                               </ul> 
                             </li>
                             <!-- Pedido de compra-->
@@ -139,7 +139,7 @@
                       <ul class="dropdown-menu">
                             <!-- Clientes -->
                             <li>
-                              <a href="/gclientes">
+                              <a (click)="gclientes();">
                                 <i class="fa fa-user"></i>
                                 <span>Clientes</span>
                               </a>
@@ -180,21 +180,21 @@
                       <ul class="dropdown-menu">
                             <!-- Control de usuarios -->
                             <li>
-                              <a (click)="usuarios();">
+                              <a (click)="gusuarios();">
                                 <i class="fa fa-user"></i>
                                 <span>Control de usuarios</span>
                               </a>
                             </li>
                             <!-- Gestión de almacenes -->
                             <li>
-                              <a (click)="almacenes();" class="active">
+                              <a (click)="galmacenes();" class="active">
                                 <i class="fa fa-cubes"></i>
                                 <span>Gestión almacenes</span>
                               </a>
                             </li>
                             <!-- Tipos de garantías -->
                             <li>
-                              <a (click)="garantias();">
+                              <a (click)="ggarantias();">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <span>Tipos de garantías</span>
                               </a>

@@ -100,7 +100,7 @@
                       <ul class="dropdown-menu">
                             <!-- Proveedores -->
                             <li>
-                              <a href="/gproveedores" >
+                              <a (click)="gproveedores();" >
                                 <i class="fa fa-user"></i>
                                 <span>Proveedores</span>
                               </a>
@@ -112,9 +112,9 @@
                                 <span>Productos</span>
                               </a>
                               <ul class="menu-nivel-3">
-                                <li><a href="/gproductos">Producto final</a></li>
-                                <li><a href="/gpiezas">Piezas</a></li>
-                                <li><a href="/gmodelos">Modelos</a></li>
+                                <li><a (click)="gproductos();">Producto final</a></li>
+                                <li><a (click)="gpiezas();">Piezas</a></li>
+                                <li><a (click)="gmodelos();">Modelos</a></li>
                               </ul> 
                             </li>
                             <!-- Pedido de compra-->
@@ -139,7 +139,7 @@
                       <ul class="dropdown-menu">
                             <!-- Clientes -->
                             <li>
-                              <a href="/gclientes">
+                              <a (click)="gclientes();">
                                 <i class="fa fa-user"></i>
                                 <span>Clientes</span>
                               </a>
@@ -180,21 +180,21 @@
                       <ul class="dropdown-menu">
                             <!-- Control de usuarios -->
                             <li>
-                              <a (click)="usuarios();" class="active">
+                              <a (click)="gusuarios();" class="active">
                                 <i class="fa fa-user"></i>
                                 <span>Control de usuarios</span>
                               </a>
                             </li>
                             <!-- Gestión de almacenes -->
                             <li>
-                              <a (click)="almacenes();">
+                              <a (click)="galmacenes();">
                                 <i class="fa fa-cubes"></i>
                                 <span>Gestión almacenes</span>
                               </a>
                             </li>
                             <!-- Tipos de garantías -->
                             <li>
-                              <a (click)="garantias();">
+                              <a (click)="ggarantias();">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <span>Tipos de garantías</span>
                               </a>
@@ -220,21 +220,21 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                   <li class="sub-menu">
-                       <a (click)="usuarios();" class="active">
+                       <a (click)="gusuarios();" class="active">
                               <i class="fa fa-user"></i>
                               <span>Control de usuarios</span>
                         </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a (click)="almacenes();">
+                      <a (click)="galmacenes();">
                                 <i class="fa fa-cubes"></i>
                                 <span>Gestión almacenes</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a (click)="garantias();">
+                      <a (click)="ggarantias();">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <span>Tipos de garantías</span>
                               </a>
@@ -283,8 +283,8 @@
                         </div>
                       </div>
                       <p>
-                        <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
                         <button (click)="edit(user)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar usuario</button>
+                        <button (click)="goBack();" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
                       </p>
                     </div>
                   </div>

@@ -102,8 +102,16 @@ export class UserListCmp implements OnInit {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
+  }
+  public getPerfil(){
+    let u = localStorage.key(1);
+      if (u == "undefined") {
+      let o = localStorage.key(0);
+      this.getProfile(o);
+      } else {
+      this.getProfile(u);
+      }
   }
 
   gproductos() {

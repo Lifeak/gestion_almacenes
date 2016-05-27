@@ -60,7 +60,6 @@ var AlmacenDetailsCmp = (function () {
         this._almacenService
             .add(almacen.nombre, almacen.direccion, almacen.ciudad, almacen.pais, almacen.telefono, almacen.encargado)
             .subscribe(function (m) {
-            //this.user.push(m);
             _this.almacenForm.controls['nombre'].updateValue("");
             _this.almacenForm.controls['direccion'].updateValue("");
             _this.almacenForm.controls['ciudad'].updateValue("");
@@ -129,7 +128,6 @@ var AlmacenDetailsCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     AlmacenDetailsCmp.prototype.gproductos = function () {

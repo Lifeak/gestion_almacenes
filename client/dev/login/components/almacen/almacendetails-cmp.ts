@@ -72,7 +72,7 @@ export class AlmacenDetailsCmp implements OnInit {
     this._almacenService
       .add(almacen.nombre,almacen.direccion,almacen.ciudad,almacen.pais,almacen.telefono,almacen.encargado)
       .subscribe((m) => {
-          //this.user.push(m);
+          
           (<Control>this.almacenForm.controls['nombre']).updateValue("");
           (<Control>this.almacenForm.controls['direccion']).updateValue("");
           (<Control>this.almacenForm.controls['ciudad']).updateValue("");
@@ -150,7 +150,6 @@ export class AlmacenDetailsCmp implements OnInit {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
 

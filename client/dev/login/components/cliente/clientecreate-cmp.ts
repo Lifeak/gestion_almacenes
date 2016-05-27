@@ -76,6 +76,7 @@ export class ClienteCreateCmp{
       this._clienteService
           .add(_id,nombre,direccion,ciudad,pais,telefono1,telefono2,puestoTrabajo,email,detalles)
           .subscribe((m) => {
+          //this.cliente = this.cliente + m;
           (<Control>this.clienteForm.controls['_id']).updateValue("");
           (<Control>this.clienteForm.controls['nombre']).updateValue("");
           (<Control>this.clienteForm.controls['direccion']).updateValue("");
@@ -145,7 +146,6 @@ export class ClienteCreateCmp{
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
 

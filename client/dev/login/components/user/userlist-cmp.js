@@ -79,8 +79,17 @@ var UserListCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
+    };
+    UserListCmp.prototype.getPerfil = function () {
+        var u = localStorage.key(1);
+        if (u == "undefined") {
+            var o = localStorage.key(0);
+            this.getProfile(o);
+        }
+        else {
+            this.getProfile(u);
+        }
     };
     UserListCmp.prototype.gproductos = function () {
         this.router.navigate(['/ListProductos']);

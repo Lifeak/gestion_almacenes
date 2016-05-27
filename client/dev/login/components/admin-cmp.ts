@@ -98,10 +98,6 @@ export class AdminCmp {
       });
   }
 
-  garantias(){
-    this.router.navigate(['/ListGarantias']);
-  }
-
   gproductos() {
     this.router.navigate(['/ListProductos']);
   }

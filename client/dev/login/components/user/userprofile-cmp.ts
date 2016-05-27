@@ -77,6 +77,11 @@ export class UserProfileCmp implements OnInit {
       });
   }
 
+  goBack(){
+    alert("me voy a la anterior");
+    window.history.back();
+  }
+
   compras() {
     this.router.navigate(['/Compras']);
   }

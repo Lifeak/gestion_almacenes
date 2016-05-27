@@ -69,6 +69,7 @@ var ClienteDetailsCmp = (function () {
         this._clienteService
             .add(cliente._id, cliente.nombre, cliente.direccion, cliente.ciudad, cliente.pais, cliente.telefono1, cliente.telefono2, cliente.puestoTrabajo, cliente.email, cliente.detalles)
             .subscribe(function (m) {
+            //this.cliente = this.cliente + m;
             _this.clienteForm.controls['_id'].updateValue("");
             _this.clienteForm.controls['nombre'].updateValue("");
             _this.clienteForm.controls['direccion'].updateValue("");

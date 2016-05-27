@@ -60,6 +60,7 @@ var ClienteCreateCmp = (function () {
         this._clienteService
             .add(_id, nombre, direccion, ciudad, pais, telefono1, telefono2, puestoTrabajo, email, detalles)
             .subscribe(function (m) {
+            //this.cliente = this.cliente + m;
             _this.clienteForm.controls['_id'].updateValue("");
             _this.clienteForm.controls['nombre'].updateValue("");
             _this.clienteForm.controls['direccion'].updateValue("");
@@ -123,7 +124,6 @@ var ClienteCreateCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     ClienteCreateCmp.prototype.ggarantias = function () {

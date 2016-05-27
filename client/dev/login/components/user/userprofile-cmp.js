@@ -59,6 +59,10 @@ var UserProfileCmp = (function () {
             return _this.user;
         });
     };
+    UserProfileCmp.prototype.goBack = function () {
+        alert("me voy a la anterior");
+        window.history.back();
+    };
     UserProfileCmp.prototype.compras = function () {
         this.router.navigate(['/Compras']);
     };
