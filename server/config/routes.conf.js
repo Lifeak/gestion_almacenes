@@ -12,7 +12,7 @@ module.exports = class RouteConfig {
         let _cssfiles =(process.env.NODE_ENV === 'production') ? '/client/dist/' : '/client/dev/styles/assets';
         application.use(exp.static(_root));
         application.use(exp.static(_root + _clientFiles));
-        application.use(exp.static(_root + _cssFiles));
+        application.use(exp.static(_root + _cssfiles));
         application.use(bodyParser.json());
         application.use(morgan('dev'));
         application.use(contentLength.validateMax({max: 999}));
