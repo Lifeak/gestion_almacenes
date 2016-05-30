@@ -73,12 +73,12 @@ export class ClienteDetailsCmp implements OnInit {
         });
   }
   edit(cliente: Cliente){
+    let id = this._routeParams.get('id');
     this._clienteService
-      .remove(cliente._id)
+      .remove(id)
       .subscribe(() => {
         return this.cliente;
       });
-    
     this._clienteService
       .add(cliente._id,cliente.nombre,cliente.direccion,cliente.ciudad,cliente.pais,cliente.telefono1,cliente.telefono2,cliente.puestoTrabajo, cliente.email,cliente.detalles)
       .subscribe((m) => {

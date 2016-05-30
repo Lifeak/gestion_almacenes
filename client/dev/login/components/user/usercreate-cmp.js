@@ -41,7 +41,7 @@ var UserCreateCmp = (function () {
     };
     UserCreateCmp.prototype.save = function (datos) {
         var _this = this;
-        alert("entramos a guardar");
+        //alert("entramos a guardar");
         var user = this.userForm.controls['user'].value;
         var pass = this.userForm.controls['pass'].value;
         var passs = this.userForm.controls['passs'].value;
@@ -61,7 +61,7 @@ var UserCreateCmp = (function () {
             this.gotoIndex();
         }
         else {
-            alert("Error, pass no valid. Try again.");
+            alert("Error, password inválido.");
         }
     };
     UserCreateCmp.prototype.compras = function () {

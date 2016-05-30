@@ -76,7 +76,7 @@ var GarantiaListCmp = (function () {
     };
     GarantiaListCmp.prototype.getProfile = function (name) {
         var _this = this;
-        alert("get profile de  " + name);
+        //alert("get profile de  " + name);
         this._userService
             .getProfile(name)
             .subscribe(function (user) {

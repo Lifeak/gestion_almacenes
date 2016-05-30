@@ -43,7 +43,7 @@ var GarantiaService = (function () {
     };
     GarantiaService.prototype.add = function (_id, tiempo) {
         var body = JSON.stringify({ _id: _id, tiempo: tiempo });
-        alert("body" + body);
+        // alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

@@ -55,14 +55,13 @@ var PiezaService = (function () {
             .map(function (r) { return r.json(); });
     };
     PiezaService.prototype.getPiezaName = function (nombre) {
-        //alert("al service le llega " + nombre);
         return this._http
             .get(PiezaService.ENDPOINT2.replace(':nombre', nombre))
             .map(function (r) { return r.json(); });
     };
     PiezaService.prototype.add = function (_id, modelo, estado, lote, caracteristicas, almacen, almacenOrigen, vendido, compuestoPor, precio) {
         var body = JSON.stringify({ _id: _id, modelo: modelo, estado: estado, lote: lote, caracteristicas: caracteristicas, almacen: almacen, almacenOrigen: almacenOrigen, vendido: vendido, compuestoPor: compuestoPor, precio: precio });
-        alert("body" + body);
+        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

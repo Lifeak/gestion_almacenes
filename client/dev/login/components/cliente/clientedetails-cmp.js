@@ -61,8 +61,9 @@ var ClienteDetailsCmp = (function () {
     };
     ClienteDetailsCmp.prototype.edit = function (cliente) {
         var _this = this;
+        var id = this._routeParams.get('id');
         this._clienteService
-            .remove(cliente._id)
+            .remove(id)
             .subscribe(function () {
             return _this.cliente;
         });

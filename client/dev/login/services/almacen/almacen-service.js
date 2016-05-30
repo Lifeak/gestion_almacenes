@@ -48,7 +48,7 @@ var AlmacenService = (function () {
     };
     AlmacenService.prototype.add = function (nombre, direccion, ciudad, pais, telefono, encargado) {
         var body = JSON.stringify({ nombre: nombre, direccion: direccion, ciudad: ciudad, pais: pais, telefono: telefono, encargado: encargado });
-        alert("body" + body);
+        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

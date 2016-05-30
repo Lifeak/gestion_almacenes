@@ -92,10 +92,8 @@ export class ComprasCmp {
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);
-      // alert("1en u tenemos " + u);
       if (u == "undefined") {
         let e = localStorage.key(0);
-        //alert("2en u tenemos " + u);
         this.getProfile(e);
       } else {
         this.getProfile(u);
@@ -111,7 +109,6 @@ export class ComprasCmp {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
 

@@ -34,7 +34,6 @@ var LoginService = (function () {
             var u = dato.search("\"user\":\"" + user + "\"");
             var p = dato.search("\"pass\":\"" + pass + "\"");
             if (u != -1 && p != -1) {
-                alert("Todo OK.");
                 var cred = dato.search("\"tipo\":\"admin\"");
                 if (cred != -1) {
                     localStorage.setItem(user, "admin");
@@ -47,9 +46,9 @@ var LoginService = (function () {
                 _this.loggedIn = true;
             }
             else {
-                alert("Credenciales incorrectas. Try again.");
+                alert("Credenciales incorrectas.");
                 _this.loggedIn = false;
-                localStorage.setItem("", "");
+                localStorage.clear();
             }
         });
     };

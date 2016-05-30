@@ -70,7 +70,7 @@ export class ProductoService {
 
   add(_id:string,nombre:string,modelo:string,estado:string,caracteristicas:string,almacen:string,vendido:boolean,compuestoPor:Array<string>,precio:number):Observable<any> {
     let body = JSON.stringify({_id,nombre,modelo,estado,caracteristicas,almacen,vendido,compuestoPor,precio});
-    alert("body" + body);
+    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

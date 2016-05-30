@@ -48,7 +48,7 @@ export class GarantiaService {
   add(_id:string, tiempo:number):Observable<any> {
 
     let body = JSON.stringify({_id, tiempo});
-    alert("body" + body);
+   // alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

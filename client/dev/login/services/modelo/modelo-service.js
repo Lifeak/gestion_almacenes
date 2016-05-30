@@ -53,7 +53,7 @@ var ModeloService = (function () {
     };
     ModeloService.prototype.add = function (nombre, refinterna, caracteristicas, modeloDe, compuestoPor, unidades) {
         var body = JSON.stringify({ nombre: nombre, refinterna: refinterna, caracteristicas: caracteristicas, modeloDe: modeloDe, compuestoPor: compuestoPor, unidades: unidades });
-        alert("body" + body);
+        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

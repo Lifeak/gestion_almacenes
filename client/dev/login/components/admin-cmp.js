@@ -47,10 +47,8 @@ var AdminCmp = (function () {
     AdminCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
-            // alert("1en u tenemos " + u);
             if (u == "undefined") {
                 var e = localStorage.key(0);
-                //alert("2en u tenemos " + u);
                 this.getProfile(e);
             }
             else {
@@ -68,7 +66,6 @@ var AdminCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     AdminCmp.prototype.gproductos = function () {

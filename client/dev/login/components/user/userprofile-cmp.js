@@ -34,7 +34,7 @@ var UserProfileCmp = (function () {
     UserProfileCmp.prototype.ngOnInit = function () {
         var _this = this;
         var id = this._routeParams.get('id');
-        alert(id);
+        //alert(id);
         this._userService
             .getUserId(id)
             .subscribe(function (user) {
@@ -60,7 +60,6 @@ var UserProfileCmp = (function () {
         });
     };
     UserProfileCmp.prototype.goBack = function () {
-        alert("me voy a la anterior");
         window.history.back();
     };
     UserProfileCmp.prototype.compras = function () {

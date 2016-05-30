@@ -88,7 +88,7 @@ export class PiezaDetailsCmp implements OnInit {
   }
 
   buscar(numserie:string){
-      alert("buscamos esta pieza "+numserie);
+      //alert("buscamos esta pieza "+numserie);
       this.router.navigate(['/DetailsSubPieza', { _id: numserie }]);
   }
 

@@ -47,7 +47,7 @@ export class UserProfileCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    alert(id);
+    //alert(id);
     this._userService
     .getUserId(id)
     .subscribe((user) => {
@@ -78,7 +78,6 @@ export class UserProfileCmp implements OnInit {
   }
 
   goBack(){
-    alert("me voy a la anterior");
     window.history.back();
   }
 

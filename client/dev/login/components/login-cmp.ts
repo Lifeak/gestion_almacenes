@@ -62,7 +62,7 @@ export class LoginCmp {
         } else if (resultado[0] == true && resultado[1] == "encargado") {
             this.gotoMenu();
         }else{
-          alert("Bye.");
+          //alert("Usuario y pass incorrectos.");
           window.location.reload();
 
         }

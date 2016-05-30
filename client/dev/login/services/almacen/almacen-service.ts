@@ -48,7 +48,7 @@ export class AlmacenService {
   add(nombre:string, direccion:string, ciudad:string, pais:string, telefono:string, encargado:string):Observable<any> {
 
     let body = JSON.stringify({nombre, direccion, ciudad, pais, telefono, encargado});
-    alert("body" + body);
+    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

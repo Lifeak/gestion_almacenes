@@ -55,7 +55,7 @@ export class UserService {
   add(user:string, pass:string, nombre:string, apellido:string, tipo:string):Observable<any> {
 
     let body = JSON.stringify({user, pass, nombre, apellido, tipo});
-    alert("body" + body);
+    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

@@ -49,7 +49,7 @@ var ProveedorService = (function () {
     };
     ProveedorService.prototype.add = function (nombre, direccion, ciudad, pais, telefono, valoracion, materiales) {
         var body = JSON.stringify({ nombre: nombre, direccion: direccion, ciudad: ciudad, pais: pais, telefono: telefono, valoracion: valoracion, materiales: materiales });
-        alert("body" + body);
+        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

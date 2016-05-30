@@ -88,7 +88,7 @@ export class ProveedorDetailsCmp implements OnInit {
     var val: string = this.proveedorForm.controls['val'].value;
     var busqueda = "pieza:" + '"' + this.indexpieza + '"';
     if (pieza == "" || refexterna == "" || coste1.toString() == "") {
-      alert("Debes rellenar todos los campos sobre la pieza a añadir");
+      alert("Debes rellenar todos los campos sobre la pieza a añadir.");
     } else {
       (<Control>this.proveedorForm.controls['pieza']).updateValue("");
       (<Control>this.proveedorForm.controls['refexterna']).updateValue("");
@@ -97,7 +97,7 @@ export class ProveedorDetailsCmp implements OnInit {
       (<Control>this.proveedorForm.controls['val']).updateValue("");
       var nuevo: Object = { pieza, refexterna, coste1, coste2, val };
       this.mat.push(nuevo);
-      alert("añadimos el material " + JSON.stringify(nuevo));
+     // alert("añadimos el material " + JSON.stringify(nuevo));
       nuevo = [];
       if (this.indexpieza != "") {
           if (this.mat.toString().search(busqueda))
@@ -109,7 +109,7 @@ export class ProveedorDetailsCmp implements OnInit {
   }
 
   minus(material: number) {
-    alert("eliminamos el numero " + material);
+   // alert("eliminamos el numero " + material);
     this.mat.splice(material, 1);
   }
 

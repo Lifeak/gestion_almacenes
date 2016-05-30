@@ -60,7 +60,7 @@ export class ModeloService {
 
   add(nombre:string,refinterna:string,caracteristicas:string,modeloDe:string, compuestoPor:Array<string>,unidades: Array<number>):Observable<any> {
     let body = JSON.stringify({nombre,refinterna,caracteristicas,modeloDe,compuestoPor,unidades});
-    alert("body" + body);
+    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

@@ -49,8 +49,6 @@ export class LoginService {
             let u = dato.search("\"user\":\"" + user + "\"");
             let p = dato.search("\"pass\":\"" + pass + "\"");
             if(u!=-1 && p!=-1){
-                  alert("Todo OK.");
-
                   let cred = dato.search("\"tipo\":\"admin\"");
                   if(cred!=-1){
                       localStorage.setItem(user, "admin");
@@ -64,9 +62,9 @@ export class LoginService {
                   this.loggedIn = true;
 
                 }else{
-                    alert("Credenciales incorrectas. Try again.");
+                    alert("Credenciales incorrectas.");
                     this.loggedIn = false;
-                    localStorage.setItem("", "");
+                    localStorage.clear();
                 }
         });
   }

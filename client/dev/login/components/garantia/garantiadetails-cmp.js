@@ -54,7 +54,7 @@ var GarantiaDetailsCmp = (function () {
     GarantiaDetailsCmp.prototype.edit = function (garantia) {
         var _this = this;
         var id = this._routeParams.get('id');
-        alert("nos llega a editar:" + garantia._id + " pero vamos a borrar " + id);
+        //alert("nos llega a editar:" + garantia._id+" pero vamos a borrar "+id);
         this._garantiaService
             .remove(id)
             .subscribe(function () {

@@ -42,7 +42,7 @@ var LoginCmp = (function () {
                 _this.gotoMenu();
             }
             else {
-                alert("Bye.");
+                //alert("Usuario y pass incorrectos.");
                 window.location.reload();
             }
         });

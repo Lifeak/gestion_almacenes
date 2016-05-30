@@ -72,7 +72,7 @@ var ProveedorDetailsCmp = (function () {
         var val = this.proveedorForm.controls['val'].value;
         var busqueda = "pieza:" + '"' + this.indexpieza + '"';
         if (pieza == "" || refexterna == "" || coste1.toString() == "") {
-            alert("Debes rellenar todos los campos sobre la pieza a añadir");
+            alert("Debes rellenar todos los campos sobre la pieza a añadir.");
         }
         else {
             this.proveedorForm.controls['pieza'].updateValue("");
@@ -82,7 +82,7 @@ var ProveedorDetailsCmp = (function () {
             this.proveedorForm.controls['val'].updateValue("");
             var nuevo = { pieza: pieza, refexterna: refexterna, coste1: coste1, coste2: coste2, val: val };
             this.mat.push(nuevo);
-            alert("añadimos el material " + JSON.stringify(nuevo));
+            // alert("añadimos el material " + JSON.stringify(nuevo));
             nuevo = [];
             if (this.indexpieza != "") {
                 if (this.mat.toString().search(busqueda))
@@ -93,7 +93,7 @@ var ProveedorDetailsCmp = (function () {
         }
     };
     ProveedorDetailsCmp.prototype.minus = function (material) {
-        alert("eliminamos el numero " + material);
+        // alert("eliminamos el numero " + material);
         this.mat.splice(material, 1);
     };
     ProveedorDetailsCmp.prototype.editarmat = function (material, pieza, refexterna, coste1, coste2, val) {

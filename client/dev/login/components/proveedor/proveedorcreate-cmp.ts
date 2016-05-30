@@ -79,7 +79,7 @@ export class ProveedorCreateCmp{
       (<Control>this.proveedorForm.controls['val']).updateValue("");
       this.cuenta.push(pieza);
       var m: Object = { pieza, refexterna, coste1, coste2, val};
-      alert("añadimos el material " + JSON.stringify(m));
+      //alert("añadimos el material " + JSON.stringify(m));
       this.mat.push(m);
       m = [];
   }

@@ -56,7 +56,7 @@ export class UserCreateCmp{
   }
 
   save(datos: FormData){
-      alert("entramos a guardar");
+      //alert("entramos a guardar");
       var user: string = this.userForm.controls['user'].value;
       var pass: string = this.userForm.controls['pass'].value;
       var passs: string = this.userForm.controls['passs'].value;
@@ -78,7 +78,7 @@ export class UserCreateCmp{
           this.gotoIndex();
 
       }else{
-          alert("Error, pass no valid. Try again.")
+          alert("Error, password inválido.")
       }
   }
 

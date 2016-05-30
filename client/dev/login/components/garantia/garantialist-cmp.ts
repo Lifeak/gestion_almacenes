@@ -100,7 +100,7 @@ export class GarantiaListCmp implements OnInit {
     }
   }
   public getProfile(name: string) {
-    alert("get profile de  " + name);
+    //alert("get profile de  " + name);
     this._userService
       .getProfile(name)
       .subscribe((user) => {
