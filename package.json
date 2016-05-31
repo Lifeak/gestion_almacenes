@@ -5,8 +5,7 @@
   "scripts": {
     
     "start": "node index",
-    "build": "gulp",
-    "postinstall":"gulp client.watch",
+    "build": "gulp client.watch",
     "build_dev": "node index && gulp client.watch",
     "test-client": "gulp client.unit_test",
     "test-server": "mocha ./tests/server/**/*_test.js --recursive --check-leaks --reporter min --require babel/register",
