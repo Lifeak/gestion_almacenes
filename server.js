@@ -13,9 +13,9 @@ const Routes = require('./server/routes/index');
 
 const app = express();
 const server = app.listen(PORT);
-
-RoutesConfig.init(app, express);
 DBConfig.init();
+RoutesConfig.init(app, express);
+
 Routes.init(app, express.Router());
 console.log(`up and running @: ${os.hostname()} on port: ${PORT}`);
 console.log(`enviroment: ${process.env.NODE_ENV}`);
