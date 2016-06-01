@@ -4,7 +4,7 @@
   "main": "src/almacen.js",
   "scripts": {
     
-    "start": "node index && gulp default",
+    "start": "node index",
     "build": "gulp client.watch",
     "build_dev": "node index && gulp client.watch",
     "test-client": "gulp client.unit_test",
