@@ -5,8 +5,10 @@
   "scripts": {
     
     "start": "node index",
+    "watch": "gulp",
     "build": "gulp client.watch",
     "build_dev": "node index && gulp client.watch",
+    "build-dist": "node index && client.build:dist",
     "test-client": "gulp client.unit_test",
     "test-server": "mocha ./tests/server/**/*_test.js --recursive --check-leaks --reporter min --require babel/register",
     "coverage-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- tests/*_test.js --require babel/register",
