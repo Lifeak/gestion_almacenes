@@ -9,7 +9,7 @@ module.exports = class RouteConfig {
     static init(application, exp) {
         let _root = process.cwd();
         let _clientFiles = (process.env.NODE_ENV === 'production') ? '/client/dist/' : '/client/dev/';
-        let _cssfiles =(process.env.NODE_ENV === 'production') ? '/client/dist/' : '/client/dev/styles/assets';
+        let _cssfiles =(process.env.NODE_ENV === 'production') ? '/client/dist/' : '/client/dev/styles/assets/css';
         application.use(exp.static(_root));
         application.use(exp.static(_root + _clientFiles));
         application.use(exp.static(_root + _cssfiles));
