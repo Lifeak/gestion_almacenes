@@ -1,5 +1,4 @@
 'use strict';
-NEW_RELIC_LICENSE_KEY=1;
 
 if ('production' === process.env.NODE_ENV)
     require('newrelic');
