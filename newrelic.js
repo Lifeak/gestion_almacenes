@@ -12,7 +12,6 @@ exports.config = {
   /**
    * Your New Relic license key.
    */
-   NEW_RELIC_LICENSE_KEY=1;
   license_key : process.env.NEW_RELIC_LICENSE_KEY,
   logging : {
     /**
@@ -20,6 +19,6 @@ exports.config = {
      * issues with the agent, 'info' and higher will impose the least overhead on
      * production applications.
      */
-    level : 'trace'
+    level : 'info'
   }
 };
