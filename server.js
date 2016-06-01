@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3333;
 
 const os = require('os');
 const express = require('express');
-const RoutesConfig = require('server/config/routes.conf');
-const DBConfig = require('server/config/db.conf');
-const Routes = require('server/routes/index');
+const RoutesConfig = require('./server/config/routes.conf');
+const DBConfig = require('./server/config/db.conf');
+const Routes = require('./server/routes/index');
 
 const app = express();
 const server = app.listen(PORT);
