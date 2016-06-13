@@ -54,14 +54,12 @@ var ProductoService = (function () {
             .map(function (r) { return r.json(); });
     };
     ProductoService.prototype.getProductoName = function (nombre) {
-        //alert("al service le llega " + nombre);
         return this._http
             .get(ProductoService.ENDPOINT2.replace(':nombre', nombre))
             .map(function (r) { return r.json(); });
     };
     ProductoService.prototype.add = function (_id, nombre, modelo, estado, caracteristicas, almacen, vendido, compuestoPor, precio) {
         var body = JSON.stringify({ _id: _id, nombre: nombre, modelo: modelo, estado: estado, caracteristicas: caracteristicas, almacen: almacen, vendido: vendido, compuestoPor: compuestoPor, precio: precio });
-        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

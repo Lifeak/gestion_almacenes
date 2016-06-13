@@ -17,7 +17,6 @@ almacenSchema.statics.getAll = () => {
                   : resolve(almacenes);
           });
       });
-    console.log("los putos almacenes son  "+almacenes);
 }
 
 almacenSchema.statics.getbyId = (id) => {

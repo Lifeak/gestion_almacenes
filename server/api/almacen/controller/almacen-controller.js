@@ -20,7 +20,6 @@ module.exports = class AlmacenController {
 
   static createAlmacen(req, res) {
       let _almacen = req.body;
-console.log("al controller llega  "+_almacen.nombre);
       AlmacenDAO
         .createAlmacen(_almacen)
         .then(almacen => res.status(201).json(almacen))

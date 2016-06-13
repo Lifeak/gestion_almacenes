@@ -60,7 +60,6 @@ export class ClienteListCmp implements OnInit {
     this.router.navigate(['DetailsCliente',{id: cliente._id}]);
   }
 
-
   logout() {
     this._loginService.logout();
     this.router.navigate(['/Login']);

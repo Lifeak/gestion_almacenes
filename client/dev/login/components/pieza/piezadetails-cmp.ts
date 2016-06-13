@@ -88,7 +88,6 @@ export class PiezaDetailsCmp implements OnInit {
   }
 
   buscar(numserie:string){
-      //alert("buscamos esta pieza "+numserie);
       this.router.navigate(['/DetailsSubPieza', { _id: numserie }]);
   }
 
@@ -223,7 +222,6 @@ export class PiezaDetailsCmp implements OnInit {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
   ggarantias() {

@@ -370,7 +370,7 @@
                                   <label style="padding-bottom:45px;">  </label>                               
                                   <a  (click)="plus(modeloForm);a=false;b=false;" *ngIf="a==true&&b==true;"><i class="fa fa-plus" aria-hidden="true"></i>  Añadir componente</a>
                               </div>
-                            </form>
+                            
                             <br/><br/><br/><br/>
 
                             <div *ngIf="components.length>0">
@@ -390,6 +390,7 @@
                             <button type="submit" [disabled]="!modeloForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar modelo</button>
 
                           <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                          </form>
                         </div> 
                       </div>
                   </div>

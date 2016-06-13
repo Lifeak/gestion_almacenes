@@ -73,15 +73,18 @@ export class ClienteDetailsCmp implements OnInit {
         });
   }
   edit(cliente: Cliente){
-    let id = this._routeParams.get('id');
-    this._clienteService
-      .remove(id)
-      .subscribe(() => {
-        return this.cliente;
-      });
-    this._clienteService
-      .add(cliente._id,cliente.nombre,cliente.direccion,cliente.ciudad,cliente.pais,cliente.telefono1,cliente.telefono2,cliente.puestoTrabajo, cliente.email,cliente.detalles)
-      .subscribe((m) => {
+    if (cliente._id != "" && cliente.nombre != "" && cliente.direccion != "" && cliente.ciudad != "" && cliente.pais != "" && cliente.telefono1 != "" && cliente.puestoTrabajo != "" && cliente.email != "") {
+      let id = this._routeParams.get('id');
+      //alert("borramos " + id);
+      this._clienteService
+        .remove(id)
+        .subscribe(() => {
+          return this.cliente;
+        });
+      //alert("añadimos " + JSON.stringify(cliente));
+      this._clienteService
+        .add(cliente._id, cliente.nombre, cliente.direccion, cliente.ciudad, cliente.pais, cliente.telefono1, cliente.telefono2, cliente.puestoTrabajo, cliente.email, cliente.detalles)
+        .subscribe((m) => {
           //this.cliente = this.cliente + m;
           (<Control>this.clienteForm.controls['_id']).updateValue("");
           (<Control>this.clienteForm.controls['nombre']).updateValue("");
@@ -93,10 +96,12 @@ export class ClienteDetailsCmp implements OnInit {
           (<Control>this.clienteForm.controls['puestoTrabajo']).updateValue("");
           (<Control>this.clienteForm.controls['email']).updateValue("");
           (<Control>this.clienteForm.controls['detalles']).updateValue("");
-    });
+        });
 
 
-    this.gotoIndex();
+      this.gotoIndex();
+    } else
+      alert("Debes rellenar todos los campos obligatorios.");
 
   }
   delete(cliente: Cliente) {

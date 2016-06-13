@@ -20,7 +20,6 @@ module.exports = class ProveedorController {
 
   static createProveedor(req, res) {
       let _proveedor = req.body;
-      console.log("el proveedor que nos llega es "+req.body);
 
       ProveedorDAO
         .createProveedor(_proveedor)

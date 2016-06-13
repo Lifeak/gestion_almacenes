@@ -49,7 +49,6 @@ var ProveedorDetailsCmp = (function () {
             .getProveedorId(id)
             .subscribe(function (proveedor) {
             _this.proveedor = proveedor;
-            alert("details " + JSON.stringify(_this.proveedor));
             _this.mat = _this.proveedor.materiales;
         });
     };
@@ -82,7 +81,6 @@ var ProveedorDetailsCmp = (function () {
             this.proveedorForm.controls['val'].updateValue("");
             var nuevo = { pieza: pieza, refexterna: refexterna, coste1: coste1, coste2: coste2, val: val };
             this.mat.push(nuevo);
-            // alert("añadimos el material " + JSON.stringify(nuevo));
             nuevo = [];
             if (this.indexpieza != "") {
                 if (this.mat.toString().search(busqueda))
@@ -93,7 +91,6 @@ var ProveedorDetailsCmp = (function () {
         }
     };
     ProveedorDetailsCmp.prototype.minus = function (material) {
-        // alert("eliminamos el numero " + material);
         this.mat.splice(material, 1);
     };
     ProveedorDetailsCmp.prototype.editarmat = function (material, pieza, refexterna, coste1, coste2, val) {
@@ -196,7 +193,6 @@ var ProveedorDetailsCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     ProveedorDetailsCmp.prototype.ggarantias = function () {

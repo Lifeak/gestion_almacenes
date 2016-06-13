@@ -56,7 +56,6 @@ export class UserCreateCmp{
   }
 
   save(datos: FormData){
-      //alert("entramos a guardar");
       var user: string = this.userForm.controls['user'].value;
       var pass: string = this.userForm.controls['pass'].value;
       var passs: string = this.userForm.controls['passs'].value;

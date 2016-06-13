@@ -61,9 +61,7 @@ export class ProveedorService {
   } 
 
   add(nombre:string, direccion:string, ciudad: string, pais:string, telefono:string, valoracion:string, materiales: Object):Observable<any> {
-
     let body = JSON.stringify({nombre, direccion,ciudad,pais,telefono,valoracion, materiales});
-    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

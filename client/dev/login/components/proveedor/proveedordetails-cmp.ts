@@ -61,7 +61,6 @@ export class ProveedorDetailsCmp implements OnInit {
     .getProveedorId(id)
     .subscribe((proveedor) => {
       this.proveedor = proveedor;
-      alert("details "+JSON.stringify(this.proveedor));
       this.mat = this.proveedor.materiales;
     });
 
@@ -97,7 +96,6 @@ export class ProveedorDetailsCmp implements OnInit {
       (<Control>this.proveedorForm.controls['val']).updateValue("");
       var nuevo: Object = { pieza, refexterna, coste1, coste2, val };
       this.mat.push(nuevo);
-     // alert("añadimos el material " + JSON.stringify(nuevo));
       nuevo = [];
       if (this.indexpieza != "") {
           if (this.mat.toString().search(busqueda))
@@ -109,7 +107,6 @@ export class ProveedorDetailsCmp implements OnInit {
   }
 
   minus(material: number) {
-   // alert("eliminamos el numero " + material);
     this.mat.splice(material, 1);
   }
 
@@ -222,7 +219,6 @@ export class ProveedorDetailsCmp implements OnInit {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
   ggarantias() {

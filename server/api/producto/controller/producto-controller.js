@@ -20,7 +20,6 @@ module.exports = class ProductoController {
   }
 
   static getModelos(req, res){
-    console.log("llegamos al controlador de pieza y mandamos al dao del modelo");
     ModeloDAO
       .getModelosDeProducto()
         .then(modelos => res.status(200).json(modelos))
@@ -29,7 +28,6 @@ module.exports = class ProductoController {
 
   static createProducto(req, res) {
       let _producto = req.body;
-      console.log("producto"+_producto.nombre);
 
       ProductoDAO
         .createProducto(_producto)

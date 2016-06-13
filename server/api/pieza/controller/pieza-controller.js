@@ -5,7 +5,7 @@ const ModeloDAO = require('../../modelo/dao/modelo-dao');
 
 module.exports = class PiezaController {
   static getAll(req, res) {
-    console.log("getAll");
+   
       PiezaDAO
         .getAll()
         .then(piezas => res.status(200).json(piezas))
@@ -13,7 +13,7 @@ module.exports = class PiezaController {
   }
 
   static getbyId(req,res){
-    console.log("getbyId");
+    
     let _id = req.params.id;
     PiezaDAO
       .getbyId(_id)
@@ -22,7 +22,7 @@ module.exports = class PiezaController {
   }
 
   static getModelos(req, res){
-    console.log("llegamos al controlador de pieza y mandamos al dao del modelo");
+   
     ModeloDAO
       .getModelosDePieza()
         .then(modelos => res.status(200).json(modelos))

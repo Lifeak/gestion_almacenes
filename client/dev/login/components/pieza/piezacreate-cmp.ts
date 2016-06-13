@@ -169,7 +169,6 @@ export class PiezaCreateCmp implements OnInit{
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
   ggarantias() {

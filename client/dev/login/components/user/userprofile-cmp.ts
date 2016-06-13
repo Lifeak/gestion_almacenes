@@ -47,7 +47,6 @@ export class UserProfileCmp implements OnInit {
 
   ngOnInit() {
     let id = this._routeParams.get('id');
-    //alert(id);
     this._userService
     .getUserId(id)
     .subscribe((user) => {
@@ -61,7 +60,6 @@ export class UserProfileCmp implements OnInit {
     this._userService
       .add(user.user, user.pass,user.nombre, user.apellido, user.tipo)
       .subscribe((m) => {
-          //this.user.push(m);
           (<Control>this.userForm.controls['user']).updateValue("");
           (<Control>this.userForm.controls['pass']).updateValue("");
           (<Control>this.userForm.controls['nombre']).updateValue("");
@@ -120,7 +118,6 @@ export class UserProfileCmp implements OnInit {
       .subscribe((user) => {
         this.profile = user[0]._id;
         this.router.navigate(['Perfil', { id: this.profile }]);
-        //alert("en el get, el id es " +this.profile);
       });
   }
 

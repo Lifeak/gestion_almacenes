@@ -51,7 +51,6 @@ var ClienteService = (function () {
     };
     ClienteService.prototype.add = function (_id, nombre, direccion, ciudad, pais, telefono1, telefono2, puestoTrabajo, email, detalles) {
         var body = JSON.stringify({ _id: _id, nombre: nombre, direccion: direccion, ciudad: ciudad, pais: pais, telefono1: telefono1, telefono2: telefono2, puestoTrabajo: puestoTrabajo, email: email, detalles: detalles });
-        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

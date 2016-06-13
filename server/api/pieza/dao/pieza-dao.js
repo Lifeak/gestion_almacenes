@@ -37,7 +37,7 @@ piezaSchema.statics.createPieza = (pieza) => {
     return new Promise((resolve, reject) => {
       if (!_.isObject(pieza))
           return reject(new TypeError('pieza is not a valid object.'));
-      console.log("la pieza que llega es "+pieza._id, pieza.modelo, pieza.estado, pieza.almacen, pieza.almacenOrigen, pieza.vendido, pieza.compuestoPor);
+      
       let _pieza = new Pieza(pieza);
       _pieza.save((err, saved) => {
         err ? reject(err)

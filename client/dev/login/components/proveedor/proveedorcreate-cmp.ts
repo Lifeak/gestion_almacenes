@@ -55,7 +55,6 @@ export class ProveedorCreateCmp{
   
   gotoIndex(){
     this.router.navigate(['/ListProveedores']);
-
   }
 
   goBack(){
@@ -79,20 +78,17 @@ export class ProveedorCreateCmp{
       (<Control>this.proveedorForm.controls['val']).updateValue("");
       this.cuenta.push(pieza);
       var m: Object = { pieza, refexterna, coste1, coste2, val};
-      //alert("añadimos el material " + JSON.stringify(m));
       this.mat.push(m);
       m = [];
   }
 }
 
   minus(pos:number) {
-
     this.mat.splice(pos, 1);
     this.cuenta.splice(pos, 1);
   }
 
   save(datos: FormData){
-      alert("entramos a guardar el proveedor");
       var nombre: string = this.proveedorForm.controls['nombre'].value;
       var direccion: string = this.proveedorForm.controls['direccion'].value;
       var ciudad: string = this.proveedorForm.controls['ciudad'].value;

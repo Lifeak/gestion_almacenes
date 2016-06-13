@@ -34,7 +34,7 @@ modeloSchema.statics.getbyId = (id) => {
 }
 
 modeloSchema.statics.getbyName = (nombre) => {
-  console.log("el nombre del dao es "+nombre);
+  
     return new Promise((resolve, reject) => {
         if (!_.isString(nombre))
             return reject(new TypeError('Nombre is not a valid string.'));
@@ -49,7 +49,7 @@ modeloSchema.statics.getbyName = (nombre) => {
 }
 
 modeloSchema.statics.getModelosDePieza = () =>{
-  console.log("llegamos al modelo-dao");
+  
   let pieza = "Pieza";
      return new Promise((resolve, reject) => {
         let _query = {modeloDe:pieza};
@@ -64,7 +64,7 @@ modeloSchema.statics.getModelosDePieza = () =>{
 }
 
 modeloSchema.statics.getModelosDeProducto = () =>{
-  console.log("llegamos al modelo-dao a producto");
+  
   let busq = "Producto";
      return new Promise((resolve, reject) => {
         let _query = {modeloDe:busq};
@@ -79,11 +79,11 @@ modeloSchema.statics.getModelosDeProducto = () =>{
 }
 
 modeloSchema.statics.createModelo = (modelo) => {
-  console.log("entro a guardar");
+  
     return new Promise((resolve, reject) => {
       if (!_.isObject(modelo))
           return reject(new TypeError('modelo is not a valid object.'));
-      console.log("voy a guardar");
+      
       let _modelo = new Modelo(modelo);
       _modelo.save((err, saved) => {
         err ? reject(err)
@@ -91,7 +91,7 @@ modeloSchema.statics.createModelo = (modelo) => {
       });
 
     });
-    console.log("en teoria he guardado");
+    
 }
 
 modeloSchema.statics.deleteModelo = (id) => {

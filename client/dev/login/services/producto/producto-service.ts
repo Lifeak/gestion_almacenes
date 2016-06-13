@@ -61,7 +61,6 @@ export class ProductoService {
   }
 
   getProductoName(nombre: string) {
-    //alert("al service le llega " + nombre);
     return this._http
     .get(ProductoService.ENDPOINT2.replace(':nombre', nombre))
       .map((r) => r.json());
@@ -70,7 +69,6 @@ export class ProductoService {
 
   add(_id:string,nombre:string,modelo:string,estado:string,caracteristicas:string,almacen:string,vendido:boolean,compuestoPor:Array<string>,precio:number):Observable<any> {
     let body = JSON.stringify({_id,nombre,modelo,estado,caracteristicas,almacen,vendido,compuestoPor,precio});
-    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

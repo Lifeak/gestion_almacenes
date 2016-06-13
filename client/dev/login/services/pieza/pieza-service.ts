@@ -70,7 +70,6 @@ export class PiezaService {
 
   add(_id:string,modelo:string,estado:string,lote:string,caracteristicas:string,almacen:string,almacenOrigen:string,vendido:boolean,compuestoPor:Array<string>,precio:number):Observable<any> {
     let body = JSON.stringify({_id,modelo,estado,lote,caracteristicas,almacen,almacenOrigen,vendido,compuestoPor,precio});
-    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

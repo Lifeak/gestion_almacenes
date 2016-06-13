@@ -52,7 +52,6 @@ var UserService = (function () {
     };
     UserService.prototype.add = function (user, pass, nombre, apellido, tipo) {
         var body = JSON.stringify({ user: user, pass: pass, nombre: nombre, apellido: apellido, tipo: tipo });
-        //alert("body" + body);
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this._http

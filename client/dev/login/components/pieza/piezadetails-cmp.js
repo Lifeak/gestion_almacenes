@@ -68,7 +68,6 @@ var PiezaDetailsCmp = (function () {
         });
     };
     PiezaDetailsCmp.prototype.buscar = function (numserie) {
-        //alert("buscamos esta pieza "+numserie);
         this.router.navigate(['/DetailsSubPieza', { _id: numserie }]);
     };
     PiezaDetailsCmp.prototype.edit = function (pieza) {
@@ -195,7 +194,6 @@ var PiezaDetailsCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     PiezaDetailsCmp.prototype.ggarantias = function () {

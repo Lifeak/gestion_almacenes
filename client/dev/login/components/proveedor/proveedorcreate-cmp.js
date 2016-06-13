@@ -64,7 +64,6 @@ var ProveedorCreateCmp = (function () {
             this.proveedorForm.controls['val'].updateValue("");
             this.cuenta.push(pieza);
             var m = { pieza: pieza, refexterna: refexterna, coste1: coste1, coste2: coste2, val: val };
-            //alert("añadimos el material " + JSON.stringify(m));
             this.mat.push(m);
             m = [];
         }
@@ -75,7 +74,6 @@ var ProveedorCreateCmp = (function () {
     };
     ProveedorCreateCmp.prototype.save = function (datos) {
         var _this = this;
-        alert("entramos a guardar el proveedor");
         var nombre = this.proveedorForm.controls['nombre'].value;
         var direccion = this.proveedorForm.controls['direccion'].value;
         var ciudad = this.proveedorForm.controls['ciudad'].value;

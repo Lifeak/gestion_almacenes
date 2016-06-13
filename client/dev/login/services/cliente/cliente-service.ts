@@ -56,7 +56,6 @@ export class ClienteService {
 
   add(_id:string,nombre:string,direccion:string,ciudad:string,pais:string,telefono1:string,telefono2:string,puestoTrabajo:string,email:string,detalles:string):Observable<any> {
     let body = JSON.stringify({ _id, nombre, direccion,ciudad,pais,telefono1,telefono2,puestoTrabajo,email,detalles});
-    //alert("body" + body);
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');

@@ -101,7 +101,6 @@ var ModeloDetailsCmp = (function () {
     };
     ModeloDetailsCmp.prototype.plus = function (data) {
         var nombre = this.modeloForm.controls['compuestoPor'].value;
-        // alert("entramos a plus con nombre " + nombre);
         this.components.push(nombre);
         this.modeloForm.controls['compuestoPor'].updateValue("");
         var unidades = this.modeloForm.controls['unidades'].value;
@@ -162,7 +161,6 @@ var ModeloDetailsCmp = (function () {
             .subscribe(function (user) {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
-            //alert("en el get, el id es " +this.profile);
         });
     };
     ModeloDetailsCmp.prototype.ggarantias = function () {

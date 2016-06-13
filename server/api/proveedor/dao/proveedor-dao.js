@@ -39,7 +39,6 @@ proveedorSchema.statics.createProveedor = (proveedor) => {
           return reject(new TypeError('Proveedor is not a valid object.'));
       
       let _proveedor = new Proveedor(proveedor);
-      console.log("proveedor es ahora "+_proveedor);
       _proveedor.save((err, saved) => {
         err ? reject(err)
             : resolve(saved);

@@ -61,28 +61,34 @@ var ClienteDetailsCmp = (function () {
     };
     ClienteDetailsCmp.prototype.edit = function (cliente) {
         var _this = this;
-        var id = this._routeParams.get('id');
-        this._clienteService
-            .remove(id)
-            .subscribe(function () {
-            return _this.cliente;
-        });
-        this._clienteService
-            .add(cliente._id, cliente.nombre, cliente.direccion, cliente.ciudad, cliente.pais, cliente.telefono1, cliente.telefono2, cliente.puestoTrabajo, cliente.email, cliente.detalles)
-            .subscribe(function (m) {
-            //this.cliente = this.cliente + m;
-            _this.clienteForm.controls['_id'].updateValue("");
-            _this.clienteForm.controls['nombre'].updateValue("");
-            _this.clienteForm.controls['direccion'].updateValue("");
-            _this.clienteForm.controls['ciudad'].updateValue("");
-            _this.clienteForm.controls['pais'].updateValue("");
-            _this.clienteForm.controls['telefono1'].updateValue("");
-            _this.clienteForm.controls['telefono2'].updateValue("");
-            _this.clienteForm.controls['puestoTrabajo'].updateValue("");
-            _this.clienteForm.controls['email'].updateValue("");
-            _this.clienteForm.controls['detalles'].updateValue("");
-        });
-        this.gotoIndex();
+        if (cliente._id != "" && cliente.nombre != "" && cliente.direccion != "" && cliente.ciudad != "" && cliente.pais != "" && cliente.telefono1 != "" && cliente.puestoTrabajo != "" && cliente.email != "") {
+            var id = this._routeParams.get('id');
+            //alert("borramos " + id);
+            this._clienteService
+                .remove(id)
+                .subscribe(function () {
+                return _this.cliente;
+            });
+            //alert("añadimos " + JSON.stringify(cliente));
+            this._clienteService
+                .add(cliente._id, cliente.nombre, cliente.direccion, cliente.ciudad, cliente.pais, cliente.telefono1, cliente.telefono2, cliente.puestoTrabajo, cliente.email, cliente.detalles)
+                .subscribe(function (m) {
+                //this.cliente = this.cliente + m;
+                _this.clienteForm.controls['_id'].updateValue("");
+                _this.clienteForm.controls['nombre'].updateValue("");
+                _this.clienteForm.controls['direccion'].updateValue("");
+                _this.clienteForm.controls['ciudad'].updateValue("");
+                _this.clienteForm.controls['pais'].updateValue("");
+                _this.clienteForm.controls['telefono1'].updateValue("");
+                _this.clienteForm.controls['telefono2'].updateValue("");
+                _this.clienteForm.controls['puestoTrabajo'].updateValue("");
+                _this.clienteForm.controls['email'].updateValue("");
+                _this.clienteForm.controls['detalles'].updateValue("");
+            });
+            this.gotoIndex();
+        }
+        else
+            alert("Debes rellenar todos los campos obligatorios.");
     };
     ClienteDetailsCmp.prototype.delete = function (cliente) {
         var _this = this;
