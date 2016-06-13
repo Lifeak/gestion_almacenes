@@ -8,12 +8,13 @@ Premium: http://www.gridgum.com
 
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
 
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;
 	background: #f2f2f2;
-    font-family: 'Ruda', sans-serif;
+    font-family: 'Roboto Light','Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
     font-size:13px;
