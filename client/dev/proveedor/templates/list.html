@@ -119,7 +119,7 @@
                             </li>
                             <!-- Pedido de compra-->
                             <li>
-                              <a href="#">
+                              <a (click)="gpedidocompra();">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Pedido de compra</span>
                               </a>
@@ -189,7 +189,7 @@
                             <li>
                               <a  (click)="galmacenes();">
                                 <i class="fa fa-cubes"></i>
-                                <span>GestiC3n almacenes</span>
+                                <span>Gestión almacenes</span>
                               </a>
                             </li>
                             <!-- Tipos de garantC-as -->
@@ -239,7 +239,7 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false;" >
+                      <a (click)="gpedidocompra();c1=false" >
                           <i class="fa fa-shopping-cart"></i>
                           <span>Pedido de compra</span>
                       </a>
@@ -298,14 +298,14 @@
         					    			</tr>
         					    		</thead>
         					    		<tbody>
-        					    			<tr *ngFor="#p of proveedors"
+        					    			<tr *ngFor="let p of proveedors"
         							        [class.selected]="isSelected(p)"
         							        (click)="onSelect(p)">
         					    				<td>{{p.nombre}}</td>
         					    				<td>{{p.direccion}} ({{p.ciudad}}) - {{p.pais}}</td>
         					    				<td>{{p.telefono}}</td>
         					    				<td>{{p.valoracion}}</td>
-                              <td><div *ngFor="#m of p.materiales">
+                              <td><div *ngFor="let m of p.materiales">
                                 {{m.pieza}}
                               </div></td>
         					    			</tr>

@@ -9,7 +9,6 @@
           (submit)="login(loginForm)">
 
           <h2 class="form-login-heading">Gestión de almacenes</h2>
-          <div *ngIf="Error">Error. Inténtalo de nuevo.</div>
           <div class="login-wrap">
               <div class="form-group">
                 <label for="user">Usuario:</label>
@@ -40,37 +39,3 @@
   </div>
 </div>
 
-<!-- <div class="container-fluid" id="login-page">
-  <form class="form-login"
-         [ngFormModel]="loginForm"
-        (submit)="login(loginForm)">
-
-    <h2 class="form-login-heading">Gestion de almacenes</h2>
-    <div *ngIf="Error">Error. Inténtalo de nuevo.</div>
-    <div class="login-wrap">
-        <div>
-          <br/>Usuario:<br/>
-          <input type="text"
-               ngControl="user"
-                class="form-control"
-                [class.cliente-error]="!loginForm.valid"
-               placeholder="usuario"
-               autofocus />
-          <br/>Constraseña:<br/>
-          <input type="password"
-               ngControl="pass"
-               class="form-control"
-               [class.cliente-error]="!loginForm.valid"
-               placeholder="contraseña"
-               autofocus />
-         </div>
-         <br/>
-    <button class="btn btn-theme btn-block" type="submit"
-            [disabled]="!loginForm.valid"><i class="fa fa-lock"></i> Acceder</button>
-  </div>
-  </form>
-
-</div>
- -->
-
-      

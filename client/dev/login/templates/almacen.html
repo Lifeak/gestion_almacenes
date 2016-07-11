@@ -41,7 +41,7 @@
                 <ul class="nav navbar-nav">
                     <!-- ALMACÉN -->
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle" class="active">ALMACÉN <b class="caret"></b></a>
+                      <a (click)="goalmacen()"  class="link-activo" data-toggle="dropdown" class="dropdown-toggle" class="active">ALMACÉN <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <!-- Almacén Valiryo -->
                             <li class="dropdown">
@@ -96,7 +96,7 @@
                     </li>
                     <!-- COMPRAS -->
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">COMPRAS <b class="caret"></b></a>
+                      <a (click)="compras()" data-toggle="dropdown" class="dropdown-toggle">COMPRAS <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                             <!-- Proveedores -->
                             <li>
@@ -135,7 +135,7 @@
                     </li>
                     <!-- VENTAS -->
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">VENTAS <b class="caret"></b></a>
+                      <a (click)="ventas()" data-toggle="dropdown" class="dropdown-toggle">VENTAS <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                             <!-- Clientes -->
                             <li>
@@ -176,7 +176,7 @@
                     </li>
                     <!-- ADMIN -->
                     <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" class="dropdown-toggle">ADMIN <b class="caret"></b></a>
+                      <a (click)="admin()" data-toggle="dropdown" class="dropdown-toggle">ADMIN <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                             <!-- Control de usuarios -->
                             <li>

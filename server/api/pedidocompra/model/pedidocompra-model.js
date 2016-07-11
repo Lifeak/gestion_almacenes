@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const _pedidocompraSchema = {
     fechapedido: {type: Date, required: true},
+    fecha:{type:String},
     almacen: {type: String, required: true},
     proveedor: {type: String, required: true},
     productos: [{
@@ -20,3 +21,4 @@ const _pedidocompraSchema = {
 }
 
 module.exports = mongoose.Schema(_pedidocompraSchema);
+

@@ -272,7 +272,7 @@
     					    			</tr>
     					    		</thead>
     					    		<tbody>
-    					    			<tr *ngFor="#g of garantias"
+    					    			<tr *ngFor="let g of garantias"
     							        [class.selected]="isSelected(g)"
     							        (click)="onSelect(g)">
     					    				<td>{{g._id}}</td>

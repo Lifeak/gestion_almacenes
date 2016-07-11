@@ -231,4 +231,7 @@ export class ProveedorDetailsCmp implements OnInit {
     this.router.navigate(['/ListClientes']);
   }
 
+  gpedidocompra(){
+    this.router.navigate(['/CreateCompra']);
+  }
 }

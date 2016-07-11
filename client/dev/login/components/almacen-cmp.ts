@@ -15,6 +15,7 @@ import {
 import {
   Router,
   ROUTER_PROVIDERS,
+  ROUTER_DIRECTIVES,
   CanActivate
 } from 'angular2/router';
 

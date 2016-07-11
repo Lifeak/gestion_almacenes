@@ -119,7 +119,7 @@
                             </li>
                             <!-- Pedido de compra-->
                             <li>
-                              <a href="#">
+                              <a (click)="gpedidocompra();">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Pedido de compra</span>
                               </a>
@@ -239,7 +239,7 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" (click)="c1=false;" >
+                      <a (click)="gpedidocompra();c1=false;" >
                           <i class="fa fa-shopping-cart"></i>
                           <span>Pedido de compra</span>
                       </a>
@@ -389,14 +389,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="#m of cuenta; #i=index">
+                              <tr *ngFor="let m of cuenta; let i=index">
                                 <td>{{m}}</td>
                                 <td width="15%"><a (click)="minus(i);" ><i class="fa fa-times" aria-hidden="true"></i> Eliminar</a></td>
-                                <!-- <td>
-                                    <div *ngFor="#m of cuenta; #i=index"><strong>
-                                      Material:</strong> {{m}}  &nbsp;<a (click)="minus(i);" class="btn btn-formulario"><i class="fa fa-minus" aria-hidden="true"></i> Eliminar</a>
-                                    </div>
-                                  </td> -->
+
                               </tr>
                             </tbody>
                           </table>

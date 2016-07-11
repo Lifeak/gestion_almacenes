@@ -288,7 +288,7 @@
     						    			</tr>
     						    		</thead>
     						    		<tbody>
-    						    			<tr *ngFor="#cliente of clientes"
+    						    			<tr *ngFor="let cliente of clientes"
     							        [class.selected]="isSelected(cliente)"
     							        (click)="onSelect(cliente)">
     						    				<td>{{cliente._id}}</td>

@@ -341,7 +341,7 @@
                                     placeholder="Selecciona los componenetes"
                                     [class.formulario-error]="!modeloForm.valid"
                                     (change)="a=true">
-                                  <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+                                  <option *ngFor="let model of modelos" >{{model.nombre}}</option>
                                 </select>
                               </div>
                               <div class="col-md-2">
@@ -377,10 +377,10 @@
                               <h5><i class="fa fa-list"></i>Componentes del modelo:</h5>
                               <table>
                                 <tr>
-                                  <td><div *ngFor="#u of uds;" >
+                                  <td><div *ngFor="let u of uds;" >
                                     Unidades: {{u}}  &nbsp;</div>
                                   </td>
-                                  <td><div *ngFor="#p of components;" >
+                                  <td><div *ngFor="let p of components;" >
                                   {{p}}  &nbsp;<a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a></div>
                                   </td>
                                 </tr>

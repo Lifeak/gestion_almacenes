@@ -303,7 +303,7 @@
                               <select name="modelo" class="form-control" id="modelo" 
                                   ngControl="modelo"
                                   [class.formulario-error]="!piezaForm.valid">
-                                <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+                                <option *ngFor="let model of modelos" >{{model.nombre}}</option>
                               </select>
                             </div>
                             <div class="form-group">
@@ -381,7 +381,7 @@
                               <div class="col-md-12">
                                 <div *ngIf="components.length>0">
                                   <h5><i class="fa fa-list"></i>Componentes de la pieza:</h5>
-                                  <div *ngFor="#p of components;" >
+                                  <div *ngFor="let p of components;" >
                                     {{p}} &nbsp;<a style="font-size: 14px" (click)="minus(p);">Eliminar<i class="fa fa-trash-o "></i></a><!--<a (click)="minus(p);"><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
                                   </div>
                                 </div>

@@ -299,7 +299,7 @@
                                 [(ngModel)]="pieza.modelo"
                                [class.formulario-error]="!piezaForm.valid"
                                class="form-control">
-                          <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+                          <option *ngFor="let model of modelos" >{{model.nombre}}</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -359,7 +359,7 @@
                       <div *ngIf="components.length>0">
                         <h5><i class="fa fa-list"></i><strong> Componentes de la pieza:</strong></h5>
 
-                        <div  *ngFor="#p of components;" >
+                        <div  *ngFor="let p of components;" >
                           <ul style="font-size: 14px;"><li> {{p}}     &nbsp;<a (click)="buscar(p);">Buscar &nbsp;<i class="fa fa-search "></i></a>&nbsp;<a (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a></li></ul>
                         </div>
                       </div>

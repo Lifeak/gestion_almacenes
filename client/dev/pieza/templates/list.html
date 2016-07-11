@@ -302,7 +302,7 @@
     						    			</tr>
     						    		</thead>
     						    		<tbody>
-    						    			<tr *ngFor="#pieza of piezas"
+    						    			<tr *ngFor="let pieza of piezas"
     							        [class.selected]="isSelected(pieza)"
     							        (click)="onSelect(pieza)">
     						    				<td>{{pieza._id}}</td>

@@ -286,7 +286,7 @@
                     <br><br>
                     <div class="col-md-8 col-md-offset-2">
                       <div *ngIf="modelo">
-                        <div *ngFor="#item of modelo; #i=index;">
+                        <div *ngFor="let item of modelo; let i=index;">
                         <p class="normas">(*)  Campo obligatorio</p>
                         <h3>MODELO: {{item.nombre}}</h3>
                         <div class="form-group">
@@ -297,7 +297,7 @@
                             [(ngModel)]="item.nombre"
                             [class.formulario-error]="!modeloForm.valid"
                             placeholder="Nombre de modelo" disabled="true">
-                            <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+                            <option *ngFor="let model of modelos" >{{model.nombre}}</option>
                           </select>
                         </div>
                         <div class="form-group">
@@ -330,12 +330,12 @@
                             <table>
                               <tr>
                                 <td>
-                                  <div *ngFor="#u of uds;" >
+                                  <div *ngFor="let u of uds;" >
                                      Unidades: {{u}}  &nbsp;
                                    </div>      
                                 </td>
                                 <td>
-                                  <div *ngFor="#p of components;" >
+                                  <div *ngFor="let p of components;" >
                                     {{p}} &nbsp;
                                     <a  (click)="buscar(p);">Buscar&nbsp;<i class="fa fa-search"></i></a> &nbsp;
                                     <!--<a  (click)="minus(p);">Eliminar&nbsp;<i class="fa fa-trash-o "></i></a>-->

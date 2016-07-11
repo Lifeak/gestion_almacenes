@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
+var common_1 = require('angular2/platform/common');
 // Servicios
 var login_service_1 = require('./services/login-service');
 var user_service_1 = require('./services/user/user-service');
@@ -20,6 +21,7 @@ var modelo_service_1 = require('./services/modelo/modelo-service');
 var proveedor_service_1 = require('./services/proveedor/proveedor-service');
 var cliente_service_1 = require('./services/cliente/cliente-service');
 var garantia_service_1 = require('./services/garantia/garantia-service');
+var pedidocompra_service_1 = require('./services/pedidocompra/pedidocompra-service');
 // Menu principal
 var login_cmp_1 = require('./components/login-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
@@ -62,6 +64,10 @@ var clientedetails_cmp_1 = require('./components/cliente/clientedetails-cmp');
 var garantiacreate_cmp_1 = require('./components/garantia/garantiacreate-cmp');
 var garantialist_cmp_1 = require('./components/garantia/garantialist-cmp');
 var garantiadetails_cmp_1 = require('./components/garantia/garantiadetails-cmp');
+//Pedidos de compra
+var pedidocompracreate_cmp_1 = require('./components/pedidocompra/pedidocompracreate-cmp');
+var pedidocompralist_cmp_1 = require('./components/pedidocompra/pedidocompralist-cmp');
+var pedidocompradetails_cmp_1 = require('./components/pedidocompra/pedidocompradetails-cmp');
 var App = (function () {
     function App() {
     }
@@ -70,7 +76,7 @@ var App = (function () {
             selector: 'app',
             directives: [router_1.ROUTER_DIRECTIVES, router_1.RouterOutlet],
             template: "<router-outlet></router-outlet>\n\t\t\t\t",
-            providers: [router_1.ROUTER_PROVIDERS, core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy }),
+            providers: [router_1.ROUTER_PROVIDERS, core_1.provide(common_1.LocationStrategy, { useClass: common_1.PathLocationStrategy }),
                 login_service_1.LoginService,
                 user_service_1.UserService,
                 pieza_service_1.PiezaService,
@@ -79,7 +85,8 @@ var App = (function () {
                 proveedor_service_1.ProveedorService,
                 cliente_service_1.ClienteService,
                 garantia_service_1.GarantiaService,
-                almacen_service_1.AlmacenService]
+                almacen_service_1.AlmacenService,
+                pedidocompra_service_1.ComprasService]
         }),
         router_1.RouteConfig([
             //Menu principal
@@ -123,7 +130,11 @@ var App = (function () {
             // almacen
             { path: '/ListAlmacenes', name: 'ListAlmacenes', component: almacenlist_cmp_1.AlmacenListCmp },
             { path: '/CreateAlmacen', name: 'CreateAlmacen', component: almacencreate_cmp_1.AlmacenCreateCmp },
-            { path: '/DetailsAlmacen', name: 'DetailsAlmacen', component: almacendetails_cmp_1.AlmacenDetailsCmp }
+            { path: '/DetailsAlmacen', name: 'DetailsAlmacen', component: almacendetails_cmp_1.AlmacenDetailsCmp },
+            // pedidos de compra
+            { path: '/ListCompras', name: 'ListCompras', component: pedidocompralist_cmp_1.ComprasListCmp },
+            { path: '/CreateCompra', name: 'CreateCompra', component: pedidocompracreate_cmp_1.CompraCreateCmp },
+            { path: '/DetailsCompra', name: 'DetailsCompra', component: pedidocompradetails_cmp_1.CompraDetailsCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

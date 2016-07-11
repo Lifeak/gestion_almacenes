@@ -87,6 +87,9 @@ var ComprasCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
+    ComprasCmp.prototype.gpedidocompra = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     ComprasCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/compras.html',

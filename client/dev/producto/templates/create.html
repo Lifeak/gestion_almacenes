@@ -309,7 +309,7 @@
                             <select name="modelo" id="modelo" class="form-control"
                                  ngControl ="modelo"
                                  [class.formulario-error]="!productoForm.valid">
-                                 <option *ngFor="#model of modelos" >{{model.nombre}}</option>
+                                 <option *ngFor="let model of modelos" >{{model.nombre}}</option>
                             </select>
                           </div>
                           <div class="form-group">

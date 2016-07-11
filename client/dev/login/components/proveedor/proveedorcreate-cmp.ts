@@ -182,4 +182,8 @@ export class ProveedorCreateCmp{
   gclientes() {
     this.router.navigate(['/ListClientes']);
   }
+
+  gpedidocompra(){
+    this.router.navigate(['/CreateCompra']);
+  }
 }

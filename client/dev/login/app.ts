@@ -8,13 +8,17 @@ import {
 import {
 	ROUTER_PROVIDERS,
 	ROUTER_DIRECTIVES,
-	LocationStrategy,
-	HashLocationStrategy,
+
 	RouteConfig,
 	Router,
 	RouteParams,
 	RouterOutlet
 } from 'angular2/router';
+import{
+	LocationStrategy,
+	PathLocationStrategy
+}from 'angular2/platform/common';
+
 // Servicios
 import {LoginService} from './services/login-service';
 import {UserService} from './services/user/user-service';
@@ -25,6 +29,7 @@ import {ModeloService} from './services/modelo/modelo-service';
 import {ProveedorService} from './services/proveedor/proveedor-service';
 import {ClienteService} from './services/cliente/cliente-service';
 import {GarantiaService} from './services/garantia/garantia-service';
+import {ComprasService} from './services/pedidocompra/pedidocompra-service';
 // Menu principal
 import {LoginCmp} from './components/login-cmp';
 import {ComprasCmp} from './components/compras-cmp';
@@ -67,13 +72,17 @@ import {ClienteDetailsCmp} from './components/cliente/clientedetails-cmp';
 import {GarantiaCreateCmp} from './components/garantia/garantiacreate-cmp';
 import {GarantiaListCmp} from './components/garantia/garantialist-cmp';
 import {GarantiaDetailsCmp} from './components/garantia/garantiadetails-cmp';
+//Pedidos de compra
+import {CompraCreateCmp} from './components/pedidocompra/pedidocompracreate-cmp';
+import {ComprasListCmp} from './components/pedidocompra/pedidocompralist-cmp';
+import {CompraDetailsCmp} from './components/pedidocompra/pedidocompradetails-cmp';
 
 @Component({
 	selector:'app',
 	directives: [ROUTER_DIRECTIVES, RouterOutlet],
 	template:`<router-outlet></router-outlet>
 				` ,
-	providers: [ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: HashLocationStrategy }), 
+	providers: [ROUTER_PROVIDERS, provide(LocationStrategy, { useClass: PathLocationStrategy }), 
 			LoginService,
 			UserService, 
 			PiezaService,
@@ -82,7 +91,8 @@ import {GarantiaDetailsCmp} from './components/garantia/garantiadetails-cmp';
 			ProveedorService, 
 			ClienteService, 
 			GarantiaService, 
-			AlmacenService]
+			AlmacenService,
+			ComprasService]
 })
 
 @RouteConfig([
@@ -127,7 +137,11 @@ import {GarantiaDetailsCmp} from './components/garantia/garantiadetails-cmp';
 	// almacen
 	{ path: '/ListAlmacenes', name: 'ListAlmacenes', component: AlmacenListCmp },
 	{ path: '/CreateAlmacen', name: 'CreateAlmacen', component: AlmacenCreateCmp },
-	{ path: '/DetailsAlmacen', name: 'DetailsAlmacen', component: AlmacenDetailsCmp }
+	{ path: '/DetailsAlmacen', name: 'DetailsAlmacen', component: AlmacenDetailsCmp },
+	// pedidos de compra
+	{ path: '/ListCompras', name: 'ListCompras', component: ComprasListCmp},
+	{ path: '/CreateCompra', name: 'CreateCompra', component: CompraCreateCmp},
+	{ path: '/DetailsCompra', name: 'DetailsCompra', component: CompraDetailsCmp}
 
 ])
 export class App {

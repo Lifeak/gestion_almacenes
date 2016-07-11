@@ -7,13 +7,17 @@ import {
 	HTTP_PROVIDERS
 } from 'angular2/http';
 
-import {isLogged} from './login/services/isloggedin';
+import{
+	ROUTER_PROVIDERS
+} from 'angular2/router';
+
+import {ComprasListCmp} from './login/components/pedidocompra/pedidocompralist-cmp';
+import {CompraCreateCmp} from './login/components/pedidocompra/pedidocompracreate-cmp';
+import {CompraDetailsCmp} from './login/components/pedidocompra/pedidocompradetails-cmp';
 
 import {ProveedorListCmp} from './login/components/proveedor/proveedorlist-cmp';
 import {ProveedorCreateCmp} from './login/components/proveedor/proveedorcreate-cmp';
 import {ProveedorDetailsCmp} from './login/components/proveedor/proveedordetails-cmp';
-
-
 
 import {ProductoCreateCmp} from './login/components/producto/productocreate-cmp';
 import {ProductoDetailsCmp} from './login/components/producto/productodetails-cmp';
@@ -29,12 +33,10 @@ import {GarantiaCreateCmp} from './login/components/garantia/garantiacreate-cmp'
 import {GarantiaDetailsCmp} from './login/components/garantia/garantiadetails-cmp';
 import {GarantiaListCmp} from './login/components/garantia/garantialist-cmp';
 
-
 import {ModeloCreateCmp} from './login/components/modelo/modelocreate-cmp';
 import {ModeloDetailsCmp} from './login/components/modelo/modelodetails-cmp';
 import {ModeloListCmp} from './login/components/modelo/modelolist-cmp';
 import {ModeloSubDetailsCmp} from './login/components/modelo/modelosubdetails-cmp';
-
 
 import {ClienteCreateCmp} from './login/components/cliente/clientecreate-cmp';
 import {ClienteDetailsCmp} from './login/components/cliente/clientedetails-cmp';
@@ -52,6 +54,9 @@ import {AlmacenListCmp} from './login/components/almacen/almacenlist-cmp';
 import {LoginCmp} from './login/components/login-cmp';
 import {App} from './login/app';
 
+bootstrap(CompraCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(ComprasListCmp, [HTTP_PROVIDERS]);
+bootstrap(CompraDetailsCmp, [HTTP_PROVIDERS]);
 bootstrap(ProveedorCreateCmp, [HTTP_PROVIDERS]);
 bootstrap(ProveedorListCmp, [HTTP_PROVIDERS]);
 bootstrap(ProveedorDetailsCmp, [HTTP_PROVIDERS]);

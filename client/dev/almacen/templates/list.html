@@ -274,7 +274,7 @@
       					    			</tr>
       					    		</thead>
       					    		<tbody>
-      					    			<tr *ngFor="#almacen of almacens"
+      					    			<tr *ngFor="let almacen of almacens"
       						        [class.selected]="isSelected(almacen)"
       						        (click)="onSelect(almacen)">
       					    				<td>{{almacen.nombre}}</td>

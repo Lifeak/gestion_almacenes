@@ -285,7 +285,7 @@
                 </div>
                 <br><br>
                 <div *ngIf="producto">
-                  <div *ngFor="#pr of producto; #i=index;">
+                  <div *ngFor="let pr of producto; let i=index;">
                     <p class="normas">(*)  Campo obligatorio</p>
                     <div class="form-group">
                       <label for="nombre">Nombre (*): </label>
@@ -306,12 +306,12 @@
                     <div *ngIf="item.compuestoPor.length!=0">
                       <label>Compuesto Por: </label>
                       <td>
-                        <ul *ngFor="#ite of item.compuestoPor; #i=index;" (click)="buscar(ite);">
+                        <ul *ngFor="let ite of item.compuestoPor; let i=index;" (click)="buscar(ite);">
                           <li>{{ite}}</li>  
                         </ul>
                       </td>
                       <td>
-                        <ul *ngFor="#it of item.unidades; #ie=indexe;">{{it}}  
+                        <ul *ngFor="let it of item.unidades; let ie=indexe;">{{it}}  
                         </ul>
                       </td>
                     </div>

@@ -162,6 +162,9 @@ var ProveedorCreateCmp = (function () {
     ProveedorCreateCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    ProveedorCreateCmp.prototype.gpedidocompra = function () {
+        this.router.navigate(['/CreateCompra']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', proveedor_service_1.Proveedor)

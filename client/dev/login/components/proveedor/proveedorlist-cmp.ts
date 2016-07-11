@@ -122,4 +122,8 @@ export class ProveedorListCmp implements OnInit {
   admin() {
     this.router.navigate(['/Admin']);
   }
+  gpedidocompra(){
+    alert("Entro en pedido compra");
+    this.router.navigate(['/CreateCompra']);
+  }
 }

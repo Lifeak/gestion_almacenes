@@ -2,6 +2,9 @@
 "use strict";
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
+var pedidocompralist_cmp_1 = require('./login/components/pedidocompra/pedidocompralist-cmp');
+var pedidocompracreate_cmp_1 = require('./login/components/pedidocompra/pedidocompracreate-cmp');
+var pedidocompradetails_cmp_1 = require('./login/components/pedidocompra/pedidocompradetails-cmp');
 var proveedorlist_cmp_1 = require('./login/components/proveedor/proveedorlist-cmp');
 var proveedorcreate_cmp_1 = require('./login/components/proveedor/proveedorcreate-cmp');
 var proveedordetails_cmp_1 = require('./login/components/proveedor/proveedordetails-cmp');
@@ -32,6 +35,9 @@ var almacendetails_cmp_1 = require('./login/components/almacen/almacendetails-cm
 var almacenlist_cmp_1 = require('./login/components/almacen/almacenlist-cmp');
 var login_cmp_1 = require('./login/components/login-cmp');
 var app_1 = require('./login/app');
+browser_1.bootstrap(pedidocompracreate_cmp_1.CompraCreateCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(pedidocompralist_cmp_1.ComprasListCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(pedidocompradetails_cmp_1.CompraDetailsCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(proveedorcreate_cmp_1.ProveedorCreateCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(proveedorlist_cmp_1.ProveedorListCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(proveedordetails_cmp_1.ProveedorDetailsCmp, [http_1.HTTP_PROVIDERS]);

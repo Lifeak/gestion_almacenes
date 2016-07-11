@@ -297,7 +297,7 @@
     						    			</tr>
     						    		</thead>
     						    		<tbody>
-    						    			<tr *ngFor="#modelo of modelos"
+    						    			<tr *ngFor="let modelo of modelos"
     							        	[class.selected]="isSelected(modelo)"
     							        	(click)="onSelect(modelo)">
     						    				<td>{{modelo.nombre}}</td>

@@ -101,6 +101,10 @@ var ProveedorListCmp = (function () {
     ProveedorListCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
+    ProveedorListCmp.prototype.gpedidocompra = function () {
+        alert("Entro en pedido compra");
+        this.router.navigate(['/CreateCompra']);
+    };
     ProveedorListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/proveedor/templates/list.html',

@@ -112,4 +112,8 @@ export class ComprasCmp {
       });
   }
 
+  gpedidocompra(){
+    this.router.navigate(['/ListCompras']);
+  }
+
 }
