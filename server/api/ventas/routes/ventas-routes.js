@@ -13,5 +13,13 @@ module.exports = class VentaRoutes {
         .route('/api/venta/:id')
         .get(VentaController.getbyId)
         .delete(VentaController.deleteVenta);
+
+      router
+        .route('/api/pv/modelos')
+        .get(VentaController.getModelos);
+
+      router
+        .route('/api/pvgp/garantias')
+        .get(VentaController.getGarantiaPais);
     }
 }

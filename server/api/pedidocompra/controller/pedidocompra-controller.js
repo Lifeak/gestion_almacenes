@@ -30,17 +30,6 @@ module.exports = class PedidocompraController {
         .catch(error => res.status(400).json(error));
   }
 
-  static updatePedidocompra(req, res) {
-      let _id = req.body.id;
-      let modelo = req.body.modelo;
-      let entrega = req.body.entrega;
-      console.log("el id a modificar es "+_id+ " del modelo "+modelo+" y la entrega es "+JSON.stringify(entrega));
-      PedidocompraDAO
-        .updatePedidocompra(_id, modelo, entrega)
-        .then(pedidocompras => res.status(201).json(pedidocompras))
-        .catch(error => res.status(400).json(error));
-  }
-
   static deletePedidocompra(req, res) {
     let _id = req.params.id;
 

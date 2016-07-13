@@ -30,6 +30,7 @@ import {ProveedorService} from './services/proveedor/proveedor-service';
 import {ClienteService} from './services/cliente/cliente-service';
 import {GarantiaService} from './services/garantia/garantia-service';
 import {ComprasService} from './services/pedidocompra/pedidocompra-service';
+import {VentasService} from './services/ventas/ventas-service';
 // Menu principal
 import {LoginCmp} from './components/login-cmp';
 import {ComprasCmp} from './components/compras-cmp';
@@ -76,6 +77,10 @@ import {GarantiaDetailsCmp} from './components/garantia/garantiadetails-cmp';
 import {CompraCreateCmp} from './components/pedidocompra/pedidocompracreate-cmp';
 import {ComprasListCmp} from './components/pedidocompra/pedidocompralist-cmp';
 import {CompraDetailsCmp} from './components/pedidocompra/pedidocompradetails-cmp';
+//Ventas
+import {VentaCreateCmp} from './components/ventas/ventascreate-cmp';
+import {VentasListCmp} from './components/ventas/ventaslist-cmp';
+import {VentaDetailsCmp} from './components/ventas/ventasdetails-cmp';
 
 @Component({
 	selector:'app',
@@ -92,7 +97,8 @@ import {CompraDetailsCmp} from './components/pedidocompra/pedidocompradetails-cm
 			ClienteService, 
 			GarantiaService, 
 			AlmacenService,
-			ComprasService]
+			ComprasService,
+			VentasCmp]
 })
 
 @RouteConfig([
@@ -141,7 +147,11 @@ import {CompraDetailsCmp} from './components/pedidocompra/pedidocompradetails-cm
 	// pedidos de compra
 	{ path: '/ListCompras', name: 'ListCompras', component: ComprasListCmp},
 	{ path: '/CreateCompra', name: 'CreateCompra', component: CompraCreateCmp},
-	{ path: '/DetailsCompra', name: 'DetailsCompra', component: CompraDetailsCmp}
+	{ path: '/DetailsCompra', name: 'DetailsCompra', component: CompraDetailsCmp},
+	// ventas
+	{ path: '/ListVentas', name: 'ListVentas', component: VentasListCmp},
+	{ path: '/CreateVenta', name: 'CreateVenta', component: VentaCreateCmp},
+	{ path: '/DetailsVenta', name: 'DetailsVenta', component: VentaDetailsCmp}
 
 ])
 export class App {

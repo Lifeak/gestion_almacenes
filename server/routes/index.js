@@ -31,6 +31,9 @@ const proveedorRoutes = require('../api/proveedor/routes/proveedor-routes');
 // Rutas de los pedidos de compra, get y post
 const pedidocompraRoutes = require('../api/pedidocompra/routes/pedidocompra-routes');
 
+// Rutas de los pedidos de venta, get y post
+const ventasRoutes = require('../api/ventas/routes/ventas-routes');
+
 const loginRoutes= require('../auth/login/routes/login-routes');
 
 
@@ -47,6 +50,7 @@ module.exports = class Routes {
      productoRoutes.init(router);
      proveedorRoutes.init(router);
      pedidocompraRoutes.init(router);
+     ventasRoutes.init(router);
 
  	router
        .route('/')

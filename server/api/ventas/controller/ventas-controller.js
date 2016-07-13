@@ -1,6 +1,8 @@
 "use strict";
 
 const VentaDAO = require('../dao/ventas-dao');
+const ModeloDAO = require('../../modelo/dao/modelo-dao');
+const GarantiaDAO = require('../../garantia/dao/garantia-dao');
 
 module.exports = class VentaController {
   static getAll(req, res) {
@@ -18,12 +20,28 @@ module.exports = class VentaController {
       .catch(error => res.status(400).json(error));
   }
 
+   static getModelos(req, res){
+    ModeloDAO
+      .getAll()
+        .then(modelos => res.status(200).json(modelos))
+        .catch(error => res.status(400).json(error));
+  }
+
+  static getGarantiaPais(req, res){
+    GarantiaDAO
+      .getAll()
+        .then(modelos => res.status(200).json(modelos))
+        .catch(error => res.status(400).json(error));
+  }
+
   static createVenta(req, res) {
+    console.log("entro en createVenta");
       let _venta = req.body;
+      console.log("la venta es "+_venta);
 
       VentaDAO
         .createVenta(_venta)
-        .then(venta =>Venta res.status(201).json(venta))
+        .then(venta =>res.status(201).json(venta))
         .catch(error => res.status(400).json(error));
         console.log("fin instruccion");
   }

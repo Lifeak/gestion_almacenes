@@ -12,7 +12,6 @@ module.exports = class PedidocompraRoutes {
     router
         .route('/api/pedidocompra/:id')
         .get(PedidocompraController.getbyId)
-        .put(PedidocompraController.updatePedidocompra)
         .delete(PedidocompraController.deletePedidocompra);
 
     router

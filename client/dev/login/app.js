@@ -68,6 +68,10 @@ var garantiadetails_cmp_1 = require('./components/garantia/garantiadetails-cmp')
 var pedidocompracreate_cmp_1 = require('./components/pedidocompra/pedidocompracreate-cmp');
 var pedidocompralist_cmp_1 = require('./components/pedidocompra/pedidocompralist-cmp');
 var pedidocompradetails_cmp_1 = require('./components/pedidocompra/pedidocompradetails-cmp');
+//Ventas
+var ventascreate_cmp_1 = require('./components/ventas/ventascreate-cmp');
+var ventaslist_cmp_1 = require('./components/ventas/ventaslist-cmp');
+var ventasdetails_cmp_1 = require('./components/ventas/ventasdetails-cmp');
 var App = (function () {
     function App() {
     }
@@ -86,7 +90,8 @@ var App = (function () {
                 cliente_service_1.ClienteService,
                 garantia_service_1.GarantiaService,
                 almacen_service_1.AlmacenService,
-                pedidocompra_service_1.ComprasService]
+                pedidocompra_service_1.ComprasService,
+                ventas_cmp_1.VentasCmp]
         }),
         router_1.RouteConfig([
             //Menu principal
@@ -134,7 +139,11 @@ var App = (function () {
             // pedidos de compra
             { path: '/ListCompras', name: 'ListCompras', component: pedidocompralist_cmp_1.ComprasListCmp },
             { path: '/CreateCompra', name: 'CreateCompra', component: pedidocompracreate_cmp_1.CompraCreateCmp },
-            { path: '/DetailsCompra', name: 'DetailsCompra', component: pedidocompradetails_cmp_1.CompraDetailsCmp }
+            { path: '/DetailsCompra', name: 'DetailsCompra', component: pedidocompradetails_cmp_1.CompraDetailsCmp },
+            // ventas
+            { path: '/ListVentas', name: 'ListVentas', component: ventaslist_cmp_1.VentasListCmp },
+            { path: '/CreateVenta', name: 'CreateVenta', component: ventascreate_cmp_1.VentaCreateCmp },
+            { path: '/DetailsVenta', name: 'DetailsVenta', component: ventasdetails_cmp_1.VentaDetailsCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

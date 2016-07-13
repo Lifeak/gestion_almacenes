@@ -14,9 +14,9 @@ const _ventaSchema = {
     agente:{type: String},
     observaciones: {type: String},
     lineaventa:[{
-    	modelo: {type:String, required: true},
-    	unidades: {type: Number, required: true},
-    	tipoOperacion: {type: String, required: true},
+    	modelo: {type:String},
+    	unidades: {type: Number},
+    	tipoOperacion: {type: String},
     	numSerie: {type: Array}
     }]
 

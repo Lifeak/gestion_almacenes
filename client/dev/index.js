@@ -2,6 +2,9 @@
 "use strict";
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
+var ventaslist_cmp_1 = require('./login/components/ventas/ventaslist-cmp');
+var ventascreate_cmp_1 = require('./login/components/ventas/ventascreate-cmp');
+var ventasdetails_cmp_1 = require('./login/components/ventas/ventasdetails-cmp');
 var pedidocompralist_cmp_1 = require('./login/components/pedidocompra/pedidocompralist-cmp');
 var pedidocompracreate_cmp_1 = require('./login/components/pedidocompra/pedidocompracreate-cmp');
 var pedidocompradetails_cmp_1 = require('./login/components/pedidocompra/pedidocompradetails-cmp');
@@ -35,6 +38,9 @@ var almacendetails_cmp_1 = require('./login/components/almacen/almacendetails-cm
 var almacenlist_cmp_1 = require('./login/components/almacen/almacenlist-cmp');
 var login_cmp_1 = require('./login/components/login-cmp');
 var app_1 = require('./login/app');
+browser_1.bootstrap(ventascreate_cmp_1.VentaCreateCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(ventaslist_cmp_1.VentasListCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(ventasdetails_cmp_1.VentaDetailsCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(pedidocompracreate_cmp_1.CompraCreateCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(pedidocompralist_cmp_1.ComprasListCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(pedidocompradetails_cmp_1.CompraDetailsCmp, [http_1.HTTP_PROVIDERS]);
