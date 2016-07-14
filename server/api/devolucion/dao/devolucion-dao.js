@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const devolucionSchema = require('../model/devolucion-model');
+const _ventaSchema = require('../../ventas/model/ventas-model');
 const _ = require('lodash');
 
 
@@ -11,7 +12,20 @@ devolucionSchema.statics.getAll = () => {
         let _query = {};
 
         Devolucion
+          .find(_query)          
+          .exec((err, devolucions) => {
+              err ? reject(err)
+                  : resolve(devolucions);
+          });
+      });
+}
+
+devolucionSchema.statics.getAllPopulate = () => {
+    return new Promise((resolve, reject) => {
+        let _query = {};
+        Devolucion
           .find(_query)
+          .populate('idventa')
           .exec((err, devolucions) => {
               err ? reject(err)
                   : resolve(devolucions);

@@ -10,7 +10,6 @@ const express = require('express');
 const RoutesConfig = require('./config/routes.conf');
 const DBConfig = require('./config/db.conf');
 const Routes = require('./routes/index');
-
 const app = express();
 const server = app.listen(PORT);
 

@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const contentLength = require('express-content-length-validator');
 const helmet = require('helmet');
+require('mongoose').Promise = require('bluebird');
+
 
 module.exports = class RouteConfig {
     static init(application, exp) {

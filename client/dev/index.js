@@ -2,6 +2,9 @@
 "use strict";
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
+var devolucionlist_cmp_1 = require('./login/components/devolucion/devolucionlist-cmp');
+var devolucioncreate_cmp_1 = require('./login/components/devolucion/devolucioncreate-cmp');
+var devoluciondetails_cmp_1 = require('./login/components/devolucion/devoluciondetails-cmp');
 var ventaslist_cmp_1 = require('./login/components/ventas/ventaslist-cmp');
 var ventascreate_cmp_1 = require('./login/components/ventas/ventascreate-cmp');
 var ventasdetails_cmp_1 = require('./login/components/ventas/ventasdetails-cmp');
@@ -38,6 +41,9 @@ var almacendetails_cmp_1 = require('./login/components/almacen/almacendetails-cm
 var almacenlist_cmp_1 = require('./login/components/almacen/almacenlist-cmp');
 var login_cmp_1 = require('./login/components/login-cmp');
 var app_1 = require('./login/app');
+browser_1.bootstrap(devolucioncreate_cmp_1.DevolucionCreateCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(devolucionlist_cmp_1.DevolucionListCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(devoluciondetails_cmp_1.DevolucionDetailsCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(ventascreate_cmp_1.VentaCreateCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(ventaslist_cmp_1.VentasListCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(ventasdetails_cmp_1.VentaDetailsCmp, [http_1.HTTP_PROVIDERS]);

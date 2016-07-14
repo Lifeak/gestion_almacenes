@@ -22,6 +22,8 @@ var proveedor_service_1 = require('./services/proveedor/proveedor-service');
 var cliente_service_1 = require('./services/cliente/cliente-service');
 var garantia_service_1 = require('./services/garantia/garantia-service');
 var pedidocompra_service_1 = require('./services/pedidocompra/pedidocompra-service');
+var ventas_service_1 = require('./services/ventas/ventas-service');
+var devolucion_service_1 = require('./services/devolucion/devolucion-service');
 // Menu principal
 var login_cmp_1 = require('./components/login-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
@@ -72,6 +74,10 @@ var pedidocompradetails_cmp_1 = require('./components/pedidocompra/pedidocomprad
 var ventascreate_cmp_1 = require('./components/ventas/ventascreate-cmp');
 var ventaslist_cmp_1 = require('./components/ventas/ventaslist-cmp');
 var ventasdetails_cmp_1 = require('./components/ventas/ventasdetails-cmp');
+//Ventas
+var devolucioncreate_cmp_1 = require('./components/devolucion/devolucioncreate-cmp');
+var devolucionlist_cmp_1 = require('./components/devolucion/devolucionlist-cmp');
+var devoluciondetails_cmp_1 = require('./components/devolucion/devoluciondetails-cmp');
 var App = (function () {
     function App() {
     }
@@ -91,7 +97,8 @@ var App = (function () {
                 garantia_service_1.GarantiaService,
                 almacen_service_1.AlmacenService,
                 pedidocompra_service_1.ComprasService,
-                ventas_cmp_1.VentasCmp]
+                ventas_service_1.VentasService,
+                devolucion_service_1.DevolucionService]
         }),
         router_1.RouteConfig([
             //Menu principal
@@ -143,7 +150,11 @@ var App = (function () {
             // ventas
             { path: '/ListVentas', name: 'ListVentas', component: ventaslist_cmp_1.VentasListCmp },
             { path: '/CreateVenta', name: 'CreateVenta', component: ventascreate_cmp_1.VentaCreateCmp },
-            { path: '/DetailsVenta', name: 'DetailsVenta', component: ventasdetails_cmp_1.VentaDetailsCmp }
+            { path: '/DetailsVenta', name: 'DetailsVenta', component: ventasdetails_cmp_1.VentaDetailsCmp },
+            // devolucion
+            { path: '/ListDevoluciones', name: 'ListDevoluciones', component: devolucionlist_cmp_1.DevolucionListCmp },
+            { path: '/CreateDevolucion', name: 'CreateDevolucion', component: devolucioncreate_cmp_1.DevolucionCreateCmp },
+            { path: '/DetailsDevolucion', name: 'DetailsDevolucion', component: devoluciondetails_cmp_1.DevolucionDetailsCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

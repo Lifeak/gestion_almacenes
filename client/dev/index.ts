@@ -11,6 +11,10 @@ import{
 	ROUTER_PROVIDERS
 } from 'angular2/router';
 
+import {DevolucionListCmp} from './login/components/devolucion/devolucionlist-cmp';
+import {DevolucionCreateCmp} from './login/components/devolucion/devolucioncreate-cmp';
+import {DevolucionDetailsCmp} from './login/components/devolucion/devoluciondetails-cmp';
+
 import {VentasListCmp} from './login/components/ventas/ventaslist-cmp';
 import {VentaCreateCmp} from './login/components/ventas/ventascreate-cmp';
 import {VentaDetailsCmp} from './login/components/ventas/ventasdetails-cmp';
@@ -58,6 +62,9 @@ import {AlmacenListCmp} from './login/components/almacen/almacenlist-cmp';
 import {LoginCmp} from './login/components/login-cmp';
 import {App} from './login/app';
 
+bootstrap(DevolucionCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(DevolucionListCmp, [HTTP_PROVIDERS]);
+bootstrap(DevolucionDetailsCmp, [HTTP_PROVIDERS]);
 bootstrap(VentaCreateCmp, [HTTP_PROVIDERS]);
 bootstrap(VentasListCmp, [HTTP_PROVIDERS]);
 bootstrap(VentaDetailsCmp, [HTTP_PROVIDERS]);

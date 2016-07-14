@@ -66,6 +66,9 @@ var VentasCmp = (function () {
     VentasCmp.prototype.gventas = function () {
         this.router.navigate(['/ListVentas']);
     };
+    VentasCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
     VentasCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

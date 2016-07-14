@@ -87,7 +87,7 @@
                             </li>
                             <!-- Reparaciones -->
                             <li>
-                              <a href="#/almacen">
+                              <a href="#">
                                 <i class="fa fa-wrench"></i>
                                 <span>Reparaciones</span>
                               </a>
@@ -119,7 +119,7 @@
                             </li>
                             <!-- Pedido de compra-->
                             <li>
-                              <a (click)="gpedidocompra();">
+                              <a (click)="gpedidocompras();">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Pedido de compra</span>
                               </a>
@@ -153,7 +153,7 @@
                             </li>
                             <!-- Devoluciones -->
                             <li>
-                              <a (click)="gdevoluciones();">
+                              <a (click)="gdevoluciones();" class="active">
                                 <i class="fa fa-refresh"></i>
                                 <span>Devoluciones</span>
                               </a>
@@ -222,20 +222,20 @@
               <ul class="sidebar-menu" id="nav-accordion">
 
                   <li class="sub-menu">
-                      <a (click)="gclientes();" >
+                      <a (click)="gclientes();">
                           <i class="fa fa-user"></i>
                           <span>Clientes</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a (click)="gventas();">
+                      <a (click)="gventas();" >
                           <i class="fa fa-shopping-cart"></i>
                           <span>Pedidos</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a (click)="gdevoluciones();" >
+                      <a (click)="gdevoluciones();" class="active">
                           <i class="fa fa-refresh"></i>
                           <span>Devoluciones</span>
                       </a>
@@ -263,70 +263,48 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                  <div class="col-lg-12 main-chart">
-                  
-                    <div class="row mtbox">
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 box0">
-                        <a  (click)="gclientes();" >
-                          <div class="box1">
-                            <i class="fa fa-user fa-3x"></i> 
-                            <h3>Clientes</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a (click)="gventas();" >
-                          <div class="box1">
-                            <i class="fa fa-shopping-cart fa-3x"></i> 
-                            <h3>Pedidos</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a (click)="gdevoluciones();" >
-                          <div class="box1">
-                            <i class="fa fa-refresh fa-3x"></i> 
-                            <h3>Devoluciones</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-md-offset-1 col-lg-offset-0 box0">
-                        <a href="javascript:;" >
-                          <div class="box1">
-                            <i class="fa fa-exclamation-triangle fa-3x"></i> 
-                            <h3>Salidas por avería</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a href="javascript:;" >
-                          <div class="box1">
-                            <i class="fa fa-pencil-square-o fa-3x"></i> 
-                            <h3>Garantía</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                    
-                    </div><!-- /row mt -->  
-                  
-          
-                      
-                  </div><!-- /col-lg-12 END SECTION MIDDLE -->
-              </div><!--/row -->
-          </section>
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">
+    					<div class="section-container">
+    						<div class="row">
+    							<div class="col-md-12">
+    								<h1 class="submenu-title">Devoluciones</h1>
+    								<a [routerLink]="['/CreateDevolucion']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nueva devolución</a>
+    							</div>
+    						</div>
+    						<br><br>
+    						<div class="row">
+    							<div class="col-md-12">
+    					    		<table class="table table-hover table-responsive">
+    						    		<thead>
+    						    			<tr>
+    						    				<th>Num de venta</th>
+    						    				<th>Cliente</th>
+    						    				<th>Fecha de entrada al almacén</th>
+    						    				<th>Tipo de devolución</th>
+    						    			</tr>
+    						    		</thead>
+    						    		<tbody>
+    						    			<tr *ngFor="let d of devolucion"
+    							        [class.selected]="isSelected(d)"
+    							        (click)="onSelect(d)">
+    						    				<td>{{d.idventa.numPedido}}</td>
+    						    				<td>{{d.idventa.cliente}}</td>
+    						    				<td>{{d.fechaEntrada.toString().substring(0,10)}}</td>
+    						    				<td>{{d.tipoDevolucion}}</td> 
+    						    			</tr>
+    					    			</tbody>
+    					    		</table>
+    							</div>
+    						</div>
+					    </div> 
+            </div><!-- end col-lg-12 main-chart -->
+          </div><!--end row -->
+        </section>
       </section>
 
       <!--main content end-->
 
 </section>
-
 

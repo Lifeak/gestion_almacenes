@@ -92,6 +92,9 @@ export class VentasCmp {
    gventas(){
      this.router.navigate(['/ListVentas']);
    }
+   gdevoluciones(){
+     this.router.navigate(['/ListDevoluciones']);
+   }
 
    gusuarios() {
      if (localStorage.getItem(this.token) == "encargado") {

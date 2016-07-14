@@ -13,5 +13,17 @@ module.exports = class DevolucionRoutes {
         .route('/api/devolucion/:id')
         .get(DevolucionController.getbyId)
         .delete(DevolucionController.deleteDevolucion);
+
+      router
+        .route('/api/dm/modelos')
+        .get(DevolucionController.getModelos);
+
+      router  
+        .route('/api/dv/ventas')
+        .get(DevolucionController.getVentas); 
+
+      router  
+        .route('/api/devpop/populate')
+        .get(DevolucionController.getAllPopulate);        
     }
 }

@@ -139,21 +139,21 @@
                       <ul class="dropdown-menu">
                             <!-- Clientes -->
                             <li>
-                              <a (click)="gclientes();">
+                              <a (click)="gclientes();" >
                                 <i class="fa fa-user"></i>
                                 <span>Clientes</span>
                               </a>
                             </li>
                             <!-- Pedidos -->
                             <li>
-                              <a (click)="gventas();">
+                              <a (click)="gventas();" >
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Pedidos</span>
                               </a>
                             </li>
                             <!-- Devoluciones -->
                             <li>
-                              <a (click)="gdevoluciones();">
+                              <a (click)="gdevoluciones();" class="active">
                                 <i class="fa fa-refresh"></i>
                                 <span>Devoluciones</span>
                               </a>
@@ -222,7 +222,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
 
                   <li class="sub-menu">
-                      <a (click)="gclientes();" >
+                      <a (click)="gclientes();">
                           <i class="fa fa-user"></i>
                           <span>Clientes</span>
                       </a>
@@ -235,7 +235,7 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a (click)="gdevoluciones();" >
+                      <a (click)="gdevoluciones();" class="active" >
                           <i class="fa fa-refresh"></i>
                           <span>Devoluciones</span>
                       </a>
@@ -263,70 +263,127 @@
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-
-              <div class="row">
-              <!-- Si queremos meter un menu a la derecha, el siguiente div serC! de 9 para posibilitar uno de 3 a la derecha-->
-                  <div class="col-lg-12 main-chart">
-                  
-                    <div class="row mtbox">
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 box0">
-                        <a  (click)="gclientes();" >
-                          <div class="box1">
-                            <i class="fa fa-user fa-3x"></i> 
-                            <h3>Clientes</h3>
-                          </div>
-                        </a>
-                        <!--  -->
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12 main-chart">     
+              <div class="section-container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1 class="submenu-title">Devolución > Nueva devolución</h1>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <form class="devolucion-form"
+                          [ngFormModel]="devolucionForm"
+                          (submit)="save(devolucionForm)">
+                      <p class="normas">(*)  Campo obligatorio</p>
+                      <div class="form-group">
+                        <label for="idventa">Pedido de venta (número de pedido, fecha de salida y cliente) (*):</label>
+                        <select name="idventa" class="form-control placeholder-no-fix"  (change)="pedido($event);e=true;"
+                            ngControl="idventa"
+                            [class.formulario-error]="!devolucionForm.valid">
+                            <option></option>
+                            <option *ngFor="let ven of venta;let i = index;" [value]="ven._id">[Pedido: {{ven.numPedido}}] - {{ven.fechaSalida.toString().substring(0,10)}} - {{ven.cliente}}</option>
+                        </select>
                       </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a (click)="gventas();" >
-                          <div class="box1">
-                            <i class="fa fa-shopping-cart fa-3x"></i> 
-                            <h3>Pedidos</h3>
-                          </div>
-                        </a>
-                        <!--  -->
+                      <div class="form-group">
+                        <label for="tipoDevolucion">Tipo de devolución(*):</label>
+                        <select name="tipoDevolucion" class="form-control placeholder-no-fix" id="tipoDevolucion" 
+                            ngControl="tipoDevolucion"
+                            [class.formulario-error]="!devolucionForm.valid">
+                            <option></option>
+                            <option>Avería</option>
+                            <option>Voluntaria</option>
+                        </select>
                       </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a (click)="gdevoluciones();" >
-                          <div class="box1">
-                            <i class="fa fa-refresh fa-3x"></i> 
-                            <h3>Devoluciones</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-md-offset-1 col-lg-offset-0 box0">
-                        <a href="javascript:;" >
-                          <div class="box1">
-                            <i class="fa fa-exclamation-triangle fa-3x"></i> 
-                            <h3>Salidas por avería</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a href="javascript:;" >
-                          <div class="box1">
-                            <i class="fa fa-pencil-square-o fa-3x"></i> 
-                            <h3>Garantía</h3>
-                          </div>
-                        </a>
-                        <!--  -->
-                      </div>
-                    
-                    </div><!-- /row mt -->  
-                  
-          
+                      <div class="form-group">
+                        <label for="fechaEntrada">Fecha de entrada de la devolución (*):</label>
+                        <input type="Date" class="form-control" id="fechaEntrada" 
+                            ngControl="fechaEntrada"
+                            [class.formulario-error]="!devolucionForm.valid"
+                            autofocus />
+                        </div>
                       
-                  </div><!-- /col-lg-12 END SECTION MIDDLE -->
-              </div><!--/row -->
-          </section>
+                        <!-- Enlace a Modal -->
+                      <div *ngIf="e==true;">
+                        <a data-toggle="modal" href="#addlinea"><i class="fa fa-plus" aria-hidden="true"></i> Añadir producto a devolver</a>
+                      </div>
+                                           
+                        <!-- Modal lineas de pedido -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="addlinea" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Devolución</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p class="normas">(*)  Campo obligatorio</p>      
+                                     <div class="form-group">
+                                        <label for="modelo">Modelo (*):</label>
+                                        <select name="modelo" class="form-control placeholder-no-fix" id="modelo" 
+                                              ngControl="modelo"
+                                              [class.formulario-error]="!devolucionForm.valid">
+                                              <option></option>
+                                              <option *ngFor="let model of modelos" >{{model}}</option>
+                                      </select>
+                                      </div>                                    
+                                      <div class="form-group">
+                                          <label for="numserie">Número de serie (*):</label>
+                                            <select name="numserie" class="form-control placeholder-no-fix" id="numserie" 
+                                              ngControl="numserie"
+                                              [class.formulario-error]="!devolucionForm.valid">
+                                              <option></option>
+                                              <option *ngFor="let num of numeros" >{{num}}</option>
+                                            </select>
+                                      </div>                                       
+                                      <div class="modal-footer centered">
+                                          <a  data-dismiss="modal" class="btn btn-formulario-sm pull-centered margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</a>
+                                          <a  (click)="guardalinea(devolucionForm);" data-dismiss="modal" aria-hidden="true" class="btn btn-formulario-sm pull-centered margen-izda"><i class="fa fa-check" aria-hidden="true"></i> Guardar</a>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- modal -->
+                    
+                      <br/><br/>
+                       <div *ngIf="prod.length>0">
+                          <label><strong>Lineas de devolución:</strong></label>
+                          <br><br>
+                          <table class="table table-hover table-responsive">
+                            <thead>
+                              <tr>
+                                <th>Modelo</th>
+                                <th>Número de serie</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let lin of prod; let i=index ">
+                                <td>{{lin.modelo}}</td>
+                                <td>{{lin.numserie}}</td>
+                                <td width="15%"><a (click)="eliminalinea(lin);" ><i class="fa fa-times" aria-hidden="true"></i> Eliminar</a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      <button type="submit"
+                          [disabled]="!devolucionForm.valid" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-check" aria-hidden="true"></i> Guardar venta</button>
+                    </form>
+
+                    <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /col-lg-12 END SECTION MIDDLE -->
+          </div><!--/row -->
+        </section>
       </section>
-
       <!--main content end-->
-
 </section>
+
+
 
 

@@ -31,6 +31,7 @@ import {ClienteService} from './services/cliente/cliente-service';
 import {GarantiaService} from './services/garantia/garantia-service';
 import {ComprasService} from './services/pedidocompra/pedidocompra-service';
 import {VentasService} from './services/ventas/ventas-service';
+import {DevolucionService} from './services/devolucion/devolucion-service';
 // Menu principal
 import {LoginCmp} from './components/login-cmp';
 import {ComprasCmp} from './components/compras-cmp';
@@ -81,6 +82,11 @@ import {CompraDetailsCmp} from './components/pedidocompra/pedidocompradetails-cm
 import {VentaCreateCmp} from './components/ventas/ventascreate-cmp';
 import {VentasListCmp} from './components/ventas/ventaslist-cmp';
 import {VentaDetailsCmp} from './components/ventas/ventasdetails-cmp';
+//Ventas
+import {DevolucionCreateCmp} from './components/devolucion/devolucioncreate-cmp';
+import {DevolucionListCmp} from './components/devolucion/devolucionlist-cmp';
+import {DevolucionDetailsCmp} from './components/devolucion/devoluciondetails-cmp';
+
 
 @Component({
 	selector:'app',
@@ -98,7 +104,8 @@ import {VentaDetailsCmp} from './components/ventas/ventasdetails-cmp';
 			GarantiaService, 
 			AlmacenService,
 			ComprasService,
-			VentasCmp]
+			VentasService,
+			DevolucionService]
 })
 
 @RouteConfig([
@@ -151,8 +158,11 @@ import {VentaDetailsCmp} from './components/ventas/ventasdetails-cmp';
 	// ventas
 	{ path: '/ListVentas', name: 'ListVentas', component: VentasListCmp},
 	{ path: '/CreateVenta', name: 'CreateVenta', component: VentaCreateCmp},
-	{ path: '/DetailsVenta', name: 'DetailsVenta', component: VentaDetailsCmp}
-
+	{ path: '/DetailsVenta', name: 'DetailsVenta', component: VentaDetailsCmp},
+	// devolucion
+	{ path: '/ListDevoluciones', name: 'ListDevoluciones', component: DevolucionListCmp},
+	{ path: '/CreateDevolucion', name: 'CreateDevolucion', component: DevolucionCreateCmp},
+	{ path: '/DetailsDevolucion', name: 'DetailsDevolucion', component: DevolucionDetailsCmp}
 ])
 export class App {
 	constructor() { }
