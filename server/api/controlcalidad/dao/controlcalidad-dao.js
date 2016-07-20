@@ -12,7 +12,7 @@ controlcalidadSchema.statics.getAll = () => {
 
         Controlcalidad
           .find(_query)
-          .exec((err, controless) => {
+          .exec((err, controles) => {
               err ? reject(err)
                   : resolve(controles);
           });

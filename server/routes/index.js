@@ -37,6 +37,18 @@ const ventasRoutes = require('../api/ventas/routes/ventas-routes');
 // Rutas de las devoluciones, get y post
 const devolucionRoutes = require('../api/devolucion/routes/devolucion-routes');
 
+// Rutas de las reparaciones, get y post
+const reparacionRoutes = require('../api/reparaciones/routes/reparaciones-routes');
+
+// Rutas de control de calidad, get y post
+const controlRoutes = require('../api/controlcalidad/routes/controlcalidad-routes');
+
+// Rutas de las garantias de piezas, get y post
+const garantiapRoutes = require('../api/garantiapieza/routes/garantiapieza-routes');
+
+// Rutas de las segundas salidas, get y post
+const segsalidaRoutes = require('../api/segundasalida/routes/segundasalida-routes');
+
 const loginRoutes= require('../auth/login/routes/login-routes');
 
 
@@ -55,6 +67,10 @@ module.exports = class Routes {
      pedidocompraRoutes.init(router);
      ventasRoutes.init(router);
      devolucionRoutes.init(router);
+     reparacionRoutes.init(router);
+     controlRoutes.init(router);
+     garantiapRoutes.init(router);
+     segsalidaRoutes.init(router);
 
  	router
        .route('/')

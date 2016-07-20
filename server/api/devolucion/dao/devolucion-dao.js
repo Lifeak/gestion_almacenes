@@ -40,6 +40,7 @@ devolucionSchema.statics.getbyId = (id) => {
 
         Devolucion
           .findById(id)
+          .populate('idventa')
           .exec((err, devolucion) => {
               err ? reject(err)
                   : resolve(devolucion);

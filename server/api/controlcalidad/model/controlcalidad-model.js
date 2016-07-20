@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 
 const _controlcalidadSchema = {
     albaran: {type: String, required: true},
+    udsEntregadas: {type:Number, required:true},
     udsRevisadas: {type: Number, required: true},
     noconformes: {type: Number},
-    revisionfin: {type: Boolean, required: true, default:false},
+    revisionfin: {type: String, required: true, default:false},
     pctnoconf: {type: Number},
     noconformesfin: {type: Number},
     udsConformes: {type: Number},

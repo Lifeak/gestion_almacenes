@@ -9,8 +9,8 @@ const _devolucionSchema = {
     fechaEntrada: {type: Date, required: true},
     devuelto:[{
     	modelo: {type: String, required: true},
-    	numserie: {type: Array}
-    	//Se esta usando como string, si se quisiera array, deberiamos cambiar la forma de añadir los productos a devolver
+    	numserie: {type: String, required: true}
+    	//Si se quisiera array, deberiamos cambiar la forma de añadir los productos a devolver
     	}]
 }
 

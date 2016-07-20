@@ -69,7 +69,7 @@
                             </li>
                             <!-- Control de calidad -->
                             <li>
-                              <a href="#">
+                              <a (click)="gcontrolcalidad();">
                                 <i class="fa fa-cogs"></i>
                                 <span>Control de calidad</span>
                               </a>
@@ -87,7 +87,7 @@
                             </li>
                             <!-- Reparaciones -->
                             <li>
-                              <a href="#/almacen">
+                              <a (click)="greparaciones();">
                                 <i class="fa fa-wrench"></i>
                                 <span>Reparaciones</span>
                               </a>
@@ -158,16 +158,16 @@
                                 <span>Devoluciones</span>
                               </a>
                             </li>
-                            <!-- Salidas por averC-a -->
+                            <!-- Salidas por avería -->
                             <li>
-                              <a href="#">
+                              <a (click)="gsegsalidas();">
                                 <i class="fa fa-exclamation-triangle"></i>
                                 <span>Salidas por avería</span>
                               </a>
                             </li>
-                            <!-- GarantC-a -->
+                            <!-- Garantía -->
                             <li>
-                              <a href="#">
+                              <a (click)="ggarantiasp();">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <span>Garantías</span>
                               </a>
@@ -241,13 +241,13 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a (click)="gsegsalidas();" >
                           <i class="fa fa-exclamation-triangle"></i>
                           <span>Salidas por avería</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a (click)="ggarantiasp();" >
                           <i class="fa fa-pencil-square-o"></i>
                           <span>Garantías</span>
                       </a>
@@ -298,7 +298,7 @@
                         <!--  -->
                       </div>
                       <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 col-md-offset-1 col-lg-offset-0 box0">
-                        <a href="javascript:;" >
+                        <a (click)="gsegsalidas();" >
                           <div class="box1">
                             <i class="fa fa-exclamation-triangle fa-3x"></i> 
                             <h3>Salidas por avería</h3>
@@ -307,7 +307,7 @@
                         <!--  -->
                       </div>
                       <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 box0">
-                        <a href="javascript:;" >
+                        <a (click)="ggarantiasp();" >
                           <div class="box1">
                             <i class="fa fa-pencil-square-o fa-3x"></i> 
                             <h3>Garantía</h3>

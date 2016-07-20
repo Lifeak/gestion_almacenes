@@ -11,6 +11,22 @@ import{
 	ROUTER_PROVIDERS
 } from 'angular2/router';
 
+import {SegundaSalidaListCmp} from './login/components/segundasalida/segundasalidalist-cmp';
+import {SegundaSalidaCreateCmp} from './login/components/segundasalida/segundasalidacreate-cmp';
+import {SegundaSalidaDetailsCmp} from './login/components/segundasalida/segundasalidadetails-cmp';
+
+import {GarantiapListCmp} from './login/components/garantiapieza/garantiapiezalist-cmp';
+import {GarantiapCreateCmp} from './login/components/garantiapieza/garantiapiezacreate-cmp';
+import {GarantiapDetailsCmp} from './login/components/garantiapieza/garantiapiezadetails-cmp';
+
+import {ControlListCmp} from './login/components/controlcalidad/controlcalidadlist-cmp';
+import {ControlCreateCmp} from './login/components/controlcalidad/controlcalidadcreate-cmp';
+import {ControlDetailsCmp} from './login/components/controlcalidad/controlcalidaddetails-cmp';
+
+import {ReparacionListCmp} from './login/components/reparaciones/reparacioneslist-cmp';
+import {ReparacionCreateCmp} from './login/components/reparaciones/reparacionescreate-cmp';
+import {ReparacionDetailsCmp} from './login/components/reparaciones/reparacionesdetails-cmp';
+
 import {DevolucionListCmp} from './login/components/devolucion/devolucionlist-cmp';
 import {DevolucionCreateCmp} from './login/components/devolucion/devolucioncreate-cmp';
 import {DevolucionDetailsCmp} from './login/components/devolucion/devoluciondetails-cmp';
@@ -62,6 +78,19 @@ import {AlmacenListCmp} from './login/components/almacen/almacenlist-cmp';
 import {LoginCmp} from './login/components/login-cmp';
 import {App} from './login/app';
 
+
+bootstrap(SegundaSalidaCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(SegundaSalidaListCmp, [HTTP_PROVIDERS]);
+bootstrap(SegundaSalidaDetailsCmp, [HTTP_PROVIDERS]);
+bootstrap(GarantiapCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(GarantiapListCmp, [HTTP_PROVIDERS]);
+bootstrap(GarantiapDetailsCmp, [HTTP_PROVIDERS]);
+bootstrap(ControlCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(ControlListCmp, [HTTP_PROVIDERS]);
+bootstrap(ControlDetailsCmp, [HTTP_PROVIDERS]);
+bootstrap(ReparacionCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(ReparacionListCmp, [HTTP_PROVIDERS]);
+bootstrap(ReparacionDetailsCmp, [HTTP_PROVIDERS]);
 bootstrap(DevolucionCreateCmp, [HTTP_PROVIDERS]);
 bootstrap(DevolucionListCmp, [HTTP_PROVIDERS]);
 bootstrap(DevolucionDetailsCmp, [HTTP_PROVIDERS]);

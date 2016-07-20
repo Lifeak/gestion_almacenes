@@ -5,12 +5,12 @@ const ReparacionesController = require('../controller/reparaciones-controller');
 module.exports = class ReparacionesRoutes {
     static init(router) {
       router
-        .route('/api/reparaciones')
+        .route('/api/reparacion')
         .get(ReparacionesController.getAll)
         .post(ReparacionesController.createReparacion);
 
       router
-        .route('/api/reparaciones/:id')
+        .route('/api/reparacion/:id')
         .get(ReparacionesController.getbyId)
         .delete(ReparacionesController.deleteReparacion);
     }

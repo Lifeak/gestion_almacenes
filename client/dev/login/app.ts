@@ -32,6 +32,10 @@ import {GarantiaService} from './services/garantia/garantia-service';
 import {ComprasService} from './services/pedidocompra/pedidocompra-service';
 import {VentasService} from './services/ventas/ventas-service';
 import {DevolucionService} from './services/devolucion/devolucion-service';
+import {ReparacionService} from './services/reparaciones/reparaciones-service';
+import {ControlService} from './services/controlcalidad/controlcalidad-service';
+import {GarantiapService} from './services/garantiapieza/garantiapieza-service';
+import {SegundaSalidaService} from './services/segundasalida/segundasalida-service';
 // Menu principal
 import {LoginCmp} from './components/login-cmp';
 import {ComprasCmp} from './components/compras-cmp';
@@ -82,10 +86,26 @@ import {CompraDetailsCmp} from './components/pedidocompra/pedidocompradetails-cm
 import {VentaCreateCmp} from './components/ventas/ventascreate-cmp';
 import {VentasListCmp} from './components/ventas/ventaslist-cmp';
 import {VentaDetailsCmp} from './components/ventas/ventasdetails-cmp';
-//Ventas
+//Devoluciones
 import {DevolucionCreateCmp} from './components/devolucion/devolucioncreate-cmp';
 import {DevolucionListCmp} from './components/devolucion/devolucionlist-cmp';
 import {DevolucionDetailsCmp} from './components/devolucion/devoluciondetails-cmp';
+//Reparaciones
+import {ReparacionCreateCmp} from './components/reparaciones/reparacionescreate-cmp';
+import {ReparacionListCmp} from './components/reparaciones/reparacioneslist-cmp';
+import {ReparacionDetailsCmp} from './components/reparaciones/reparacionesdetails-cmp';
+//Control de calidad
+import {ControlCreateCmp} from './components/controlcalidad/controlcalidadcreate-cmp';
+import {ControlListCmp} from './components/controlcalidad/controlcalidadlist-cmp';
+import {ControlDetailsCmp} from './components/controlcalidad/controlcalidaddetails-cmp';
+//Garantía de piezas
+import {GarantiapCreateCmp} from './components/garantiapieza/garantiapiezacreate-cmp';
+import {GarantiapListCmp} from './components/garantiapieza/garantiapiezalist-cmp';
+import {GarantiapDetailsCmp} from './components/garantiapieza/garantiapiezadetails-cmp';
+//Segundas salidas
+import {SegundaSalidaCreateCmp} from './components/segundasalida/segundasalidacreate-cmp';
+import {SegundaSalidaListCmp} from './components/segundasalida/segundasalidalist-cmp';
+import {SegundaSalidaDetailsCmp} from './components/segundasalida/segundasalidadetails-cmp';
 
 
 @Component({
@@ -105,7 +125,11 @@ import {DevolucionDetailsCmp} from './components/devolucion/devoluciondetails-cm
 			AlmacenService,
 			ComprasService,
 			VentasService,
-			DevolucionService]
+			DevolucionService,
+			ReparacionService,
+			ControlService,
+			GarantiapService,
+			SegundaSalidaService]
 })
 
 @RouteConfig([
@@ -162,7 +186,24 @@ import {DevolucionDetailsCmp} from './components/devolucion/devoluciondetails-cm
 	// devolucion
 	{ path: '/ListDevoluciones', name: 'ListDevoluciones', component: DevolucionListCmp},
 	{ path: '/CreateDevolucion', name: 'CreateDevolucion', component: DevolucionCreateCmp},
-	{ path: '/DetailsDevolucion', name: 'DetailsDevolucion', component: DevolucionDetailsCmp}
+	{ path: '/DetailsDevolucion', name: 'DetailsDevolucion', component: DevolucionDetailsCmp},
+	// reparaciones
+	{ path: '/ListReparaciones', name: 'ListReparaciones', component: ReparacionListCmp},
+	{ path: '/CreateReparacion', name: 'CreateReparacion', component: ReparacionCreateCmp},
+	{ path: '/DetailsReparacion', name: 'DetailsReparacion', component: ReparacionDetailsCmp},
+	// control de calidad
+	{ path: '/ListControlCalidad', name: 'ListControlCalidad', component: ControlListCmp},
+	{ path: '/CreateControlCalidad', name: 'CreateControlCalidad', component: ControlCreateCmp},
+	{ path: '/DetailsControlCalidad', name: 'DetailsControlCalidad', component: ControlDetailsCmp},
+	// garantia de piezas
+	{ path: '/ListGarantiaP', name: 'ListGarantiaP', component: GarantiapListCmp},
+	{ path: '/CreateGarantiaP', name: 'CreateGarantiaP', component: GarantiapCreateCmp},
+	{ path: '/DetailsGarantiaP', name: 'DetailsGarantiaP', component: GarantiapDetailsCmp},
+	// segundas salidas
+	{ path: '/ListSegSalidas', name: 'ListSegSalidas', component: SegundaSalidaListCmp},
+	{ path: '/CreateSegSalida', name: 'CreateSegSalida', component: SegundaSalidaCreateCmp},
+	{ path: '/DetailsSegSalida', name: 'DetailsSegSalida', component: SegundaSalidaDetailsCmp}
+
 ])
 export class App {
 	constructor() { }

@@ -146,14 +146,14 @@
                             </li>
                             <!-- Pedidos -->
                             <li>
-                              <a (click)="gventas();" class="active">
+                              <a (click)="gventas();">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Pedidos</span>
                               </a>
                             </li>
                             <!-- Devoluciones -->
                             <li>
-                              <a href="#">
+                              <a (click)="gdevoluciones();" class="active">
                                 <i class="fa fa-refresh"></i>
                                 <span>Devoluciones</span>
                               </a>
@@ -229,13 +229,13 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a (click)="gventas();" class="active" >
+                      <a (click)="gventas();" >
                           <i class="fa fa-shopping-cart"></i>
                           <span>Pedidos</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a (click)="gdevoluciones();" class="active">
                           <i class="fa fa-refresh"></i>
                           <span>Devoluciones</span>
                       </a>
@@ -269,105 +269,96 @@
               <div class="section-container">
                 <div class="row">
                   <div class="col-md-12">
-                    <h1 class="submenu-title">Ventas > Detalles de venta</h1>
+                    <h1 class="submenu-title">Devoluciones > Detalles de la devolución</h1>
                   </div>
                 </div>
                 <br><br>
                 <div class="row">
                   <div class="col-md-8 col-md-offset-2">
-                    <div *ngIf="venta">
-                      <form class="venta-form" [ngFormModel]="ventaForm">
+                    <div *ngIf="devolucion">
+                      <form class="venta-form" [ngFormModel]="devolucionForm">
                       
                         <div class="form-group">
-                          <label for="numPedido">NumPedido: {{venta.numPedido}}</label>
+                          <label for="numPedido">Número de venta: {{devolucion.idventa.numPedido}}</label>
+                        </div>
+                       <div class="form-group">
+                           <label for="cliente">Cliente: {{devolucion.idventa.cliente}}</label>
+                        </div>
+                         <div class="form-group">
+                          <label for="finGarantia">Fin de garantía del producto: {{devolucion.idventa.finGarantia.toString().substring(0,10)}}</label>
                         </div>
                         <div class="form-group">
-                          <label for="cliente">Cliente: {{venta.cliente}}</label>
+                          <label for="fechaEntrada">Fecha de entrada al almacén: {{devolucion.fechaEntrada.toString().substring(0,10)}}</label>
                         </div>
                         <div class="form-group">
-                          <label for="direccionEnvio">Direccion envío: {{venta.direccionEnvio}} ({{venta.ciudad}}) - {{venta.pais}}</label>
-                        </div>
-                        <div class="form-group">
-                          <label for="fechaSalida">Fecha de salida: {{venta.fechaSalida.toString().substring(0,10)}}</label>
-                        </div>
-                        <div class="form-group">
-                          <label for="finGarantia">Fin de garantía: {{venta.finGarantia.toString().substring(0,10)}}</label>
-                        </div>
-                        <div class="form-group">
-                          <label for="transporte">Transporte: {{venta.transporte}}</label>
-                        </div>
-                        <div *ngIf="venta.agente">
-                        <div class="form-group">
-                          <label for="agente">Agente: {{venta.agente}}</label>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="observaciones">Observaciones: </label>
-                          <input [(ngModel)]="venta.observaciones" class="form-control" id="observaciones"/>
-                        </div>
-                        <div *ngIf="venta.lineaventa">
-                         <label><i class="fa fa-list"></i><strong> Líneas de venta:</strong></label>
+                          <label for="tipoDevolucion">Tipo de devolución: {{devolucion.tipoDevolucion}}</label>
+                        </div> 
+                        
+                        <div *ngIf="devolucion">
+                         <label><i class="fa fa-list"></i><strong> Productos devueltos:</strong></label>
                           <br><br>
                           <table class="table table-hover table-responsive">
                             <thead>
                               <tr>
                                 <th>Modelo</th>
-                                <th>Unidades</th>
-                                <th>Tipo de operación</th>
+                                <th>Número de serie</th>
                                 <th></th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let p of venta.lineaventa">
-                                <td>{{p.modelo}}</td>
-                                <td>{{p.unidades}}</td>
-                                <td>{{p.tipoOperacion}}</td>
-
-                                <td ><a  (click)="mo=p.modelo;ud=p.unidades;tO=p.tipoOperacion;ns=p.numSerie" data-toggle="modal" href="#myModal"><i class="fa fa-search"></i>&nbsp;Detalles</a></td>
+                              <tr *ngFor="let lin of devolucion.devuelto">
+                                <td>{{lin.modelo}}</td>
+                                <td>{{lin.numserie}}</td>
+                                <td width="15%"><a (click)="eliminalinea(lin);" ><i class="fa fa-times" aria-hidden="true"></i> Eliminar</a>
                               </tr>
                             </tbody> 
                           </table>
                           
                         </div>
-
-                        <!-- Modal -->
+                        <a data-toggle="modal" href="#myModal"><i class="fa fa-search"></i>&nbsp;Añadir producto para devolver</a>
+                        <!--  Modal -->
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Venta: {{mo}}</h4>
+                                        <h4 class="modal-title">Devolución</h4>
                                     </div>
                                     <div class="modal-body">
-                                      <label for="tO">Tipo de operación: {{tO}}</label><br/>
-                                      <label for="ud">Unidades: {{ud}}</label><br/>
-                                        <table class="table table-hover table-responsive">
-                                        <thead>
-                                          <tr>
-                                            <th>Número de serie</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr *ngFor="let n of ns">
-                                            <td>{{n}}</td>
-                                          </tr>
-                                        </tbody> 
-                                      </table>
-                                    </div> 
+                                    <p class="normas">(*)  Campo obligatorio</p>      
+                                     <div class="form-group">
+                                        <label for="modelo">Modelo (*):</label>
+                                        <select name="modelo" class="form-control placeholder-no-fix" id="modelo" 
+                                              ngControl="modelo"
+                                              [class.formulario-error]="!devolucionForm.valid">
+                                              <option></option>
+                                              <option *ngFor="let model of modelos" >{{model}}</option>
+                                      </select>
+                                      </div>                                    
+                                      <div class="form-group">
+                                          <label for="numserie">Número de serie (*):</label>
+                                            <select name="numserie" class="form-control placeholder-no-fix" id="numserie" 
+                                              ngControl="numserie"
+                                              [class.formulario-error]="!devolucionForm.valid">
+                                              <option></option>
+                                              <option *ngFor="let num of numeros" >{{num}}</option>
+                                            </select>
+                                      </div>           
                                     <div class="modal-footer centered">
                                         <a  data-dismiss="modal" class="btn btn-formulario-sm pull-centered margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</a>
-                                       <!-- <a (click)="plus();" data-dismiss="modal" aria-hidden="true" class="btn btn-formulario-sm pull-centered margen-izda"><i class="fa fa-check" aria-hidden="true"></i> Guardar</a>-->
+                                       <a (click)="guardalinea(devolucionForm);" data-dismiss="modal" aria-hidden="true" class="btn btn-formulario-sm pull-centered margen-izda"><i class="fa fa-check" aria-hidden="true"></i> Guardar</a>
                                     </div>
-                                </div>
-                            </div>
+                                  </div>
+                               </div>
+                           </div>
                         </div>
                        <!-- modal -->
                       </form>
                     </div>
                     <p>
                       <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                      <button (click)="delete(venta)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar venta</button>
-                      <button (click)="edit(venta)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar venta</button>
+                      <button (click)="delete(devolucion)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar devolución</button>
+                      <button (click)="edit(devolucion)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar devolución</button>
                     </p>
                   </div>
                 </div>

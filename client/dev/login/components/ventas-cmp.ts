@@ -95,6 +95,12 @@ export class VentasCmp {
    gdevoluciones(){
      this.router.navigate(['/ListDevoluciones']);
    }
+   ggarantiasp(){
+     this.router.navigate(['/ListGarantiaP']);
+   }
+   gsegsalidas(){
+     this.router.navigate(['/ListSegSalidas']);
+   }
 
    gusuarios() {
      if (localStorage.getItem(this.token) == "encargado") {

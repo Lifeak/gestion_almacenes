@@ -37,7 +37,6 @@ garantiapSchema.statics.createGarantiapieza = (garantiapieza) => {
     return new Promise((resolve, reject) => {
       if (!_.isObject(garantiapieza))
           return reject(new TypeError('Garantiapieza is not a valid object.'));
-      
       let _garantiapieza = new Garantiapieza(garantiapieza);
       _garantiapieza.save((err, saved) => {
         err ? reject(err)

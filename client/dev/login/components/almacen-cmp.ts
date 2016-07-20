@@ -89,6 +89,12 @@ export class AlmacenCmp {
    gclientes() {
      this.router.navigate(['/ListClientes']);
    }
+   greparaciones(){
+      this.router.navigate(['/ListReparaciones']);
+   }
+   gcontrolcalidad(){
+     this.router.navigate(['/ListControlCalidad']);
+   }
 
    gusuarios() {
      if (localStorage.getItem(this.token) == "encargado") {

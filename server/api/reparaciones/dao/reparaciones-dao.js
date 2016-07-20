@@ -43,6 +43,7 @@ reparacionesSchema.statics.createReparacion = (reparacion) => {
         err ? reject(err)
             : resolve(saved);
       });
+      console.log("dao createReparacion");
     });
 }
 

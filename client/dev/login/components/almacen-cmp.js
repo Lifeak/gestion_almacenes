@@ -63,6 +63,12 @@ var AlmacenCmp = (function () {
     AlmacenCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    AlmacenCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    AlmacenCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
     AlmacenCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

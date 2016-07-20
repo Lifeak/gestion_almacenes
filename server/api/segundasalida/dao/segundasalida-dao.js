@@ -2,7 +2,8 @@
 
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
-const segsalidaSchema = require('../model/segundsalida-model');
+const segsalidaSchema = require('../model/segundasalida-model');
+const _ventaSchema = require('../../ventas/model/ventas-model');
 const _ = require('lodash');
 
 
@@ -26,6 +27,7 @@ segsalidaSchema.statics.getbyId = (id) => {
 
         SegSalida
           .findById(id)
+          .populate('idventa')
           .exec((err, segsalida) => {
               err ? reject(err)
                   : resolve(segsalida);
@@ -33,7 +35,21 @@ segsalidaSchema.statics.getbyId = (id) => {
     });
 }
 
+segsalidaSchema.statics.getAllPopulate = () => {
+    return new Promise((resolve, reject) => {
+        let _query = {};
+        SegSalida
+          .find(_query)
+          .populate('idventa')
+          .exec((err, segsalidas) => {
+              err ? reject(err)
+                  : resolve(segsalidas);
+          });
+      });
+}
+
 segsalidaSchema.statics.createSegundasalida = (segsalida) => {
+  console.log(segsalida);
     return new Promise((resolve, reject) => {
       if (!_.isObject(segsalida))
           return reject(new TypeError('segsalida is not a valid object.'));

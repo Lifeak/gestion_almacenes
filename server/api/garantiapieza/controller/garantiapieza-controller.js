@@ -19,12 +19,12 @@ module.exports = class GarantiapiezaController {
   }
 
   static createGarantiapieza(req, res) {
+    console.log("createGarantiapieza en controller");
       let _garantia = req.body;
        GarantiapiezaDAO
         .createGarantiapieza(_garantia)
         .then(garantia => res.status(201).json(garantia))
         .catch(error => res.status(400).json(error));
-        console.log("fin instruccion");
   }
 
   static deleteGarantiapieza(req, res) {

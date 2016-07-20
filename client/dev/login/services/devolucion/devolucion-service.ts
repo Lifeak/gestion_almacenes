@@ -13,11 +13,12 @@ import {
 } from 'angular2/http';
 
 import 'rxjs/add/operator/map';
+import {Venta} from '../ventas/ventas-service';
 
 export class Devolucion {
   constructor(
     public _id: string,
-    public idventa: string,
+    public idventa: Venta,
     public tipoDevolucion:string, 
     public fechaEntrada:Date, 
     public devuelto :[{

@@ -24,6 +24,10 @@ var garantia_service_1 = require('./services/garantia/garantia-service');
 var pedidocompra_service_1 = require('./services/pedidocompra/pedidocompra-service');
 var ventas_service_1 = require('./services/ventas/ventas-service');
 var devolucion_service_1 = require('./services/devolucion/devolucion-service');
+var reparaciones_service_1 = require('./services/reparaciones/reparaciones-service');
+var controlcalidad_service_1 = require('./services/controlcalidad/controlcalidad-service');
+var garantiapieza_service_1 = require('./services/garantiapieza/garantiapieza-service');
+var segundasalida_service_1 = require('./services/segundasalida/segundasalida-service');
 // Menu principal
 var login_cmp_1 = require('./components/login-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
@@ -74,10 +78,26 @@ var pedidocompradetails_cmp_1 = require('./components/pedidocompra/pedidocomprad
 var ventascreate_cmp_1 = require('./components/ventas/ventascreate-cmp');
 var ventaslist_cmp_1 = require('./components/ventas/ventaslist-cmp');
 var ventasdetails_cmp_1 = require('./components/ventas/ventasdetails-cmp');
-//Ventas
+//Devoluciones
 var devolucioncreate_cmp_1 = require('./components/devolucion/devolucioncreate-cmp');
 var devolucionlist_cmp_1 = require('./components/devolucion/devolucionlist-cmp');
 var devoluciondetails_cmp_1 = require('./components/devolucion/devoluciondetails-cmp');
+//Reparaciones
+var reparacionescreate_cmp_1 = require('./components/reparaciones/reparacionescreate-cmp');
+var reparacioneslist_cmp_1 = require('./components/reparaciones/reparacioneslist-cmp');
+var reparacionesdetails_cmp_1 = require('./components/reparaciones/reparacionesdetails-cmp');
+//Control de calidad
+var controlcalidadcreate_cmp_1 = require('./components/controlcalidad/controlcalidadcreate-cmp');
+var controlcalidadlist_cmp_1 = require('./components/controlcalidad/controlcalidadlist-cmp');
+var controlcalidaddetails_cmp_1 = require('./components/controlcalidad/controlcalidaddetails-cmp');
+//Garantía de piezas
+var garantiapiezacreate_cmp_1 = require('./components/garantiapieza/garantiapiezacreate-cmp');
+var garantiapiezalist_cmp_1 = require('./components/garantiapieza/garantiapiezalist-cmp');
+var garantiapiezadetails_cmp_1 = require('./components/garantiapieza/garantiapiezadetails-cmp');
+//Segundas salidas
+var segundasalidacreate_cmp_1 = require('./components/segundasalida/segundasalidacreate-cmp');
+var segundasalidalist_cmp_1 = require('./components/segundasalida/segundasalidalist-cmp');
+var segundasalidadetails_cmp_1 = require('./components/segundasalida/segundasalidadetails-cmp');
 var App = (function () {
     function App() {
     }
@@ -98,7 +118,11 @@ var App = (function () {
                 almacen_service_1.AlmacenService,
                 pedidocompra_service_1.ComprasService,
                 ventas_service_1.VentasService,
-                devolucion_service_1.DevolucionService]
+                devolucion_service_1.DevolucionService,
+                reparaciones_service_1.ReparacionService,
+                controlcalidad_service_1.ControlService,
+                garantiapieza_service_1.GarantiapService,
+                segundasalida_service_1.SegundaSalidaService]
         }),
         router_1.RouteConfig([
             //Menu principal
@@ -154,7 +178,23 @@ var App = (function () {
             // devolucion
             { path: '/ListDevoluciones', name: 'ListDevoluciones', component: devolucionlist_cmp_1.DevolucionListCmp },
             { path: '/CreateDevolucion', name: 'CreateDevolucion', component: devolucioncreate_cmp_1.DevolucionCreateCmp },
-            { path: '/DetailsDevolucion', name: 'DetailsDevolucion', component: devoluciondetails_cmp_1.DevolucionDetailsCmp }
+            { path: '/DetailsDevolucion', name: 'DetailsDevolucion', component: devoluciondetails_cmp_1.DevolucionDetailsCmp },
+            // reparaciones
+            { path: '/ListReparaciones', name: 'ListReparaciones', component: reparacioneslist_cmp_1.ReparacionListCmp },
+            { path: '/CreateReparacion', name: 'CreateReparacion', component: reparacionescreate_cmp_1.ReparacionCreateCmp },
+            { path: '/DetailsReparacion', name: 'DetailsReparacion', component: reparacionesdetails_cmp_1.ReparacionDetailsCmp },
+            // control de calidad
+            { path: '/ListControlCalidad', name: 'ListControlCalidad', component: controlcalidadlist_cmp_1.ControlListCmp },
+            { path: '/CreateControlCalidad', name: 'CreateControlCalidad', component: controlcalidadcreate_cmp_1.ControlCreateCmp },
+            { path: '/DetailsControlCalidad', name: 'DetailsControlCalidad', component: controlcalidaddetails_cmp_1.ControlDetailsCmp },
+            // garantia de piezas
+            { path: '/ListGarantiaP', name: 'ListGarantiaP', component: garantiapiezalist_cmp_1.GarantiapListCmp },
+            { path: '/CreateGarantiaP', name: 'CreateGarantiaP', component: garantiapiezacreate_cmp_1.GarantiapCreateCmp },
+            { path: '/DetailsGarantiaP', name: 'DetailsGarantiaP', component: garantiapiezadetails_cmp_1.GarantiapDetailsCmp },
+            // segundas salidas
+            { path: '/ListSegSalidas', name: 'ListSegSalidas', component: segundasalidalist_cmp_1.SegundaSalidaListCmp },
+            { path: '/CreateSegSalida', name: 'CreateSegSalida', component: segundasalidacreate_cmp_1.SegundaSalidaCreateCmp },
+            { path: '/DetailsSegSalida', name: 'DetailsSegSalida', component: segundasalidadetails_cmp_1.SegundaSalidaDetailsCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

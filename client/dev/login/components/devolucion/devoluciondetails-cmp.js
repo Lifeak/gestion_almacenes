@@ -18,6 +18,7 @@ var isloggedin_1 = require('../../services/isloggedin');
 var devolucion_service_1 = require('../../services/devolucion/devolucion-service');
 var login_service_1 = require('../../services/login-service');
 var user_service_1 = require('../../services/user/user-service');
+var ventas_service_1 = require('../../services/ventas/ventas-service');
 var DevolucionDetailsCmp = (function () {
     function DevolucionDetailsCmp(fb, router, _routeParams, _userService, _devolucionService, _loginService) {
         this.router = router;
@@ -25,6 +26,9 @@ var DevolucionDetailsCmp = (function () {
         this._userService = _userService;
         this._devolucionService = _devolucionService;
         this._loginService = _loginService;
+        this.modelos = [];
+        this.numeros = [];
+        this.prod = [];
         this.devolucionForm = fb.group({
             "idventa": ["", common_1.Validators.required],
             "tipoDevolucion": ["", common_1.Validators.required],
@@ -36,12 +40,31 @@ var DevolucionDetailsCmp = (function () {
     }
     DevolucionDetailsCmp.prototype.ngOnInit = function () {
         var _this = this;
+        this.numeros = [];
+        this.prod = [];
+        this.modelos = [];
         var id = this._routeParams.get('id');
         this._devolucionService
             .getDevolucionID(id)
             .subscribe(function (devolucion) {
             _this.devolucion = devolucion;
-            //this.mat = this.pedidocompras.productos;
+            _this.prod = _this.devolucion.devuelto;
+            for (var i = 0; i < _this.devolucion.idventa.lineaventa.length; i++) {
+                _this.modelos.push(_this.devolucion.idventa.lineaventa[i].modelo);
+                for (var k = 0; k < _this.devolucion.idventa.lineaventa[i].numSerie.length; k++) {
+                    _this.numeros.push(_this.devolucion.idventa.lineaventa[i].numSerie[k]);
+                }
+            }
+            /*for (var i = 0; i < this.devolucion.devuelto.length; i++) {
+              alert("this.numeros:"+this.numeros.toString());
+              alert(JSON.stringify(this.devolucion.devuelto[i]));
+              var pos1:number = JSON.stringify(this.devolucion.devuelto[i]).search('"modelo:""');
+              alert(pos1);
+              if (this.numeros.indexOf(this.devolucion.devuelto[i].numSerie)>0)
+                  this.numeros.splice(this.numeros.indexOf(this.devolucion.devuelto[i].numSerie,1));
+              
+              
+            }*/
         });
     };
     DevolucionDetailsCmp.prototype.gotoIndex = function () {
@@ -55,61 +78,47 @@ var DevolucionDetailsCmp = (function () {
             _this.devolucion = devolucion;
         });
     };
-    /*
-      // Nos permite añadir entregas de un modelo en concreto de un pedido de compra en particular
-      plus(datos: FormData, modelo: string, pedidocompra: Pedidocompra) {
-        var fechaEntrega: Date = this.pedidocompraForm.controls['fechaEntrega'].value;
-        var albaran: string = this.pedidocompraForm.controls['albaran'].value;
-        var udsEntregadas: number = this.pedidocompraForm.controls['udsEntregadas'].value;
-        if (fechaEntrega == null || albaran == "" || udsEntregadas.toString() == "") {
-          alert("Debes rellenar todos los campos sobre la entrega.");
-        } else {
-          (<Control>this.pedidocompraForm.controls['fechaEntrega']).updateValue("");
-          (<Control>this.pedidocompraForm.controls['albaran']).updateValue("");
-          (<Control>this.pedidocompraForm.controls['udsEntregadas']).updateValue("");
-         var nuevo: Object = {udsEntregadas, fechaEntrega, albaran};
-    
-          for (var i = 0; i < pedidocompra.productos.length; i++) {
-            if (pedidocompra.productos[i].modelo==modelo){
-              pedidocompra.productos[i].udsPendientes=pedidocompra.productos[i].udsPendientes-udsEntregadas;
-              pedidocompra.productos[i].entregas.push(nuevo);
-            }
-          }
+    DevolucionDetailsCmp.prototype.guardalinea = function (datos) {
+        var modelo = this.devolucionForm.controls['modelo'].value;
+        var numserie = this.devolucionForm.controls['numserie'].value;
+        if (modelo == "" || numserie == "") {
+            alert("Debes rellenar los campos");
         }
-        
-      }
-    
-      // Nos ofrece el listado de entregas de un producto concreto de un pedido de compra en particular
-      searchentregas(pedidocompra:Pedidocompra, modelo:string){
-        for (var i = 0; i < pedidocompra.productos.length; i++) {
-            if (pedidocompra.productos[i].modelo==modelo){
-              this.selectModelo = modelo;
-              this.pedidas = pedidocompra.productos[i].udsPedidas;
-              this.pendientes = pedidocompra.productos[i].udsPendientes;
-              this.entregas = [];
-              this.entregas = pedidocompra.productos[i].entregas;
-            }
-          }
-    
-      }
-    */
-    //Esta función guarda los cambios que se hayan realizado en un pedido
-    DevolucionDetailsCmp.prototype.save = function (devolucion) {
+        else {
+            var m = { modelo: modelo, numserie: numserie };
+            this.prod.push(m);
+            this.numeros.splice(this.numeros.indexOf(numserie), 1);
+            this.devolucionForm.controls['modelo'].updateValue("");
+            this.devolucionForm.controls['numserie'].updateValue("");
+        }
+    };
+    DevolucionDetailsCmp.prototype.eliminalinea = function (lin) {
+        var pos = this.prod.indexOf(lin);
+        this.prod.splice(pos, 1);
+    };
+    //Esta función guarda los cambios que se hayan realizado en una devolución
+    DevolucionDetailsCmp.prototype.edit = function (devolucion) {
         var _this = this;
         var id = this._routeParams.get('id');
-        this._devolucionService
-            .add(devolucion.idventa, devolucion.tipoDevolucion, devolucion.fechaEntrada, devolucion.devuelto)
-            .subscribe(function (m) {
-            _this.devolucionForm.controls['idventa'].updateValue("");
-            _this.devolucionForm.controls['tipoDevolucion'].updateValue("");
-            _this.devolucionForm.controls['fechaEntrada'].updateValue("");
-        });
+        var devuelto = this.prod;
+        if (this.prod.length == 0) {
+            alert("Debes añadir los materiales del pedido.");
+        }
+        else {
+            this._devolucionService
+                .add(devolucion.idventa._id, devolucion.tipoDevolucion, devolucion.fechaEntrada, devuelto)
+                .subscribe(function (m) {
+                _this.devolucionForm.controls['idventa'].updateValue("");
+                _this.devolucionForm.controls['tipoDevolucion'].updateValue("");
+                _this.devolucionForm.controls['fechaEntrada'].updateValue("");
+            });
+        }
         this._devolucionService
             .remove(id)
             .subscribe(function () {
             return _this.devolucion;
         });
-        this.router.navigate(['/ListDevolucion']);
+        this.router.navigate(['/ListDevoluciones']);
     };
     DevolucionDetailsCmp.prototype.delete = function (devolucion) {
         var _this = this;
@@ -118,7 +127,7 @@ var DevolucionDetailsCmp = (function () {
             .subscribe(function () {
             return _this.devolucion;
         });
-        this.router.navigate(['/ListDevolucion']);
+        this.router.navigate(['/ListDevoluciones']);
     };
     DevolucionDetailsCmp.prototype.logout = function () {
         this._loginService.logout();
@@ -185,6 +194,10 @@ var DevolucionDetailsCmp = (function () {
         core_1.Input(), 
         __metadata('design:type', devolucion_service_1.Devolucion)
     ], DevolucionDetailsCmp.prototype, "devolucion", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', ventas_service_1.Venta)
+    ], DevolucionDetailsCmp.prototype, "vent", void 0);
     DevolucionDetailsCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/devolucion/templates/details.html',

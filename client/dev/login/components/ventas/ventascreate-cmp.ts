@@ -25,12 +25,13 @@ import {Venta,VentasService} from '../../services/ventas/ventas-service';
 import {UserService} from '../../services/user/user-service';
 import {Modelo} from '../../services/modelo/modelo-service';
 import {Garantia} from '../../services/garantia/garantia-service';
+import {GarantiapService} from '../../services/garantiapieza/garantiapieza-service';
 
 
 @Component({
   templateUrl: 'client/dev/ventas/templates/create.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [LoginService, UserService,VentasService]
+  providers: [LoginService, UserService,VentasService, GarantiapService]
 })
 
   @CanActivate(() => isLogged())
@@ -43,8 +44,10 @@ export class VentaCreateCmp{
   modelos: Modelo[]=[];
   paises: Garantia[]=[];
   series: Array<string>=[];
+  long:number=0;
+  generagarantia: Array<string>=[]; // Almacenará los numeros de serie de todos los productos vendidos para generar sus garantías
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _userService: UserService,private _ventasService: VentasService, private _loginService: LoginService){
+  constructor(@Inject(FormBuilder) fb: FormBuilder,private router: Router, private _routeParams: RouteParams, private _userService: UserService,private _ventasService: VentasService, private _loginService: LoginService, private _garantiapService: GarantiapService){
     this.ventaForm = fb.group({
       "cliente": ["", Validators.required],
       "direccionEnvio": ["", Validators.required],
@@ -109,6 +112,15 @@ export class VentaCreateCmp{
                 var tiempo = this.paises[i].tiempo;
             }
             finGarantia = this.setfinGarantia(finGarantia, tiempo);
+            // Añadimos las garantias de los productos vendidos
+            var idp = this.generagarantia.pop();
+                while(this.long>0){
+                  this.long = this.long-1;
+                  this._garantiapService.add(idp,finGarantia).subscribe((m) => {
+                    });;
+                  idp = this.generagarantia.pop();
+                  this.generagarantia.splice(this.generagarantia.indexOf(idp),1);
+                }
             this._ventasService
             .add(cliente,direccionEnvio,ciudad,pais,numPedido,fechaSalida,finGarantia,transporte,agente,observaciones,lineas)
             .subscribe((m) => {
@@ -123,7 +135,10 @@ export class VentaCreateCmp{
             (<Control>this.ventaForm.controls['observaciones']).updateValue("");
             });
             this.lineas=[];
+            
+
             this.gotoIndex();
+            
         }
       }
   }
@@ -150,6 +165,11 @@ export class VentaCreateCmp{
       var unidades: number = this.ventaForm.controls['unidades'].value;
       var tipoOperacion: string = this.ventaForm.controls['tipoOperacion'].value;
       var numSerie: Array<string>=this.series;
+      // Añadimos los números de serie para generar las garantias
+      for (var i = 0; i < this.series.length; i++) {
+        this.long=this.long+1;
+        this.generagarantia.push(this.series[i]);
+      }
     if (modelo == "" || unidades == null || tipoOperacion == ""){
       alert("Debes rellenar todos los campos");
     }else{
@@ -168,21 +188,43 @@ export class VentaCreateCmp{
 
   // Elimina una linea del pedido
   eliminalinea(lin:Object){
-      let pos = this.lineas.indexOf(lin);
+      let pos = this.lineas.indexOf(lin);  
+      // ELiminamos los numeros de serie(de la linea) de la seccion de los numeros que hay que añadir en garantias
+      this.long=this.long-1;
+      for (var i = 0; i < this.lineas.length; i++) {
+         if (i==pos){
+           let a= JSON.stringify(this.lineas[i]).lastIndexOf("\"numSerie\":[\"");
+           let b =JSON.stringify(this.lineas[i]).lastIndexOf('"');
+           var quita:string = JSON.stringify(this.lineas[i]).substring(a+13,b);
+         }
+       } 
+       var aux:string="";
+       for (var i = 0; i < quita.length; i++) {
+          if(quita[i]=="\""||quita[i]==","){
+            if(quita[i]==","){
+              this.long=this.long-1;
+            }
+            let posaux = this.generagarantia.indexOf(aux);
+            this.generagarantia.splice(posaux,1);
+
+            aux = "";              
+          }
+          else{
+              aux=aux+quita[i];
+          }
+       }                   
+       // Eliminamos la linea
       this.lineas.splice(pos,1);
   }
 
   // Funcion que asigna la fecha de fin de garantia en función de la fecha de salida y del tiempo de garantia
   // asignado a cada país.
   setfinGarantia(finGarantia: Date, tiempo:number){
-   // alert("Entramos a setfinGarantia con fecha "+finGarantia+" y los meses que tenemos que sumar son "+tiempo);
     var fecha: Date = new Date();
     var dia: number = parseInt(finGarantia.toString().substring(8,10));
     var mes:number = parseInt(finGarantia.toString().substring(5,7));
     var año: number = parseInt(finGarantia.toString().substring(0,4));
-   // alert("el dia es "+dia + " y el mes "+mes +" y el año "+año);
     fecha.setFullYear(año,mes-1,dia);
-    //alert("la fecha es "+fecha);
     fecha.setMonth(fecha.getMonth()+tiempo);
     finGarantia = fecha;
     return finGarantia;
