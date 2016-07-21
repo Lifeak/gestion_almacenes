@@ -63,6 +63,36 @@ var ComprasListCmp = (function () {
     ComprasListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    ComprasListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ComprasListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ComprasListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    ComprasListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ComprasListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ComprasListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ComprasListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ComprasListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ComprasListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ComprasListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     ComprasListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -86,18 +116,6 @@ var ComprasListCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    ComprasListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    ComprasListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    ComprasListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
-    };
-    ComprasListCmp.prototype.gpedidocompra = function () {
-        this.router.navigate(['/ListCompras']);
     };
     ComprasListCmp.prototype.logout = function () {
         this._loginService.logout();

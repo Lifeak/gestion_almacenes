@@ -116,5 +116,26 @@ export class AdminCmp {
   gclientes() {
     this.router.navigate(['/ListClientes']);
   }
+  gcontrolcalidad(){
+    this.router.navigate(['/ListControlCalidad']);
+  }
+  greparaciones(){
+    this.router.navigate(['/ListReparaciones']);
+  }
+  gpedidocompras(){
+    this.router.navigate(['/ListCompras']);
+  }
+  gventas(){
+    this.router.navigate(['/ListVentas']);
+  }
+  gdevoluciones(){
+    this.router.navigate(['/ListDevoluciones']);
+  }
+  gsegsalidas(){
+    this.router.navigate(['/ListSegSalidas']);
+  }
+  ggarantiasp(){
+    this.router.navigate(['/ListGarantiaP']);
+  }
 
 }

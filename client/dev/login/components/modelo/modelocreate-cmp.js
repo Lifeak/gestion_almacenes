@@ -111,6 +111,36 @@ var ModeloCreateCmp = (function () {
     ModeloCreateCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    ModeloCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ModeloCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ModeloCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    ModeloCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ModeloCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ModeloCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ModeloCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ModeloCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ModeloCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ModeloCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     ModeloCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -134,15 +164,6 @@ var ModeloCreateCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    ModeloCreateCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    ModeloCreateCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    ModeloCreateCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

@@ -124,6 +124,27 @@ var UserCreateCmp = (function () {
     UserCreateCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    UserCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    UserCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    UserCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    UserCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    UserCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    UserCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    UserCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)

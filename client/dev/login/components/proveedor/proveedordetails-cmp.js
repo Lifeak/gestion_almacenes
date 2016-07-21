@@ -171,6 +171,36 @@ var ProveedorDetailsCmp = (function () {
     ProveedorDetailsCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    ProveedorDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProveedorDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProveedorDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    ProveedorDetailsCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ProveedorDetailsCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ProveedorDetailsCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ProveedorDetailsCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ProveedorDetailsCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ProveedorDetailsCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ProveedorDetailsCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     ProveedorDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -194,18 +224,6 @@ var ProveedorDetailsCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    ProveedorDetailsCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    ProveedorDetailsCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    ProveedorDetailsCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
-    };
-    ProveedorDetailsCmp.prototype.gpedidocompra = function () {
-        this.router.navigate(['/CreateCompra']);
     };
     __decorate([
         core_1.Input(), 

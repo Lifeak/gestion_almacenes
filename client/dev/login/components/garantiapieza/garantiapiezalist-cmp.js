@@ -52,6 +52,36 @@ var GarantiapListCmp = (function () {
     GarantiapListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    GarantiapListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    GarantiapListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    GarantiapListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    GarantiapListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    GarantiapListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    GarantiapListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    GarantiapListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    GarantiapListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    GarantiapListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    GarantiapListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     GarantiapListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -75,18 +105,6 @@ var GarantiapListCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    GarantiapListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    GarantiapListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    GarantiapListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
-    };
-    GarantiapListCmp.prototype.gpedidocompra = function () {
-        this.router.navigate(['/ListCompras']);
     };
     GarantiapListCmp.prototype.logout = function () {
         this._loginService.logout();

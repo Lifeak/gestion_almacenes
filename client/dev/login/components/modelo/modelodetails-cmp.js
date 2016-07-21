@@ -127,18 +127,6 @@ var ModeloDetailsCmp = (function () {
     ModeloDetailsCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
-    ModeloDetailsCmp.prototype.gproductos = function () {
-        this.router.navigate(['/ListProductos']);
-    };
-    ModeloDetailsCmp.prototype.gpiezas = function () {
-        this.router.navigate(['/ListPiezas']);
-    };
-    ModeloDetailsCmp.prototype.gmodelos = function () {
-        this.router.navigate(['/ListModelos']);
-    };
-    ModeloDetailsCmp.prototype.gproveedores = function () {
-        this.router.navigate(['/ListProveedores']);
-    };
     ModeloDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -163,6 +151,18 @@ var ModeloDetailsCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
+    ModeloDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
     ModeloDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -171,6 +171,27 @@ var ModeloDetailsCmp = (function () {
     };
     ModeloDetailsCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
+    };
+    ModeloDetailsCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ModeloDetailsCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ModeloDetailsCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ModeloDetailsCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ModeloDetailsCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ModeloDetailsCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ModeloDetailsCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
     };
     __decorate([
         core_1.Input(), 

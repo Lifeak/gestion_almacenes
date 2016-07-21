@@ -157,6 +157,36 @@ var DevolucionDetailsCmp = (function () {
     DevolucionDetailsCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    DevolucionDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    DevolucionDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    DevolucionDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    DevolucionDetailsCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    DevolucionDetailsCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    DevolucionDetailsCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    DevolucionDetailsCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    DevolucionDetailsCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    DevolucionDetailsCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    DevolucionDetailsCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     DevolucionDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -180,15 +210,6 @@ var DevolucionDetailsCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    DevolucionDetailsCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    DevolucionDetailsCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    DevolucionDetailsCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

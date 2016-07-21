@@ -138,6 +138,36 @@ var DevolucionCreateCmp = (function () {
     DevolucionCreateCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    DevolucionCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    DevolucionCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    DevolucionCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    DevolucionCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    DevolucionCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    DevolucionCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    DevolucionCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    DevolucionCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    DevolucionCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    DevolucionCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     DevolucionCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -161,15 +191,6 @@ var DevolucionCreateCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    DevolucionCreateCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    DevolucionCreateCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    DevolucionCreateCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

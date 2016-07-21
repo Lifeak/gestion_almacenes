@@ -68,6 +68,36 @@ var PiezaListCmp = (function () {
     PiezaListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    PiezaListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    PiezaListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    PiezaListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    PiezaListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    PiezaListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    PiezaListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    PiezaListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    PiezaListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    PiezaListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    PiezaListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     PiezaListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -91,15 +121,6 @@ var PiezaListCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    PiezaListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    PiezaListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    PiezaListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     PiezaListCmp = __decorate([
         core_1.Component({

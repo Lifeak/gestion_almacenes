@@ -129,6 +129,36 @@ var ProductoDetailsCmp = (function () {
     ProductoDetailsCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    ProductoDetailsCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProductoDetailsCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProductoDetailsCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    ProductoDetailsCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ProductoDetailsCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ProductoDetailsCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ProductoDetailsCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ProductoDetailsCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ProductoDetailsCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ProductoDetailsCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     ProductoDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -152,15 +182,6 @@ var ProductoDetailsCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    ProductoDetailsCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    ProductoDetailsCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    ProductoDetailsCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

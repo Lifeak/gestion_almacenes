@@ -52,6 +52,36 @@ var ProveedorListCmp = (function () {
     ProveedorListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    ProveedorListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    ProveedorListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ProveedorListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    ProveedorListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ProveedorListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ProveedorListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ProveedorListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ProveedorListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ProveedorListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ProveedorListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     ProveedorListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -76,15 +106,6 @@ var ProveedorListCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
-    ProveedorListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    ProveedorListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    ProveedorListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
-    };
     ProveedorListCmp.prototype.logout = function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
@@ -100,10 +121,6 @@ var ProveedorListCmp = (function () {
     };
     ProveedorListCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
-    };
-    ProveedorListCmp.prototype.gpedidocompra = function () {
-        alert("Entro en pedido compra");
-        this.router.navigate(['/CreateCompra']);
     };
     ProveedorListCmp = __decorate([
         core_1.Component({

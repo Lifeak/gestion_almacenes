@@ -95,6 +95,21 @@ export class AlmacenCmp {
    gcontrolcalidad(){
      this.router.navigate(['/ListControlCalidad']);
    }
+   gpedidocompras(){
+     this.router.navigate(['/ListCompras']);
+   }
+   gventas(){
+     this.router.navigate(['/ListVentas']);
+   }
+   gdevoluciones(){
+     this.router.navigate(['/ListDevoluciones']);
+   }
+   gsegsalidas(){
+     this.router.navigate(['/ListSegSalidas']);
+   }
+   ggarantiasp(){
+     this.router.navigate(['/ListGarantiaP']);
+   }
 
    gusuarios() {
      if (localStorage.getItem(this.token) == "encargado") {

@@ -212,6 +212,36 @@ var SegundaSalidaCreateCmp = (function () {
     SegundaSalidaCreateCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    SegundaSalidaCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    SegundaSalidaCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    SegundaSalidaCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    SegundaSalidaCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    SegundaSalidaCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    SegundaSalidaCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    SegundaSalidaCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    SegundaSalidaCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    SegundaSalidaCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    SegundaSalidaCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     SegundaSalidaCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -235,15 +265,6 @@ var SegundaSalidaCreateCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    SegundaSalidaCreateCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    SegundaSalidaCreateCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    SegundaSalidaCreateCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

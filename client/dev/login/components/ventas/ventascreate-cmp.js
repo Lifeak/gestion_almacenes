@@ -32,6 +32,7 @@ var VentaCreateCmp = (function () {
         this.paises = [];
         this.series = [];
         this.long = 0;
+        this.error = "";
         this.generagarantia = []; // Almacenará los numeros de serie de todos los productos vendidos para generar sus garantías
         this.ventaForm = fb.group({
             "cliente": ["", common_1.Validators.required],
@@ -72,7 +73,8 @@ var VentaCreateCmp = (function () {
     VentaCreateCmp.prototype.save = function (datos) {
         var _this = this;
         if (this.lineas.length == 0) {
-            alert("Debes introducir las lineas de pedido");
+            //  alert("Debes introducir las lineas de pedido");
+            this.error = "Debes introducir las lineas de pedido";
         }
         else {
             var cliente = this.ventaForm.controls['cliente'].value;
@@ -235,6 +237,36 @@ var VentaCreateCmp = (function () {
     VentaCreateCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    VentaCreateCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    VentaCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    VentaCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    VentaCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    VentaCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    VentaCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    VentaCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    VentaCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    VentaCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    VentaCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     VentaCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -258,15 +290,6 @@ var VentaCreateCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    VentaCreateCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    VentaCreateCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    VentaCreateCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

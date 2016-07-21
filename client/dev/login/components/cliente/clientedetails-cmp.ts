@@ -135,28 +135,49 @@ export class ClienteDetailsCmp implements OnInit {
     this.router.navigate(['/Admin']);
   }
 
-  gproductos() {
-    this.router.navigate(['/ListProductos']);
-  }
-  gpiezas() {
-    this.router.navigate(['/ListPiezas']);
-  }
-  gmodelos() {
-    this.router.navigate(['/ListModelos']);
-  }
-  gproveedores() {
-    this.router.navigate(['/ListProveedores']);
-  }
+gproductos() {
+     this.router.navigate(['/ListProductos']);
+   }
+   gpiezas() {
+     this.router.navigate(['/ListPiezas']);
+   }
+   gmodelos() {
+     this.router.navigate(['/ListModelos']);
+   }
+   gproveedores() {
+     this.router.navigate(['/ListProveedores']);
+   }
 
-  ggarantias() {
-    this.router.navigate(['/ListGarantias']);
-  }
-  galmacenes() {
-    this.router.navigate(['/ListAlmacenes']);
-  }
-  gclientes() {
-    this.router.navigate(['/ListClientes']);
-  }
+   ggarantias() {
+     this.router.navigate(['/ListGarantias']);
+   }
+   galmacenes() {
+     this.router.navigate(['/ListAlmacenes']);
+   }
+   gclientes() {
+     this.router.navigate(['/ListClientes']);
+   }
+   gventas(){
+     this.router.navigate(['/ListVentas']);
+   }
+   gdevoluciones(){
+     this.router.navigate(['/ListDevoluciones']);
+   }
+   ggarantiasp(){
+     this.router.navigate(['/ListGarantiaP']);
+   }
+   gsegsalidas(){
+     this.router.navigate(['/ListSegSalidas']);
+   }
+   gcontrolcalidad(){
+     this.router.navigate(['/ListControlCalidad']);
+   }
+   greparaciones(){
+     this.router.navigate(['/ListReparaciones']);
+   }
+   gpedidocompras(){
+     this.router.navigate(['/ListCompras']);
+   }
 
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {

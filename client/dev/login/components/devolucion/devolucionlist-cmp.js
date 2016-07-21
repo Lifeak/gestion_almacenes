@@ -61,6 +61,36 @@ var DevolucionListCmp = (function () {
     DevolucionListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    DevolucionListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    DevolucionListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    DevolucionListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    DevolucionListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    DevolucionListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    DevolucionListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    DevolucionListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    DevolucionListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    DevolucionListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    DevolucionListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     DevolucionListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -84,18 +114,6 @@ var DevolucionListCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    DevolucionListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    DevolucionListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    DevolucionListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
-    };
-    DevolucionListCmp.prototype.gpedidocompra = function () {
-        this.router.navigate(['/ListCompras']);
     };
     DevolucionListCmp.prototype.logout = function () {
         this._loginService.logout();

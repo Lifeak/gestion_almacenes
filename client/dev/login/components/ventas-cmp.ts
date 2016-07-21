@@ -101,6 +101,15 @@ export class VentasCmp {
    gsegsalidas(){
      this.router.navigate(['/ListSegSalidas']);
    }
+   gcontrolcalidad(){
+     this.router.navigate(['/ListControlCalidad']);
+   }
+   greparaciones(){
+     this.router.navigate(['/ListReparaciones']);
+   }
+   gpedidocompras(){
+     this.router.navigate(['/ListCompras']);
+   }
 
    gusuarios() {
      if (localStorage.getItem(this.token) == "encargado") {

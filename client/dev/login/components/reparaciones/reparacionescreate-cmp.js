@@ -70,11 +70,47 @@ var ReparacionCreateCmp = (function () {
         this._loginService.logout();
         this.router.navigate(['/Login']);
     };
-    ReparacionCreateCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
+    ReparacionCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ReparacionCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ReparacionCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ReparacionCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
     };
     ReparacionCreateCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
+    };
+    ReparacionCreateCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    ReparacionCreateCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    ReparacionCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ReparacionCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ReparacionCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ReparacionCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ReparacionCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ReparacionCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ReparacionCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
     };
     ReparacionCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
@@ -99,21 +135,6 @@ var ReparacionCreateCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    ReparacionCreateCmp.prototype.gproductos = function () {
-        this.router.navigate(['/ListProductos']);
-    };
-    ReparacionCreateCmp.prototype.gpiezas = function () {
-        this.router.navigate(['/ListPiezas']);
-    };
-    ReparacionCreateCmp.prototype.gmodelos = function () {
-        this.router.navigate(['/ListModelos']);
-    };
-    ReparacionCreateCmp.prototype.gproveedores = function () {
-        this.router.navigate(['/ListProveedores']);
-    };
-    ReparacionCreateCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     __decorate([
         core_1.Input(), 

@@ -56,18 +56,6 @@ var ClienteListCmp = (function () {
     ClienteListCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
-    ClienteListCmp.prototype.gproductos = function () {
-        this.router.navigate(['/ListProductos']);
-    };
-    ClienteListCmp.prototype.gpiezas = function () {
-        this.router.navigate(['/ListPiezas']);
-    };
-    ClienteListCmp.prototype.gmodelos = function () {
-        this.router.navigate(['/ListModelos']);
-    };
-    ClienteListCmp.prototype.gproveedores = function () {
-        this.router.navigate(['/ListProveedores']);
-    };
     ClienteListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -92,6 +80,18 @@ var ClienteListCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
+    ClienteListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ClienteListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ClienteListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ClienteListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
     ClienteListCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -100,6 +100,27 @@ var ClienteListCmp = (function () {
     };
     ClienteListCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
+    };
+    ClienteListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ClienteListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ClienteListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ClienteListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ClienteListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ClienteListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ClienteListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
     };
     ClienteListCmp = __decorate([
         core_1.Component({

@@ -63,6 +63,27 @@ var ComprasCmp = (function () {
     ComprasCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    ComprasCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
+    ComprasCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ComprasCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ComprasCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ComprasCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ComprasCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ComprasCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
     ComprasCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -86,9 +107,6 @@ var ComprasCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    ComprasCmp.prototype.gpedidocompra = function () {
-        this.router.navigate(['/ListCompras']);
     };
     ComprasCmp = __decorate([
         core_1.Component({

@@ -112,6 +112,27 @@ var UserListCmp = (function () {
     UserListCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    UserListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    UserListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    UserListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    UserListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    UserListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    UserListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    UserListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     UserListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/user/templates/list.html',

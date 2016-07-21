@@ -75,20 +75,48 @@ export class DevolucionListCmp implements OnInit {
   }
 
   gproductos() {
-    this.router.navigate(['/ListProductos']);
-  }
+     this.router.navigate(['/ListProductos']);
+   }
+   gpiezas() {
+     this.router.navigate(['/ListPiezas']);
+   }
+   gmodelos() {
+     this.router.navigate(['/ListModelos']);
+   }
+   gproveedores() {
+     this.router.navigate(['/ListProveedores']);
+   }
 
-  gpiezas() {
-    this.router.navigate(['/ListPiezas']);
-  }
-
-  gmodelos() {
-    this.router.navigate(['/ListModelos']);
-  }
-
-  gproveedores() {
-    this.router.navigate(['/ListProveedores']);
-  }
+   ggarantias() {
+     this.router.navigate(['/ListGarantias']);
+   }
+   galmacenes() {
+     this.router.navigate(['/ListAlmacenes']);
+   }
+   gclientes() {
+     this.router.navigate(['/ListClientes']);
+   }
+   gventas(){
+     this.router.navigate(['/ListVentas']);
+   }
+   gdevoluciones(){
+     this.router.navigate(['/ListDevoluciones']);
+   }
+   ggarantiasp(){
+     this.router.navigate(['/ListGarantiaP']);
+   }
+   gsegsalidas(){
+     this.router.navigate(['/ListSegSalidas']);
+   }
+   gcontrolcalidad(){
+     this.router.navigate(['/ListControlCalidad']);
+   }
+   greparaciones(){
+     this.router.navigate(['/ListReparaciones']);
+   }
+   gpedidocompras(){
+     this.router.navigate(['/ListCompras']);
+   }
 
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
@@ -112,22 +140,6 @@ export class DevolucionListCmp implements OnInit {
       });
   }
 
-  ggarantias() {
-    this.router.navigate(['/ListGarantias']);
-  }
-
-  galmacenes() {
-    this.router.navigate(['/ListAlmacenes']);
-  }
-
-  gclientes() {
-    this.router.navigate(['/ListClientes']);
-  }
-
-  gpedidocompra(){
-    this.router.navigate(['/ListCompras']);
-  }
-  
   logout() {
     this._loginService.logout();
     this.router.navigate(['/Login']);

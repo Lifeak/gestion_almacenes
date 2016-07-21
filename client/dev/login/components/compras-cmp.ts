@@ -59,13 +59,14 @@ export class ComprasCmp {
     this.router.navigate(['/Ventas']);
   }
 
-   almacen(){
+  almacen(){
     this.router.navigate(['/Almacen']);
   }
 
-   admin(){
+  admin(){
     this.router.navigate(['/Admin']);
   }
+  
   gproductos(){
     this.router.navigate(['/ListProductos']);
   }
@@ -87,6 +88,28 @@ export class ComprasCmp {
   }
   gclientes(){
     this.router.navigate(['/ListClientes']);
+  }
+
+  gpedidocompras(){
+    this.router.navigate(['/ListCompras']);
+  }
+  gcontrolcalidad(){
+    this.router.navigate(['/ListControlCalidad']);
+  }
+  greparaciones(){
+    this.router.navigate(['/ListReparaciones']);
+  }
+  gventas(){
+    this.router.navigate(['/ListVentas']);
+  }
+  gdevoluciones(){
+    this.router.navigate(['/ListDevoluciones']);
+  }
+  gsegsalidas(){
+    this.router.navigate(['/ListSegSalidas']);
+  }
+  ggarantiasp(){
+    this.router.navigate(['/ListGarantiaP']);
   }
 
   gusuarios() {
@@ -112,8 +135,6 @@ export class ComprasCmp {
       });
   }
 
-  gpedidocompra(){
-    this.router.navigate(['/ListCompras']);
-  }
+
 
 }

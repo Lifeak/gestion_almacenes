@@ -68,6 +68,36 @@ var VentasListCmp = (function () {
     VentasListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    VentasListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    VentasListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    VentasListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    VentasListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    VentasListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    VentasListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    VentasListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    VentasListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    VentasListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    VentasListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     VentasListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -91,15 +121,6 @@ var VentasListCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    VentasListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    VentasListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    VentasListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
     };
     VentasListCmp = __decorate([
         core_1.Component({

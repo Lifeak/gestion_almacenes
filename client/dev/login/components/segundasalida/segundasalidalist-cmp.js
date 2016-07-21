@@ -60,6 +60,36 @@ var SegundaSalidaListCmp = (function () {
     SegundaSalidaListCmp.prototype.gproveedores = function () {
         this.router.navigate(['/ListProveedores']);
     };
+    SegundaSalidaListCmp.prototype.ggarantias = function () {
+        this.router.navigate(['/ListGarantias']);
+    };
+    SegundaSalidaListCmp.prototype.galmacenes = function () {
+        this.router.navigate(['/ListAlmacenes']);
+    };
+    SegundaSalidaListCmp.prototype.gclientes = function () {
+        this.router.navigate(['/ListClientes']);
+    };
+    SegundaSalidaListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    SegundaSalidaListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    SegundaSalidaListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    SegundaSalidaListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    SegundaSalidaListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    SegundaSalidaListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    SegundaSalidaListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     SegundaSalidaListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -83,18 +113,6 @@ var SegundaSalidaListCmp = (function () {
             _this.profile = user[0]._id;
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
-    };
-    SegundaSalidaListCmp.prototype.ggarantias = function () {
-        this.router.navigate(['/ListGarantias']);
-    };
-    SegundaSalidaListCmp.prototype.galmacenes = function () {
-        this.router.navigate(['/ListAlmacenes']);
-    };
-    SegundaSalidaListCmp.prototype.gclientes = function () {
-        this.router.navigate(['/ListClientes']);
-    };
-    SegundaSalidaListCmp.prototype.gpedidocompra = function () {
-        this.router.navigate(['/ListCompras']);
     };
     SegundaSalidaListCmp.prototype.logout = function () {
         this._loginService.logout();

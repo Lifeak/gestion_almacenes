@@ -89,6 +89,27 @@ var AdminCmp = (function () {
     AdminCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
     };
+    AdminCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    AdminCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    AdminCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
+    AdminCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    AdminCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    AdminCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    AdminCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
     AdminCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/admin.html',

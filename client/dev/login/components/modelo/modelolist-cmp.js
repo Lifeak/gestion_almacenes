@@ -56,18 +56,6 @@ var ModeloListCmp = (function () {
     ModeloListCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
-    ModeloListCmp.prototype.gproductos = function () {
-        this.router.navigate(['/ListProductos']);
-    };
-    ModeloListCmp.prototype.gpiezas = function () {
-        this.router.navigate(['/ListPiezas']);
-    };
-    ModeloListCmp.prototype.gmodelos = function () {
-        this.router.navigate(['/ListModelos']);
-    };
-    ModeloListCmp.prototype.gproveedores = function () {
-        this.router.navigate(['/ListProveedores']);
-    };
     ModeloListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -92,6 +80,18 @@ var ModeloListCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
+    ModeloListCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloListCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloListCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloListCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
     ModeloListCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -100,6 +100,27 @@ var ModeloListCmp = (function () {
     };
     ModeloListCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
+    };
+    ModeloListCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ModeloListCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ModeloListCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ModeloListCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ModeloListCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ModeloListCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ModeloListCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
     };
     ModeloListCmp = __decorate([
         core_1.Component({

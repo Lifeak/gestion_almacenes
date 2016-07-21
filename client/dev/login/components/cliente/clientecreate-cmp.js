@@ -90,18 +90,6 @@ var ClienteCreateCmp = (function () {
     ClienteCreateCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
-    ClienteCreateCmp.prototype.gproductos = function () {
-        this.router.navigate(['/ListProductos']);
-    };
-    ClienteCreateCmp.prototype.gpiezas = function () {
-        this.router.navigate(['/ListPiezas']);
-    };
-    ClienteCreateCmp.prototype.gmodelos = function () {
-        this.router.navigate(['/ListModelos']);
-    };
-    ClienteCreateCmp.prototype.gproveedores = function () {
-        this.router.navigate(['/ListProveedores']);
-    };
     ClienteCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -126,6 +114,18 @@ var ClienteCreateCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
+    ClienteCreateCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ClienteCreateCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ClienteCreateCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ClienteCreateCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
     ClienteCreateCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -134,6 +134,27 @@ var ClienteCreateCmp = (function () {
     };
     ClienteCreateCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
+    };
+    ClienteCreateCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ClienteCreateCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ClienteCreateCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ClienteCreateCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ClienteCreateCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ClienteCreateCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ClienteCreateCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
     };
     __decorate([
         core_1.Input(), 

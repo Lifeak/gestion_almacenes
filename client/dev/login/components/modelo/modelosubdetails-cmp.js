@@ -118,18 +118,6 @@ var ModeloSubDetailsCmp = (function () {
     ModeloSubDetailsCmp.prototype.admin = function () {
         this.router.navigate(['/Admin']);
     };
-    ModeloSubDetailsCmp.prototype.gproductos = function () {
-        this.router.navigate(['/ListProductos']);
-    };
-    ModeloSubDetailsCmp.prototype.gpiezas = function () {
-        this.router.navigate(['/ListPiezas']);
-    };
-    ModeloSubDetailsCmp.prototype.gmodelos = function () {
-        this.router.navigate(['/ListModelos']);
-    };
-    ModeloSubDetailsCmp.prototype.gproveedores = function () {
-        this.router.navigate(['/ListProveedores']);
-    };
     ModeloSubDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
@@ -154,6 +142,18 @@ var ModeloSubDetailsCmp = (function () {
             _this.router.navigate(['Perfil', { id: _this.profile }]);
         });
     };
+    ModeloSubDetailsCmp.prototype.gproductos = function () {
+        this.router.navigate(['/ListProductos']);
+    };
+    ModeloSubDetailsCmp.prototype.gpiezas = function () {
+        this.router.navigate(['/ListPiezas']);
+    };
+    ModeloSubDetailsCmp.prototype.gmodelos = function () {
+        this.router.navigate(['/ListModelos']);
+    };
+    ModeloSubDetailsCmp.prototype.gproveedores = function () {
+        this.router.navigate(['/ListProveedores']);
+    };
     ModeloSubDetailsCmp.prototype.ggarantias = function () {
         this.router.navigate(['/ListGarantias']);
     };
@@ -162,6 +162,27 @@ var ModeloSubDetailsCmp = (function () {
     };
     ModeloSubDetailsCmp.prototype.gclientes = function () {
         this.router.navigate(['/ListClientes']);
+    };
+    ModeloSubDetailsCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    ModeloSubDetailsCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    ModeloSubDetailsCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
+    ModeloSubDetailsCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    ModeloSubDetailsCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    ModeloSubDetailsCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    ModeloSubDetailsCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
     };
     __decorate([
         core_1.Input(), 

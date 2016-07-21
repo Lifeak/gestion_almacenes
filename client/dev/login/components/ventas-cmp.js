@@ -75,6 +75,15 @@ var VentasCmp = (function () {
     VentasCmp.prototype.gsegsalidas = function () {
         this.router.navigate(['/ListSegSalidas']);
     };
+    VentasCmp.prototype.gcontrolcalidad = function () {
+        this.router.navigate(['/ListControlCalidad']);
+    };
+    VentasCmp.prototype.greparaciones = function () {
+        this.router.navigate(['/ListReparaciones']);
+    };
+    VentasCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
     VentasCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

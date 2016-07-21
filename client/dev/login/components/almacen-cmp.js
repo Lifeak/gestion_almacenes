@@ -69,6 +69,21 @@ var AlmacenCmp = (function () {
     AlmacenCmp.prototype.gcontrolcalidad = function () {
         this.router.navigate(['/ListControlCalidad']);
     };
+    AlmacenCmp.prototype.gpedidocompras = function () {
+        this.router.navigate(['/ListCompras']);
+    };
+    AlmacenCmp.prototype.gventas = function () {
+        this.router.navigate(['/ListVentas']);
+    };
+    AlmacenCmp.prototype.gdevoluciones = function () {
+        this.router.navigate(['/ListDevoluciones']);
+    };
+    AlmacenCmp.prototype.gsegsalidas = function () {
+        this.router.navigate(['/ListSegSalidas']);
+    };
+    AlmacenCmp.prototype.ggarantiasp = function () {
+        this.router.navigate(['/ListGarantiaP']);
+    };
     AlmacenCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);
