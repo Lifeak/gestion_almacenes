@@ -133,6 +133,9 @@ var UserListCmp = (function () {
     UserListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    UserListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     UserListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/user/templates/list.html',

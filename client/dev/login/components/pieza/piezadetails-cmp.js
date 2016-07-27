@@ -202,6 +202,9 @@ var PiezaDetailsCmp = (function () {
     PiezaDetailsCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    PiezaDetailsCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     PiezaDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

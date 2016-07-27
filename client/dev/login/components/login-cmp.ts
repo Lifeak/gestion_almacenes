@@ -36,7 +36,6 @@ import {App} from '../app';
 
 export class LoginCmp {
   loginForm: ControlGroup;
-  error: boolean = false;
 
 
   constructor(@Inject(FormBuilder) fb:FormBuilder, @Inject(LoginService) private _loginService: LoginService, private router: Router) {
@@ -62,7 +61,6 @@ export class LoginCmp {
         } else if (resultado[0] == true && resultado[1] == "encargado") {
             this.gotoMenu();
         }else{
-          //alert("Usuario y pass incorrectos.");
           window.location.reload();
 
         }

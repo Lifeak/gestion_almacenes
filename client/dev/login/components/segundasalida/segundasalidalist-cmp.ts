@@ -115,6 +115,9 @@ export class SegundaSalidaListCmp implements OnInit {
    gpedidocompras(){
      this.router.navigate(['/ListCompras']);
    }
+   gtransportes(){
+     this.router.navigate(['/ListTransportes']);
+   }
 
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {

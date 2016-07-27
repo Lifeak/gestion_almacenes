@@ -145,6 +145,9 @@ var UserCreateCmp = (function () {
     UserCreateCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    UserCreateCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_service_1.User)

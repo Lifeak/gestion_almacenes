@@ -82,6 +82,9 @@ var ProveedorListCmp = (function () {
     ProveedorListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ProveedorListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ProveedorListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

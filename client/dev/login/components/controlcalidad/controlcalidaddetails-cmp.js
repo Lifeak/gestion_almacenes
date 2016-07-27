@@ -168,6 +168,9 @@ var ControlDetailsCmp = (function () {
     ControlDetailsCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ControlDetailsCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', controlcalidad_service_1.ControlCalidad)

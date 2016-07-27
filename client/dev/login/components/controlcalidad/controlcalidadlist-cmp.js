@@ -98,6 +98,9 @@ var ControlListCmp = (function () {
     ControlListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ControlListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ControlListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

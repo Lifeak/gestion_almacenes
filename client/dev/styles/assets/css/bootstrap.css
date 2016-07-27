@@ -6201,3 +6201,23 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+/*modal error*/
+.myError{
+  position:relative; 
+  -webkit-transition: -webkit-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate3d(0, -200%, 0);
+       -o-transform: translate3d(0, -200%, 0);
+          transform: translate3d(0, -200%, 0);  
+}
+.myError .modal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #DF0101;
+}
+
+.myError .modal-footer.centered{
+  padding: 1px;
+}

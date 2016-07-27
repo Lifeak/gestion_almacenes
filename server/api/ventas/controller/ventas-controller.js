@@ -3,6 +3,7 @@
 const VentaDAO = require('../dao/ventas-dao');
 const ModeloDAO = require('../../modelo/dao/modelo-dao');
 const GarantiaDAO = require('../../garantia/dao/garantia-dao');
+const TransporteDAO = require('../../transporte/dao/transporte-dao');
 
 module.exports = class VentaController {
   static getAll(req, res) {
@@ -34,10 +35,15 @@ module.exports = class VentaController {
         .catch(error => res.status(400).json(error));
   }
 
+  static getTransportes(req, res){
+    TransporteDAO
+      .getAll()
+        .then(transportes => res.status(200).json(transportes))
+        .catch(error => res.status(400).json(error));
+  }
+
   static createVenta(req, res) {
-    console.log("entro en createVenta");
       let _venta = req.body;
-      console.log("la venta es "+_venta);
 
       VentaDAO
         .createVenta(_venta)

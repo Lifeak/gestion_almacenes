@@ -21,5 +21,9 @@ module.exports = class VentaRoutes {
       router
         .route('/api/pvgp/garantias')
         .get(VentaController.getGarantiaPais);
+
+      router
+        .route('/api/pvt/transporte')
+        .get(VentaController.getTransportes);
     }
 }

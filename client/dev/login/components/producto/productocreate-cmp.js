@@ -148,6 +148,9 @@ var ProductoCreateCmp = (function () {
     ProductoCreateCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ProductoCreateCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ProductoCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

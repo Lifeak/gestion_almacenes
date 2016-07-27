@@ -93,6 +93,9 @@ var ComprasListCmp = (function () {
     ComprasListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ComprasListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ComprasListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

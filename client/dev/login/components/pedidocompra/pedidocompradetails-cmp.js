@@ -175,6 +175,9 @@ var CompraDetailsCmp = (function () {
     CompraDetailsCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    CompraDetailsCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     CompraDetailsCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

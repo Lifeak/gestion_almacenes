@@ -91,6 +91,9 @@ var DevolucionListCmp = (function () {
     DevolucionListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    DevolucionListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     DevolucionListCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

@@ -122,6 +122,9 @@ var AlmacenListCmp = (function () {
     AlmacenListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    AlmacenListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     AlmacenListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/almacen/templates/list.html',

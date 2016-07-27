@@ -193,6 +193,9 @@ var ModeloDetailsCmp = (function () {
     ModeloDetailsCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ModeloDetailsCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', modelo_service_1.Modelo)

@@ -224,5 +224,8 @@ export class ModeloDetailsCmp implements OnInit {
    gpedidocompras(){
      this.router.navigate(['/ListCompras']);
    }
+   gtransportes(){
+     this.router.navigate(['/ListTransportes']);
+   }
 
 }

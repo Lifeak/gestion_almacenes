@@ -28,6 +28,7 @@ var reparaciones_service_1 = require('./services/reparaciones/reparaciones-servi
 var controlcalidad_service_1 = require('./services/controlcalidad/controlcalidad-service');
 var garantiapieza_service_1 = require('./services/garantiapieza/garantiapieza-service');
 var segundasalida_service_1 = require('./services/segundasalida/segundasalida-service');
+var transporte_service_1 = require('./services/transporte/transporte-service');
 // Menu principal
 var login_cmp_1 = require('./components/login-cmp');
 var compras_cmp_1 = require('./components/compras-cmp');
@@ -98,6 +99,10 @@ var garantiapiezadetails_cmp_1 = require('./components/garantiapieza/garantiapie
 var segundasalidacreate_cmp_1 = require('./components/segundasalida/segundasalidacreate-cmp');
 var segundasalidalist_cmp_1 = require('./components/segundasalida/segundasalidalist-cmp');
 var segundasalidadetails_cmp_1 = require('./components/segundasalida/segundasalidadetails-cmp');
+//Transporte
+var transportecreate_cmp_1 = require('./components/transporte/transportecreate-cmp');
+var transportelist_cmp_1 = require('./components/transporte/transportelist-cmp');
+var transportedetails_cmp_1 = require('./components/transporte/transportedetails-cmp');
 var App = (function () {
     function App() {
     }
@@ -122,7 +127,8 @@ var App = (function () {
                 reparaciones_service_1.ReparacionService,
                 controlcalidad_service_1.ControlService,
                 garantiapieza_service_1.GarantiapService,
-                segundasalida_service_1.SegundaSalidaService]
+                segundasalida_service_1.SegundaSalidaService,
+                transporte_service_1.TransporteService]
         }),
         router_1.RouteConfig([
             //Menu principal
@@ -194,7 +200,11 @@ var App = (function () {
             // segundas salidas
             { path: '/ListSegSalidas', name: 'ListSegSalidas', component: segundasalidalist_cmp_1.SegundaSalidaListCmp },
             { path: '/CreateSegSalida', name: 'CreateSegSalida', component: segundasalidacreate_cmp_1.SegundaSalidaCreateCmp },
-            { path: '/DetailsSegSalida', name: 'DetailsSegSalida', component: segundasalidadetails_cmp_1.SegundaSalidaDetailsCmp }
+            { path: '/DetailsSegSalida', name: 'DetailsSegSalida', component: segundasalidadetails_cmp_1.SegundaSalidaDetailsCmp },
+            // transporte
+            { path: '/ListTransportes', name: 'ListTransportes', component: transportelist_cmp_1.TransporteListCmp },
+            { path: '/CreateTransporte', name: 'CreateTransporte', component: transportecreate_cmp_1.TransporteCreateCmp },
+            { path: '/DetailsTransporte', name: 'DetailsTransporte', component: transportedetails_cmp_1.TransporteDetailsCmp }
         ]), 
         __metadata('design:paramtypes', [])
     ], App);

@@ -140,6 +140,9 @@ var AlmacenCreateCmp = (function () {
     AlmacenCreateCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    AlmacenCreateCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', almacen_service_1.Almacen)

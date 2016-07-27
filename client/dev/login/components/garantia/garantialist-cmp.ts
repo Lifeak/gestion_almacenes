@@ -106,7 +106,7 @@ export class GarantiaListCmp implements OnInit {
       });
   }
 
-     gproductos() {
+   gproductos() {
      this.router.navigate(['/ListProductos']);
    }
    gpiezas() {
@@ -148,5 +148,8 @@ export class GarantiaListCmp implements OnInit {
    }
    gpedidocompras(){
      this.router.navigate(['/ListCompras']);
+   }
+   gtransportes(){
+     this.router.navigate(['/ListTransportes']);
    }
 }

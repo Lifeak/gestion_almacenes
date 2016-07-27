@@ -152,6 +152,9 @@ var PiezaCreateCmp = (function () {
     PiezaCreateCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    PiezaCreateCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     PiezaCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

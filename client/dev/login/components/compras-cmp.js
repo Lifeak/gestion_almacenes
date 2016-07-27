@@ -84,6 +84,9 @@ var ComprasCmp = (function () {
     ComprasCmp.prototype.ggarantiasp = function () {
         this.router.navigate(['/ListGarantiaP']);
     };
+    ComprasCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ComprasCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

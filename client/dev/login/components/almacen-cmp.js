@@ -84,6 +84,9 @@ var AlmacenCmp = (function () {
     AlmacenCmp.prototype.ggarantiasp = function () {
         this.router.navigate(['/ListGarantiaP']);
     };
+    AlmacenCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     AlmacenCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {
             var u = localStorage.key(1);

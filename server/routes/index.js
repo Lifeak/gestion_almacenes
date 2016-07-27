@@ -49,6 +49,9 @@ const garantiapRoutes = require('../api/garantiapieza/routes/garantiapieza-route
 // Rutas de las segundas salidas, get y post
 const segsalidaRoutes = require('../api/segundasalida/routes/segundasalida-routes');
 
+// Rutas del transporte, get y post
+const transporteRoutes = require('../api/transporte/routes/transporte-routes');
+
 const loginRoutes= require('../auth/login/routes/login-routes');
 
 
@@ -71,6 +74,7 @@ module.exports = class Routes {
      controlRoutes.init(router);
      garantiapRoutes.init(router);
      segsalidaRoutes.init(router);
+     transporteRoutes.init(router);
 
  	router
        .route('/')

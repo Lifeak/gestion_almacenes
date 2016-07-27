@@ -2,6 +2,9 @@
 "use strict";
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
+var transportelist_cmp_1 = require('./login/components/transporte/transportelist-cmp');
+var transportecreate_cmp_1 = require('./login/components/transporte/transportecreate-cmp');
+var transportedetails_cmp_1 = require('./login/components/transporte/transportedetails-cmp');
 var segundasalidalist_cmp_1 = require('./login/components/segundasalida/segundasalidalist-cmp');
 var segundasalidacreate_cmp_1 = require('./login/components/segundasalida/segundasalidacreate-cmp');
 var segundasalidadetails_cmp_1 = require('./login/components/segundasalida/segundasalidadetails-cmp');
@@ -53,6 +56,9 @@ var almacendetails_cmp_1 = require('./login/components/almacen/almacendetails-cm
 var almacenlist_cmp_1 = require('./login/components/almacen/almacenlist-cmp');
 var login_cmp_1 = require('./login/components/login-cmp');
 var app_1 = require('./login/app');
+browser_1.bootstrap(transportecreate_cmp_1.TransporteCreateCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(transportelist_cmp_1.TransporteListCmp, [http_1.HTTP_PROVIDERS]);
+browser_1.bootstrap(transportedetails_cmp_1.TransporteDetailsCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(segundasalidacreate_cmp_1.SegundaSalidaCreateCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(segundasalidalist_cmp_1.SegundaSalidaListCmp, [http_1.HTTP_PROVIDERS]);
 browser_1.bootstrap(segundasalidadetails_cmp_1.SegundaSalidaDetailsCmp, [http_1.HTTP_PROVIDERS]);

@@ -52,17 +52,15 @@ export class LoginService {
                   let cred = dato.search("\"tipo\":\"admin\"");
                   if(cred!=-1){
                       localStorage.setItem(user, "admin");
-                      localStorage.setItem(this.token, "admin")
-                      //alert("es un usuario admin");
+                      localStorage.setItem(this.token, "admin");
                   }else{
                       localStorage.setItem(user, "encargado");
                       localStorage.setItem(this.token, "encargado");
-                      //alert("es un usuario del monton");
                   }
                   this.loggedIn = true;
 
                 }else{
-                    alert("Credenciales incorrectas.");
+                    alert("Credenciales incorrectas."); 
                     this.loggedIn = false;
                     localStorage.clear();
                 }

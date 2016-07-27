@@ -110,6 +110,9 @@ var AdminCmp = (function () {
     AdminCmp.prototype.ggarantiasp = function () {
         this.router.navigate(['/ListGarantiaP']);
     };
+    AdminCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     AdminCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/login/templates/admin.html',

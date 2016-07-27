@@ -31,6 +31,7 @@ var VentaCreateCmp = (function () {
         this.modelos = [];
         this.paises = [];
         this.series = [];
+        this.transportes = [];
         this.long = 0;
         this.error = "";
         this.generagarantia = []; // Almacenará los numeros de serie de todos los productos vendidos para generar sus garantías
@@ -62,6 +63,11 @@ var VentaCreateCmp = (function () {
             .getGarantiaPais()
             .subscribe(function (garantias) {
             _this.paises = garantias;
+        });
+        this._ventasService
+            .getTransportes()
+            .subscribe(function (transportes) {
+            _this.transportes = transportes;
         });
     };
     VentaCreateCmp.prototype.gotoIndex = function () {
@@ -266,6 +272,9 @@ var VentaCreateCmp = (function () {
     };
     VentaCreateCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
+    };
+    VentaCreateCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
     };
     VentaCreateCmp.prototype.gusuarios = function () {
         if (localStorage.getItem(this.token) == "encargado") {

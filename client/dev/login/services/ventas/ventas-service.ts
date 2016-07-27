@@ -37,6 +37,7 @@ export class VentasService {
   static ENDPOINT: string = '/api/venta/:id';
   static ENDPOINT2: string = '/api/pv/modelos';
   static ENDPOINT3: string = '/api/pvgp/garantias';
+  static ENDPOINT4: string = '/api/pvt/transporte';
 
   constructor(@Inject(Http) private _http: Http) {
 
@@ -70,6 +71,12 @@ export class VentasService {
     return this._http
       .get(VentasService.ENDPOINT3)
         .map((r) => r.json());
+  }
+
+  getTransportes(){
+     return this._http
+     .get(VentasService.ENDPOINT4)
+     .map((r)=>r.json());
   }
 
   add(cliente:string, direccionEnvio:string, ciudad:string, pais:string, numPedido:string,fechaSalida:Date, finGarantia:Date, transporte:string, agente:string, observaciones:string, lineaventa:Object):Observable<any> {

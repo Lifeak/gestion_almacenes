@@ -137,5 +137,9 @@ export class AdminCmp {
   ggarantiasp(){
     this.router.navigate(['/ListGarantiaP']);
   }
+  
+  gtransportes(){
+    this.router.navigate(['/ListTransportes']);
+  }
 
 }

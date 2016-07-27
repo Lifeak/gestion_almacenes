@@ -11,6 +11,10 @@ import{
 	ROUTER_PROVIDERS
 } from 'angular2/router';
 
+import {TransporteListCmp} from './login/components/transporte/transportelist-cmp';
+import {TransporteCreateCmp} from './login/components/transporte/transportecreate-cmp';
+import {TransporteDetailsCmp} from './login/components/transporte/transportedetails-cmp';
+
 import {SegundaSalidaListCmp} from './login/components/segundasalida/segundasalidalist-cmp';
 import {SegundaSalidaCreateCmp} from './login/components/segundasalida/segundasalidacreate-cmp';
 import {SegundaSalidaDetailsCmp} from './login/components/segundasalida/segundasalidadetails-cmp';
@@ -79,6 +83,9 @@ import {LoginCmp} from './login/components/login-cmp';
 import {App} from './login/app';
 
 
+bootstrap(TransporteCreateCmp, [HTTP_PROVIDERS]);
+bootstrap(TransporteListCmp, [HTTP_PROVIDERS]);
+bootstrap(TransporteDetailsCmp, [HTTP_PROVIDERS]);
 bootstrap(SegundaSalidaCreateCmp, [HTTP_PROVIDERS]);
 bootstrap(SegundaSalidaListCmp, [HTTP_PROVIDERS]);
 bootstrap(SegundaSalidaDetailsCmp, [HTTP_PROVIDERS]);

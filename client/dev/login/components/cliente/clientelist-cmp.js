@@ -122,6 +122,9 @@ var ClienteListCmp = (function () {
     ClienteListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ClienteListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ClienteListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/cliente/templates/list.html',

@@ -123,6 +123,9 @@ var GarantiaListCmp = (function () {
     GarantiaListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    GarantiaListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     GarantiaListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/garantia/templates/list.html',

@@ -122,6 +122,9 @@ var ModeloListCmp = (function () {
     ModeloListCmp.prototype.gpedidocompras = function () {
         this.router.navigate(['/ListCompras']);
     };
+    ModeloListCmp.prototype.gtransportes = function () {
+        this.router.navigate(['/ListTransportes']);
+    };
     ModeloListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/modelo/templates/list.html',

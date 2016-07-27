@@ -26,12 +26,13 @@ import {UserService} from '../../services/user/user-service';
 import {Modelo} from '../../services/modelo/modelo-service';
 import {Garantia} from '../../services/garantia/garantia-service';
 import {GarantiapService} from '../../services/garantiapieza/garantiapieza-service';
+import {Transporte} from '../../services/transporte/transporte-service';
 
 
 @Component({
   templateUrl: 'client/dev/ventas/templates/create.html',
   directives:[ROUTER_DIRECTIVES],
-  providers: [LoginService, UserService,VentasService, GarantiapService]
+  providers: [LoginService, UserService,VentasService,GarantiapService]
 })
 
   @CanActivate(() => isLogged())
@@ -44,6 +45,7 @@ export class VentaCreateCmp{
   modelos: Modelo[]=[];
   paises: Garantia[]=[];
   series: Array<string>=[];
+  transportes: Transporte[]=[];
   long:number=0;
   public error:string="";
   generagarantia: Array<string>=[]; // Almacenará los numeros de serie de todos los productos vendidos para generar sus garantías
@@ -80,7 +82,13 @@ export class VentaCreateCmp{
     this.paises = garantias; 
    });
 
+    this._ventasService
+    .getTransportes()
+    .subscribe((transportes) =>{
+      this.transportes = transportes; 
+    });
   }
+  
   gotoIndex(){
     this.router.navigate(['/ListVentas']);
   }
@@ -297,6 +305,9 @@ export class VentaCreateCmp{
    }
    gpedidocompras(){
      this.router.navigate(['/ListCompras']);
+   }
+   gtransportes(){
+     this.router.navigate(['/ListTransportes']);
    }
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {

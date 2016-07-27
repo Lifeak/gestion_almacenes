@@ -160,5 +160,9 @@ export class AlmacenCreateCmp{
    gpedidocompras(){
      this.router.navigate(['/ListCompras']);
    }
+   
+  gtransportes(){
+    this.router.navigate(['/ListTransportes']);
+  }
 
 }

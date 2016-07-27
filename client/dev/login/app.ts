@@ -36,6 +36,7 @@ import {ReparacionService} from './services/reparaciones/reparaciones-service';
 import {ControlService} from './services/controlcalidad/controlcalidad-service';
 import {GarantiapService} from './services/garantiapieza/garantiapieza-service';
 import {SegundaSalidaService} from './services/segundasalida/segundasalida-service';
+import {TransporteService} from './services/transporte/transporte-service';
 // Menu principal
 import {LoginCmp} from './components/login-cmp';
 import {ComprasCmp} from './components/compras-cmp';
@@ -106,6 +107,10 @@ import {GarantiapDetailsCmp} from './components/garantiapieza/garantiapiezadetai
 import {SegundaSalidaCreateCmp} from './components/segundasalida/segundasalidacreate-cmp';
 import {SegundaSalidaListCmp} from './components/segundasalida/segundasalidalist-cmp';
 import {SegundaSalidaDetailsCmp} from './components/segundasalida/segundasalidadetails-cmp';
+//Transporte
+import {TransporteCreateCmp} from './components/transporte/transportecreate-cmp';
+import {TransporteListCmp} from './components/transporte/transportelist-cmp';
+import {TransporteDetailsCmp} from './components/transporte/transportedetails-cmp';
 
 
 @Component({
@@ -129,7 +134,8 @@ import {SegundaSalidaDetailsCmp} from './components/segundasalida/segundasalidad
 			ReparacionService,
 			ControlService,
 			GarantiapService,
-			SegundaSalidaService]
+			SegundaSalidaService,
+			TransporteService]
 })
 
 @RouteConfig([
@@ -202,7 +208,11 @@ import {SegundaSalidaDetailsCmp} from './components/segundasalida/segundasalidad
 	// segundas salidas
 	{ path: '/ListSegSalidas', name: 'ListSegSalidas', component: SegundaSalidaListCmp},
 	{ path: '/CreateSegSalida', name: 'CreateSegSalida', component: SegundaSalidaCreateCmp},
-	{ path: '/DetailsSegSalida', name: 'DetailsSegSalida', component: SegundaSalidaDetailsCmp}
+	{ path: '/DetailsSegSalida', name: 'DetailsSegSalida', component: SegundaSalidaDetailsCmp},
+	// transporte
+	{ path: '/ListTransportes', name: 'ListTransportes', component: TransporteListCmp},
+	{ path: '/CreateTransporte', name: 'CreateTransporte', component: TransporteCreateCmp},
+	{ path: '/DetailsTransporte', name: 'DetailsTransporte', component: TransporteDetailsCmp}
 
 ])
 export class App {

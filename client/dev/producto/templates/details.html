@@ -172,6 +172,13 @@
                                 <span>Garantías</span>
                               </a>
                             </li>
+                            <!-- Transporte -->
+                            <li>
+                              <a (click)="gtransportes();">
+                                <i class="fa fa-truck"></i>
+                                <span>Transporte</span>
+                              </a>
+                            </li>
                         </ul>
                     </li>
                     <!-- ADMIN -->
@@ -342,10 +349,29 @@
                             </div>
                           </div>
                         </form>
+                        <!-- Modal Error -->
+                        <div *ngIf="conf==true" class="myError">
+                              <div class="modal-dialog" >
+                                  <div class="modal-content">
+                                      <div class="modal-header ">
+                                          <button type="button" class="close" (click)="conf=false" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                          <h4 class="modal-title">Aviso</h4>
+                                      </div>
+                                      <div class="modal-body ">
+                                        ¿Deseas eliminar este producto?
+                                      </div>
+                                      <div class="modal-footer centered">
+                                          <a  data-dismiss="modal" class="btn btn-formulario-sm pull-centered margen-izda" (click)="conf=false"><i class="fa fa-angle-left" aria-hidden="true"></i> No</a>
+                                          <a  data-dismiss="modal" class="btn btn-formulario-sm pull-centered margen-izda" (click)="delete(producto)"><i class="fa fa-check" aria-hidden="true"></i> Si</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        <!-- modal -->
                       </div>
                       <p>
                         <button (click)="gotoIndex()" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver</button>
-                        <button (click)="delete(producto)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar producto</button>
+                        <button (click)="conf=true" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-times" aria-hidden="true"></i> Eliminar producto</button>
                         <button (click)="edit(producto)" class="btn btn-formulario pull-right margen-izda"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar producto</button>
                       </p>
                     </div>

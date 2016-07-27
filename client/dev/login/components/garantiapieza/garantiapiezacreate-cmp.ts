@@ -128,6 +128,9 @@ export class GarantiapCreateCmp{
    gpedidocompras(){
      this.router.navigate(['/ListCompras']);
    }
+   gtransportes(){
+     this.router.navigate(['/ListTransportes']);
+   }
   gusuarios() {
     if (localStorage.getItem(this.token) == "encargado") {
       let u = localStorage.key(1);

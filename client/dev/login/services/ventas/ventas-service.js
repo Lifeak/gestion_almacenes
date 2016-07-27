@@ -61,6 +61,11 @@ var VentasService = (function () {
             .get(VentasService.ENDPOINT3)
             .map(function (r) { return r.json(); });
     };
+    VentasService.prototype.getTransportes = function () {
+        return this._http
+            .get(VentasService.ENDPOINT4)
+            .map(function (r) { return r.json(); });
+    };
     VentasService.prototype.add = function (cliente, direccionEnvio, ciudad, pais, numPedido, fechaSalida, finGarantia, transporte, agente, observaciones, lineaventa) {
         var body = JSON.stringify({ cliente: cliente, direccionEnvio: direccionEnvio, ciudad: ciudad, pais: pais, numPedido: numPedido, fechaSalida: fechaSalida, finGarantia: finGarantia, transporte: transporte, agente: agente, observaciones: observaciones, lineaventa: lineaventa });
         var headers = new http_1.Headers();
@@ -76,6 +81,7 @@ var VentasService = (function () {
     VentasService.ENDPOINT = '/api/venta/:id';
     VentasService.ENDPOINT2 = '/api/pv/modelos';
     VentasService.ENDPOINT3 = '/api/pvgp/garantias';
+    VentasService.ENDPOINT4 = '/api/pvt/transporte';
     VentasService = __decorate([
         __param(0, core_1.Inject(http_1.Http)), 
         __metadata('design:paramtypes', [http_1.Http])

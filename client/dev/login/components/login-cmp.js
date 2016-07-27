@@ -19,7 +19,6 @@ var LoginCmp = (function () {
     function LoginCmp(fb, _loginService, router) {
         this._loginService = _loginService;
         this.router = router;
-        this.error = false;
         this.loginForm = fb.group({
             "user": ["", common_1.Validators.required],
             "pass": ["", common_1.Validators.required]
@@ -42,7 +41,6 @@ var LoginCmp = (function () {
                 _this.gotoMenu();
             }
             else {
-                //alert("Usuario y pass incorrectos.");
                 window.location.reload();
             }
         });
