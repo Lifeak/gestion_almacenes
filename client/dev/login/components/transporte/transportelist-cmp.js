@@ -14,6 +14,8 @@ var isloggedin_1 = require('../../services/isloggedin');
 var transporte_service_1 = require('../../services/transporte/transporte-service');
 var login_service_1 = require('../../services/login-service');
 var user_service_1 = require('../../services/user/user-service');
+var searchpipe_1 = require('../searchpipe');
+var searchbox_1 = require('../searchbox');
 var TransporteListCmp = (function () {
     function TransporteListCmp(_transporteService, _userService, _loginService, router, routeParams) {
         this._transporteService = _transporteService;
@@ -35,6 +37,7 @@ var TransporteListCmp = (function () {
         });
     };
     TransporteListCmp.prototype.isSelected = function (transporte) {
+        //alert("hola "+this.term);
         return transporte._id === this._selectedId;
     };
     TransporteListCmp.prototype.onSelect = function (transporte) {
@@ -125,10 +128,15 @@ var TransporteListCmp = (function () {
     TransporteListCmp.prototype.gtransportes = function () {
         this.router.navigate(['/ListTransportes']);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], TransporteListCmp.prototype, "term", void 0);
     TransporteListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/transporte/templates/list.html',
-            directives: [router_1.ROUTER_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES, searchbox_1.SearchBox],
+            pipes: [searchpipe_1.SearchPipe],
             providers: [transporte_service_1.TransporteService, login_service_1.LoginService, user_service_1.UserService]
         }),
         router_1.CanActivate(function () { return isloggedin_1.isLogged(); }), 

@@ -283,10 +283,11 @@
     						<div class="row">
     							<div class="col-md-12">
     								<h1 class="submenu-title">Transporte</h1>
-    								<a [routerLink]="['/CreateTransporte']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nueva compañía de transporte</a>
+    								<a [routerLink]="['/CreateTransporte']" class="btn btn-nuevo"><i class="fa fa-plus" aria-hidden="true"></i> Nueva compañía de transporte</a>                    
     							</div>
     						</div>
     						<br><br>
+                <search-box (update)="term=$event"></search-box>
     						<div class="row">
     							<div class="col-md-12">
     					    		<table class="table table-hover table-responsive">
@@ -299,13 +300,15 @@
     						    			</tr>
     						    		</thead>
     						    		<tbody>
-    						    			<tr *ngFor="let trans of transportes"
+    						    			<tr *ngFor="let trans of transportes | search:term" 
     							        [class.selected]="isSelected(trans)"
-    							        (click)="onSelect(trans)">
+                          (click)="onSelect(trans)">
+                          
     						    				<td>{{trans.nombre}}</td>
     						    				<td>{{trans.direccion}} ({{trans.ciudad}}) - {{trans.pais}}</td>
     						    				<td>{{trans.telefono}}</td>
     						    				<td>{{trans.email}}</td>
+                          
     						    			</tr>
     					    			</tbody>
     					    		</table>

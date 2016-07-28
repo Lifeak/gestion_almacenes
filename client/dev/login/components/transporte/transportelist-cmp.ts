@@ -1,6 +1,7 @@
 import {
   Component,
   Inject,
+  Input,
   OnInit
 } from 'angular2/core';
 
@@ -23,15 +24,19 @@ import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isl
 import {Transporte, TransporteService} from '../../services/transporte/transporte-service';
 import {LoginService} from '../../services/login-service';
 import {UserService} from '../../services/user/user-service';
+import {SearchPipe} from '../searchpipe';
+import {SearchBox} from '../searchbox';
 
 @Component({
   templateUrl: 'client/dev/transporte/templates/list.html',
-  directives:[ROUTER_DIRECTIVES],
+  directives:[ROUTER_DIRECTIVES, SearchBox],
+  pipes: [SearchPipe],
   providers: [TransporteService, LoginService, UserService]
 })
 
   @CanActivate(() => isLogged())
 export class TransporteListCmp implements OnInit {
+  @Input() term;
   transportes: Transporte[] = [];
   private _selectedId: string;
   public token: string;
@@ -54,6 +59,7 @@ export class TransporteListCmp implements OnInit {
         });
   }
   isSelected(transporte:Transporte){
+    //alert("hola "+this.term);
     return transporte._id === this._selectedId;
   }
   onSelect(transporte:Transporte){
