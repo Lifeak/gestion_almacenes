@@ -303,7 +303,7 @@
     						    			</tr>
     						    		</thead>
     						    		<tbody>
-    						    			<tr *ngFor="let trans of transportes | search:term | paginate: config" 
+    						    			<tr *ngFor="let trans of transportes | search:term" 
     							        [class.selected]="isSelected(trans)"
                           (click)="onSelect(trans)">
                           
@@ -315,7 +315,7 @@
     						    			</tr>
     					    			</tbody>
     					    		</table>
-                      <div class="is-text-centered">
+                      <!-- <div class="is-text-centered">
                          <pagination-controls #p  
                                             [id]="config.id"
                                             (pageChange)="config.currentPage = $event">
@@ -340,7 +340,7 @@
                             </div>
 
                         </pagination-controls>
-                      </div>
+                      </div> -->
     							</div>
     						</div>
 					    </div> 
