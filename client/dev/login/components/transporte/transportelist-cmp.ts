@@ -21,11 +21,6 @@ CanActivate,
 ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-// import {
-//   PaginatePipe, 
-//   PaginationControlsCmp,
-//   IPaginationInstance
-// } from 'ng2-pagination';
 
 import {isLogged, isLoggedinAdmin, isLoggedinEncargado} from '../../services/isloggedin';
 import {Transporte, TransporteService} from '../../services/transporte/transporte-service';
@@ -36,8 +31,8 @@ import {SearchBox} from '../searchbox';
 
 @Component({
   templateUrl: 'client/dev/transporte/templates/list.html',
-  directives:[ROUTER_DIRECTIVES, SearchBox/*, PaginationControlsCmp*/],
-  pipes: [SearchPipe/*,PaginatePipe*/],
+  directives:[ROUTER_DIRECTIVES, SearchBox],
+  pipes: [SearchPipe],
   providers: [TransporteService, LoginService, UserService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -54,13 +49,7 @@ export class TransporteListCmp implements OnInit {
   constructor(private _transporteService: TransporteService, private _userService: UserService,private _loginService: LoginService,private router: Router, routeParams: RouteParams) {
     this._selectedId = routeParams.get('id');
   }
-/*
-  public config: IPaginationInstance = {
-        id: 'custom',
-        itemsPerPage: 10,
-        currentPage: 1
-    };
-*/
+
   ngOnInit() {
     this._getAll();
   }
@@ -73,7 +62,6 @@ export class TransporteListCmp implements OnInit {
         });
   }
   isSelected(transporte:Transporte){
-    //alert("hola "+this.term);
     return transporte._id === this._selectedId;
   }
   onSelect(transporte:Transporte){

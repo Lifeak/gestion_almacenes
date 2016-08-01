@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var ng2_pagination_1 = require('ng2-pagination');
 var isloggedin_1 = require('../../services/isloggedin');
 var transporte_service_1 = require('../../services/transporte/transporte-service');
 var login_service_1 = require('../../services/login-service');
@@ -24,11 +23,6 @@ var TransporteListCmp = (function () {
         this._loginService = _loginService;
         this.router = router;
         this.transportes = [];
-        this.config = {
-            id: 'custom',
-            itemsPerPage: 10,
-            currentPage: 1
-        };
         this._selectedId = routeParams.get('id');
     }
     TransporteListCmp.prototype.ngOnInit = function () {
@@ -43,7 +37,6 @@ var TransporteListCmp = (function () {
         });
     };
     TransporteListCmp.prototype.isSelected = function (transporte) {
-        //alert("hola "+this.term);
         return transporte._id === this._selectedId;
     };
     TransporteListCmp.prototype.onSelect = function (transporte) {
@@ -141,8 +134,8 @@ var TransporteListCmp = (function () {
     TransporteListCmp = __decorate([
         core_1.Component({
             templateUrl: 'client/dev/transporte/templates/list.html',
-            directives: [router_1.ROUTER_DIRECTIVES, searchbox_1.SearchBox, ng2_pagination_1.PaginationControlsCmp],
-            pipes: [searchpipe_1.SearchPipe, ng2_pagination_1.PaginatePipe],
+            directives: [router_1.ROUTER_DIRECTIVES, searchbox_1.SearchBox],
+            pipes: [searchpipe_1.SearchPipe],
             providers: [transporte_service_1.TransporteService, login_service_1.LoginService, user_service_1.UserService],
             changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }),
